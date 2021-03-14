@@ -30,70 +30,136 @@ using System.Drawing.Imaging;
 /// 
 /// 2) Додати розфарбування фракталу за допомогою градієнту
 /// 3) Спробувати ререндирити картинку для виконання зумузуму
+/// 4) Вияснити причину чому не виконується подія image_MOuseClick
 /// /// </summary>
 namespace WindowsFormsApp2
 {
     public partial class Form1 : Form
     {
-        public double wx = -150, wy = 0;
-        public double speed = 2f, zoom = 2.4f, zoomSpeed = 0.1d;
-        public int res = 1;
-        public double screenSize = 16 / 9.0;
-        int UserIt = 100;
+        int UserIt;
+
+        double hx = -0.6, hy = 0, x_, y_, n = 0;
+        bool er_x, er_y;
+        Size StartSize;
+        double ZoomVal = 1;
+        
+        Size size;
+        double SizeArea, ScaleArea;
+
 
 
         private void Form1_KeyDown(object sender, KeyEventArgs e)
         {
-            if (e.KeyCode == Keys.W)
-            {
-                wy -= speed * (5 - Math.Abs(zoom));
-                DrawMBrot();
-            }
-            if (e.KeyCode == Keys.S)
-            {
-                wy += speed * (5 - Math.Abs(zoom));
-                DrawMBrot();
-            }
+           
+        }
 
-            if (e.KeyCode == Keys.A)
+        private void GenerateFractal_Click(object sender, EventArgs e)
+        {
+            ZoomNUM.Text = ZoomVal.ToString("F0") + " X";
+            er_x = double.TryParse(CenterX.Text, out hx);
+            er_y = double.TryParse(CenterY.Text, out hy);
+            if (er_x == false)
             {
-                wx -= speed * (5 - Math.Abs(zoom));
-                DrawMBrot();
+                MessageBox.Show("Помилка введення значення x!", "Помилка", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            if (e.KeyCode == Keys.D)
+            else if (er_y == false)
             {
-                wx += speed * (5 - Math.Abs(zoom));
+                MessageBox.Show("Помилка введення значення y!", "Помилка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else
+            {
                 DrawMBrot();
             }
         }
-
-        private void button1_Click(object sender, EventArgs e)
+        private void DecreaseZOOM_Click(object sender, EventArgs e)
         {
-            timer1.Start();
+            n = (double)ZOOMValue.Value;
+            SizeArea *= n;
+            CenterX.Text = hx.ToString();
+            CenterY.Text = hy.ToString();
+            DrawMBrot();
+            ZoomVal /= (double)ZOOMValue.Value;
+            ZoomNUM.Clear();
+            ZoomNUM.Text = ZoomVal.ToString("F2") + " X";
+        }
+        private void IncreaseZOOM_Click(object sender, EventArgs e)
+        {
+            n = (double)ZOOMValue.Value;
+            SizeArea /= n;
+            CenterX.Text = hx.ToString();
+            CenterY.Text = hy.ToString();
+            DrawMBrot();
+            ZoomVal *= (double)ZOOMValue.Value;
+            ZoomNUM.Clear();
+            ZoomNUM.Text = ZoomVal.ToString("F2") + " X";
+        }
+
+        void image_MouseClick(object sender, MouseEventArgs e)
+        {
+            int X = e.X, Y = e.Y;
+            if (e.Button == MouseButtons.Left)
+            {
+                hx = (hx - SizeArea / 2) + X * (SizeArea / size.Width);
+                hy = (hy - SizeArea / 2) + Y * (SizeArea / size.Height);
+                SizeArea /= ScaleArea; // increase zoom by ScaleArea value
+                CenterX.Text = hx.ToString();
+                CenterY.Text = hy.ToString();
+                DrawMBrot();
+                ZoomVal *= (double)ZOOMValue.Value;
+                ZoomNUM.Clear();
+                ZoomNUM.Text = ZoomVal.ToString("F2") + " X";
+
+            }
+            else if (e.Button == MouseButtons.Middle)
+            {                // back to default
+                SizeArea = 3;
+                ScaleArea = 3;
+                hx = -0.6;
+                hy = 0;
+                CenterX.Text = hx.ToString();
+                CenterY.Text = hy.ToString();
+                DrawMBrot();
+                ZoomVal = 1;
+                ZoomNUM.Clear();
+                ZoomNUM.Width = 80;
+                ZoomNUM.Text = ZoomVal.ToString("F0") + " X";
+            }
+            else if (e.Button == MouseButtons.Right)
+            {
+                x_ = (hx - SizeArea / 2) + X * (SizeArea / size.Width);
+                y_ = (hy - SizeArea / 2) + Y * (SizeArea / size.Height);
+                SizeArea *= ScaleArea; // decrease zoom by ScaleArea value
+                CenterX.Text = x_.ToString();
+                CenterY.Text = y_.ToString();
+                DrawMBrot();
+                ZoomVal /= (double)ZOOMValue.Value;
+                ZoomNUM.Clear();
+                ZoomNUM.Text = ZoomVal.ToString("F2") + " X";
+            }
         }
 
         private void Form1_Load(object sender, EventArgs e)
         {
-
+            CenterX.Text = hx.ToString();
+            CenterY.Text = hy.ToString();
         }
 
 
         public void DrawMBrot()
         {
-            if (res <= 0)
-            {
-                res = 1;
-            }
 
-            Bitmap picture = new Bitmap(Width / res, Height / res);
-            for (int x = 0; x < Width/res; x++)
+            Bitmap picture = new Bitmap(image.Width, image.Height);
+            size = image.Size;
+            UserIt = (int)Iterations.Value;
+            ZoomNUM.Width = ZoomNUM.Text.Length* 10 + 70;
+            for (int x = 0; x < size.Width ; x++)
             {
-                for (int y = 0; y < Height/res; y++)
+                x_ = (hx - SizeArea / 2) + x * (SizeArea / size.Width);
+                for (int y = 0; y < size.Height; y++)
                 {
-                    double a = (double)((x + (wx / res / Math.Abs(zoom))) - ((Width / 2d) / res)) / (double)(Width / Math.Abs(zoom) / res / screenSize);
-                    double b = (double)((y + (wy / res / Math.Abs(zoom))) - ((Height / 2d) / res)) / (double)(Height / Math.Abs(zoom) / res);
+                    y_ = (hy - SizeArea / 2) + y * (SizeArea / size.Height);
 
-                    Complex c = new Complex(a , b);
+                    Complex c = new Complex(x_, y_);
                     Complex z = new Complex(0, 0);
 
 
@@ -109,14 +175,7 @@ namespace WindowsFormsApp2
                             break;
                         }
                     } while (it < UserIt);
-                    if (it < (int)(UserIt * 0.05))
-                    {
-                        picture.SetPixel(x, y, Color.FromArgb(147, 230, 212));
-                    }
-                    if (it < (int)(UserIt * 0.07))
-                    {
-                        picture.SetPixel(x, y, Color.FromArgb(255, 191, 151));
-                    }
+
                     if (it < (int)(UserIt * 0.09))
                     {
                         picture.SetPixel(x, y, Color.FromArgb(255, 187, 138));
@@ -211,36 +270,34 @@ namespace WindowsFormsApp2
                     }
                 }
                 image.Image = picture;
-                image.SizeMode = PictureBoxSizeMode.StretchImage;
             }
 
         }
         public Form1()
         {
             InitializeComponent();
-           
+
+            Bitmap bmp = new Bitmap(image.Width, image.Height);
+            image.Image = bmp;
+            size = image.Size;
+            StartSize = image.Size;
+            SizeArea = 3;
+            ScaleArea = 3;
         }
+
+       
 
         private void backgroundWorker1_DoWork(object sender, DoWorkEventArgs e)
         {
 
         }
-
-        private void button2_Click(object sender, EventArgs e)
+        private void image_Click(object sender, EventArgs e)
         {
 
         }
 
-        private void timer1_Tick(object sender, EventArgs e)
-        {
 
-            zoom -= zoomSpeed / zoom;
-            wx -= speed * (5 - Math.Abs(zoom));
-            DrawMBrot();
-        }
     }
-
-
 
     public class Complex {
         public double a;
