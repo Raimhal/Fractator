@@ -28,63 +28,55 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.image = new System.Windows.Forms.PictureBox();
             this.CreateFractal = new System.Windows.Forms.Button();
-            this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.IncreaseZOOM = new System.Windows.Forms.Button();
             this.ZOOMValue = new System.Windows.Forms.NumericUpDown();
             this.DecreaseZOOM = new System.Windows.Forms.Button();
             this.Iterations = new System.Windows.Forms.NumericUpDown();
             this.labelIterations = new System.Windows.Forms.Label();
             this.labelZOOM = new System.Windows.Forms.Label();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.ZoomNUM = new System.Windows.Forms.TextBox();
             this.CenterX = new System.Windows.Forms.MaskedTextBox();
             this.CenterY = new System.Windows.Forms.MaskedTextBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            ((System.ComponentModel.ISupportInitialize)(this.image)).BeginInit();
+            this.x = new System.Windows.Forms.Label();
+            this.y = new System.Windows.Forms.Label();
+            this.LabelMaxZDegreeTwo = new System.Windows.Forms.Label();
+            this.MaxZDegreeTwo = new System.Windows.Forms.MaskedTextBox();
+            this.SplitImageAndInterface = new System.Windows.Forms.SplitContainer();
+            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.Grad = new System.Windows.Forms.PictureBox();
+            this.image = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.ZOOMValue)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Iterations)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.SplitImageAndInterface)).BeginInit();
+            this.SplitImageAndInterface.Panel1.SuspendLayout();
+            this.SplitImageAndInterface.Panel2.SuspendLayout();
+            this.SplitImageAndInterface.SuspendLayout();
+            this.menuStrip1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.Grad)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.image)).BeginInit();
             this.SuspendLayout();
-            // 
-            // image
-            // 
-            this.image.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.image.Location = new System.Drawing.Point(0, 0);
-            this.image.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
-            this.image.Name = "image";
-            this.image.Size = new System.Drawing.Size(1101, 561);
-            this.image.TabIndex = 0;
-            this.image.TabStop = false;
-            this.image.Click += new System.EventHandler(this.image_Click);
-            this.image.MouseClick += new System.Windows.Forms.MouseEventHandler(this.image_MouseClick);
             // 
             // CreateFractal
             // 
-            this.CreateFractal.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.CreateFractal.Location = new System.Drawing.Point(784, 6);
+            this.CreateFractal.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.CreateFractal.Location = new System.Drawing.Point(3, 420);
             this.CreateFractal.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
             this.CreateFractal.Name = "CreateFractal";
-            this.CreateFractal.Size = new System.Drawing.Size(151, 52);
+            this.CreateFractal.Size = new System.Drawing.Size(180, 52);
             this.CreateFractal.TabIndex = 1;
             this.CreateFractal.Text = "Create fractal";
             this.CreateFractal.UseVisualStyleBackColor = true;
             this.CreateFractal.Click += new System.EventHandler(this.GenerateFractal_Click);
             // 
-            // backgroundWorker1
-            // 
-            this.backgroundWorker1.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backgroundWorker1_DoWork);
-            // 
             // IncreaseZOOM
             // 
             this.IncreaseZOOM.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.IncreaseZOOM.Location = new System.Drawing.Point(946, 69);
+            this.IncreaseZOOM.Location = new System.Drawing.Point(99, 32);
             this.IncreaseZOOM.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
             this.IncreaseZOOM.Name = "IncreaseZOOM";
-            this.IncreaseZOOM.Size = new System.Drawing.Size(54, 35);
+            this.IncreaseZOOM.Size = new System.Drawing.Size(40, 26);
             this.IncreaseZOOM.TabIndex = 2;
             this.IncreaseZOOM.Text = "+";
             this.IncreaseZOOM.UseVisualStyleBackColor = true;
@@ -93,12 +85,12 @@
             // ZOOMValue
             // 
             this.ZOOMValue.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.ZOOMValue.Location = new System.Drawing.Point(942, 34);
+            this.ZOOMValue.Location = new System.Drawing.Point(3, 33);
             this.ZOOMValue.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
             this.ZOOMValue.Maximum = new decimal(new int[] {
             200,
             0,
-            0,
+            20,
             0});
             this.ZOOMValue.Minimum = new decimal(new int[] {
             2,
@@ -117,10 +109,10 @@
             // DecreaseZOOM
             // 
             this.DecreaseZOOM.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.DecreaseZOOM.Location = new System.Drawing.Point(1023, 69);
+            this.DecreaseZOOM.Location = new System.Drawing.Point(145, 32);
             this.DecreaseZOOM.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
             this.DecreaseZOOM.Name = "DecreaseZOOM";
-            this.DecreaseZOOM.Size = new System.Drawing.Size(46, 35);
+            this.DecreaseZOOM.Size = new System.Drawing.Size(40, 26);
             this.DecreaseZOOM.TabIndex = 4;
             this.DecreaseZOOM.Text = "-";
             this.DecreaseZOOM.UseVisualStyleBackColor = true;
@@ -128,8 +120,8 @@
             // 
             // Iterations
             // 
-            this.Iterations.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.Iterations.Location = new System.Drawing.Point(946, 132);
+            this.Iterations.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.Iterations.Location = new System.Drawing.Point(3, 386);
             this.Iterations.Maximum = new decimal(new int[] {
             100000,
             0,
@@ -146,9 +138,9 @@
             // 
             // labelIterations
             // 
-            this.labelIterations.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.labelIterations.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.labelIterations.AutoSize = true;
-            this.labelIterations.Location = new System.Drawing.Point(942, 109);
+            this.labelIterations.Location = new System.Drawing.Point(-2, 363);
             this.labelIterations.Name = "labelIterations";
             this.labelIterations.Size = new System.Drawing.Size(95, 20);
             this.labelIterations.TabIndex = 6;
@@ -158,118 +150,207 @@
             // 
             this.labelZOOM.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.labelZOOM.AutoSize = true;
-            this.labelZOOM.Location = new System.Drawing.Point(942, 9);
+            this.labelZOOM.Location = new System.Drawing.Point(3, 10);
             this.labelZOOM.Name = "labelZOOM";
             this.labelZOOM.Size = new System.Drawing.Size(51, 20);
             this.labelZOOM.TabIndex = 7;
             this.labelZOOM.Text = "ZOOM:";
             // 
-            // comboBox1
-            // 
-            this.comboBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(1058, 6);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(28, 28);
-            this.comboBox1.TabIndex = 8;
-            // 
             // ZoomNUM
             // 
-            this.ZoomNUM.BackColor = System.Drawing.SystemColors.Menu;
+            this.ZoomNUM.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(192)))));
+            this.ZoomNUM.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.ZoomNUM.Font = new System.Drawing.Font("Arial Narrow", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.ZoomNUM.Location = new System.Drawing.Point(14, 12);
+            this.ZoomNUM.ForeColor = System.Drawing.Color.OrangeRed;
+            this.ZoomNUM.Location = new System.Drawing.Point(3, 0);
             this.ZoomNUM.MaximumSize = new System.Drawing.Size(228, 40);
             this.ZoomNUM.Name = "ZoomNUM";
             this.ZoomNUM.ReadOnly = true;
-            this.ZoomNUM.Size = new System.Drawing.Size(0, 35);
+            this.ZoomNUM.Size = new System.Drawing.Size(10, 28);
             this.ZoomNUM.TabIndex = 9;
+            this.ZoomNUM.Visible = false;
             // 
             // CenterX
             // 
-            this.CenterX.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.CenterX.Location = new System.Drawing.Point(906, 462);
+            this.CenterX.AllowDrop = true;
+            this.CenterX.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.CenterX.Location = new System.Drawing.Point(3, 230);
             this.CenterX.Name = "CenterX";
             this.CenterX.Size = new System.Drawing.Size(180, 26);
             this.CenterX.TabIndex = 10;
             // 
             // CenterY
             // 
-            this.CenterY.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.CenterY.Location = new System.Drawing.Point(906, 513);
+            this.CenterY.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.CenterY.Location = new System.Drawing.Point(3, 282);
             this.CenterY.Name = "CenterY";
             this.CenterY.Size = new System.Drawing.Size(180, 26);
             this.CenterY.TabIndex = 11;
             // 
-            // label1
+            // x
             // 
-            this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(901, 439);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(63, 20);
-            this.label1.TabIndex = 12;
-            this.label1.Text = "Center x:";
+            this.x.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.x.AutoSize = true;
+            this.x.Location = new System.Drawing.Point(16, 207);
+            this.x.Name = "x";
+            this.x.Size = new System.Drawing.Size(63, 20);
+            this.x.TabIndex = 12;
+            this.x.Text = "Center x:";
             // 
-            // label2
+            // y
             // 
-            this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(902, 490);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(63, 20);
-            this.label2.TabIndex = 13;
-            this.label2.Text = "Center y:";
+            this.y.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.y.AutoSize = true;
+            this.y.Location = new System.Drawing.Point(3, 259);
+            this.y.Name = "y";
+            this.y.Size = new System.Drawing.Size(63, 20);
+            this.y.TabIndex = 13;
+            this.y.Text = "Center y:";
+            // 
+            // LabelMaxZDegreeTwo
+            // 
+            this.LabelMaxZDegreeTwo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.LabelMaxZDegreeTwo.AutoSize = true;
+            this.LabelMaxZDegreeTwo.Location = new System.Drawing.Point(3, 311);
+            this.LabelMaxZDegreeTwo.Name = "LabelMaxZDegreeTwo";
+            this.LabelMaxZDegreeTwo.Size = new System.Drawing.Size(76, 20);
+            this.LabelMaxZDegreeTwo.TabIndex = 14;
+            this.LabelMaxZDegreeTwo.Text = "max |z| ^ 2:";
+            // 
+            // MaxZDegreeTwo
+            // 
+            this.MaxZDegreeTwo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.MaxZDegreeTwo.Location = new System.Drawing.Point(3, 334);
+            this.MaxZDegreeTwo.Name = "MaxZDegreeTwo";
+            this.MaxZDegreeTwo.Size = new System.Drawing.Size(180, 26);
+            this.MaxZDegreeTwo.TabIndex = 15;
+            // 
+            // SplitImageAndInterface
+            // 
+            this.SplitImageAndInterface.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.SplitImageAndInterface.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.SplitImageAndInterface.FixedPanel = System.Windows.Forms.FixedPanel.Panel2;
+            this.SplitImageAndInterface.IsSplitterFixed = true;
+            this.SplitImageAndInterface.Location = new System.Drawing.Point(0, 24);
+            this.SplitImageAndInterface.Name = "SplitImageAndInterface";
+            // 
+            // SplitImageAndInterface.Panel1
+            // 
+            this.SplitImageAndInterface.Panel1.Controls.Add(this.ZoomNUM);
+            this.SplitImageAndInterface.Panel1.Controls.Add(this.Grad);
+            this.SplitImageAndInterface.Panel1.Controls.Add(this.image);
+            // 
+            // SplitImageAndInterface.Panel2
+            // 
+            this.SplitImageAndInterface.Panel2.Controls.Add(this.x);
+            this.SplitImageAndInterface.Panel2.Controls.Add(this.CreateFractal);
+            this.SplitImageAndInterface.Panel2.Controls.Add(this.MaxZDegreeTwo);
+            this.SplitImageAndInterface.Panel2.Controls.Add(this.labelZOOM);
+            this.SplitImageAndInterface.Panel2.Controls.Add(this.LabelMaxZDegreeTwo);
+            this.SplitImageAndInterface.Panel2.Controls.Add(this.ZOOMValue);
+            this.SplitImageAndInterface.Panel2.Controls.Add(this.CenterY);
+            this.SplitImageAndInterface.Panel2.Controls.Add(this.y);
+            this.SplitImageAndInterface.Panel2.Controls.Add(this.IncreaseZOOM);
+            this.SplitImageAndInterface.Panel2.Controls.Add(this.DecreaseZOOM);
+            this.SplitImageAndInterface.Panel2.Controls.Add(this.CenterX);
+            this.SplitImageAndInterface.Panel2.Controls.Add(this.Iterations);
+            this.SplitImageAndInterface.Panel2.Controls.Add(this.labelIterations);
+            this.SplitImageAndInterface.Size = new System.Drawing.Size(1172, 530);
+            this.SplitImageAndInterface.SplitterDistance = 959;
+            this.SplitImageAndInterface.TabIndex = 17;
+            // 
+            // menuStrip1
+            // 
+            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.fileToolStripMenuItem});
+            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
+            this.menuStrip1.Name = "menuStrip1";
+            this.menuStrip1.Size = new System.Drawing.Size(1172, 24);
+            this.menuStrip1.TabIndex = 18;
+            this.menuStrip1.Text = "menuStrip1";
+            // 
+            // fileToolStripMenuItem
+            // 
+            this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
+            this.fileToolStripMenuItem.Size = new System.Drawing.Size(35, 20);
+            this.fileToolStripMenuItem.Text = "file";
+            // 
+            // Grad
+            // 
+            this.Grad.Image = global::WindowsFormsApp2.Properties.Resources.second;
+            this.Grad.Location = new System.Drawing.Point(393, 10);
+            this.Grad.Name = "Grad";
+            this.Grad.Size = new System.Drawing.Size(545, 28);
+            this.Grad.TabIndex = 16;
+            this.Grad.TabStop = false;
+            // 
+            // image
+            // 
+            this.image.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.image.Location = new System.Drawing.Point(0, 0);
+            this.image.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
+            this.image.Name = "image";
+            this.image.Size = new System.Drawing.Size(955, 526);
+            this.image.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.image.TabIndex = 0;
+            this.image.TabStop = false;
+            this.image.Click += new System.EventHandler(this.image_Click);
+            this.image.MouseClick += new System.Windows.Forms.MouseEventHandler(this.image_MouseClick);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1101, 561);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.CenterY);
-            this.Controls.Add(this.CenterX);
-            this.Controls.Add(this.ZoomNUM);
-            this.Controls.Add(this.comboBox1);
-            this.Controls.Add(this.labelZOOM);
-            this.Controls.Add(this.labelIterations);
-            this.Controls.Add(this.Iterations);
-            this.Controls.Add(this.DecreaseZOOM);
-            this.Controls.Add(this.ZOOMValue);
-            this.Controls.Add(this.IncreaseZOOM);
-            this.Controls.Add(this.CreateFractal);
-            this.Controls.Add(this.image);
+            this.ClientSize = new System.Drawing.Size(1172, 554);
+            this.Controls.Add(this.SplitImageAndInterface);
+            this.Controls.Add(this.menuStrip1);
             this.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.MainMenuStrip = this.menuStrip1;
             this.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
+            this.MinimumSize = new System.Drawing.Size(740, 432);
             this.Name = "Form1";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Form1_KeyDown);
-            ((System.ComponentModel.ISupportInitialize)(this.image)).EndInit();
+            this.MouseUp += new System.Windows.Forms.MouseEventHandler(this.Form1_MouseUp);
             ((System.ComponentModel.ISupportInitialize)(this.ZOOMValue)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Iterations)).EndInit();
+            this.SplitImageAndInterface.Panel1.ResumeLayout(false);
+            this.SplitImageAndInterface.Panel1.PerformLayout();
+            this.SplitImageAndInterface.Panel2.ResumeLayout(false);
+            this.SplitImageAndInterface.Panel2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.SplitImageAndInterface)).EndInit();
+            this.SplitImageAndInterface.ResumeLayout(false);
+            this.menuStrip1.ResumeLayout(false);
+            this.menuStrip1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.Grad)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.image)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
         }
 
         #endregion
-
-        private System.Windows.Forms.PictureBox image;
         private System.Windows.Forms.Button CreateFractal;
-        private System.ComponentModel.BackgroundWorker backgroundWorker1;
         private System.Windows.Forms.Button IncreaseZOOM;
         private System.Windows.Forms.NumericUpDown ZOOMValue;
         private System.Windows.Forms.Button DecreaseZOOM;
         private System.Windows.Forms.NumericUpDown Iterations;
         private System.Windows.Forms.Label labelIterations;
         private System.Windows.Forms.Label labelZOOM;
-        private System.Windows.Forms.ComboBox comboBox1;
         private System.Windows.Forms.TextBox ZoomNUM;
         private System.Windows.Forms.MaskedTextBox CenterX;
         private System.Windows.Forms.MaskedTextBox CenterY;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label x;
+        private System.Windows.Forms.Label y;
+        private System.Windows.Forms.Label LabelMaxZDegreeTwo;
+        private System.Windows.Forms.MaskedTextBox MaxZDegreeTwo;
+        private System.Windows.Forms.PictureBox Grad;
+        private System.Windows.Forms.SplitContainer SplitImageAndInterface;
+        private System.Windows.Forms.PictureBox image;
+        private System.Windows.Forms.MenuStrip menuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem fileToolStripMenuItem;
     }
 }
 
