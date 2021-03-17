@@ -9,11 +9,10 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Drawing.Drawing2D;
 using System.Drawing.Imaging;
-
+using System.Globalization;
 /// <summary>
 /// 1) додати діалогові вікна
 /// 2) додати ще декілька фракталів
-/// 3) додати декілька градієнтів по замовчування та реалізувати їх вибір кормистувачем
 /// 4) додати автозаповнення при розтязі зображення
 /// 5) додати лічильнику приближення невидимий фон
 /// 6) додати роздільник крапка
@@ -150,11 +149,16 @@ namespace WindowsFormsApp2
             //Gradient();
         }
 
+        private void SplitImageAndInterface_Panel2_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
         private void RandomGradientButton_Click(object sender, EventArgs e)
         {
             Gradient(Grad);
         }
-
+        // drawing a MBrot set
         public void DrawMBrot()
         {
 
@@ -186,6 +190,8 @@ namespace WindowsFormsApp2
                             break;
                         }
                     } while (it < UserIt);
+
+                    // coloring the set
                     for (int color = 0; color <= Grad.Width; color += 1)
                     {
                         if(it < UserIt)
@@ -206,7 +212,7 @@ namespace WindowsFormsApp2
             }
 
         }
-
+        // getting gradient pixels 
         private List<Pixel> GetPixels(Bitmap bitmap)
         {
             List<Pixel> pixels = new List<Pixel>(bitmap.Width);
@@ -219,40 +225,65 @@ namespace WindowsFormsApp2
             }
             return pixels;
         }
+        // creation of  gradient
         public void Gradient(PictureBox pictureBox)
         {
-            Random red = new Random();
-            Random green = new Random();
-            Random blue = new Random();
-            int r = red.Next(red.Next(256), 256);
-            int g = green.Next(green.Next(256), 256);
-            int b = blue.Next(blue.Next(256), 256);
-            Random degreeRed = new Random();
-            Random degreeGreen = new Random();
-            Random degreeBlue = new Random();
-            int mR, mG, mB;
-           
+            Random color = new Random();
+
+            int r = color.Next(256);
+            int g = color.Next(256);
+            int b = color.Next(256);
+            int changer = color.Next(256);
             Bitmap Gradient = new Bitmap(pictureBox.Width, pictureBox.Height);
-            for (int x = 0; x < Gradient.Width; x++)
+            if (changer % 3 == 0)
             {
-                mR = degreeRed.Next(0, 10);
-                mG = degreeGreen.Next(0, 10);
-                mB = degreeBlue.Next(0, 10);
-            
-                for (int y = 0; y < Gradient.Height; y++)
+                
+                for (int x = 0; x < Gradient.Width; x++)
                 {
-                    
-                   Gradient.SetPixel(x, y, Color.FromArgb(((r + x) / 3) % 255, ((255 - g + x) / 3) % 255, ((b) / 3) % 255));
-                    //r += red.Next(256);
-                    //g += green.Next(256);
-                    //b += blue.Next(5);
+
+                    for (int y = 0; y < Gradient.Height; y++)
+                    {
+                        Gradient.SetPixel(x, y, Color.FromArgb(((r + x) / 3) % 255, ((255 - g + x) / 3) % 255, ((b) / 3) % 255));
+                    }
                 }
             }
+            else if (changer % 3 == 1)
+            {
+                for (int x = 0; x < Gradient.Width; x++)
+                {
+
+                    for (int y = 0; y < Gradient.Height; y++)
+                    {
+                        Gradient.SetPixel(x, y, Color.FromArgb(((r) / 3) % 255, ((g + x) / 3) % 255, ((255 - b + x) / 3) % 255));
+                    }
+                }
+            }
+            else
+            {
+                for (int x = 0; x < Gradient.Width; x++)
+                {
+
+                    for (int y = 0; y < Gradient.Height; y++)
+                    {
+                        Gradient.SetPixel(x, y, Color.FromArgb(((255 - r + x) / 3) % 255, ((g) / 3) % 255, ((b + x) / 3) % 255));
+                    }
+                }
+            }
+
             pictureBox.Image = Gradient;
         }
+
+        
+        
         public Form1()
         {
             InitializeComponent();
+
+            System.Globalization.CultureInfo customCulture= (System.Globalization.CultureInfo)
+                System.Threading.Thread.CurrentThread.CurrentCulture.Clone();
+            customCulture.NumberFormat.NumberDecimalSeparator = ".";
+            System.Threading.Thread.CurrentThread.CurrentCulture = customCulture;
+
 
             Bitmap bmp = new Bitmap(image.Width, image.Height);
             image.Image = bmp;
@@ -266,43 +297,12 @@ namespace WindowsFormsApp2
 
        
 
-        private void backgroundWorker1_DoWork(object sender, DoWorkEventArgs e)
-        {
-
-        }
+        
         private void image_Click(object sender, EventArgs e)
         {
 
         }
 
 
-    }
-
-    
-
-    public class RandomGradient
-    {
-        public int x;
-        public int y;
-        public int it;
-        public Bitmap picture;
-
-        public RandomGradient(int x,int y, int it, Bitmap picture)
-        {
-            this.x = x;
-            this.y = y;
-            this.it = it;
-            this.picture = picture;
-        }
-        public void PixelColor()
-        {
-            for (int t = 0; t < it; t += 5) {
-                if (t < it)
-                {
-                   picture.SetPixel(x, y, Color.FromArgb((int)(t), (int)(t), (int)(t)));
-                    break;
-                }
-            }
-        }
     }
 }

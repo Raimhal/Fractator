@@ -258,6 +258,7 @@
             this.SplitImageAndInterface.Panel2.Controls.Add(this.CenterX);
             this.SplitImageAndInterface.Panel2.Controls.Add(this.Iterations);
             this.SplitImageAndInterface.Panel2.Controls.Add(this.labelIterations);
+            this.SplitImageAndInterface.Panel2.Paint += new System.Windows.Forms.PaintEventHandler(this.SplitImageAndInterface_Panel2_Paint);
             this.SplitImageAndInterface.Size = new System.Drawing.Size(1172, 530);
             this.SplitImageAndInterface.SplitterDistance = 959;
             this.SplitImageAndInterface.TabIndex = 17;
@@ -265,10 +266,10 @@
             // Grad
             // 
             this.Grad.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.Grad.Image = global::WindowsFormsApp2.Properties.Resources.second;
-            this.Grad.Location = new System.Drawing.Point(490, 10);
+            this.Grad.Image = global::WindowsFormsApp2.Properties.Resources.third;
+            this.Grad.Location = new System.Drawing.Point(511, 0);
             this.Grad.Name = "Grad";
-            this.Grad.Size = new System.Drawing.Size(441, 25);
+            this.Grad.Size = new System.Drawing.Size(441, 28);
             this.Grad.TabIndex = 16;
             this.Grad.TabStop = false;
             // 

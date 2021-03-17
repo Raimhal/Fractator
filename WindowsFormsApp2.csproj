@@ -88,5 +88,8 @@
   <ItemGroup>
     <None Include="gradients\second.PNG" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="gradients\third.PNG" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
