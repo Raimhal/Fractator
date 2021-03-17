@@ -11,26 +11,18 @@ using System.Drawing.Drawing2D;
 using System.Drawing.Imaging;
 
 /// <summary>
-/// 1)  Попробувати реалізувати приближення по алгоратму 
-/// if(newWidth < newHeight)
-/// {
-///     for(int i = newWidth; newWidth < oldWidth; newWidth++)
-///     {
-///         zoom -= zoomSpeed / zoom;
-///     }
-/// }
-/// else
-/// {
+/// 1) додати діалогові вікна
+/// 2) додати ще декілька фракталів
+/// 3) додати декілька градієнтів по замовчування та реалізувати їх вибір кормистувачем
+/// 4) додати автозаповнення при розтязі зображення
+/// 5) додати лічильнику приближення невидимий фон
+/// 6) додати роздільник крапка
+/// 7) реалізувати иожливість збереження фракталу
+/// 8) реалізувати мождивість рандомногоо генерування градієнту
+/// 9) оформити користувацький інтерфейс
+/// 10) додати іконки на кнопки зуму
+/// 11)
 /// 
-///      for(int i = newHeight; newHeight < oldHeight; newHeight++)
-///      {
-///         zoom -= zoomSpeed / zoom;
-///      }
-/// }
-/// 
-/// 2) Додати розфарбування фракталу за допомогою градієнту
-/// 3) Спробувати ререндирити картинку для виконання зумузуму
-/// 4) Вияснити причину чому не виконується подія image_MOuseClick
 /// /// </summary>
 namespace WindowsFormsApp2
 {
@@ -38,6 +30,7 @@ namespace WindowsFormsApp2
     {
         int UserIt;
         List<Pixel> pixels;
+
 
         double hx = -0.6, hy = 0, maxZ = 4, x_, y_;
         bool er_x, er_y, er_z;
@@ -147,18 +140,19 @@ namespace WindowsFormsApp2
             }
         }
 
-        private void Form1_MouseUp(object sender, MouseEventArgs e)
-        {
-            //DrawMBrot();
-        }
-
         private void Form1_Load(object sender, EventArgs e)
         {
+            // відображення координат центра та max |z| ^ 2 по замовчуванню
             CenterX.Text = hx.ToString();
             CenterY.Text = hy.ToString();
             MaxZDegreeTwo.Text = maxZ.ToString();
-            ZoomNUM.Visible = false;
+
             //Gradient();
+        }
+
+        private void RandomGradientButton_Click(object sender, EventArgs e)
+        {
+            Gradient(Grad);
         }
 
         public void DrawMBrot()
@@ -192,14 +186,12 @@ namespace WindowsFormsApp2
                             break;
                         }
                     } while (it < UserIt);
-                    //Gradient Gradient = new Gradient(x, y, it, picture);
-                    //picture.SetPixel() = Gradient.PixelColor();
                     for (int color = 0; color <= Grad.Width; color += 1)
                     {
                         if(it < UserIt)
                         {
                             if(it < UserIt * (color / 100.0)) {
-                                picture.SetPixel(x, y, pixels[(color * 30) % Grad.Width].Color/*Color.FromArgb((int)(((color * 20) + 36)% 255), (int)(((color * 20) + 9) % 255), (int)((((color) * 20) +25) % 255))*/);
+                                picture.SetPixel(x, y, pixels[(color * 27) % Grad.Width].Color);
                                 break;
                             }
                         }
@@ -209,99 +201,6 @@ namespace WindowsFormsApp2
                             break;
                         }
                     }
-                    //if (it < UserIt * 0.05)
-                    //{
-                    //    picture.SetPixel(x, y, Color.FromArgb(253, 127, 153));
-                    //}
-                    //else if (it < (int)(UserIt * 0.1))
-                    //{
-                    //    picture.SetPixel(x, y, Color.FromArgb(209, 50, 103));
-                    //}
-                    //else if (it < (int)(UserIt * 0.11))
-                    //{
-                    //    picture.SetPixel(x, y, Color.FromArgb(117, 239, 0));
-                    //}
-                    //else if (it < (int)(UserIt * 0.14))
-                    //{
-                    //    picture.SetPixel(x, y, Color.FromArgb(166, 222, 230));
-                    //}
-                    //else if (it < (int)(UserIt * 0.16))
-                    //{
-                    //    picture.SetPixel(x, y, Color.FromArgb(255, 182, 36));
-                    //}
-                    //else if (it < (int)(UserIt * 0.17))
-                    //{
-                    //    picture.SetPixel(x, y, Color.FromArgb(117, 0, 132));
-                    //}
-                    //else if (it < (int)(UserIt * 0.18))
-                    //{
-                    //    picture.SetPixel(x, y, Color.FromArgb(255, 141, 36));
-                    //}
-                    //else if (it < (int)(UserIt * 0.19))
-                    //{
-                    //    picture.SetPixel(x, y, Color.FromArgb(117, 0, 132));
-                    //}
-                    //else if (it < (int)(UserIt * 0.2))
-                    //{
-                    //    picture.SetPixel(x, y, Color.FromArgb(250, 179, 122));
-                    //}
-                    //else if (it < (int)(UserIt * 0.23))
-                    //{
-                    //    picture.SetPixel(x, y, Color.FromArgb(1, 147, 154));
-                    //}
-                    //else if (it < (int)(UserIt * 0.26))
-                    //{
-                    //    picture.SetPixel(x, y, Color.FromArgb(1, 149, 154));
-                    //}
-                    ////else if (it < (int)(UserIt * 0.3))
-                    ////{
-                    ////    picture.SetPixel(x, y, Color.FromArgb(125, 125, 125));
-                    ////}
-                    ////else if (it < (int)(UserIt * 0.4))
-                    ////{
-                    ////    picture.SetPixel(x, y, Color.FromArgb(210, 53, 210));
-                    ////}
-                    ////else if (it < (int)(UserIt * 0.5))
-                    ////{
-                    ////    picture.SetPixel(x, y, Color.FromArgb(23, 97, 125));
-                    ////}
-                    ////else if (it < (int)(UserIt * 0.6))
-                    ////{
-                    ////    picture.SetPixel(x, y, Color.FromArgb(255, 204, 115));
-                    ////}
-                    ////else if (it < (int)(UserIt * 0.7))
-                    ////{
-                    ////    picture.SetPixel(x, y, Color.FromArgb(225, 225, 225));
-                    ////}
-                    ////else if (it < (int)(UserIt * 0.8))
-                    ////{
-                    ////    picture.SetPixel(x, y, Color.FromArgb(86, 225, 225));
-                    ////}
-                    ////else if (it < (int)(UserIt * 0.90))
-                    ////{
-                    ////    picture.SetPixel(x, y, Color.FromArgb(237, 65, 56));
-                    ////}
-                    ////else if (it < (int)(UserIt * 0.93))
-                    ////{
-                    ////    picture.SetPixel(x, y, Color.FromArgb(224, 53, 80));
-                    ////}
-                    ////else if (it < (int)(UserIt * 0.96))
-                    ////{
-                    ////    picture.SetPixel(x, y, Color.FromArgb(0, 34, 225));
-                    ////}
-                    ////else if (it < (int)(UserIt * 0.99))
-                    ////{
-                    ////    picture.SetPixel(x, y, Color.FromArgb(48, 50, 133));
-                    ////}
-                    ////else if (it < (int)(UserIt))
-                    ////{
-                    ////    picture.SetPixel(x, y, Color.FromArgb(117, 239, 0));
-                    ////}
-                    //else
-                    //{
-                    //    picture.SetPixel(x, y, Color.FromArgb(0, 0, 0));
-                    //}
-
                 }
                 image.Image = picture;
             }
@@ -320,24 +219,36 @@ namespace WindowsFormsApp2
             }
             return pixels;
         }
-        public void Gradient()
+        public void Gradient(PictureBox pictureBox)
         {
-            Bitmap Gradient = new Bitmap(Grad.Width, Grad.Height);
-            for (int x = 0; x < Grad.Width; x++)
+            Random red = new Random();
+            Random green = new Random();
+            Random blue = new Random();
+            int r = red.Next(red.Next(256), 256);
+            int g = green.Next(green.Next(256), 256);
+            int b = blue.Next(blue.Next(256), 256);
+            Random degreeRed = new Random();
+            Random degreeGreen = new Random();
+            Random degreeBlue = new Random();
+            int mR, mG, mB;
+           
+            Bitmap Gradient = new Bitmap(pictureBox.Width, pictureBox.Height);
+            for (int x = 0; x < Gradient.Width; x++)
             {
-                for (int y = 0; y < Grad.Height; y++)
+                mR = degreeRed.Next(0, 10);
+                mG = degreeGreen.Next(0, 10);
+                mB = degreeBlue.Next(0, 10);
+            
+                for (int y = 0; y < Gradient.Height; y++)
                 {
-                    if (x < 256)
-                    {
-                        Gradient.SetPixel(x, y, Color.FromArgb(y % 255, x % 255, y % 255));
-                    }
-                    else if (x < 512)
-                    {
-                        Gradient.SetPixel(x, y, Color.FromArgb(255 - y % 255, 255 - x % 255, 255 - y % 255));
-                    }
+                    
+                   Gradient.SetPixel(x, y, Color.FromArgb(((r + x) / 3) % 255, ((255 - g + x) / 3) % 255, ((b) / 3) % 255));
+                    //r += red.Next(256);
+                    //g += green.Next(256);
+                    //b += blue.Next(5);
                 }
             }
-            Grad.Image = Gradient;
+            pictureBox.Image = Gradient;
         }
         public Form1()
         {
@@ -367,44 +278,16 @@ namespace WindowsFormsApp2
 
     }
 
-    public class Complex {
-        public double a;
-        public double b;
+    
 
-        public Complex(double a, double b)
-        {
-            this.a = a;
-            this.b = b;
-        }
-
-        public void Sqr()
-        {
-            double tmp = (a * a) - (b * b );
-            b = 2.0d * a * b;
-            a = tmp;
-        }
-
-        public double Magn()
-        {
-            return Math.Sqrt((a * a) + (b * b));
-        }
-
-        public void Add(Complex c)
-        {
-            a += c.a;
-            b += c.b;
-        }
-        
-    }
-
-    public class Gradient
+    public class RandomGradient
     {
         public int x;
         public int y;
         public int it;
         public Bitmap picture;
 
-        public Gradient(int x,int y, int it, Bitmap picture)
+        public RandomGradient(int x,int y, int it, Bitmap picture)
         {
             this.x = x;
             this.y = y;
@@ -420,94 +303,6 @@ namespace WindowsFormsApp2
                     break;
                 }
             }
-            //if (it < (int)(UserIt * 0.1))
-            //{
-            //    picture.SetPixel(x, y, Color.FromArgb(209, 50, 103));
-            //}
-            //else if (it < (int)(UserIt * 0.11))
-            //{
-            //    picture.SetPixel(x, y, Color.FromArgb(117, 239, 0));
-            //}
-            //else if (it < (int)(UserIt * 0.14))
-            //{
-            //    picture.SetPixel(x, y, Color.FromArgb(166, 222, 230));
-            //}
-            //else if (it < (int)(UserIt * 0.16))
-            //{
-            //    picture.SetPixel(x, y, Color.FromArgb(255, 182, 36));
-            //}
-            //else if (it < (int)(UserIt * 0.17))
-            //{
-            //    picture.SetPixel(x, y, Color.FromArgb(117, 0, 132));
-            //}
-            //else if (it < (int)(UserIt * 0.18))
-            //{
-            //    picture.SetPixel(x, y, Color.FromArgb(255, 141, 36));
-            //}
-            //else if (it < (int)(UserIt * 0.19))
-            //{
-            //    picture.SetPixel(x, y, Color.FromArgb(117, 0, 132));
-            //}
-            //else if (it < (int)(UserIt * 0.2))
-            //{
-            //    picture.SetPixel(x, y, Color.FromArgb(250, 179, 122));
-            //}
-            //else if (it < (int)(UserIt * 0.23))
-            //{
-            //    picture.SetPixel(x, y, Color.FromArgb(1, 147, 154));
-            //}
-            //else if (it < (int)(UserIt * 0.26))
-            //{
-            //    picture.SetPixel(x, y, Color.FromArgb(1, 149, 154));
-            //}
-            //else if (it < (int)(UserIt * 0.3))
-            //{
-            //    picture.SetPixel(x, y, Color.FromArgb(125, 125, 125));
-            //}
-            //else if (it < (int)(UserIt * 0.4))
-            //{
-            //    picture.SetPixel(x, y, Color.FromArgb(210, 53, 210));
-            //}
-            //else if (it < (int)(UserIt * 0.5))
-            //{
-            //    picture.SetPixel(x, y, Color.FromArgb(23, 97, 125));
-            //}
-            //else if (it < (int)(UserIt * 0.6))
-            //{
-            //    picture.SetPixel(x, y, Color.FromArgb(255, 204, 115));
-            //}
-            //else if (it < (int)(UserIt * 0.7))
-            //{
-            //    picture.SetPixel(x, y, Color.FromArgb(225, 225, 225));
-            //}
-            //else if (it < (int)(UserIt * 0.8))
-            //{
-            //    picture.SetPixel(x, y, Color.FromArgb(86, 225, 225));
-            //}
-            //else if (it < (int)(UserIt * 0.90))
-            //{
-            //    picture.SetPixel(x, y, Color.FromArgb(237, 65, 56));
-            //}
-            //else if (it < (int)(UserIt * 0.93))
-            //{
-            //    picture.SetPixel(x, y, Color.FromArgb(224, 53, 80));
-            //}
-            //else if (it < (int)(UserIt * 0.96))
-            //{
-            //    picture.SetPixel(x, y, Color.FromArgb(0, 34, 225));
-            //}
-            //else if (it < (int)(UserIt * 0.99))
-            //{
-            //    picture.SetPixel(x, y, Color.FromArgb(48, 50, 133));
-            //}
-            //else if (it < (int)(UserIt))
-            //{
-            //    picture.SetPixel(x, y, Color.FromArgb(117, 239, 0));
-            //}
-            //else
-            //{
-            //    picture.SetPixel(x, y, Color.FromArgb(0, 0, 0));
-            //}
         }
     }
 }

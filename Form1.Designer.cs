@@ -43,19 +43,21 @@
             this.LabelMaxZDegreeTwo = new System.Windows.Forms.Label();
             this.MaxZDegreeTwo = new System.Windows.Forms.MaskedTextBox();
             this.SplitImageAndInterface = new System.Windows.Forms.SplitContainer();
-            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
-            this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.Grad = new System.Windows.Forms.PictureBox();
             this.image = new System.Windows.Forms.PictureBox();
+            this.RandomGradientButton = new System.Windows.Forms.Button();
+            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.colorDialog1 = new System.Windows.Forms.ColorDialog();
             ((System.ComponentModel.ISupportInitialize)(this.ZOOMValue)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Iterations)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.SplitImageAndInterface)).BeginInit();
             this.SplitImageAndInterface.Panel1.SuspendLayout();
             this.SplitImageAndInterface.Panel2.SuspendLayout();
             this.SplitImageAndInterface.SuspendLayout();
-            this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Grad)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.image)).BeginInit();
+            this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // CreateFractal
@@ -242,6 +244,7 @@
             // 
             // SplitImageAndInterface.Panel2
             // 
+            this.SplitImageAndInterface.Panel2.Controls.Add(this.RandomGradientButton);
             this.SplitImageAndInterface.Panel2.Controls.Add(this.x);
             this.SplitImageAndInterface.Panel2.Controls.Add(this.CreateFractal);
             this.SplitImageAndInterface.Panel2.Controls.Add(this.MaxZDegreeTwo);
@@ -259,28 +262,13 @@
             this.SplitImageAndInterface.SplitterDistance = 959;
             this.SplitImageAndInterface.TabIndex = 17;
             // 
-            // menuStrip1
-            // 
-            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.fileToolStripMenuItem});
-            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
-            this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(1172, 24);
-            this.menuStrip1.TabIndex = 18;
-            this.menuStrip1.Text = "menuStrip1";
-            // 
-            // fileToolStripMenuItem
-            // 
-            this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
-            this.fileToolStripMenuItem.Size = new System.Drawing.Size(35, 20);
-            this.fileToolStripMenuItem.Text = "file";
-            // 
             // Grad
             // 
+            this.Grad.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.Grad.Image = global::WindowsFormsApp2.Properties.Resources.second;
-            this.Grad.Location = new System.Drawing.Point(393, 10);
+            this.Grad.Location = new System.Drawing.Point(490, 10);
             this.Grad.Name = "Grad";
-            this.Grad.Size = new System.Drawing.Size(545, 28);
+            this.Grad.Size = new System.Drawing.Size(441, 25);
             this.Grad.TabIndex = 16;
             this.Grad.TabStop = false;
             // 
@@ -296,6 +284,32 @@
             this.image.TabStop = false;
             this.image.Click += new System.EventHandler(this.image_Click);
             this.image.MouseClick += new System.Windows.Forms.MouseEventHandler(this.image_MouseClick);
+            // 
+            // RandomGradientButton
+            // 
+            this.RandomGradientButton.Location = new System.Drawing.Point(2, 67);
+            this.RandomGradientButton.Name = "RandomGradientButton";
+            this.RandomGradientButton.Size = new System.Drawing.Size(200, 29);
+            this.RandomGradientButton.TabIndex = 16;
+            this.RandomGradientButton.Text = "Generate Gradient";
+            this.RandomGradientButton.UseVisualStyleBackColor = true;
+            this.RandomGradientButton.Click += new System.EventHandler(this.RandomGradientButton_Click);
+            // 
+            // menuStrip1
+            // 
+            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.fileToolStripMenuItem});
+            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
+            this.menuStrip1.Name = "menuStrip1";
+            this.menuStrip1.Size = new System.Drawing.Size(1172, 24);
+            this.menuStrip1.TabIndex = 18;
+            this.menuStrip1.Text = "menuStrip1";
+            // 
+            // fileToolStripMenuItem
+            // 
+            this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
+            this.fileToolStripMenuItem.Size = new System.Drawing.Size(35, 20);
+            this.fileToolStripMenuItem.Text = "file";
             // 
             // Form1
             // 
@@ -313,7 +327,6 @@
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Form1_KeyDown);
-            this.MouseUp += new System.Windows.Forms.MouseEventHandler(this.Form1_MouseUp);
             ((System.ComponentModel.ISupportInitialize)(this.ZOOMValue)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Iterations)).EndInit();
             this.SplitImageAndInterface.Panel1.ResumeLayout(false);
@@ -322,10 +335,10 @@
             this.SplitImageAndInterface.Panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.SplitImageAndInterface)).EndInit();
             this.SplitImageAndInterface.ResumeLayout(false);
-            this.menuStrip1.ResumeLayout(false);
-            this.menuStrip1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Grad)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.image)).EndInit();
+            this.menuStrip1.ResumeLayout(false);
+            this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -351,6 +364,8 @@
         private System.Windows.Forms.PictureBox image;
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem fileToolStripMenuItem;
+        private System.Windows.Forms.ColorDialog colorDialog1;
+        private System.Windows.Forms.Button RandomGradientButton;
     }
 }
 
