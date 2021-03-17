@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using System.Drawing.Drawing2D;
 using System.Drawing.Imaging;
 using System.Globalization;
+using System.Diagnostics;
 /// <summary>
 /// 1) додати діалогові вікна
 /// 2) додати ще декілька фракталів
@@ -38,6 +39,8 @@ namespace WindowsFormsApp2
 
         Size size;
         double SizeArea;
+
+        DateTime start, end;
 
 
 
@@ -161,12 +164,11 @@ namespace WindowsFormsApp2
         // drawing a MBrot set
         public void DrawMBrot()
         {
-
-
+            start = DateTime.Now;
             Bitmap picture = new Bitmap(image.Width, image.Height);
             size = image.Size;
             UserIt = (int)Iterations.Value;
-            ZoomNUM.Width = ZoomNUM.Text.Length * 10 + 70;
+            ZoomNUM.Width = ZoomNUM.Text.Length * 8 + 50;
             for (int x = 0; x < size.Width; x++)
             {
                 x_ = (hx - SizeArea / 2) + x * (SizeArea / size.Width);
@@ -196,8 +198,8 @@ namespace WindowsFormsApp2
                     {
                         if(it < UserIt)
                         {
-                            if(it < UserIt * (color / 100.0)) {
-                                picture.SetPixel(x, y, pixels[(color * 27) % Grad.Width].Color);
+                            if(it <= UserIt * (color / 50.0)) {
+                                picture.SetPixel(x, y, pixels[(color * 27) % Grad.Width].Color); // 27 частота градієнта
                                 break;
                             }
                         }
@@ -209,6 +211,8 @@ namespace WindowsFormsApp2
                     }
                 }
                 image.Image = picture;
+                end = DateTime.Now;
+                CulculationTime.Text = (end - start).TotalMilliseconds.ToString("F2") + " ms";
             }
 
         }
@@ -290,9 +294,9 @@ namespace WindowsFormsApp2
             size = image.Size;
             StartSize = image.Size;
             SizeArea = 4;
-            this.SetStyle(ControlStyles.SupportsTransparentBackColor, true);
-            ZoomNUM.BackColor = BackColor;
-            ZoomNUM.BorderStyle = BorderStyle.None;
+            SetStyle(ControlStyles.SupportsTransparentBackColor, true);
+            //ZoomNUM.BackColor = Color.Transparent;
+
         }
 
        
