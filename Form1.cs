@@ -37,6 +37,7 @@ namespace WindowsFormsApp2
         Size StartSize;
         double ZoomVal = 1;
 
+
         Size size;
         double SizeArea;
 
@@ -72,6 +73,7 @@ namespace WindowsFormsApp2
             }
             else
             {
+
                 DrawMBrot();
             }
 
@@ -147,8 +149,7 @@ namespace WindowsFormsApp2
             // відображення координат центра та max |z| ^ 2 по замовчуванню
             CenterX.Text = hx.ToString();
             CenterY.Text = hy.ToString();
-            MaxZDegreeTwo.Text = maxZ.ToString();
-
+            MaxZDegreeTwo.Text = maxZ.ToString(); 
             //Gradient();
         }
 
@@ -162,13 +163,28 @@ namespace WindowsFormsApp2
             Gradient(Grad);
         }
         // drawing a MBrot set
-        public void DrawMBrot()
+        public async void DrawMBrot()
         {
+            image.Enabled = false;          /// 
+            IncreaseZOOM.Enabled = false;   ///
+            DecreaseZOOM.Enabled = false;   /// disabled access to change the image
+            CreateFractal.Enabled = false;  ///
+
             start = DateTime.Now;
-            Bitmap picture = new Bitmap(image.Width, image.Height);
-            size = image.Size;
-            UserIt = (int)Iterations.Value;
             ZoomNUM.Width = ZoomNUM.Text.Length * 8 + 50;
+            await Task.Run(() => { CalculationMBrot(); });
+            end = DateTime.Now;
+            CulculationTime.Text = (end - start).TotalMilliseconds.ToString("F2") + " ms";
+            image.Enabled = true;
+            IncreaseZOOM.Enabled = true;
+            DecreaseZOOM.Enabled = true;    /// added access to change the image
+            CreateFractal.Enabled = true;
+        }
+
+        public void CalculationMBrot()
+        {
+            Bitmap picture = new Bitmap(image.Width, image.Height);
+            UserIt = (int)Iterations.Value;
             for (int x = 0; x < size.Width; x++)
             {
                 x_ = (hx - SizeArea / 2) + x * (SizeArea / size.Width);
@@ -196,9 +212,10 @@ namespace WindowsFormsApp2
                     // coloring the set
                     for (int color = 0; color <= Grad.Width; color += 1)
                     {
-                        if(it < UserIt)
+                        if (it < UserIt)
                         {
-                            if(it <= UserIt * (color / 50.0)) {
+                            if (it <= UserIt * (color / 50.0))
+                            {
                                 picture.SetPixel(x, y, pixels[(color * 27) % Grad.Width].Color); // 27 частота градієнта
                                 break;
                             }
@@ -210,11 +227,8 @@ namespace WindowsFormsApp2
                         }
                     }
                 }
-                image.Image = picture;
-                end = DateTime.Now;
-                CulculationTime.Text = (end - start).TotalMilliseconds.ToString("F2") + " ms";
             }
-
+            image.Image = picture;
         }
         // getting gradient pixels 
         private List<Pixel> GetPixels(Bitmap bitmap)
@@ -276,8 +290,6 @@ namespace WindowsFormsApp2
 
             pictureBox.Image = Gradient;
         }
-
-        
         
         public Form1()
         {
@@ -298,15 +310,6 @@ namespace WindowsFormsApp2
             //ZoomNUM.BackColor = Color.Transparent;
 
         }
-
-       
-
-        
-        private void image_Click(object sender, EventArgs e)
-        {
-
-        }
-
 
     }
 }
