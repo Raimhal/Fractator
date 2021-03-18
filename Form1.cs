@@ -44,10 +44,24 @@ namespace WindowsFormsApp2
         DateTime start, end;
 
 
-
-        private void Form1_KeyDown(object sender, KeyEventArgs e)
+        public Form1()
         {
-            
+            InitializeComponent();
+
+            System.Globalization.CultureInfo customCulture = (System.Globalization.CultureInfo)
+                System.Threading.Thread.CurrentThread.CurrentCulture.Clone();
+            customCulture.NumberFormat.NumberDecimalSeparator = ".";
+            System.Threading.Thread.CurrentThread.CurrentCulture = customCulture;
+
+
+            Bitmap bmp = new Bitmap(image.Width, image.Height);
+            image.Image = bmp;
+            size = image.Size;
+            StartSize = image.Size;
+            SizeArea = 4;
+            SetStyle(ControlStyles.SupportsTransparentBackColor, true);
+            Progress.ForeColor = Color.FromArgb(0, 0, 255);
+            //ZoomNUM.BackColor = Color.Transparent;
         }
 
         private void GenerateFractal_Click(object sender, EventArgs e)
@@ -144,6 +158,40 @@ namespace WindowsFormsApp2
             }
         }
 
+
+
+        private void OpenToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if(OpenFile.ShowDialog() == DialogResult.OK)
+            {
+                image.Image = new Bitmap(OpenFile.FileName);
+            }
+        }
+
+        private void SaveToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (image.Image != null)
+            {
+                SaveFileDialog SaveAs = new SaveFileDialog();
+                SaveAs.Title = "Save as";
+                SaveAs.OverwritePrompt = true;
+                SaveAs.Filter = "(*.bmp)| *.bmp|(*.png)|*.png|(*.jpg)|*.jpg|All files(*.*)|*.*";
+                SaveAs.ShowHelp = true;
+                if (SaveAs.ShowDialog() == DialogResult.OK)
+                {
+                    try
+                    {
+                        image.Image.Save(SaveAs.FileName, System.Drawing.Imaging.ImageFormat.Jpeg);
+                    }
+                    catch
+                    {
+                        MessageBox.Show("Image can't be saved!!!", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Hand);
+                    }
+                }
+            }
+
+        }
+
         private void Form1_Load(object sender, EventArgs e)
         {
             // відображення координат центра та max |z| ^ 2 по замовчуванню
@@ -171,7 +219,7 @@ namespace WindowsFormsApp2
             CreateFractal.Enabled = false;  ///
 
             start = DateTime.Now;
-            ZoomNUM.Width = ZoomNUM.Text.Length * 8 + 50;
+            ZoomNUM.Width = ZoomNUM.Text.Length * 8 + 50; 
             await Task.Run(() => { CalculationMBrot(); });
             end = DateTime.Now;
             CulculationTime.Text = (end - start).TotalMilliseconds.ToString("F2") + " ms";
@@ -183,8 +231,17 @@ namespace WindowsFormsApp2
 
         public void CalculationMBrot()
         {
-            Bitmap picture = new Bitmap(image.Width, image.Height);
+            Bitmap picture = new Bitmap(image.Image.Width, image.Image.Height);
             UserIt = (int)Iterations.Value;
+
+
+            this.Invoke(new Action(() =>
+            {
+                Progress.Value = 0;
+                Progress.Minimum = 0;
+                Progress.Maximum = size.Width;
+            }));
+
             for (int x = 0; x < size.Width; x++)
             {
                 x_ = (hx - SizeArea / 2) + x * (SizeArea / size.Width);
@@ -227,6 +284,11 @@ namespace WindowsFormsApp2
                         }
                     }
                 }
+                this.Invoke(new Action(() =>
+                {
+                    Progress.PerformStep();
+                }));
+                
             }
             image.Image = picture;
         }
@@ -291,25 +353,7 @@ namespace WindowsFormsApp2
             pictureBox.Image = Gradient;
         }
         
-        public Form1()
-        {
-            InitializeComponent();
 
-            System.Globalization.CultureInfo customCulture= (System.Globalization.CultureInfo)
-                System.Threading.Thread.CurrentThread.CurrentCulture.Clone();
-            customCulture.NumberFormat.NumberDecimalSeparator = ".";
-            System.Threading.Thread.CurrentThread.CurrentCulture = customCulture;
-
-
-            Bitmap bmp = new Bitmap(image.Width, image.Height);
-            image.Image = bmp;
-            size = image.Size;
-            StartSize = image.Size;
-            SizeArea = 4;
-            SetStyle(ControlStyles.SupportsTransparentBackColor, true);
-            //ZoomNUM.BackColor = Color.Transparent;
-
-        }
 
     }
 }

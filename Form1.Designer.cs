@@ -47,6 +47,7 @@
             this.image = new System.Windows.Forms.PictureBox();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.FractalProperties = new System.Windows.Forms.TabPage();
+            this.Progress = new System.Windows.Forms.ProgressBar();
             this.CulculationTime = new System.Windows.Forms.TextBox();
             this.labelTime = new System.Windows.Forms.Label();
             this.ChoseFractal = new System.Windows.Forms.ComboBox();
@@ -54,7 +55,10 @@
             this.RandomGradientButton = new System.Windows.Forms.Button();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.colorDialog1 = new System.Windows.Forms.ColorDialog();
+            this.openToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.saveToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.OpenFile = new System.Windows.Forms.OpenFileDialog();
+            this.SaveFile = new System.Windows.Forms.SaveFileDialog();
             ((System.ComponentModel.ISupportInitialize)(this.ZOOMValue)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Iterations)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.SplitImageAndInterface)).BeginInit();
@@ -71,10 +75,10 @@
             // CreateFractal
             // 
             this.CreateFractal.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.CreateFractal.Location = new System.Drawing.Point(6, 525);
+            this.CreateFractal.Location = new System.Drawing.Point(11, 526);
             this.CreateFractal.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
             this.CreateFractal.Name = "CreateFractal";
-            this.CreateFractal.Size = new System.Drawing.Size(180, 52);
+            this.CreateFractal.Size = new System.Drawing.Size(192, 52);
             this.CreateFractal.TabIndex = 1;
             this.CreateFractal.Text = "Create fractal";
             this.CreateFractal.UseVisualStyleBackColor = true;
@@ -83,7 +87,7 @@
             // IncreaseZOOM
             // 
             this.IncreaseZOOM.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.IncreaseZOOM.Location = new System.Drawing.Point(108, 70);
+            this.IncreaseZOOM.Location = new System.Drawing.Point(117, 69);
             this.IncreaseZOOM.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
             this.IncreaseZOOM.Name = "IncreaseZOOM";
             this.IncreaseZOOM.Size = new System.Drawing.Size(40, 26);
@@ -119,7 +123,7 @@
             // DecreaseZOOM
             // 
             this.DecreaseZOOM.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.DecreaseZOOM.Location = new System.Drawing.Point(151, 70);
+            this.DecreaseZOOM.Location = new System.Drawing.Point(163, 69);
             this.DecreaseZOOM.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
             this.DecreaseZOOM.Name = "DecreaseZOOM";
             this.DecreaseZOOM.Size = new System.Drawing.Size(40, 26);
@@ -131,7 +135,7 @@
             // Iterations
             // 
             this.Iterations.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.Iterations.Location = new System.Drawing.Point(11, 491);
+            this.Iterations.Location = new System.Drawing.Point(11, 492);
             this.Iterations.Maximum = new decimal(new int[] {
             100000,
             0,
@@ -150,7 +154,7 @@
             // 
             this.labelIterations.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.labelIterations.AutoSize = true;
-            this.labelIterations.Location = new System.Drawing.Point(11, 468);
+            this.labelIterations.Location = new System.Drawing.Point(7, 469);
             this.labelIterations.Name = "labelIterations";
             this.labelIterations.Size = new System.Drawing.Size(95, 20);
             this.labelIterations.TabIndex = 6;
@@ -160,7 +164,7 @@
             // 
             this.labelZOOM.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.labelZOOM.AutoSize = true;
-            this.labelZOOM.Location = new System.Drawing.Point(11, 45);
+            this.labelZOOM.Location = new System.Drawing.Point(7, 45);
             this.labelZOOM.Name = "labelZOOM";
             this.labelZOOM.Size = new System.Drawing.Size(51, 20);
             this.labelZOOM.TabIndex = 7;
@@ -184,24 +188,24 @@
             // 
             this.CenterX.AllowDrop = true;
             this.CenterX.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.CenterX.Location = new System.Drawing.Point(11, 335);
+            this.CenterX.Location = new System.Drawing.Point(11, 336);
             this.CenterX.Name = "CenterX";
-            this.CenterX.Size = new System.Drawing.Size(180, 26);
+            this.CenterX.Size = new System.Drawing.Size(192, 26);
             this.CenterX.TabIndex = 10;
             // 
             // CenterY
             // 
             this.CenterY.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.CenterY.Location = new System.Drawing.Point(11, 387);
+            this.CenterY.Location = new System.Drawing.Point(11, 388);
             this.CenterY.Name = "CenterY";
-            this.CenterY.Size = new System.Drawing.Size(180, 26);
+            this.CenterY.Size = new System.Drawing.Size(192, 26);
             this.CenterY.TabIndex = 11;
             // 
             // x
             // 
             this.x.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.x.AutoSize = true;
-            this.x.Location = new System.Drawing.Point(11, 312);
+            this.x.Location = new System.Drawing.Point(7, 313);
             this.x.Name = "x";
             this.x.Size = new System.Drawing.Size(63, 20);
             this.x.TabIndex = 12;
@@ -211,7 +215,7 @@
             // 
             this.y.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.y.AutoSize = true;
-            this.y.Location = new System.Drawing.Point(11, 364);
+            this.y.Location = new System.Drawing.Point(7, 365);
             this.y.Name = "y";
             this.y.Size = new System.Drawing.Size(63, 20);
             this.y.TabIndex = 13;
@@ -221,7 +225,7 @@
             // 
             this.LabelMaxZDegreeTwo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.LabelMaxZDegreeTwo.AutoSize = true;
-            this.LabelMaxZDegreeTwo.Location = new System.Drawing.Point(11, 416);
+            this.LabelMaxZDegreeTwo.Location = new System.Drawing.Point(7, 417);
             this.LabelMaxZDegreeTwo.Name = "LabelMaxZDegreeTwo";
             this.LabelMaxZDegreeTwo.Size = new System.Drawing.Size(76, 20);
             this.LabelMaxZDegreeTwo.TabIndex = 14;
@@ -230,9 +234,9 @@
             // MaxZDegreeTwo
             // 
             this.MaxZDegreeTwo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.MaxZDegreeTwo.Location = new System.Drawing.Point(11, 439);
+            this.MaxZDegreeTwo.Location = new System.Drawing.Point(11, 440);
             this.MaxZDegreeTwo.Name = "MaxZDegreeTwo";
-            this.MaxZDegreeTwo.Size = new System.Drawing.Size(180, 26);
+            this.MaxZDegreeTwo.Size = new System.Drawing.Size(192, 26);
             this.MaxZDegreeTwo.TabIndex = 15;
             // 
             // SplitImageAndInterface
@@ -255,7 +259,7 @@
             this.SplitImageAndInterface.Panel2.Controls.Add(this.tabControl1);
             this.SplitImageAndInterface.Panel2.Controls.Add(this.RandomGradientButton);
             this.SplitImageAndInterface.Panel2.Paint += new System.Windows.Forms.PaintEventHandler(this.SplitImageAndInterface_Panel2_Paint);
-            this.SplitImageAndInterface.Size = new System.Drawing.Size(1497, 724);
+            this.SplitImageAndInterface.Size = new System.Drawing.Size(1513, 724);
             this.SplitImageAndInterface.SplitterDistance = 1284;
             this.SplitImageAndInterface.TabIndex = 17;
             // 
@@ -283,18 +287,18 @@
             // 
             // tabControl1
             // 
-            this.tabControl1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
             this.tabControl1.Controls.Add(this.FractalProperties);
             this.tabControl1.Controls.Add(this.ImageProperties);
-            this.tabControl1.Location = new System.Drawing.Point(-2, 34);
+            this.tabControl1.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.tabControl1.Location = new System.Drawing.Point(0, 31);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(209, 688);
+            this.tabControl1.Size = new System.Drawing.Size(221, 689);
             this.tabControl1.TabIndex = 17;
             // 
             // FractalProperties
             // 
+            this.FractalProperties.Controls.Add(this.Progress);
             this.FractalProperties.Controls.Add(this.CulculationTime);
             this.FractalProperties.Controls.Add(this.labelTime);
             this.FractalProperties.Controls.Add(this.ChoseFractal);
@@ -316,29 +320,42 @@
             this.FractalProperties.Location = new System.Drawing.Point(4, 29);
             this.FractalProperties.Name = "FractalProperties";
             this.FractalProperties.Padding = new System.Windows.Forms.Padding(3);
-            this.FractalProperties.Size = new System.Drawing.Size(201, 655);
+            this.FractalProperties.Size = new System.Drawing.Size(213, 656);
             this.FractalProperties.TabIndex = 0;
             this.FractalProperties.Text = "Fractal";
             this.FractalProperties.UseVisualStyleBackColor = true;
             // 
+            // Progress
+            // 
+            this.Progress.BackColor = System.Drawing.SystemColors.Control;
+            this.Progress.Cursor = System.Windows.Forms.Cursors.Arrow;
+            this.Progress.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.Progress.ForeColor = System.Drawing.Color.Blue;
+            this.Progress.Location = new System.Drawing.Point(3, 635);
+            this.Progress.Name = "Progress";
+            this.Progress.Size = new System.Drawing.Size(207, 18);
+            this.Progress.Step = 1;
+            this.Progress.Style = System.Windows.Forms.ProgressBarStyle.Continuous;
+            this.Progress.TabIndex = 19;
+            // 
             // CulculationTime
             // 
             this.CulculationTime.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.CulculationTime.Location = new System.Drawing.Point(118, 582);
+            this.CulculationTime.Location = new System.Drawing.Point(133, 606);
             this.CulculationTime.Name = "CulculationTime";
             this.CulculationTime.ReadOnly = true;
-            this.CulculationTime.Size = new System.Drawing.Size(83, 26);
+            this.CulculationTime.Size = new System.Drawing.Size(77, 26);
             this.CulculationTime.TabIndex = 18;
             // 
             // labelTime
             // 
             this.labelTime.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.labelTime.AutoSize = true;
-            this.labelTime.Location = new System.Drawing.Point(1, 585);
+            this.labelTime.Location = new System.Drawing.Point(7, 609);
             this.labelTime.Name = "labelTime";
-            this.labelTime.Size = new System.Drawing.Size(119, 20);
+            this.labelTime.Size = new System.Drawing.Size(127, 20);
             this.labelTime.TabIndex = 17;
-            this.labelTime.Text = "Time of calculation";
+            this.labelTime.Text = "Time of calculation :";
             // 
             // ChoseFractal
             // 
@@ -347,17 +364,17 @@
             this.ChoseFractal.FormattingEnabled = true;
             this.ChoseFractal.Items.AddRange(new object[] {
             "Mandelbrot set"});
-            this.ChoseFractal.Location = new System.Drawing.Point(11, 8);
+            this.ChoseFractal.Location = new System.Drawing.Point(11, 6);
             this.ChoseFractal.Name = "ChoseFractal";
-            this.ChoseFractal.Size = new System.Drawing.Size(171, 28);
+            this.ChoseFractal.Size = new System.Drawing.Size(192, 28);
             this.ChoseFractal.TabIndex = 16;
             // 
             // ImageProperties
             // 
-            this.ImageProperties.Location = new System.Drawing.Point(4, 29);
+            this.ImageProperties.Location = new System.Drawing.Point(4, 22);
             this.ImageProperties.Name = "ImageProperties";
             this.ImageProperties.Padding = new System.Windows.Forms.Padding(3);
-            this.ImageProperties.Size = new System.Drawing.Size(201, 655);
+            this.ImageProperties.Size = new System.Drawing.Size(213, 663);
             this.ImageProperties.TabIndex = 1;
             this.ImageProperties.Text = "Image";
             this.ImageProperties.UseVisualStyleBackColor = true;
@@ -366,7 +383,7 @@
             // 
             this.RandomGradientButton.Location = new System.Drawing.Point(7, 3);
             this.RandomGradientButton.Name = "RandomGradientButton";
-            this.RandomGradientButton.Size = new System.Drawing.Size(143, 29);
+            this.RandomGradientButton.Size = new System.Drawing.Size(210, 29);
             this.RandomGradientButton.TabIndex = 16;
             this.RandomGradientButton.Text = "Generate Gradient";
             this.RandomGradientButton.UseVisualStyleBackColor = true;
@@ -378,21 +395,46 @@
             this.fileToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(1497, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(1513, 24);
             this.menuStrip1.TabIndex = 18;
             this.menuStrip1.Text = "menuStrip1";
             // 
             // fileToolStripMenuItem
             // 
+            this.fileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.openToolStripMenuItem,
+            this.saveToolStripMenuItem});
             this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
             this.fileToolStripMenuItem.Size = new System.Drawing.Size(35, 20);
             this.fileToolStripMenuItem.Text = "file";
+            // 
+            // openToolStripMenuItem
+            // 
+            this.openToolStripMenuItem.Name = "openToolStripMenuItem";
+            this.openToolStripMenuItem.Size = new System.Drawing.Size(103, 22);
+            this.openToolStripMenuItem.Text = "Open";
+            this.openToolStripMenuItem.Click += new System.EventHandler(this.OpenToolStripMenuItem_Click);
+            // 
+            // saveToolStripMenuItem
+            // 
+            this.saveToolStripMenuItem.Name = "saveToolStripMenuItem";
+            this.saveToolStripMenuItem.Size = new System.Drawing.Size(103, 22);
+            this.saveToolStripMenuItem.Text = "Save";
+            this.saveToolStripMenuItem.Click += new System.EventHandler(this.SaveToolStripMenuItem_Click);
+            // 
+            // OpenFile
+            // 
+            this.OpenFile.Filter = "Images|*.bmp;*.png;*.jpg";
+            // 
+            // SaveFile
+            // 
+            this.SaveFile.Filter = "Images|*.bmp;*.png;*.jpg";
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1497, 748);
+            this.ClientSize = new System.Drawing.Size(1513, 748);
             this.Controls.Add(this.SplitImageAndInterface);
             this.Controls.Add(this.menuStrip1);
             this.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
@@ -403,7 +445,6 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);
-            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Form1_KeyDown);
             ((System.ComponentModel.ISupportInitialize)(this.ZOOMValue)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Iterations)).EndInit();
             this.SplitImageAndInterface.Panel1.ResumeLayout(false);
@@ -443,7 +484,6 @@
         private System.Windows.Forms.PictureBox image;
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem fileToolStripMenuItem;
-        private System.Windows.Forms.ColorDialog colorDialog1;
         private System.Windows.Forms.Button RandomGradientButton;
         private System.Windows.Forms.TabControl tabControl1;
         private System.Windows.Forms.TabPage FractalProperties;
@@ -451,6 +491,11 @@
         private System.Windows.Forms.ComboBox ChoseFractal;
         private System.Windows.Forms.Label labelTime;
         private System.Windows.Forms.TextBox CulculationTime;
+        private System.Windows.Forms.ProgressBar Progress;
+        private System.Windows.Forms.ToolStripMenuItem openToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem saveToolStripMenuItem;
+        private System.Windows.Forms.OpenFileDialog OpenFile;
+        private System.Windows.Forms.SaveFileDialog SaveFile;
     }
 }
 
