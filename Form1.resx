@@ -117,6 +117,14 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="TextAngles.Text" xml:space="preserve">
+    <value>Angles (one angle one branch)
+(-35 - left branch will  have angle 35)
+or 
+(45 right branch will have angle 45 )
+(e.g. (-35, 40, 10) we wil have 3 branches with corresponding angles) :
+(if angle = 361, the branch will not be drawn)</value>
+  </data>
   <metadata name="menuStrip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>11, 6</value>
   </metadata>

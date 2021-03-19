@@ -12,22 +12,22 @@ using System.Drawing.Imaging;
 using System.Globalization;
 using System.Diagnostics;
 /// <summary>
-/// 1) додати діалогові вікна
-/// 2) додати ще декілька фракталів
-/// 4) додати автозаповнення при розтязі зображення
-/// 5) додати лічильнику приближення невидимий фон
-/// 6) додати роздільник крапка
-/// 7) реалізувати иожливість збереження фракталу
-/// 8) реалізувати мождивість рандомногоо генерування градієнту
-/// 9) оформити користувацький інтерфейс
-/// 10) додати іконки на кнопки зуму
-/// 11)
+/// 1) додати ще декілька фракталів
+/// 2) додати автозаповнення при розтязі зображення
+/// 3) додати лічильнику приближення невидимий фон
+/// 4) оформити користувацький інтерфейс
+/// 5) додати іконки на кнопки зуму
+/// 6) додати папоротник
+/// 7) додати криву дракона
+/// *) знайти як перефарбувати задній фон зображення при збереженні
+/// 
 /// 
 /// /// </summary>
 namespace WindowsFormsApp2
 {
     public partial class Form1 : Form
     {
+        public Graphics g;
         int UserIt;
         List<Pixel> pixels;
 
@@ -59,6 +59,7 @@ namespace WindowsFormsApp2
             size = image.Size;
             StartSize = image.Size;
             SizeArea = 4;
+            g = Graphics.FromImage(image.Image);
             SetStyle(ControlStyles.SupportsTransparentBackColor, true);
             Progress.ForeColor = Color.FromArgb(0, 0, 255);
             //ZoomNUM.BackColor = Color.Transparent;
@@ -66,29 +67,45 @@ namespace WindowsFormsApp2
 
         private void GenerateFractal_Click(object sender, EventArgs e)
         {
-            ZoomNUM.Text = ZoomVal.ToString("F0") + " X";
+            if (FractalsList.SelectedIndex == 0)
+            {
+                ZoomNUM.Text = ZoomVal.ToString("F0") + " X";
+                ZoomNUM.Visible = true;
+                image.Enabled = true;
+                DecreaseZOOM.Enabled = true;
+                IncreaseZOOM.Enabled = true;
+            }
+
             er_x = double.TryParse(CenterX.Text, out hx);
             er_y = double.TryParse(CenterY.Text, out hy);
             er_z = double.TryParse(MaxZDegreeTwo.Text, out maxZ);
             Bitmap bitmap = (Bitmap)Grad.Image;
             pixels = GetPixels(bitmap);
-            ZoomNUM.Visible = true;
+
+            
+
+
+
             if (er_x == false)
             {
-                MessageBox.Show("Помилка введення значення x!", "Помилка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Error entering value x!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             else if (er_y == false)
             {
-                MessageBox.Show("Помилка введення значення y!", "Помилка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Error entering value y!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             else if (er_z == false)
             {
-                MessageBox.Show("Помилка введення значення max |z| ^ 2!", "Помилка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Error entering value max |z| ^ 2!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else if (er_z == false)
+            {
+                MessageBox.Show("Error entering value max |z| ^ 2!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             else
             {
-
-                DrawMBrot();
+               
+                DrawFractals();
             }
 
         }
@@ -98,6 +115,7 @@ namespace WindowsFormsApp2
             CenterX.Text = hx.ToString();
             CenterY.Text = hy.ToString();
             ZoomVal /= (double)ZOOMValue.Value;
+            ZoomNUM.Visible = true;
             ZoomNUM.Clear();
             ZoomNUM.Text = ZoomVal.ToString("F2") + " X";
             DrawMBrot();
@@ -108,6 +126,7 @@ namespace WindowsFormsApp2
             CenterX.Text = hx.ToString();
             CenterY.Text = hy.ToString();
             ZoomVal *= (double)ZOOMValue.Value;
+            ZoomNUM.Visible = true;
             ZoomNUM.Clear();
             ZoomNUM.Text = ZoomVal.ToString("F2") + " X";
             DrawMBrot();
@@ -116,45 +135,49 @@ namespace WindowsFormsApp2
         void image_MouseClick(object sender, MouseEventArgs e)
         {
             int X = e.X, Y = e.Y;
-            if (e.Button == MouseButtons.Left)
+            if (FractalsList.SelectedItem == FractalsList.Items[0])
             {
-                hx = (hx - SizeArea / 2) + X * (SizeArea / size.Width);
-                hy = (hy - SizeArea / 2) + Y * (SizeArea / size.Height);
-                SizeArea /= (double)ZOOMValue.Value; // increase zoom by ZOOMValue value
-                CenterX.Text = hx.ToString();
-                CenterY.Text = hy.ToString();
-                ZoomVal *= (double)ZOOMValue.Value;
-                ZoomNUM.Clear();
-                ZoomNUM.Text = ZoomVal.ToString("F2") + " X";
-                DrawMBrot();
+                ZoomNUM.Visible = true;
+                if (e.Button == MouseButtons.Left)
+                {
+                    hx = (hx - SizeArea / 2) + X * (SizeArea / size.Width);
+                    hy = (hy - SizeArea / 2) + Y * (SizeArea / size.Height);
+                    SizeArea /= (double)ZOOMValue.Value; // increase zoom by ZOOMValue value
+                    CenterX.Text = hx.ToString();
+                    CenterY.Text = hy.ToString();
+                    ZoomVal *= (double)ZOOMValue.Value;
+                    ZoomNUM.Clear();
+                    ZoomNUM.Text = ZoomVal.ToString("F2") + " X";
+                    DrawMBrot();
 
 
-            }
-            else if (e.Button == MouseButtons.Middle)
-            {                // back to default
-                SizeArea = 3;
-                hx = -0.6;
-                hy = 0;
-                CenterX.Text = hx.ToString();
-                CenterY.Text = hy.ToString();
-                ZoomVal = 1;
-                ZoomNUM.Clear();
-                ZoomNUM.Width = 80;
-                ZoomNUM.Text = ZoomVal.ToString("F0") + " X";
-                DrawMBrot();
+                }
+                else if (e.Button == MouseButtons.Middle)
+                {                // back to default
+                    SizeArea = 3;
+                    hx = -0.6;
+                    hy = 0;
+                    CenterX.Text = hx.ToString();
+                    CenterY.Text = hy.ToString();
+                    ZoomVal = 1;
+                    ZoomNUM.Clear();
+                    ZoomNUM.Width = 80;
+                    ZoomNUM.Text = ZoomVal.ToString("F0") + " X";
+                    DrawMBrot();
 
-            }
-            else if (e.Button == MouseButtons.Right)
-            {
-                x_ = (hx - SizeArea / 2) + X * (SizeArea / size.Width);
-                y_ = (hy - SizeArea / 2) + Y * (SizeArea / size.Height);
-                SizeArea *= (double)ZOOMValue.Value; // decrease zoom by ZOOMValue value
-                CenterX.Text = x_.ToString();
-                CenterY.Text = y_.ToString();
-                ZoomVal /= (double)ZOOMValue.Value;
-                ZoomNUM.Clear();
-                ZoomNUM.Text = ZoomVal.ToString("F2") + " X";
-                DrawMBrot();
+                }
+                else if (e.Button == MouseButtons.Right)
+                {
+                    x_ = (hx - SizeArea / 2) + X * (SizeArea / size.Width);
+                    y_ = (hy - SizeArea / 2) + Y * (SizeArea / size.Height);
+                    SizeArea *= (double)ZOOMValue.Value; // decrease zoom by ZOOMValue value
+                    CenterX.Text = x_.ToString();
+                    CenterY.Text = y_.ToString();
+                    ZoomVal /= (double)ZOOMValue.Value;
+                    ZoomNUM.Clear();
+                    ZoomNUM.Text = ZoomVal.ToString("F2") + " X";
+                    DrawMBrot();
+                }
             }
         }
 
@@ -192,13 +215,139 @@ namespace WindowsFormsApp2
 
         }
 
+        private void FractalsList_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if(FractalsList.SelectedIndex == 0)
+            {
+                labelZOOM.Visible = true;
+                ZOOMValue.Visible = true;
+                DecreaseZOOM.Visible = true;
+                IncreaseZOOM.Visible = true;
+                x.Visible = true;
+                y.Visible = true;
+                CenterX.Visible = true;
+                CenterY.Visible = true;
+                LabelMaxZDegreeTwo.Visible = true;
+                MaxZDegreeTwo.Visible = true;
+                LabelBranchLenght.Visible = false;
+            }
+            else if (FractalsList.SelectedIndex == 1)
+            {
+                labelZOOM.Visible = false;
+                ZOOMValue.Visible = false;
+                DecreaseZOOM.Visible = false;
+                IncreaseZOOM.Visible = false;
+                ZoomNUM.Visible = false;
+                x.Visible = false;
+                y.Visible = false;
+                CenterX.Visible = false;
+                CenterY.Visible = false;
+                LabelMaxZDegreeTwo.Visible = false;
+                MaxZDegreeTwo.Visible = false;
+                LabelBranchLenght.Visible = true;
+                LabelBranchLenght.Location = labelZOOM.Location;
+            }
+            else if (FractalsList.SelectedIndex == 2)
+            {
+                labelZOOM.Visible = false;
+                ZOOMValue.Visible = false;
+                DecreaseZOOM.Visible = false;
+                IncreaseZOOM.Visible = false;
+                ZoomNUM.Visible = false;
+                x.Visible = false;
+                y.Visible = false;
+                CenterX.Visible = false;
+                CenterY.Visible = false;
+                LabelMaxZDegreeTwo.Visible = false;
+                MaxZDegreeTwo.Visible = false;
+            }
+            else
+            {
+
+            }
+        }
+
         private void Form1_Load(object sender, EventArgs e)
         {
+
+
             // відображення координат центра та max |z| ^ 2 по замовчуванню
             CenterX.Text = hx.ToString();
             CenterY.Text = hy.ToString();
-            MaxZDegreeTwo.Text = maxZ.ToString(); 
-            //Gradient();
+            MaxZDegreeTwo.Text = maxZ.ToString();
+            FractalsList.SelectedItem = FractalsList.Items[0];
+            NumberOfAngles.SelectedItem = NumberOfAngles.Items[2];
+            
+            image.Enabled = false;
+            DecreaseZOOM.Enabled = false;
+            IncreaseZOOM.Enabled = false;
+        }
+
+        public async void DrawFractalTree()
+        {
+            start = DateTime.Now;
+            Bitmap pictureTree = new Bitmap(image.Width, image.Height);
+            int branchLenght = (int)BranchLenght.Value;
+            double[] angles;
+            g.Clear(Color.White);
+            if (NumberOfAngles.SelectedIndex == 0)
+            {
+                angles = new double[] { (double)FirstAngle.Value };
+            }
+            else if (NumberOfAngles.SelectedIndex == 1)
+            {
+                angles = new double[] { (double)FirstAngle.Value, (double)SecondAngle.Value };
+            }
+            else if (NumberOfAngles.SelectedIndex == 2)
+            {
+                angles = new double[] { (double)FirstAngle.Value, (double)SecondAngle.Value, (double)ThirdAngle.Value };
+            }
+            else
+            {
+                angles = new double[] { (double)FirstAngle.Value, (double)SecondAngle.Value, (double)ThirdAngle.Value, (double)FourthAngle.Value };
+            }
+
+            FractalTree tree = new FractalTree(g, pictureTree, pixels, angles);
+            await Task.Run(() => {tree.DrawFractalTree(image.Width / 2, image.Height / 4, branchLenght, 0); }) ;
+
+            end = DateTime.Now;
+            CulculationTime.Text = (end - start).TotalMilliseconds.ToString("F2") + " ms";
+            image.BackColor = Color.White;
+            
+            image.Image = pictureTree;
+
+        }
+
+        private void NumberOfAngles_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (NumberOfAngles.SelectedIndex == 0)
+            {
+                FirstAngle.Visible = true;
+                SecondAngle.Visible = false;
+                ThirdAngle.Visible = false;
+                FourthAngle.Visible = false;
+            }
+            else if (NumberOfAngles.SelectedIndex == 1)
+            {
+                FirstAngle.Visible = true;
+                SecondAngle.Visible = true;
+                ThirdAngle.Visible = false;
+                FourthAngle.Visible = false;
+            }
+            else if (NumberOfAngles.SelectedIndex == 2)
+            {
+                FirstAngle.Visible = true;
+                SecondAngle.Visible = true;
+                ThirdAngle.Visible = true;
+                FourthAngle.Visible = false;
+            }
+            else
+            {
+                FirstAngle.Visible = true;
+                SecondAngle.Visible = true;
+                ThirdAngle.Visible = true;
+                FourthAngle.Visible = true;
+            }
         }
 
         private void SplitImageAndInterface_Panel2_Paint(object sender, PaintEventArgs e)
@@ -211,6 +360,25 @@ namespace WindowsFormsApp2
             Gradient(Grad);
         }
         // drawing a MBrot set
+        public void DrawFractals()
+        {
+            if (FractalsList.SelectedIndex == 0)
+            {
+                DrawMBrot();
+            }
+            else if(FractalsList.SelectedIndex == 1)
+            {
+                DrawFractalTree();
+            }
+            else if(FractalsList.SelectedIndex == 2)
+            {
+
+            }
+            else
+            {
+
+            }
+        }
         public async void DrawMBrot()
         {
             image.Enabled = false;          /// 
@@ -222,7 +390,9 @@ namespace WindowsFormsApp2
             ZoomNUM.Width = ZoomNUM.Text.Length * 8 + 50; 
             await Task.Run(() => { CalculationMBrot(); });
             end = DateTime.Now;
+
             CulculationTime.Text = (end - start).TotalMilliseconds.ToString("F2") + " ms";
+
             image.Enabled = true;
             IncreaseZOOM.Enabled = true;
             DecreaseZOOM.Enabled = true;    /// added access to change the image
@@ -235,7 +405,7 @@ namespace WindowsFormsApp2
             UserIt = (int)Iterations.Value;
 
 
-            this.Invoke(new Action(() =>
+            this.Invoke(new Action(() => // делегат для відображення progressBar
             {
                 Progress.Value = 0;
                 Progress.Minimum = 0;
@@ -271,7 +441,7 @@ namespace WindowsFormsApp2
                     {
                         if (it < UserIt)
                         {
-                            if (it <= UserIt * (color / 50.0))
+                            if (it <= UserIt * (color / 100.0))
                             {
                                 picture.SetPixel(x, y, pixels[(color * 27) % Grad.Width].Color); // 27 частота градієнта
                                 break;
@@ -284,12 +454,14 @@ namespace WindowsFormsApp2
                         }
                     }
                 }
-                this.Invoke(new Action(() =>
+                this.Invoke(new Action(() => // делегат для зміни progressBar
                 {
                     Progress.PerformStep();
                 }));
                 
             }
+            image.Image = null;
+            image.Invalidate();
             image.Image = picture;
         }
         // getting gradient pixels 
@@ -300,7 +472,7 @@ namespace WindowsFormsApp2
             {
                 pixels.Add(new Pixel()
                 {
-                    Color = bitmap.GetPixel(x, 1)
+                    Color = bitmap.GetPixel(x, 1) // отримання кольору ряду пікселів з градієнту
                 });
             }
             return pixels;
