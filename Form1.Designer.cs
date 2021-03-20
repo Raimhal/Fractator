@@ -44,20 +44,25 @@
             this.MaxZDegreeTwo = new System.Windows.Forms.MaskedTextBox();
             this.SplitImageAndInterface = new System.Windows.Forms.SplitContainer();
             this.Grad = new System.Windows.Forms.PictureBox();
-            this.image = new System.Windows.Forms.PictureBox();
+            this.ColorDialog = new System.Windows.Forms.PictureBox();
             this.tabControl = new System.Windows.Forms.TabControl();
             this.FractalProperties = new System.Windows.Forms.TabPage();
+            this.BranchWidth = new System.Windows.Forms.NumericUpDown();
+            this.labelBranchWidth = new System.Windows.Forms.Label();
+            this.MinBranchLenght = new System.Windows.Forms.NumericUpDown();
             this.labelMinimalLength = new System.Windows.Forms.Label();
+            this.NumberOfAngles = new System.Windows.Forms.ListBox();
+            this.LabelBranchLength = new System.Windows.Forms.Label();
             this.labelStartY = new System.Windows.Forms.Label();
             this.labelStartX = new System.Windows.Forms.Label();
-            this.NumberOfAngles = new System.Windows.Forms.ListBox();
             this.FourthAngle = new System.Windows.Forms.NumericUpDown();
+            this.StartY = new System.Windows.Forms.NumericUpDown();
             this.SecondAngle = new System.Windows.Forms.NumericUpDown();
             this.ThirdAngle = new System.Windows.Forms.NumericUpDown();
-            this.FirstAngle = new System.Windows.Forms.NumericUpDown();
+            this.StartX = new System.Windows.Forms.NumericUpDown();
             this.BranchLenght = new System.Windows.Forms.NumericUpDown();
+            this.FirstAngle = new System.Windows.Forms.NumericUpDown();
             this.labelAngles = new System.Windows.Forms.Label();
-            this.LabelBranchLength = new System.Windows.Forms.Label();
             this.FractalsList = new System.Windows.Forms.ListBox();
             this.Progress = new System.Windows.Forms.ProgressBar();
             this.CulculationTime = new System.Windows.Forms.TextBox();
@@ -71,11 +76,9 @@
             this.saveToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.OpenFile = new System.Windows.Forms.OpenFileDialog();
             this.SaveFile = new System.Windows.Forms.SaveFileDialog();
-            this.MinBranchLenght = new System.Windows.Forms.NumericUpDown();
-            this.StartX = new System.Windows.Forms.NumericUpDown();
-            this.StartY = new System.Windows.Forms.NumericUpDown();
-            this.labelBranchWidth = new System.Windows.Forms.Label();
-            this.BranchWidth = new System.Windows.Forms.NumericUpDown();
+            this.labelBackColor = new System.Windows.Forms.Label();
+            this.ColorButton = new System.Windows.Forms.Button();
+            this.colorDialog1 = new System.Windows.Forms.ColorDialog();
             ((System.ComponentModel.ISupportInitialize)(this.ZOOMValue)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Iterations)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.SplitImageAndInterface)).BeginInit();
@@ -83,20 +86,20 @@
             this.SplitImageAndInterface.Panel2.SuspendLayout();
             this.SplitImageAndInterface.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Grad)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.image)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ColorDialog)).BeginInit();
             this.tabControl.SuspendLayout();
             this.FractalProperties.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.BranchWidth)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.MinBranchLenght)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.FourthAngle)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.StartY)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.SecondAngle)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ThirdAngle)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.FirstAngle)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.StartX)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.BranchLenght)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.FirstAngle)).BeginInit();
             this.Details.SuspendLayout();
             this.menuStrip1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.MinBranchLenght)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.StartX)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.StartY)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.BranchWidth)).BeginInit();
             this.SuspendLayout();
             // 
             // CreateFractal
@@ -279,7 +282,7 @@
             // 
             this.SplitImageAndInterface.Panel1.Controls.Add(this.ZoomNUM);
             this.SplitImageAndInterface.Panel1.Controls.Add(this.Grad);
-            this.SplitImageAndInterface.Panel1.Controls.Add(this.image);
+            this.SplitImageAndInterface.Panel1.Controls.Add(this.ColorDialog);
             // 
             // SplitImageAndInterface.Panel2
             // 
@@ -293,24 +296,25 @@
             // Grad
             // 
             this.Grad.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.Grad.BackColor = System.Drawing.Color.Transparent;
             this.Grad.Image = global::WindowsFormsApp2.Properties.Resources.third;
-            this.Grad.Location = new System.Drawing.Point(836, 1);
+            this.Grad.Location = new System.Drawing.Point(831, 1);
             this.Grad.Name = "Grad";
-            this.Grad.Size = new System.Drawing.Size(440, 25);
+            this.Grad.Size = new System.Drawing.Size(445, 28);
             this.Grad.TabIndex = 16;
             this.Grad.TabStop = false;
             // 
-            // image
+            // ColorDialog
             // 
-            this.image.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.image.Location = new System.Drawing.Point(0, 0);
-            this.image.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
-            this.image.Name = "image";
-            this.image.Size = new System.Drawing.Size(1280, 720);
-            this.image.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.image.TabIndex = 0;
-            this.image.TabStop = false;
-            this.image.MouseClick += new System.Windows.Forms.MouseEventHandler(this.image_MouseClick);
+            this.ColorDialog.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ColorDialog.Location = new System.Drawing.Point(0, 0);
+            this.ColorDialog.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
+            this.ColorDialog.Name = "ColorDialog";
+            this.ColorDialog.Size = new System.Drawing.Size(1280, 720);
+            this.ColorDialog.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.ColorDialog.TabIndex = 0;
+            this.ColorDialog.TabStop = false;
+            this.ColorDialog.MouseClick += new System.Windows.Forms.MouseEventHandler(this.image_MouseClick);
             // 
             // tabControl
             // 
@@ -326,6 +330,8 @@
             // 
             // FractalProperties
             // 
+            this.FractalProperties.Controls.Add(this.ColorButton);
+            this.FractalProperties.Controls.Add(this.labelBackColor);
             this.FractalProperties.Controls.Add(this.BranchWidth);
             this.FractalProperties.Controls.Add(this.labelBranchWidth);
             this.FractalProperties.Controls.Add(this.MinBranchLenght);
@@ -369,6 +375,55 @@
             this.FractalProperties.Text = "Fractal";
             this.FractalProperties.UseVisualStyleBackColor = true;
             // 
+            // BranchWidth
+            // 
+            this.BranchWidth.Location = new System.Drawing.Point(66, 248);
+            this.BranchWidth.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.BranchWidth.Name = "BranchWidth";
+            this.BranchWidth.Size = new System.Drawing.Size(194, 26);
+            this.BranchWidth.TabIndex = 39;
+            this.BranchWidth.Value = new decimal(new int[] {
+            4,
+            0,
+            0,
+            0});
+            // 
+            // labelBranchWidth
+            // 
+            this.labelBranchWidth.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.labelBranchWidth.AutoSize = true;
+            this.labelBranchWidth.Location = new System.Drawing.Point(12, 254);
+            this.labelBranchWidth.Name = "labelBranchWidth";
+            this.labelBranchWidth.Size = new System.Drawing.Size(88, 20);
+            this.labelBranchWidth.TabIndex = 38;
+            this.labelBranchWidth.Text = "Branch width:";
+            // 
+            // MinBranchLenght
+            // 
+            this.MinBranchLenght.Location = new System.Drawing.Point(10, 127);
+            this.MinBranchLenght.Maximum = new decimal(new int[] {
+            50,
+            0,
+            0,
+            0});
+            this.MinBranchLenght.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.MinBranchLenght.Name = "MinBranchLenght";
+            this.MinBranchLenght.Size = new System.Drawing.Size(194, 26);
+            this.MinBranchLenght.TabIndex = 35;
+            this.MinBranchLenght.Value = new decimal(new int[] {
+            2,
+            0,
+            0,
+            0});
+            // 
             // labelMinimalLength
             // 
             this.labelMinimalLength.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
@@ -378,26 +433,6 @@
             this.labelMinimalLength.Size = new System.Drawing.Size(142, 20);
             this.labelMinimalLength.TabIndex = 34;
             this.labelMinimalLength.Text = "Minimal branch length:";
-            // 
-            // labelStartY
-            // 
-            this.labelStartY.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.labelStartY.AutoSize = true;
-            this.labelStartY.Location = new System.Drawing.Point(8, 264);
-            this.labelStartY.Name = "labelStartY";
-            this.labelStartY.Size = new System.Drawing.Size(50, 20);
-            this.labelStartY.TabIndex = 33;
-            this.labelStartY.Text = "Start y:";
-            // 
-            // labelStartX
-            // 
-            this.labelStartX.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.labelStartX.AutoSize = true;
-            this.labelStartX.Location = new System.Drawing.Point(7, 246);
-            this.labelStartX.Name = "labelStartX";
-            this.labelStartX.Size = new System.Drawing.Size(50, 20);
-            this.labelStartX.TabIndex = 32;
-            this.labelStartX.Text = "Start x:";
             // 
             // NumberOfAngles
             // 
@@ -414,6 +449,36 @@
             this.NumberOfAngles.Size = new System.Drawing.Size(97, 24);
             this.NumberOfAngles.TabIndex = 30;
             this.NumberOfAngles.SelectedIndexChanged += new System.EventHandler(this.NumberOfAngles_SelectedIndexChanged);
+            // 
+            // LabelBranchLength
+            // 
+            this.LabelBranchLength.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.LabelBranchLength.AutoSize = true;
+            this.LabelBranchLength.Location = new System.Drawing.Point(8, 254);
+            this.LabelBranchLength.Name = "LabelBranchLength";
+            this.LabelBranchLength.Size = new System.Drawing.Size(98, 20);
+            this.LabelBranchLength.TabIndex = 21;
+            this.LabelBranchLength.Text = "Branch length :";
+            // 
+            // labelStartY
+            // 
+            this.labelStartY.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.labelStartY.AutoSize = true;
+            this.labelStartY.Location = new System.Drawing.Point(10, 250);
+            this.labelStartY.Name = "labelStartY";
+            this.labelStartY.Size = new System.Drawing.Size(50, 20);
+            this.labelStartY.TabIndex = 33;
+            this.labelStartY.Text = "Start y:";
+            // 
+            // labelStartX
+            // 
+            this.labelStartX.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.labelStartX.AutoSize = true;
+            this.labelStartX.Location = new System.Drawing.Point(7, 246);
+            this.labelStartX.Name = "labelStartX";
+            this.labelStartX.Size = new System.Drawing.Size(50, 20);
+            this.labelStartX.TabIndex = 32;
+            this.labelStartX.Text = "Start x:";
             // 
             // FourthAngle
             // 
@@ -432,7 +497,24 @@
             this.FourthAngle.Size = new System.Drawing.Size(50, 26);
             this.FourthAngle.TabIndex = 29;
             this.FourthAngle.Value = new decimal(new int[] {
-            15,
+            55,
+            0,
+            0,
+            0});
+            // 
+            // StartY
+            // 
+            this.StartY.Location = new System.Drawing.Point(66, 248);
+            this.StartY.Maximum = new decimal(new int[] {
+            720,
+            0,
+            0,
+            0});
+            this.StartY.Name = "StartY";
+            this.StartY.Size = new System.Drawing.Size(196, 26);
+            this.StartY.TabIndex = 37;
+            this.StartY.Value = new decimal(new int[] {
+            180,
             0,
             0,
             0});
@@ -454,7 +536,7 @@
             this.SecondAngle.Size = new System.Drawing.Size(50, 26);
             this.SecondAngle.TabIndex = 28;
             this.SecondAngle.Value = new decimal(new int[] {
-            65,
+            55,
             0,
             0,
             0});
@@ -476,10 +558,49 @@
             this.ThirdAngle.Size = new System.Drawing.Size(49, 26);
             this.ThirdAngle.TabIndex = 27;
             this.ThirdAngle.Value = new decimal(new int[] {
-            25,
+            180,
             0,
             0,
-            -2147483648});
+            0});
+            // 
+            // StartX
+            // 
+            this.StartX.Location = new System.Drawing.Point(66, 248);
+            this.StartX.Maximum = new decimal(new int[] {
+            1280,
+            0,
+            0,
+            0});
+            this.StartX.Name = "StartX";
+            this.StartX.Size = new System.Drawing.Size(196, 26);
+            this.StartX.TabIndex = 36;
+            this.StartX.Value = new decimal(new int[] {
+            640,
+            0,
+            0,
+            0});
+            // 
+            // BranchLenght
+            // 
+            this.BranchLenght.Location = new System.Drawing.Point(66, 248);
+            this.BranchLenght.Maximum = new decimal(new int[] {
+            500,
+            0,
+            0,
+            0});
+            this.BranchLenght.Minimum = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
+            this.BranchLenght.Name = "BranchLenght";
+            this.BranchLenght.Size = new System.Drawing.Size(194, 26);
+            this.BranchLenght.TabIndex = 25;
+            this.BranchLenght.Value = new decimal(new int[] {
+            200,
+            0,
+            0,
+            0});
             // 
             // FirstAngle
             // 
@@ -503,28 +624,6 @@
             0,
             -2147483648});
             // 
-            // BranchLenght
-            // 
-            this.BranchLenght.Location = new System.Drawing.Point(66, 284);
-            this.BranchLenght.Maximum = new decimal(new int[] {
-            500,
-            0,
-            0,
-            0});
-            this.BranchLenght.Minimum = new decimal(new int[] {
-            10,
-            0,
-            0,
-            0});
-            this.BranchLenght.Name = "BranchLenght";
-            this.BranchLenght.Size = new System.Drawing.Size(194, 26);
-            this.BranchLenght.TabIndex = 25;
-            this.BranchLenght.Value = new decimal(new int[] {
-            200,
-            0,
-            0,
-            0});
-            // 
             // labelAngles
             // 
             this.labelAngles.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
@@ -534,16 +633,6 @@
             this.labelAngles.Size = new System.Drawing.Size(55, 20);
             this.labelAngles.TabIndex = 22;
             this.labelAngles.Text = "Angles:";
-            // 
-            // LabelBranchLength
-            // 
-            this.LabelBranchLength.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.LabelBranchLength.AutoSize = true;
-            this.LabelBranchLength.Location = new System.Drawing.Point(8, 284);
-            this.LabelBranchLength.Name = "LabelBranchLength";
-            this.LabelBranchLength.Size = new System.Drawing.Size(98, 20);
-            this.LabelBranchLength.TabIndex = 21;
-            this.LabelBranchLength.Text = "Branch length :";
             // 
             // FractalsList
             // 
@@ -594,9 +683,9 @@
             // Details
             // 
             this.Details.Controls.Add(this.TextAngles);
-            this.Details.Location = new System.Drawing.Point(4, 22);
+            this.Details.Location = new System.Drawing.Point(4, 29);
             this.Details.Name = "Details";
-            this.Details.Size = new System.Drawing.Size(213, 663);
+            this.Details.Size = new System.Drawing.Size(213, 656);
             this.Details.TabIndex = 1;
             this.Details.Text = "The details";
             this.Details.UseVisualStyleBackColor = true;
@@ -646,102 +735,47 @@
             // openToolStripMenuItem
             // 
             this.openToolStripMenuItem.Name = "openToolStripMenuItem";
-            this.openToolStripMenuItem.Size = new System.Drawing.Size(103, 22);
-            this.openToolStripMenuItem.Text = "Open";
+            this.openToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.openToolStripMenuItem.Text = "Load gradient";
             this.openToolStripMenuItem.Click += new System.EventHandler(this.OpenToolStripMenuItem_Click);
             // 
             // saveToolStripMenuItem
             // 
             this.saveToolStripMenuItem.Name = "saveToolStripMenuItem";
-            this.saveToolStripMenuItem.Size = new System.Drawing.Size(103, 22);
-            this.saveToolStripMenuItem.Text = "Save";
+            this.saveToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.saveToolStripMenuItem.Text = "Save image";
             this.saveToolStripMenuItem.Click += new System.EventHandler(this.SaveToolStripMenuItem_Click);
             // 
             // OpenFile
             // 
-            this.OpenFile.Filter = "Images|*.bmp;*.png;*.jpg";
+            this.OpenFile.Filter = "Images|*.bmp;*.png;*.jpg;";
+            this.OpenFile.FilterIndex = 3;
             // 
             // SaveFile
             // 
             this.SaveFile.Filter = "Images|*.bmp;*.png;*.jpg";
+            this.SaveFile.FilterIndex = 3;
             // 
-            // MinBranchLenght
+            // labelBackColor
             // 
-            this.MinBranchLenght.Location = new System.Drawing.Point(10, 127);
-            this.MinBranchLenght.Maximum = new decimal(new int[] {
-            20,
-            0,
-            0,
-            0});
-            this.MinBranchLenght.Minimum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            this.MinBranchLenght.Name = "MinBranchLenght";
-            this.MinBranchLenght.Size = new System.Drawing.Size(194, 26);
-            this.MinBranchLenght.TabIndex = 35;
-            this.MinBranchLenght.Value = new decimal(new int[] {
-            2,
-            0,
-            0,
-            0});
+            this.labelBackColor.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.labelBackColor.AutoSize = true;
+            this.labelBackColor.Location = new System.Drawing.Point(13, 254);
+            this.labelBackColor.Name = "labelBackColor";
+            this.labelBackColor.Size = new System.Drawing.Size(121, 20);
+            this.labelBackColor.TabIndex = 40;
+            this.labelBackColor.Text = "BackgroundColor :";
             // 
-            // StartX
+            // ColorButton
             // 
-            this.StartX.Location = new System.Drawing.Point(66, 244);
-            this.StartX.Maximum = new decimal(new int[] {
-            1280,
-            0,
-            0,
-            0});
-            this.StartX.Name = "StartX";
-            this.StartX.Size = new System.Drawing.Size(196, 26);
-            this.StartX.TabIndex = 36;
-            this.StartX.Value = new decimal(new int[] {
-            640,
-            0,
-            0,
-            0});
-            // 
-            // StartY
-            // 
-            this.StartY.Location = new System.Drawing.Point(66, 264);
-            this.StartY.Maximum = new decimal(new int[] {
-            720,
-            0,
-            0,
-            0});
-            this.StartY.Name = "StartY";
-            this.StartY.Size = new System.Drawing.Size(196, 26);
-            this.StartY.TabIndex = 37;
-            // 
-            // labelBranchWidth
-            // 
-            this.labelBranchWidth.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.labelBranchWidth.AutoSize = true;
-            this.labelBranchWidth.Location = new System.Drawing.Point(12, 304);
-            this.labelBranchWidth.Name = "labelBranchWidth";
-            this.labelBranchWidth.Size = new System.Drawing.Size(88, 20);
-            this.labelBranchWidth.TabIndex = 38;
-            this.labelBranchWidth.Text = "Branch width:";
-            // 
-            // BranchWidth
-            // 
-            this.BranchWidth.Location = new System.Drawing.Point(66, 307);
-            this.BranchWidth.Minimum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            this.BranchWidth.Name = "BranchWidth";
-            this.BranchWidth.Size = new System.Drawing.Size(194, 26);
-            this.BranchWidth.TabIndex = 39;
-            this.BranchWidth.Value = new decimal(new int[] {
-            4,
-            0,
-            0,
-            0});
+            this.ColorButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.ColorButton.Location = new System.Drawing.Point(66, 248);
+            this.ColorButton.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
+            this.ColorButton.Name = "ColorButton";
+            this.ColorButton.Size = new System.Drawing.Size(51, 26);
+            this.ColorButton.TabIndex = 41;
+            this.ColorButton.UseVisualStyleBackColor = true;
+            this.ColorButton.Click += new System.EventHandler(this.ColorButton_Click);
             // 
             // Form1
             // 
@@ -769,23 +803,23 @@
             ((System.ComponentModel.ISupportInitialize)(this.SplitImageAndInterface)).EndInit();
             this.SplitImageAndInterface.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.Grad)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.image)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ColorDialog)).EndInit();
             this.tabControl.ResumeLayout(false);
             this.FractalProperties.ResumeLayout(false);
             this.FractalProperties.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.BranchWidth)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.MinBranchLenght)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.FourthAngle)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.StartY)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.SecondAngle)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ThirdAngle)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.FirstAngle)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.StartX)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.BranchLenght)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.FirstAngle)).EndInit();
             this.Details.ResumeLayout(false);
             this.Details.PerformLayout();
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.MinBranchLenght)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.StartX)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.StartY)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.BranchWidth)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -808,7 +842,7 @@
         private System.Windows.Forms.MaskedTextBox MaxZDegreeTwo;
         private System.Windows.Forms.PictureBox Grad;
         private System.Windows.Forms.SplitContainer SplitImageAndInterface;
-        private System.Windows.Forms.PictureBox image;
+        private System.Windows.Forms.PictureBox ColorDialog;
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem fileToolStripMenuItem;
         private System.Windows.Forms.Button RandomGradientButton;
@@ -840,6 +874,9 @@
         private System.Windows.Forms.NumericUpDown StartX;
         private System.Windows.Forms.NumericUpDown BranchWidth;
         private System.Windows.Forms.Label labelBranchWidth;
+        private System.Windows.Forms.Label labelBackColor;
+        private System.Windows.Forms.Button ColorButton;
+        private System.Windows.Forms.ColorDialog colorDialog1;
     }
 }
 

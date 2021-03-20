@@ -16,9 +16,10 @@ namespace WindowsFormsApp2
         public int minLen;
         public int BranchWidth;
         int i = 0;
+        public Color BackgroundColor;
 
 
-        public FractalTree(Graphics g, Bitmap picture, List<Pixel> pixels, double[] angles, int minLen, int BranchWidth)
+        public FractalTree(Graphics g, Bitmap picture, List<Pixel> pixels, double[] angles, int minLen, int BranchWidth, Color BackgroundColor)
         {
             this.g = Graphics.FromImage(picture); 
             this.picture = new Bitmap(picture.Width, picture.Height);
@@ -26,13 +27,15 @@ namespace WindowsFormsApp2
             this.angles = angles;
             this.minLen = minLen;
             this.BranchWidth = BranchWidth;
+            this.BackgroundColor = BackgroundColor;
             
         }
         public void DrawFractalTree(int x, int y, int len, double angle)
         {
+            
             if(i == 0)
             {
-                g.Clear(Color.Transparent);
+                g.Clear(BackgroundColor);
             }
 
             int x1, y1;

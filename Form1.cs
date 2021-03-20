@@ -12,14 +12,12 @@ using System.Drawing.Imaging;
 using System.Globalization;
 using System.Diagnostics;
 /// <summary>
-/// 1) додати ще декілька фракталів
-/// 2) додати автозаповнення при розтязі зображення
-/// 3) додати лічильнику приближення невидимий фон
-/// 4) оформити користувацький інтерфейс
-/// 5) додати іконки на кнопки зуму
-/// 6) додати папоротник
-/// 7) додати криву дракона
-/// *) знайти як перефарбувати задній фон зображення при збереженні
+/// 1) додати ще декілька фракталівя
+/// 2) додати лічильнику приближення невидимий фон
+/// 3) оформити користувацький інтерфейс
+/// 4) додати іконки на кнопки зуму
+/// 5) додати папоротник
+/// 6) додати криву дракона
 /// 
 /// 
 /// /// </summary>
@@ -28,6 +26,7 @@ namespace WindowsFormsApp2
     public partial class Form1 : Form
     {
         public Graphics g;
+        public Color BackgroundColor = Color.Transparent;
         int UserIt;
         List<Pixel> pixels;
 
@@ -54,12 +53,12 @@ namespace WindowsFormsApp2
             System.Threading.Thread.CurrentThread.CurrentCulture = customCulture;
 
 
-            Bitmap bmp = new Bitmap(image.Width, image.Height);
-            image.Image = bmp;
-            size = image.Size;
-            StartSize = image.Size;
+            Bitmap bmp = new Bitmap(ColorDialog.Width, ColorDialog.Height);
+            ColorDialog.Image = bmp;
+            size = ColorDialog.Size;
+            StartSize = ColorDialog.Size;
             SizeArea = 4;
-            g = Graphics.FromImage(image.Image);
+            g = Graphics.FromImage(ColorDialog.Image);
             SetStyle(ControlStyles.SupportsTransparentBackColor, true);
         }
 
@@ -69,7 +68,7 @@ namespace WindowsFormsApp2
             {
                 ZoomNUM.Text = ZoomVal.ToString("F0") + " X";
                 ZoomNUM.Visible = true;
-                image.Enabled = true;
+                ColorDialog.Enabled = true;
                 DecreaseZOOM.Enabled = true;
                 IncreaseZOOM.Enabled = true;
             }
@@ -185,13 +184,13 @@ namespace WindowsFormsApp2
         {
             if(OpenFile.ShowDialog() == DialogResult.OK)
             {
-                image.Image = new Bitmap(OpenFile.FileName);
+                Grad.Image = new Bitmap(OpenFile.FileName);
             }
         }
 
         private void SaveToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (image.Image != null)
+            if (ColorDialog.Image != null)
             {
                 SaveFileDialog SaveAs = new SaveFileDialog();
                 SaveAs.Title = "Save as";
@@ -202,7 +201,7 @@ namespace WindowsFormsApp2
                 {
                     try
                     {
-                        image.Image.Save(SaveAs.FileName);
+                        ColorDialog.Image.Save(SaveAs.FileName);
                     }
                     catch
                     {
@@ -258,8 +257,10 @@ namespace WindowsFormsApp2
                 ThirdAngle.Visible = false;
                 FourthAngle.Visible = false;
 
+                labelBackColor.Visible = false;
+                ColorButton.Visible = false;
 
-
+                Progress.Visible = true;
             }
             else if (FractalsList.SelectedIndex == 1)
             {
@@ -320,7 +321,16 @@ namespace WindowsFormsApp2
 
                 NumberOfAngles.SelectedIndex = 2;
 
+                labelBackColor.Visible = true;
+                labelBackColor.Location = x.Location;
 
+                ColorButton.Visible = true;
+                ColorButton.Location = CenterX.Location;
+
+                BackgroundColor = Color.Transparent;
+                ColorButton.BackColor = Color.Transparent;
+
+                Progress.Visible = false;
 
 
 
@@ -357,7 +367,7 @@ namespace WindowsFormsApp2
             FractalsList.SelectedItem = FractalsList.Items[0];
             NumberOfAngles.SelectedItem = NumberOfAngles.Items[2];
             
-            image.Enabled = false;
+            ColorDialog.Enabled = false;
             DecreaseZOOM.Enabled = false;
             IncreaseZOOM.Enabled = false;
 
@@ -371,7 +381,7 @@ namespace WindowsFormsApp2
         {
             CreateFractal.Enabled = false;
             start = DateTime.Now;
-            Bitmap pictureTree = new Bitmap(image.Width, image.Height);
+            Bitmap pictureTree = new Bitmap(ColorDialog.Width, ColorDialog.Height);
             int branchLenght = (int)BranchLenght.Value;
             double[] angles;
             g.Clear(Color.White);
@@ -392,12 +402,12 @@ namespace WindowsFormsApp2
                 angles = new double[] { (double)FirstAngle.Value, (double)SecondAngle.Value, (double)ThirdAngle.Value, (double)FourthAngle.Value };
             }
 
-            FractalTree tree = new FractalTree(g, pictureTree, pixels, angles, (int)(MinBranchLenght.Value), (int)(BranchWidth.Value));
+            FractalTree tree = new FractalTree(g, pictureTree, pixels, angles, (int)(MinBranchLenght.Value), (int)(BranchWidth.Value), BackgroundColor);
             await Task.Run(() => {tree.DrawFractalTree((int)(StartX.Value), (int)(StartY.Value), branchLenght, 0); }) ;
 
             end = DateTime.Now;
             CulculationTime.Text = (end - start).TotalMilliseconds.ToString("F2") + " ms";
-            image.Image = pictureTree;
+            ColorDialog.Image = pictureTree;
             CreateFractal.Enabled = true;
 
         }
@@ -434,6 +444,25 @@ namespace WindowsFormsApp2
             }
         }
 
+        private void ColorButton_Click(object sender, EventArgs e)
+        {
+            ColorDialog BackColor = new ColorDialog();
+            BackColor.AllowFullOpen = true;
+            BackColor.FullOpen = true;
+            BackColor.ShowHelp = true;
+            BackColor.Color = Color.FromArgb(117, 238, 138);
+            BackColor.AnyColor = true;
+            BackColor.CustomColors = new int[]
+            {
+                636125, 382980, 5863935, 5427317, 1566114
+            };
+            if(BackColor.ShowDialog() == DialogResult.OK)
+            {
+                BackgroundColor = BackColor.Color;
+                ColorButton.BackColor = BackColor.Color;
+            }
+        }
+
         private void SplitImageAndInterface_Panel2_Paint(object sender, PaintEventArgs e)
         {
 
@@ -465,7 +494,7 @@ namespace WindowsFormsApp2
         }
         public async void DrawMBrot()
         {
-            image.Enabled = false;          /// 
+            ColorDialog.Enabled = false;          /// 
             IncreaseZOOM.Enabled = false;   ///
             DecreaseZOOM.Enabled = false;   /// disabled access to change the image
             CreateFractal.Enabled = false;  ///
@@ -477,7 +506,7 @@ namespace WindowsFormsApp2
 
             CulculationTime.Text = (end - start).TotalMilliseconds.ToString("F2") + " ms";
 
-            image.Enabled = true;
+            ColorDialog.Enabled = true;
             IncreaseZOOM.Enabled = true;
             DecreaseZOOM.Enabled = true;    /// added access to change the image
             CreateFractal.Enabled = true;
@@ -485,7 +514,7 @@ namespace WindowsFormsApp2
 
         public void CalculationMBrot()
         {
-            Bitmap picture = new Bitmap(image.Image.Width, image.Image.Height);
+            Bitmap picture = new Bitmap(ColorDialog.Image.Width, ColorDialog.Image.Height);
             UserIt = (int)Iterations.Value;
             int change;
 
@@ -544,9 +573,9 @@ namespace WindowsFormsApp2
                 }));
                 
             }
-            image.Image = null;
-            image.Invalidate();
-            image.Image = picture;
+            ColorDialog.Image = null;
+            ColorDialog.Invalidate();
+            ColorDialog.Image = picture;
         }
         // getting gradient pixels 
         private List<Pixel> GetPixels(Bitmap bitmap)
