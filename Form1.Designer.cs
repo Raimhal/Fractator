@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.CreateFractal = new System.Windows.Forms.Button();
             this.IncreaseZOOM = new System.Windows.Forms.Button();
             this.ZOOMValue = new System.Windows.Forms.NumericUpDown();
@@ -44,10 +43,21 @@
             this.LabelMaxZDegreeTwo = new System.Windows.Forms.Label();
             this.MaxZDegreeTwo = new System.Windows.Forms.MaskedTextBox();
             this.SplitImageAndInterface = new System.Windows.Forms.SplitContainer();
+            this.Grad = new System.Windows.Forms.PictureBox();
+            this.image = new System.Windows.Forms.PictureBox();
             this.tabControl = new System.Windows.Forms.TabControl();
             this.FractalProperties = new System.Windows.Forms.TabPage();
+            this.labelMinimalLength = new System.Windows.Forms.Label();
+            this.labelStartY = new System.Windows.Forms.Label();
+            this.labelStartX = new System.Windows.Forms.Label();
+            this.NumberOfAngles = new System.Windows.Forms.ListBox();
+            this.FourthAngle = new System.Windows.Forms.NumericUpDown();
+            this.SecondAngle = new System.Windows.Forms.NumericUpDown();
+            this.ThirdAngle = new System.Windows.Forms.NumericUpDown();
+            this.FirstAngle = new System.Windows.Forms.NumericUpDown();
+            this.BranchLenght = new System.Windows.Forms.NumericUpDown();
             this.labelAngles = new System.Windows.Forms.Label();
-            this.LabelBranchLenght = new System.Windows.Forms.Label();
+            this.LabelBranchLength = new System.Windows.Forms.Label();
             this.FractalsList = new System.Windows.Forms.ListBox();
             this.Progress = new System.Windows.Forms.ProgressBar();
             this.CulculationTime = new System.Windows.Forms.TextBox();
@@ -61,31 +71,32 @@
             this.saveToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.OpenFile = new System.Windows.Forms.OpenFileDialog();
             this.SaveFile = new System.Windows.Forms.SaveFileDialog();
-            this.BranchLenght = new System.Windows.Forms.NumericUpDown();
-            this.FirstAngle = new System.Windows.Forms.NumericUpDown();
-            this.ThirdAngle = new System.Windows.Forms.NumericUpDown();
-            this.SecondAngle = new System.Windows.Forms.NumericUpDown();
-            this.FourthAngle = new System.Windows.Forms.NumericUpDown();
-            this.NumberOfAngles = new System.Windows.Forms.ListBox();
-            this.Grad = new System.Windows.Forms.PictureBox();
-            this.image = new System.Windows.Forms.PictureBox();
+            this.MinBranchLenght = new System.Windows.Forms.NumericUpDown();
+            this.StartX = new System.Windows.Forms.NumericUpDown();
+            this.StartY = new System.Windows.Forms.NumericUpDown();
+            this.labelBranchWidth = new System.Windows.Forms.Label();
+            this.BranchWidth = new System.Windows.Forms.NumericUpDown();
             ((System.ComponentModel.ISupportInitialize)(this.ZOOMValue)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Iterations)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.SplitImageAndInterface)).BeginInit();
             this.SplitImageAndInterface.Panel1.SuspendLayout();
             this.SplitImageAndInterface.Panel2.SuspendLayout();
             this.SplitImageAndInterface.SuspendLayout();
-            this.tabControl.SuspendLayout();
-            this.FractalProperties.SuspendLayout();
-            this.Details.SuspendLayout();
-            this.menuStrip1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.BranchLenght)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.FirstAngle)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ThirdAngle)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.SecondAngle)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.FourthAngle)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Grad)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.image)).BeginInit();
+            this.tabControl.SuspendLayout();
+            this.FractalProperties.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.FourthAngle)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.SecondAngle)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ThirdAngle)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.FirstAngle)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.BranchLenght)).BeginInit();
+            this.Details.SuspendLayout();
+            this.menuStrip1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.MinBranchLenght)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.StartX)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.StartY)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.BranchWidth)).BeginInit();
             this.SuspendLayout();
             // 
             // CreateFractal
@@ -115,7 +126,7 @@
             // ZOOMValue
             // 
             this.ZOOMValue.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.ZOOMValue.Location = new System.Drawing.Point(11, 70);
+            this.ZOOMValue.Location = new System.Drawing.Point(10, 69);
             this.ZOOMValue.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
             this.ZOOMValue.Maximum = new decimal(new int[] {
             200,
@@ -180,7 +191,7 @@
             // 
             this.labelZOOM.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.labelZOOM.AutoSize = true;
-            this.labelZOOM.Location = new System.Drawing.Point(7, 45);
+            this.labelZOOM.Location = new System.Drawing.Point(7, 46);
             this.labelZOOM.Name = "labelZOOM";
             this.labelZOOM.Size = new System.Drawing.Size(51, 20);
             this.labelZOOM.TabIndex = 7;
@@ -279,6 +290,28 @@
             this.SplitImageAndInterface.SplitterDistance = 1284;
             this.SplitImageAndInterface.TabIndex = 17;
             // 
+            // Grad
+            // 
+            this.Grad.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.Grad.Image = global::WindowsFormsApp2.Properties.Resources.third;
+            this.Grad.Location = new System.Drawing.Point(836, 1);
+            this.Grad.Name = "Grad";
+            this.Grad.Size = new System.Drawing.Size(440, 25);
+            this.Grad.TabIndex = 16;
+            this.Grad.TabStop = false;
+            // 
+            // image
+            // 
+            this.image.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.image.Location = new System.Drawing.Point(0, 0);
+            this.image.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
+            this.image.Name = "image";
+            this.image.Size = new System.Drawing.Size(1280, 720);
+            this.image.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.image.TabIndex = 0;
+            this.image.TabStop = false;
+            this.image.MouseClick += new System.Windows.Forms.MouseEventHandler(this.image_MouseClick);
+            // 
             // tabControl
             // 
             this.tabControl.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -293,14 +326,22 @@
             // 
             // FractalProperties
             // 
+            this.FractalProperties.Controls.Add(this.BranchWidth);
+            this.FractalProperties.Controls.Add(this.labelBranchWidth);
+            this.FractalProperties.Controls.Add(this.MinBranchLenght);
+            this.FractalProperties.Controls.Add(this.labelMinimalLength);
             this.FractalProperties.Controls.Add(this.NumberOfAngles);
+            this.FractalProperties.Controls.Add(this.LabelBranchLength);
+            this.FractalProperties.Controls.Add(this.labelStartY);
+            this.FractalProperties.Controls.Add(this.labelStartX);
             this.FractalProperties.Controls.Add(this.FourthAngle);
+            this.FractalProperties.Controls.Add(this.StartY);
             this.FractalProperties.Controls.Add(this.SecondAngle);
             this.FractalProperties.Controls.Add(this.ThirdAngle);
-            this.FractalProperties.Controls.Add(this.FirstAngle);
+            this.FractalProperties.Controls.Add(this.StartX);
             this.FractalProperties.Controls.Add(this.BranchLenght);
+            this.FractalProperties.Controls.Add(this.FirstAngle);
             this.FractalProperties.Controls.Add(this.labelAngles);
-            this.FractalProperties.Controls.Add(this.LabelBranchLenght);
             this.FractalProperties.Controls.Add(this.FractalsList);
             this.FractalProperties.Controls.Add(this.Progress);
             this.FractalProperties.Controls.Add(this.CulculationTime);
@@ -328,25 +369,181 @@
             this.FractalProperties.Text = "Fractal";
             this.FractalProperties.UseVisualStyleBackColor = true;
             // 
+            // labelMinimalLength
+            // 
+            this.labelMinimalLength.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.labelMinimalLength.AutoSize = true;
+            this.labelMinimalLength.Location = new System.Drawing.Point(8, 100);
+            this.labelMinimalLength.Name = "labelMinimalLength";
+            this.labelMinimalLength.Size = new System.Drawing.Size(142, 20);
+            this.labelMinimalLength.TabIndex = 34;
+            this.labelMinimalLength.Text = "Minimal branch length:";
+            // 
+            // labelStartY
+            // 
+            this.labelStartY.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.labelStartY.AutoSize = true;
+            this.labelStartY.Location = new System.Drawing.Point(8, 264);
+            this.labelStartY.Name = "labelStartY";
+            this.labelStartY.Size = new System.Drawing.Size(50, 20);
+            this.labelStartY.TabIndex = 33;
+            this.labelStartY.Text = "Start y:";
+            // 
+            // labelStartX
+            // 
+            this.labelStartX.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.labelStartX.AutoSize = true;
+            this.labelStartX.Location = new System.Drawing.Point(7, 246);
+            this.labelStartX.Name = "labelStartX";
+            this.labelStartX.Size = new System.Drawing.Size(50, 20);
+            this.labelStartX.TabIndex = 32;
+            this.labelStartX.Text = "Start x:";
+            // 
+            // NumberOfAngles
+            // 
+            this.NumberOfAngles.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.NumberOfAngles.FormattingEnabled = true;
+            this.NumberOfAngles.ItemHeight = 20;
+            this.NumberOfAngles.Items.AddRange(new object[] {
+            "1",
+            "2",
+            "3",
+            "4"});
+            this.NumberOfAngles.Location = new System.Drawing.Point(68, 159);
+            this.NumberOfAngles.Name = "NumberOfAngles";
+            this.NumberOfAngles.Size = new System.Drawing.Size(97, 24);
+            this.NumberOfAngles.TabIndex = 30;
+            this.NumberOfAngles.SelectedIndexChanged += new System.EventHandler(this.NumberOfAngles_SelectedIndexChanged);
+            // 
+            // FourthAngle
+            // 
+            this.FourthAngle.Location = new System.Drawing.Point(143, 221);
+            this.FourthAngle.Maximum = new decimal(new int[] {
+            360,
+            0,
+            0,
+            0});
+            this.FourthAngle.Minimum = new decimal(new int[] {
+            360,
+            0,
+            0,
+            -2147483648});
+            this.FourthAngle.Name = "FourthAngle";
+            this.FourthAngle.Size = new System.Drawing.Size(50, 26);
+            this.FourthAngle.TabIndex = 29;
+            this.FourthAngle.Value = new decimal(new int[] {
+            15,
+            0,
+            0,
+            0});
+            // 
+            // SecondAngle
+            // 
+            this.SecondAngle.Location = new System.Drawing.Point(143, 189);
+            this.SecondAngle.Maximum = new decimal(new int[] {
+            360,
+            0,
+            0,
+            0});
+            this.SecondAngle.Minimum = new decimal(new int[] {
+            360,
+            0,
+            0,
+            -2147483648});
+            this.SecondAngle.Name = "SecondAngle";
+            this.SecondAngle.Size = new System.Drawing.Size(50, 26);
+            this.SecondAngle.TabIndex = 28;
+            this.SecondAngle.Value = new decimal(new int[] {
+            65,
+            0,
+            0,
+            0});
+            // 
+            // ThirdAngle
+            // 
+            this.ThirdAngle.Location = new System.Drawing.Point(11, 221);
+            this.ThirdAngle.Maximum = new decimal(new int[] {
+            360,
+            0,
+            0,
+            0});
+            this.ThirdAngle.Minimum = new decimal(new int[] {
+            360,
+            0,
+            0,
+            -2147483648});
+            this.ThirdAngle.Name = "ThirdAngle";
+            this.ThirdAngle.Size = new System.Drawing.Size(49, 26);
+            this.ThirdAngle.TabIndex = 27;
+            this.ThirdAngle.Value = new decimal(new int[] {
+            25,
+            0,
+            0,
+            -2147483648});
+            // 
+            // FirstAngle
+            // 
+            this.FirstAngle.Location = new System.Drawing.Point(11, 186);
+            this.FirstAngle.Maximum = new decimal(new int[] {
+            360,
+            0,
+            0,
+            0});
+            this.FirstAngle.Minimum = new decimal(new int[] {
+            360,
+            0,
+            0,
+            -2147483648});
+            this.FirstAngle.Name = "FirstAngle";
+            this.FirstAngle.Size = new System.Drawing.Size(49, 26);
+            this.FirstAngle.TabIndex = 26;
+            this.FirstAngle.Value = new decimal(new int[] {
+            55,
+            0,
+            0,
+            -2147483648});
+            // 
+            // BranchLenght
+            // 
+            this.BranchLenght.Location = new System.Drawing.Point(66, 284);
+            this.BranchLenght.Maximum = new decimal(new int[] {
+            500,
+            0,
+            0,
+            0});
+            this.BranchLenght.Minimum = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
+            this.BranchLenght.Name = "BranchLenght";
+            this.BranchLenght.Size = new System.Drawing.Size(194, 26);
+            this.BranchLenght.TabIndex = 25;
+            this.BranchLenght.Value = new decimal(new int[] {
+            200,
+            0,
+            0,
+            0});
+            // 
             // labelAngles
             // 
             this.labelAngles.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.labelAngles.AutoSize = true;
-            this.labelAngles.Location = new System.Drawing.Point(17, 163);
+            this.labelAngles.Location = new System.Drawing.Point(6, 159);
             this.labelAngles.Name = "labelAngles";
             this.labelAngles.Size = new System.Drawing.Size(55, 20);
             this.labelAngles.TabIndex = 22;
             this.labelAngles.Text = "Angles:";
             // 
-            // LabelBranchLenght
+            // LabelBranchLength
             // 
-            this.LabelBranchLenght.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.LabelBranchLenght.AutoSize = true;
-            this.LabelBranchLenght.Location = new System.Drawing.Point(13, 102);
-            this.LabelBranchLenght.Name = "LabelBranchLenght";
-            this.LabelBranchLenght.Size = new System.Drawing.Size(98, 20);
-            this.LabelBranchLenght.TabIndex = 21;
-            this.LabelBranchLenght.Text = "Branch length :";
+            this.LabelBranchLength.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.LabelBranchLength.AutoSize = true;
+            this.LabelBranchLength.Location = new System.Drawing.Point(8, 284);
+            this.LabelBranchLength.Name = "LabelBranchLength";
+            this.LabelBranchLength.Size = new System.Drawing.Size(98, 20);
+            this.LabelBranchLength.TabIndex = 21;
+            this.LabelBranchLength.Text = "Branch length :";
             // 
             // FractalsList
             // 
@@ -397,9 +594,9 @@
             // Details
             // 
             this.Details.Controls.Add(this.TextAngles);
-            this.Details.Location = new System.Drawing.Point(4, 29);
+            this.Details.Location = new System.Drawing.Point(4, 22);
             this.Details.Name = "Details";
-            this.Details.Size = new System.Drawing.Size(213, 656);
+            this.Details.Size = new System.Drawing.Size(213, 663);
             this.Details.TabIndex = 1;
             this.Details.Text = "The details";
             this.Details.UseVisualStyleBackColor = true;
@@ -413,7 +610,9 @@
             this.TextAngles.Name = "TextAngles";
             this.TextAngles.Size = new System.Drawing.Size(204, 122);
             this.TextAngles.TabIndex = 22;
-            this.TextAngles.Text = resources.GetString("TextAngles.Text");
+            this.TextAngles.Text = "Angles (one angle one branch)\r\n(-35 - left branch will  have angle 35)\r\nor \r\n(45 " +
+    "right branch will have angle 45 )\r\n(e.g. (-35, 40, 10) we wil have 3 branches wi" +
+    "th corresponding angles) :";
             // 
             // RandomGradientButton
             // 
@@ -466,153 +665,83 @@
             // 
             this.SaveFile.Filter = "Images|*.bmp;*.png;*.jpg";
             // 
-            // BranchLenght
+            // MinBranchLenght
             // 
-            this.BranchLenght.Location = new System.Drawing.Point(8, 124);
-            this.BranchLenght.Maximum = new decimal(new int[] {
-            500,
+            this.MinBranchLenght.Location = new System.Drawing.Point(10, 127);
+            this.MinBranchLenght.Maximum = new decimal(new int[] {
+            20,
             0,
             0,
             0});
-            this.BranchLenght.Minimum = new decimal(new int[] {
-            10,
+            this.MinBranchLenght.Minimum = new decimal(new int[] {
+            1,
             0,
             0,
             0});
-            this.BranchLenght.Name = "BranchLenght";
-            this.BranchLenght.Size = new System.Drawing.Size(194, 26);
-            this.BranchLenght.TabIndex = 25;
-            this.BranchLenght.Value = new decimal(new int[] {
-            200,
-            0,
-            0,
-            0});
-            // 
-            // FirstAngle
-            // 
-            this.FirstAngle.Location = new System.Drawing.Point(21, 216);
-            this.FirstAngle.Maximum = new decimal(new int[] {
-            361,
-            0,
-            0,
-            0});
-            this.FirstAngle.Minimum = new decimal(new int[] {
-            360,
-            0,
-            0,
-            -2147483648});
-            this.FirstAngle.Name = "FirstAngle";
-            this.FirstAngle.Size = new System.Drawing.Size(49, 26);
-            this.FirstAngle.TabIndex = 26;
-            this.FirstAngle.Value = new decimal(new int[] {
-            55,
-            0,
-            0,
-            -2147483648});
-            // 
-            // ThirdAngle
-            // 
-            this.ThirdAngle.Location = new System.Drawing.Point(21, 251);
-            this.ThirdAngle.Maximum = new decimal(new int[] {
-            361,
-            0,
-            0,
-            0});
-            this.ThirdAngle.Minimum = new decimal(new int[] {
-            360,
-            0,
-            0,
-            -2147483648});
-            this.ThirdAngle.Name = "ThirdAngle";
-            this.ThirdAngle.Size = new System.Drawing.Size(49, 26);
-            this.ThirdAngle.TabIndex = 27;
-            this.ThirdAngle.Value = new decimal(new int[] {
-            25,
-            0,
-            0,
-            -2147483648});
-            // 
-            // SecondAngle
-            // 
-            this.SecondAngle.Location = new System.Drawing.Point(133, 216);
-            this.SecondAngle.Maximum = new decimal(new int[] {
-            361,
-            0,
-            0,
-            0});
-            this.SecondAngle.Minimum = new decimal(new int[] {
-            360,
-            0,
-            0,
-            -2147483648});
-            this.SecondAngle.Name = "SecondAngle";
-            this.SecondAngle.Size = new System.Drawing.Size(50, 26);
-            this.SecondAngle.TabIndex = 28;
-            this.SecondAngle.Value = new decimal(new int[] {
-            65,
+            this.MinBranchLenght.Name = "MinBranchLenght";
+            this.MinBranchLenght.Size = new System.Drawing.Size(194, 26);
+            this.MinBranchLenght.TabIndex = 35;
+            this.MinBranchLenght.Value = new decimal(new int[] {
+            2,
             0,
             0,
             0});
             // 
-            // FourthAngle
+            // StartX
             // 
-            this.FourthAngle.Location = new System.Drawing.Point(133, 251);
-            this.FourthAngle.Maximum = new decimal(new int[] {
-            361,
+            this.StartX.Location = new System.Drawing.Point(66, 244);
+            this.StartX.Maximum = new decimal(new int[] {
+            1280,
             0,
             0,
             0});
-            this.FourthAngle.Minimum = new decimal(new int[] {
-            360,
-            0,
-            0,
-            -2147483648});
-            this.FourthAngle.Name = "FourthAngle";
-            this.FourthAngle.Size = new System.Drawing.Size(50, 26);
-            this.FourthAngle.TabIndex = 29;
-            this.FourthAngle.Value = new decimal(new int[] {
-            15,
+            this.StartX.Name = "StartX";
+            this.StartX.Size = new System.Drawing.Size(196, 26);
+            this.StartX.TabIndex = 36;
+            this.StartX.Value = new decimal(new int[] {
+            640,
             0,
             0,
             0});
             // 
-            // NumberOfAngles
+            // StartY
             // 
-            this.NumberOfAngles.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.NumberOfAngles.FormattingEnabled = true;
-            this.NumberOfAngles.ItemHeight = 20;
-            this.NumberOfAngles.Items.AddRange(new object[] {
-            "1",
-            "2",
-            "3",
-            "4"});
-            this.NumberOfAngles.Location = new System.Drawing.Point(86, 163);
-            this.NumberOfAngles.Name = "NumberOfAngles";
-            this.NumberOfAngles.Size = new System.Drawing.Size(97, 24);
-            this.NumberOfAngles.TabIndex = 30;
-            this.NumberOfAngles.SelectedIndexChanged += new System.EventHandler(this.NumberOfAngles_SelectedIndexChanged);
+            this.StartY.Location = new System.Drawing.Point(66, 264);
+            this.StartY.Maximum = new decimal(new int[] {
+            720,
+            0,
+            0,
+            0});
+            this.StartY.Name = "StartY";
+            this.StartY.Size = new System.Drawing.Size(196, 26);
+            this.StartY.TabIndex = 37;
             // 
-            // Grad
+            // labelBranchWidth
             // 
-            this.Grad.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.Grad.Image = global::WindowsFormsApp2.Properties.Resources.third;
-            this.Grad.Location = new System.Drawing.Point(836, 1);
-            this.Grad.Name = "Grad";
-            this.Grad.Size = new System.Drawing.Size(440, 25);
-            this.Grad.TabIndex = 16;
-            this.Grad.TabStop = false;
+            this.labelBranchWidth.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.labelBranchWidth.AutoSize = true;
+            this.labelBranchWidth.Location = new System.Drawing.Point(12, 304);
+            this.labelBranchWidth.Name = "labelBranchWidth";
+            this.labelBranchWidth.Size = new System.Drawing.Size(88, 20);
+            this.labelBranchWidth.TabIndex = 38;
+            this.labelBranchWidth.Text = "Branch width:";
             // 
-            // image
+            // BranchWidth
             // 
-            this.image.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.image.Location = new System.Drawing.Point(0, 0);
-            this.image.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
-            this.image.Name = "image";
-            this.image.Size = new System.Drawing.Size(1280, 720);
-            this.image.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.image.TabIndex = 0;
-            this.image.TabStop = false;
-            this.image.MouseClick += new System.Windows.Forms.MouseEventHandler(this.image_MouseClick);
+            this.BranchWidth.Location = new System.Drawing.Point(66, 307);
+            this.BranchWidth.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.BranchWidth.Name = "BranchWidth";
+            this.BranchWidth.Size = new System.Drawing.Size(194, 26);
+            this.BranchWidth.TabIndex = 39;
+            this.BranchWidth.Value = new decimal(new int[] {
+            4,
+            0,
+            0,
+            0});
             // 
             // Form1
             // 
@@ -639,20 +768,24 @@
             this.SplitImageAndInterface.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.SplitImageAndInterface)).EndInit();
             this.SplitImageAndInterface.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.Grad)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.image)).EndInit();
             this.tabControl.ResumeLayout(false);
             this.FractalProperties.ResumeLayout(false);
             this.FractalProperties.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.FourthAngle)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.SecondAngle)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ThirdAngle)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.FirstAngle)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.BranchLenght)).EndInit();
             this.Details.ResumeLayout(false);
             this.Details.PerformLayout();
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.BranchLenght)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.FirstAngle)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ThirdAngle)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.SecondAngle)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.FourthAngle)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.Grad)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.image)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.MinBranchLenght)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.StartX)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.StartY)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.BranchWidth)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -689,7 +822,7 @@
         private System.Windows.Forms.OpenFileDialog OpenFile;
         private System.Windows.Forms.SaveFileDialog SaveFile;
         private System.Windows.Forms.ListBox FractalsList;
-        private System.Windows.Forms.Label LabelBranchLenght;
+        private System.Windows.Forms.Label LabelBranchLength;
         private System.Windows.Forms.TextBox TextAngles;
         private System.Windows.Forms.Label labelAngles;
         private System.Windows.Forms.TabPage Details;
@@ -699,6 +832,14 @@
         private System.Windows.Forms.NumericUpDown FirstAngle;
         private System.Windows.Forms.NumericUpDown FourthAngle;
         private System.Windows.Forms.ListBox NumberOfAngles;
+        private System.Windows.Forms.Label labelMinimalLength;
+        private System.Windows.Forms.Label labelStartY;
+        private System.Windows.Forms.Label labelStartX;
+        private System.Windows.Forms.NumericUpDown MinBranchLenght;
+        private System.Windows.Forms.NumericUpDown StartY;
+        private System.Windows.Forms.NumericUpDown StartX;
+        private System.Windows.Forms.NumericUpDown BranchWidth;
+        private System.Windows.Forms.Label labelBranchWidth;
     }
 }
 
