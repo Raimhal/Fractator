@@ -44,9 +44,11 @@
             this.MaxZDegreeTwo = new System.Windows.Forms.MaskedTextBox();
             this.SplitImageAndInterface = new System.Windows.Forms.SplitContainer();
             this.Grad = new System.Windows.Forms.PictureBox();
-            this.ColorDialog = new System.Windows.Forms.PictureBox();
+            this.image = new System.Windows.Forms.PictureBox();
             this.tabControl = new System.Windows.Forms.TabControl();
             this.FractalProperties = new System.Windows.Forms.TabPage();
+            this.ColorButton = new System.Windows.Forms.Button();
+            this.labelBackColor = new System.Windows.Forms.Label();
             this.BranchWidth = new System.Windows.Forms.NumericUpDown();
             this.labelBranchWidth = new System.Windows.Forms.Label();
             this.MinBranchLenght = new System.Windows.Forms.NumericUpDown();
@@ -76,9 +78,7 @@
             this.saveToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.OpenFile = new System.Windows.Forms.OpenFileDialog();
             this.SaveFile = new System.Windows.Forms.SaveFileDialog();
-            this.labelBackColor = new System.Windows.Forms.Label();
-            this.ColorButton = new System.Windows.Forms.Button();
-            this.colorDialog1 = new System.Windows.Forms.ColorDialog();
+            this.ColorDialog = new System.Windows.Forms.ColorDialog();
             ((System.ComponentModel.ISupportInitialize)(this.ZOOMValue)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Iterations)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.SplitImageAndInterface)).BeginInit();
@@ -86,7 +86,7 @@
             this.SplitImageAndInterface.Panel2.SuspendLayout();
             this.SplitImageAndInterface.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Grad)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ColorDialog)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.image)).BeginInit();
             this.tabControl.SuspendLayout();
             this.FractalProperties.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.BranchWidth)).BeginInit();
@@ -282,7 +282,7 @@
             // 
             this.SplitImageAndInterface.Panel1.Controls.Add(this.ZoomNUM);
             this.SplitImageAndInterface.Panel1.Controls.Add(this.Grad);
-            this.SplitImageAndInterface.Panel1.Controls.Add(this.ColorDialog);
+            this.SplitImageAndInterface.Panel1.Controls.Add(this.image);
             // 
             // SplitImageAndInterface.Panel2
             // 
@@ -304,17 +304,17 @@
             this.Grad.TabIndex = 16;
             this.Grad.TabStop = false;
             // 
-            // ColorDialog
+            // image
             // 
-            this.ColorDialog.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ColorDialog.Location = new System.Drawing.Point(0, 0);
-            this.ColorDialog.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
-            this.ColorDialog.Name = "ColorDialog";
-            this.ColorDialog.Size = new System.Drawing.Size(1280, 720);
-            this.ColorDialog.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.ColorDialog.TabIndex = 0;
-            this.ColorDialog.TabStop = false;
-            this.ColorDialog.MouseClick += new System.Windows.Forms.MouseEventHandler(this.image_MouseClick);
+            this.image.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.image.Location = new System.Drawing.Point(0, 0);
+            this.image.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
+            this.image.Name = "image";
+            this.image.Size = new System.Drawing.Size(1280, 720);
+            this.image.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.image.TabIndex = 0;
+            this.image.TabStop = false;
+            this.image.MouseClick += new System.Windows.Forms.MouseEventHandler(this.image_MouseClick);
             // 
             // tabControl
             // 
@@ -374,6 +374,27 @@
             this.FractalProperties.TabIndex = 0;
             this.FractalProperties.Text = "Fractal";
             this.FractalProperties.UseVisualStyleBackColor = true;
+            // 
+            // ColorButton
+            // 
+            this.ColorButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.ColorButton.Location = new System.Drawing.Point(66, 248);
+            this.ColorButton.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
+            this.ColorButton.Name = "ColorButton";
+            this.ColorButton.Size = new System.Drawing.Size(51, 26);
+            this.ColorButton.TabIndex = 41;
+            this.ColorButton.UseVisualStyleBackColor = true;
+            this.ColorButton.Click += new System.EventHandler(this.ColorButton_Click);
+            // 
+            // labelBackColor
+            // 
+            this.labelBackColor.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.labelBackColor.AutoSize = true;
+            this.labelBackColor.Location = new System.Drawing.Point(13, 254);
+            this.labelBackColor.Name = "labelBackColor";
+            this.labelBackColor.Size = new System.Drawing.Size(121, 20);
+            this.labelBackColor.TabIndex = 40;
+            this.labelBackColor.Text = "BackgroundColor :";
             // 
             // BranchWidth
             // 
@@ -641,7 +662,8 @@
             this.FractalsList.ItemHeight = 20;
             this.FractalsList.Items.AddRange(new object[] {
             "Mandelbrot set ",
-            "Fractal tree"});
+            "Fractal tree",
+            "Barnsley fern"});
             this.FractalsList.Location = new System.Drawing.Point(12, 19);
             this.FractalsList.Name = "FractalsList";
             this.FractalsList.Size = new System.Drawing.Size(192, 24);
@@ -683,9 +705,9 @@
             // Details
             // 
             this.Details.Controls.Add(this.TextAngles);
-            this.Details.Location = new System.Drawing.Point(4, 29);
+            this.Details.Location = new System.Drawing.Point(4, 22);
             this.Details.Name = "Details";
-            this.Details.Size = new System.Drawing.Size(213, 656);
+            this.Details.Size = new System.Drawing.Size(213, 663);
             this.Details.TabIndex = 1;
             this.Details.Text = "The details";
             this.Details.UseVisualStyleBackColor = true;
@@ -735,14 +757,14 @@
             // openToolStripMenuItem
             // 
             this.openToolStripMenuItem.Name = "openToolStripMenuItem";
-            this.openToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.openToolStripMenuItem.Size = new System.Drawing.Size(147, 22);
             this.openToolStripMenuItem.Text = "Load gradient";
             this.openToolStripMenuItem.Click += new System.EventHandler(this.OpenToolStripMenuItem_Click);
             // 
             // saveToolStripMenuItem
             // 
             this.saveToolStripMenuItem.Name = "saveToolStripMenuItem";
-            this.saveToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.saveToolStripMenuItem.Size = new System.Drawing.Size(147, 22);
             this.saveToolStripMenuItem.Text = "Save image";
             this.saveToolStripMenuItem.Click += new System.EventHandler(this.SaveToolStripMenuItem_Click);
             // 
@@ -755,27 +777,6 @@
             // 
             this.SaveFile.Filter = "Images|*.bmp;*.png;*.jpg";
             this.SaveFile.FilterIndex = 3;
-            // 
-            // labelBackColor
-            // 
-            this.labelBackColor.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.labelBackColor.AutoSize = true;
-            this.labelBackColor.Location = new System.Drawing.Point(13, 254);
-            this.labelBackColor.Name = "labelBackColor";
-            this.labelBackColor.Size = new System.Drawing.Size(121, 20);
-            this.labelBackColor.TabIndex = 40;
-            this.labelBackColor.Text = "BackgroundColor :";
-            // 
-            // ColorButton
-            // 
-            this.ColorButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.ColorButton.Location = new System.Drawing.Point(66, 248);
-            this.ColorButton.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
-            this.ColorButton.Name = "ColorButton";
-            this.ColorButton.Size = new System.Drawing.Size(51, 26);
-            this.ColorButton.TabIndex = 41;
-            this.ColorButton.UseVisualStyleBackColor = true;
-            this.ColorButton.Click += new System.EventHandler(this.ColorButton_Click);
             // 
             // Form1
             // 
@@ -803,7 +804,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.SplitImageAndInterface)).EndInit();
             this.SplitImageAndInterface.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.Grad)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ColorDialog)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.image)).EndInit();
             this.tabControl.ResumeLayout(false);
             this.FractalProperties.ResumeLayout(false);
             this.FractalProperties.PerformLayout();
@@ -842,7 +843,7 @@
         private System.Windows.Forms.MaskedTextBox MaxZDegreeTwo;
         private System.Windows.Forms.PictureBox Grad;
         private System.Windows.Forms.SplitContainer SplitImageAndInterface;
-        private System.Windows.Forms.PictureBox ColorDialog;
+        private System.Windows.Forms.PictureBox image;
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem fileToolStripMenuItem;
         private System.Windows.Forms.Button RandomGradientButton;
@@ -876,7 +877,7 @@
         private System.Windows.Forms.Label labelBranchWidth;
         private System.Windows.Forms.Label labelBackColor;
         private System.Windows.Forms.Button ColorButton;
-        private System.Windows.Forms.ColorDialog colorDialog1;
+        private System.Windows.Forms.ColorDialog ColorDialog;
     }
 }
 

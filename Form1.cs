@@ -53,12 +53,12 @@ namespace WindowsFormsApp2
             System.Threading.Thread.CurrentThread.CurrentCulture = customCulture;
 
 
-            Bitmap bmp = new Bitmap(ColorDialog.Width, ColorDialog.Height);
-            ColorDialog.Image = bmp;
-            size = ColorDialog.Size;
-            StartSize = ColorDialog.Size;
+            Bitmap bmp = new Bitmap(image.Width, image.Height);
+            image.Image = bmp;
+            size = image.Size;
+            StartSize = image.Size;
             SizeArea = 4;
-            g = Graphics.FromImage(ColorDialog.Image);
+            g = Graphics.FromImage(image.Image);
             SetStyle(ControlStyles.SupportsTransparentBackColor, true);
         }
 
@@ -68,7 +68,7 @@ namespace WindowsFormsApp2
             {
                 ZoomNUM.Text = ZoomVal.ToString("F0") + " X";
                 ZoomNUM.Visible = true;
-                ColorDialog.Enabled = true;
+                image.Enabled = true;
                 DecreaseZOOM.Enabled = true;
                 IncreaseZOOM.Enabled = true;
             }
@@ -79,7 +79,7 @@ namespace WindowsFormsApp2
             Bitmap bitmap = (Bitmap)Grad.Image;
             pixels = GetPixels(bitmap);
 
-            
+
 
 
 
@@ -101,10 +101,10 @@ namespace WindowsFormsApp2
             }
             else
             {
-               
+
                 DrawFractals();
             }
-            
+
         }
         private void DecreaseZOOM_Click(object sender, EventArgs e)
         {
@@ -182,7 +182,7 @@ namespace WindowsFormsApp2
 
         private void OpenToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if(OpenFile.ShowDialog() == DialogResult.OK)
+            if (OpenFile.ShowDialog() == DialogResult.OK)
             {
                 Grad.Image = new Bitmap(OpenFile.FileName);
             }
@@ -190,7 +190,7 @@ namespace WindowsFormsApp2
 
         private void SaveToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (ColorDialog.Image != null)
+            if (image.Image != null)
             {
                 SaveFileDialog SaveAs = new SaveFileDialog();
                 SaveAs.Title = "Save as";
@@ -201,7 +201,7 @@ namespace WindowsFormsApp2
                 {
                     try
                     {
-                        ColorDialog.Image.Save(SaveAs.FileName);
+                        image.Image.Save(SaveAs.FileName);
                     }
                     catch
                     {
@@ -214,7 +214,7 @@ namespace WindowsFormsApp2
 
         private void FractalsList_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if(FractalsList.SelectedIndex == 0)
+            if (FractalsList.SelectedIndex == 0)
             {
                 labelZOOM.Visible = true;
                 ZOOMValue.Visible = true;
@@ -348,7 +348,7 @@ namespace WindowsFormsApp2
                 CenterY.Visible = false;
                 LabelMaxZDegreeTwo.Visible = false;
                 MaxZDegreeTwo.Visible = false;
-                
+
             }
             else
             {
@@ -366,8 +366,8 @@ namespace WindowsFormsApp2
             MaxZDegreeTwo.Text = maxZ.ToString();
             FractalsList.SelectedItem = FractalsList.Items[0];
             NumberOfAngles.SelectedItem = NumberOfAngles.Items[2];
-            
-            ColorDialog.Enabled = false;
+
+            image.Enabled = false;
             DecreaseZOOM.Enabled = false;
             IncreaseZOOM.Enabled = false;
 
@@ -381,10 +381,9 @@ namespace WindowsFormsApp2
         {
             CreateFractal.Enabled = false;
             start = DateTime.Now;
-            Bitmap pictureTree = new Bitmap(ColorDialog.Width, ColorDialog.Height);
+            Bitmap pictureTree = new Bitmap(image.Width, image.Height);
             int branchLenght = (int)BranchLenght.Value;
             double[] angles;
-            g.Clear(Color.White);
             if (NumberOfAngles.SelectedIndex == 0)
             {
                 angles = new double[] { (double)FirstAngle.Value };
@@ -403,14 +402,41 @@ namespace WindowsFormsApp2
             }
 
             FractalTree tree = new FractalTree(g, pictureTree, pixels, angles, (int)(MinBranchLenght.Value), (int)(BranchWidth.Value), BackgroundColor);
-            await Task.Run(() => {tree.DrawFractalTree((int)(StartX.Value), (int)(StartY.Value), branchLenght, 0); }) ;
+            await Task.Run(() => { tree.DrawFractalTree((int)(StartX.Value), (int)(StartY.Value), branchLenght, 0); });
 
             end = DateTime.Now;
             CulculationTime.Text = (end - start).TotalMilliseconds.ToString("F2") + " ms";
-            ColorDialog.Image = pictureTree;
+            image.Image = pictureTree;
             CreateFractal.Enabled = true;
 
         }
+
+        public void DrawBarnsleyFern()
+        {
+            start = DateTime.Now;
+            float[] probability = new float[4] { 0.01f, 0.06f, 0.08f, 0.85f };
+            int NumbersOfPoint = 100000;
+            float[,] Coefficient = new float[4, 6]
+            {
+            {0, 0, 0, 0.16f, 0, 0},
+            {-0.15f, 0.28f, 0.26f, 0.24f, 0, 0.44f},
+            {0.2f, -0.26f, 0.23f, 0.22f, 0, 1.6f},
+            {0.85f, 0.04f, -0.04f, 0.85f, 0, 1.6f}
+
+            };
+            Bitmap pictureFern = new Bitmap(image.Width, image.Height);
+            Graphics gF;
+            gF = Graphics.FromImage(pictureFern);
+            gF.Clear(Color.LawnGreen);
+            Barnsley_fern Fern = new Barnsley_fern(g, pictureFern, NumbersOfPoint, probability, Coefficient, pixels);
+            pictureFern = Fern.DrawBransleyFern();
+            end = DateTime.Now;
+            CulculationTime.Text = (end - start).TotalMilliseconds.ToString("F2") + " ms";
+            image.Image = pictureFern;
+        }
+            
+        
+            
 
         private void NumberOfAngles_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -485,7 +511,7 @@ namespace WindowsFormsApp2
             }
             else if(FractalsList.SelectedIndex == 2)
             {
-
+                DrawBarnsleyFern();
             }
             else
             {
@@ -494,7 +520,7 @@ namespace WindowsFormsApp2
         }
         public async void DrawMBrot()
         {
-            ColorDialog.Enabled = false;          /// 
+            image.Enabled = false;          /// 
             IncreaseZOOM.Enabled = false;   ///
             DecreaseZOOM.Enabled = false;   /// disabled access to change the image
             CreateFractal.Enabled = false;  ///
@@ -506,7 +532,7 @@ namespace WindowsFormsApp2
 
             CulculationTime.Text = (end - start).TotalMilliseconds.ToString("F2") + " ms";
 
-            ColorDialog.Enabled = true;
+            image.Enabled = true;
             IncreaseZOOM.Enabled = true;
             DecreaseZOOM.Enabled = true;    /// added access to change the image
             CreateFractal.Enabled = true;
@@ -514,9 +540,9 @@ namespace WindowsFormsApp2
 
         public void CalculationMBrot()
         {
-            Bitmap picture = new Bitmap(ColorDialog.Image.Width, ColorDialog.Image.Height);
+            Bitmap picture = new Bitmap(image.Image.Width, image.Image.Height);
             UserIt = (int)Iterations.Value;
-            int change;
+
 
             this.Invoke(new Action(() => // делегат для відображення progressBar
             {
@@ -573,9 +599,9 @@ namespace WindowsFormsApp2
                 }));
                 
             }
-            ColorDialog.Image = null;
-            ColorDialog.Invalidate();
-            ColorDialog.Image = picture;
+            image.Image = null;
+            image.Invalidate();
+            image.Image = picture;
         }
         // getting gradient pixels 
         private List<Pixel> GetPixels(Bitmap bitmap)
@@ -585,7 +611,7 @@ namespace WindowsFormsApp2
             {
                 pixels.Add(new Pixel()
                 {
-                    Color = bitmap.GetPixel(x, 1) // отримання кольору ряду пікселів з градієнту
+                    Color = bitmap.GetPixel(x, 10) // отримання кольору ряду пікселів з градієнту
                 });
             }
             return pixels;
