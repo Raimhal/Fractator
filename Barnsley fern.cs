@@ -11,35 +11,41 @@ namespace WindowsFormsApp2
     {
         public Graphics g;
         public Bitmap picture;
-        private const float minX = -3;
-        private const float maxX = 3;
-        private const float minY = 0.1f;
-        private const float maxY = 10;
+        public float minX = -3;
+        public float maxX;
+        public float minY = 0.1f;
+        public float maxY;
         public int NumberOfPoints;
         public float[] probability;
         public float[,] Coefficient;
         public List<Pixel> pixels;
         public Bitmap bmp;
+        public Color BackgroundColor;
 
-        public Barnsley_fern(Graphics g, Bitmap bitmap, int NumberOfPoints, float[] probability,float[,] Coefficient, List<Pixel> pixels)
+        public Barnsley_fern(Graphics g, Bitmap bitmap, float maxX, float maxY, int NumberOfPoints, float[] probability,float[,] Coefficient, List<Pixel> pixels, Color backgroundColor)
         {
-            this.g = Graphics.FromImage(bitmap);
+            
             this.picture = new Bitmap(bitmap.Width, bitmap.Height);
             this.bmp = new Bitmap(bitmap.Width, bitmap.Height);
+            this.g = Graphics.FromImage(picture);
+            this.maxX = maxX;
+            this.maxY = maxY;
             this.NumberOfPoints = NumberOfPoints;
             this.probability = probability;
             this.Coefficient = Coefficient;
             this.pixels = pixels;
+            this.BackgroundColor = backgroundColor;
         }
 
         public Bitmap DrawBransleyFern()
         {
-            g.Clear(Color.Beige);
             Random random = new Random();
             float x0 = 0, y0 = 0;
+            float x = 0, y = 0;
             int width = (int)(bmp.Width / (maxX - minX));
             int height = (int)(bmp.Height / (maxY - minY));
             int FunctionIndex = 0;
+            g.Clear(BackgroundColor);
 
             for (int i = 1; i <= NumberOfPoints; i++)
             {
@@ -55,8 +61,8 @@ namespace WindowsFormsApp2
                     }
                 }
                 // вичислення координат
-                var x = Coefficient[FunctionIndex, 0] * x0 + Coefficient[FunctionIndex, 1] * y0 + Coefficient[FunctionIndex, 4];
-                var y = Coefficient[FunctionIndex, 2] * x0 + Coefficient[FunctionIndex, 3] * y0 + Coefficient[FunctionIndex, 5];
+                x = Coefficient[FunctionIndex, 0] * x0 + Coefficient[FunctionIndex, 1] * y0 + Coefficient[FunctionIndex, 4];
+                y = Coefficient[FunctionIndex, 2] * x0 + Coefficient[FunctionIndex, 3] * y0 + Coefficient[FunctionIndex, 5];
 
                 x0 = x;
                 y0 = y;

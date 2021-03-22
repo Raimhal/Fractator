@@ -214,6 +214,10 @@ namespace WindowsFormsApp2
 
         private void FractalsList_SelectedIndexChanged(object sender, EventArgs e)
         {
+            int[] tmpGradLocation = new int[]
+            {
+                Grad.Location.X, Grad.Location.Y
+            };
             if (FractalsList.SelectedIndex == 0)
             {
                 labelZOOM.Visible = true;
@@ -261,6 +265,16 @@ namespace WindowsFormsApp2
                 ColorButton.Visible = false;
 
                 Progress.Visible = true;
+                Grad.Location = new Point(image.Width - Grad.Width);
+
+                labelHorizontal.Visible = false;
+                Horizontal.Visible = false;
+
+                labelVertical.Visible = false;
+                Vertical.Visible = false;
+
+                labelNumberPoints.Visible = false;
+                NumberPoints.Visible = false;
             }
             else if (FractalsList.SelectedIndex == 1)
             {
@@ -332,22 +346,87 @@ namespace WindowsFormsApp2
 
                 Progress.Visible = false;
 
+                Grad.Location =  new Point(image.Width - Grad.Width);
 
+                labelHorizontal.Visible = false;
+                Horizontal.Visible = false;
 
+                labelVertical.Visible = false;
+                Vertical.Visible = false;
+
+                labelNumberPoints.Visible = false;
+                NumberPoints.Visible = false;
             }
             else if (FractalsList.SelectedIndex == 2)
             {
                 labelZOOM.Visible = false;
                 ZOOMValue.Visible = false;
+
                 DecreaseZOOM.Visible = false;
                 IncreaseZOOM.Visible = false;
                 ZoomNUM.Visible = false;
+
                 x.Visible = false;
                 y.Visible = false;
+
                 CenterX.Visible = false;
                 CenterY.Visible = false;
+
                 LabelMaxZDegreeTwo.Visible = false;
                 MaxZDegreeTwo.Visible = false;
+
+                LabelBranchLength.Visible = false;
+                BranchLenght.Visible = false;
+
+                labelMinimalLength.Visible = false;
+                MinBranchLenght.Visible = false;
+
+                labelBranchWidth.Visible = false;
+                BranchWidth.Visible = false;
+
+                StartX.Visible = false;
+                StartY.Visible = false;
+
+                labelAngles.Visible = false;
+                NumberOfAngles.Visible = false;
+
+                FirstAngle.Visible = false;
+                SecondAngle.Visible = false;
+                ThirdAngle.Visible = false;
+                FourthAngle.Visible = false;
+
+                labelBackColor.Visible = true;
+                labelBackColor.Location = x.Location;
+
+                ColorButton.Visible = true;
+                ColorButton.Location = CenterX.Location;
+
+                Progress.Visible = false;
+
+                labelIterations.Visible = false;
+                Iterations.Visible = false;
+
+                labelHorizontal.Visible = true;
+                labelHorizontal.Location = y.Location;
+
+                Horizontal.Visible = true;
+                Horizontal.Location = CenterY.Location;
+
+                labelVertical.Visible = true;
+                labelVertical.Location = LabelMaxZDegreeTwo.Location;
+
+                Vertical.Visible = true;
+                Vertical.Location = MaxZDegreeTwo.Location;
+
+                labelNumberPoints.Visible = true;
+                labelNumberPoints.Location = labelIterations.Location;
+
+                NumberPoints.Visible = true;
+                NumberPoints.Location = Iterations.Location;
+
+                
+                Grad.Location = ZoomNUM.Location;
+
 
             }
             else
@@ -411,11 +490,13 @@ namespace WindowsFormsApp2
 
         }
 
-        public void DrawBarnsleyFern()
+        public async void DrawBarnsleyFern()
         {
+            CreateFractal.Enabled = false;
             start = DateTime.Now;
             float[] probability = new float[4] { 0.01f, 0.06f, 0.08f, 0.85f };
-            int NumbersOfPoint = 100000;
+            int NumbersOfPoint = (int)NumberPoints.Value;
+            float maxX = 3 + (float)Horizontal.Value, maxY = 10 + (float)Vertical.Value;
             float[,] Coefficient = new float[4, 6]
             {
             {0, 0, 0, 0.16f, 0, 0},
@@ -427,12 +508,12 @@ namespace WindowsFormsApp2
             Bitmap pictureFern = new Bitmap(image.Width, image.Height);
             Graphics gF;
             gF = Graphics.FromImage(pictureFern);
-            gF.Clear(Color.LawnGreen);
-            Barnsley_fern Fern = new Barnsley_fern(g, pictureFern, NumbersOfPoint, probability, Coefficient, pixels);
-            pictureFern = Fern.DrawBransleyFern();
+            Barnsley_fern Fern = new Barnsley_fern(g, pictureFern, maxX, maxY, NumbersOfPoint, probability, Coefficient, pixels, BackgroundColor);
+            await Task.Run(() => { pictureFern = Fern.DrawBransleyFern(); });
             end = DateTime.Now;
             CulculationTime.Text = (end - start).TotalMilliseconds.ToString("F2") + " ms";
             image.Image = pictureFern;
+            CreateFractal.Enabled = true;
         }
             
         
@@ -543,7 +624,6 @@ namespace WindowsFormsApp2
             Bitmap picture = new Bitmap(image.Image.Width, image.Image.Height);
             UserIt = (int)Iterations.Value;
 
-
             this.Invoke(new Action(() => // делегат для відображення progressBar
             {
                 Progress.Value = 0;
@@ -580,7 +660,7 @@ namespace WindowsFormsApp2
                     {
                         if (it < UserIt)
                         {
-                            if (it <= UserIt * (color / 100.0))
+                            if (it <= UserIt * (color / 120.0))
                             {
                                 picture.SetPixel(x, y, pixels[(color * 27) % Grad.Width].Color); // 27 частота градієнта
                                 break;
