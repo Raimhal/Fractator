@@ -47,6 +47,12 @@
             this.image = new System.Windows.Forms.PictureBox();
             this.tabControl = new System.Windows.Forms.TabControl();
             this.FractalProperties = new System.Windows.Forms.TabPage();
+            this.labelNumberPoints = new System.Windows.Forms.Label();
+            this.NumberPoints = new System.Windows.Forms.NumericUpDown();
+            this.Horizontal = new System.Windows.Forms.NumericUpDown();
+            this.Vertical = new System.Windows.Forms.NumericUpDown();
+            this.labelHorizontal = new System.Windows.Forms.Label();
+            this.labelVertical = new System.Windows.Forms.Label();
             this.ColorButton = new System.Windows.Forms.Button();
             this.labelBackColor = new System.Windows.Forms.Label();
             this.BranchWidth = new System.Windows.Forms.NumericUpDown();
@@ -79,12 +85,6 @@
             this.OpenFile = new System.Windows.Forms.OpenFileDialog();
             this.SaveFile = new System.Windows.Forms.SaveFileDialog();
             this.ColorDialog = new System.Windows.Forms.ColorDialog();
-            this.labelVertical = new System.Windows.Forms.Label();
-            this.labelHorizontal = new System.Windows.Forms.Label();
-            this.Vertical = new System.Windows.Forms.NumericUpDown();
-            this.Horizontal = new System.Windows.Forms.NumericUpDown();
-            this.NumberPoints = new System.Windows.Forms.NumericUpDown();
-            this.labelNumberPoints = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.ZOOMValue)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Iterations)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.SplitImageAndInterface)).BeginInit();
@@ -95,6 +95,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.image)).BeginInit();
             this.tabControl.SuspendLayout();
             this.FractalProperties.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.NumberPoints)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Horizontal)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Vertical)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.BranchWidth)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.MinBranchLenght)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.FourthAngle)).BeginInit();
@@ -106,15 +109,13 @@
             ((System.ComponentModel.ISupportInitialize)(this.FirstAngle)).BeginInit();
             this.Details.SuspendLayout();
             this.menuStrip1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.Vertical)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.Horizontal)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.NumberPoints)).BeginInit();
             this.SuspendLayout();
             // 
             // CreateFractal
             // 
             this.CreateFractal.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.CreateFractal.Cursor = System.Windows.Forms.Cursors.Default;
+            this.CreateFractal.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.CreateFractal.Location = new System.Drawing.Point(11, 526);
             this.CreateFractal.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
             this.CreateFractal.Name = "CreateFractal";
@@ -127,6 +128,7 @@
             // IncreaseZOOM
             // 
             this.IncreaseZOOM.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.IncreaseZOOM.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.IncreaseZOOM.Location = new System.Drawing.Point(107, 69);
             this.IncreaseZOOM.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
             this.IncreaseZOOM.Name = "IncreaseZOOM";
@@ -163,6 +165,7 @@
             // DecreaseZOOM
             // 
             this.DecreaseZOOM.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.DecreaseZOOM.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.DecreaseZOOM.Location = new System.Drawing.Point(153, 69);
             this.DecreaseZOOM.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
             this.DecreaseZOOM.Name = "DecreaseZOOM";
@@ -214,13 +217,16 @@
             // 
             this.ZoomNUM.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(192)))));
             this.ZoomNUM.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.ZoomNUM.CausesValidation = false;
+            this.ZoomNUM.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.ZoomNUM.Enabled = false;
             this.ZoomNUM.Font = new System.Drawing.Font("Arial Narrow", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.ZoomNUM.ForeColor = System.Drawing.Color.OrangeRed;
+            this.ZoomNUM.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
             this.ZoomNUM.Location = new System.Drawing.Point(3, 0);
             this.ZoomNUM.MaximumSize = new System.Drawing.Size(228, 40);
             this.ZoomNUM.Name = "ZoomNUM";
             this.ZoomNUM.ReadOnly = true;
-            this.ZoomNUM.Size = new System.Drawing.Size(10, 28);
+            this.ZoomNUM.Size = new System.Drawing.Size(0, 28);
             this.ZoomNUM.TabIndex = 9;
             this.ZoomNUM.Visible = false;
             // 
@@ -391,9 +397,91 @@
             this.FractalProperties.Text = "Fractal";
             this.FractalProperties.UseVisualStyleBackColor = true;
             // 
+            // labelNumberPoints
+            // 
+            this.labelNumberPoints.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.labelNumberPoints.AutoSize = true;
+            this.labelNumberPoints.Location = new System.Drawing.Point(17, 259);
+            this.labelNumberPoints.Name = "labelNumberPoints";
+            this.labelNumberPoints.Size = new System.Drawing.Size(104, 20);
+            this.labelNumberPoints.TabIndex = 47;
+            this.labelNumberPoints.Text = "Number points :";
+            // 
+            // NumberPoints
+            // 
+            this.NumberPoints.Increment = new decimal(new int[] {
+            100000,
+            0,
+            0,
+            0});
+            this.NumberPoints.Location = new System.Drawing.Point(76, 302);
+            this.NumberPoints.Maximum = new decimal(new int[] {
+            20000000,
+            0,
+            0,
+            0});
+            this.NumberPoints.Minimum = new decimal(new int[] {
+            1000,
+            0,
+            0,
+            0});
+            this.NumberPoints.Name = "NumberPoints";
+            this.NumberPoints.Size = new System.Drawing.Size(140, 26);
+            this.NumberPoints.TabIndex = 46;
+            this.NumberPoints.Value = new decimal(new int[] {
+            500000,
+            0,
+            0,
+            0});
+            // 
+            // Horizontal
+            // 
+            this.Horizontal.Location = new System.Drawing.Point(74, 302);
+            this.Horizontal.Maximum = new decimal(new int[] {
+            50,
+            0,
+            0,
+            0});
+            this.Horizontal.Name = "Horizontal";
+            this.Horizontal.Size = new System.Drawing.Size(140, 26);
+            this.Horizontal.TabIndex = 45;
+            // 
+            // Vertical
+            // 
+            this.Vertical.Location = new System.Drawing.Point(74, 302);
+            this.Vertical.Maximum = new decimal(new int[] {
+            50,
+            0,
+            0,
+            0});
+            this.Vertical.Name = "Vertical";
+            this.Vertical.Size = new System.Drawing.Size(140, 26);
+            this.Vertical.TabIndex = 44;
+            // 
+            // labelHorizontal
+            // 
+            this.labelHorizontal.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.labelHorizontal.AutoSize = true;
+            this.labelHorizontal.Location = new System.Drawing.Point(10, 279);
+            this.labelHorizontal.Name = "labelHorizontal";
+            this.labelHorizontal.Size = new System.Drawing.Size(147, 20);
+            this.labelHorizontal.TabIndex = 43;
+            this.labelHorizontal.Text = "Horizontal constriction :";
+            // 
+            // labelVertical
+            // 
+            this.labelVertical.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.labelVertical.AutoSize = true;
+            this.labelVertical.Location = new System.Drawing.Point(13, 277);
+            this.labelVertical.Name = "labelVertical";
+            this.labelVertical.Size = new System.Drawing.Size(136, 20);
+            this.labelVertical.TabIndex = 42;
+            this.labelVertical.Text = "Vertical constriction  :";
+            // 
             // ColorButton
             // 
             this.ColorButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.ColorButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.ColorButton.Location = new System.Drawing.Point(66, 248);
             this.ColorButton.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
             this.ColorButton.Name = "ColorButton";
@@ -415,6 +503,11 @@
             // BranchWidth
             // 
             this.BranchWidth.Location = new System.Drawing.Point(66, 250);
+            this.BranchWidth.Maximum = new decimal(new int[] {
+            60,
+            0,
+            0,
+            0});
             this.BranchWidth.Minimum = new decimal(new int[] {
             1,
             0,
@@ -702,17 +795,20 @@
             // CulculationTime
             // 
             this.CulculationTime.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.CulculationTime.Location = new System.Drawing.Point(133, 606);
+            this.CulculationTime.BackColor = System.Drawing.Color.White;
+            this.CulculationTime.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.CulculationTime.Enabled = false;
+            this.CulculationTime.Location = new System.Drawing.Point(14, 603);
             this.CulculationTime.Name = "CulculationTime";
             this.CulculationTime.ReadOnly = true;
-            this.CulculationTime.Size = new System.Drawing.Size(77, 26);
+            this.CulculationTime.Size = new System.Drawing.Size(189, 19);
             this.CulculationTime.TabIndex = 18;
             // 
             // labelTime
             // 
             this.labelTime.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.labelTime.AutoSize = true;
-            this.labelTime.Location = new System.Drawing.Point(7, 609);
+            this.labelTime.Location = new System.Drawing.Point(10, 583);
             this.labelTime.Name = "labelTime";
             this.labelTime.Size = new System.Drawing.Size(127, 20);
             this.labelTime.TabIndex = 17;
@@ -721,9 +817,9 @@
             // Details
             // 
             this.Details.Controls.Add(this.TextAngles);
-            this.Details.Location = new System.Drawing.Point(4, 29);
+            this.Details.Location = new System.Drawing.Point(4, 22);
             this.Details.Name = "Details";
-            this.Details.Size = new System.Drawing.Size(213, 656);
+            this.Details.Size = new System.Drawing.Size(213, 663);
             this.Details.TabIndex = 1;
             this.Details.Text = "The details";
             this.Details.UseVisualStyleBackColor = true;
@@ -743,7 +839,8 @@
             // 
             // RandomGradientButton
             // 
-            this.RandomGradientButton.Location = new System.Drawing.Point(7, 3);
+            this.RandomGradientButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.RandomGradientButton.Location = new System.Drawing.Point(7, 1);
             this.RandomGradientButton.Name = "RandomGradientButton";
             this.RandomGradientButton.Size = new System.Drawing.Size(210, 29);
             this.RandomGradientButton.TabIndex = 16;
@@ -794,87 +891,6 @@
             this.SaveFile.Filter = "Images|*.bmp;*.png;*.jpg";
             this.SaveFile.FilterIndex = 3;
             // 
-            // labelVertical
-            // 
-            this.labelVertical.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.labelVertical.AutoSize = true;
-            this.labelVertical.Location = new System.Drawing.Point(13, 277);
-            this.labelVertical.Name = "labelVertical";
-            this.labelVertical.Size = new System.Drawing.Size(136, 20);
-            this.labelVertical.TabIndex = 42;
-            this.labelVertical.Text = "Vertical constriction  :";
-            // 
-            // labelHorizontal
-            // 
-            this.labelHorizontal.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.labelHorizontal.AutoSize = true;
-            this.labelHorizontal.Location = new System.Drawing.Point(10, 279);
-            this.labelHorizontal.Name = "labelHorizontal";
-            this.labelHorizontal.Size = new System.Drawing.Size(147, 20);
-            this.labelHorizontal.TabIndex = 43;
-            this.labelHorizontal.Text = "Horizontal constriction :";
-            // 
-            // Vertical
-            // 
-            this.Vertical.Location = new System.Drawing.Point(74, 302);
-            this.Vertical.Maximum = new decimal(new int[] {
-            50,
-            0,
-            0,
-            0});
-            this.Vertical.Name = "Vertical";
-            this.Vertical.Size = new System.Drawing.Size(140, 26);
-            this.Vertical.TabIndex = 44;
-            // 
-            // Horizontal
-            // 
-            this.Horizontal.Location = new System.Drawing.Point(74, 302);
-            this.Horizontal.Maximum = new decimal(new int[] {
-            50,
-            0,
-            0,
-            0});
-            this.Horizontal.Name = "Horizontal";
-            this.Horizontal.Size = new System.Drawing.Size(140, 26);
-            this.Horizontal.TabIndex = 45;
-            // 
-            // NumberPoints
-            // 
-            this.NumberPoints.Increment = new decimal(new int[] {
-            100000,
-            0,
-            0,
-            0});
-            this.NumberPoints.Location = new System.Drawing.Point(76, 302);
-            this.NumberPoints.Maximum = new decimal(new int[] {
-            20000000,
-            0,
-            0,
-            0});
-            this.NumberPoints.Minimum = new decimal(new int[] {
-            1000,
-            0,
-            0,
-            0});
-            this.NumberPoints.Name = "NumberPoints";
-            this.NumberPoints.Size = new System.Drawing.Size(140, 26);
-            this.NumberPoints.TabIndex = 46;
-            this.NumberPoints.Value = new decimal(new int[] {
-            500000,
-            0,
-            0,
-            0});
-            // 
-            // labelNumberPoints
-            // 
-            this.labelNumberPoints.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.labelNumberPoints.AutoSize = true;
-            this.labelNumberPoints.Location = new System.Drawing.Point(17, 251);
-            this.labelNumberPoints.Name = "labelNumberPoints";
-            this.labelNumberPoints.Size = new System.Drawing.Size(104, 20);
-            this.labelNumberPoints.TabIndex = 47;
-            this.labelNumberPoints.Text = "Number points :";
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
@@ -905,6 +921,9 @@
             this.tabControl.ResumeLayout(false);
             this.FractalProperties.ResumeLayout(false);
             this.FractalProperties.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.NumberPoints)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Horizontal)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Vertical)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.BranchWidth)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.MinBranchLenght)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.FourthAngle)).EndInit();
@@ -918,9 +937,6 @@
             this.Details.PerformLayout();
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.Vertical)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.Horizontal)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.NumberPoints)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

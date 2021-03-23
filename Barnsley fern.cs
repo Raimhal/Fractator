@@ -50,7 +50,7 @@ namespace WindowsFormsApp2
             for (int i = 1; i <= NumberOfPoints; i++)
             {
                 // генерация числа (0;1)
-                var randomNum = random.NextDouble();
+                double randomNum = random.NextDouble();
                 for (int j = 0; j < probability.Length; j++)
                 {
                     randomNum -= probability[j];
@@ -70,7 +70,7 @@ namespace WindowsFormsApp2
                 x = (int)(x0 * width + bmp.Width / 2);
                 y = (int)(y0 * height);
 
-                picture.SetPixel((int)x, (int)((bmp.Height - (int)(y)) % bmp.Height), pixels[(int)(Math.Abs(x / 3) % 440)].Color);
+                picture.SetPixel((int)x, (int)((bmp.Height - (int)(y)) % bmp.Height), pixels[(int)(Math.Abs(x / 3) % 440)].Color); // розтяг градієнта на весь папоротник
             }
             return picture;
         }

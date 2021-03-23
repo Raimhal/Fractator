@@ -12,12 +12,10 @@ using System.Drawing.Imaging;
 using System.Globalization;
 using System.Diagnostics;
 /// <summary>
-/// 1) додати ще декілька фракталівя
-/// 2) додати лічильнику приближення невидимий фон
-/// 3) оформити користувацький інтерфейс
-/// 4) додати іконки на кнопки зуму
-/// 5) додати папоротник
-/// 6) додати криву дракона
+/// 1) додати лічильнику приближення невидимий фон
+/// 2) оформити користувацький інтерфейс
+/// 3) додати іконки на кнопки зуму
+/// 4) додати криву дракона
 /// 
 /// 
 /// /// </summary>
@@ -29,7 +27,6 @@ namespace WindowsFormsApp2
         public Color BackgroundColor = Color.Transparent;
         int UserIt;
         List<Pixel> pixels;
-
 
         double hx = -0.6, hy = 0, maxZ = 4, x_, y_;
         bool er_x, er_y, er_z;
@@ -60,6 +57,7 @@ namespace WindowsFormsApp2
             SizeArea = 4;
             g = Graphics.FromImage(image.Image);
             SetStyle(ControlStyles.SupportsTransparentBackColor, true);
+
         }
 
         private void GenerateFractal_Click(object sender, EventArgs e)
@@ -125,7 +123,14 @@ namespace WindowsFormsApp2
             ZoomVal *= (double)ZOOMValue.Value;
             ZoomNUM.Visible = true;
             ZoomNUM.Clear();
-            ZoomNUM.Text = ZoomVal.ToString("F2") + " X";
+            if (ZoomVal < 1)
+            {
+                ZoomNUM.Text = ZoomVal.ToString("F4") + " X";
+            }
+            else
+            {
+                ZoomNUM.Text = ZoomVal.ToString("F2") + " X";
+            }
             DrawMBrot();
         }
 
@@ -151,7 +156,7 @@ namespace WindowsFormsApp2
                 }
                 else if (e.Button == MouseButtons.Middle)
                 {                // back to default
-                    SizeArea = 3;
+                    SizeArea = 4;
                     hx = -0.6;
                     hy = 0;
                     CenterX.Text = hx.ToString();
@@ -172,7 +177,14 @@ namespace WindowsFormsApp2
                     CenterY.Text = y_.ToString();
                     ZoomVal /= (double)ZOOMValue.Value;
                     ZoomNUM.Clear();
-                    ZoomNUM.Text = ZoomVal.ToString("F2") + " X";
+                    if (ZoomVal < 1)
+                    {
+                        ZoomNUM.Text = ZoomVal.ToString("F4") + " X";
+                    }
+                    else
+                    {
+                        ZoomNUM.Text = ZoomVal.ToString("F2") + " X";
+                    }
                     DrawMBrot();
                 }
             }
@@ -184,6 +196,8 @@ namespace WindowsFormsApp2
         {
             if (OpenFile.ShowDialog() == DialogResult.OK)
             {
+                Graphics gGrad = Graphics.FromImage(Grad.Image);
+                gGrad.Clear(Color.Transparent);
                 Grad.Image = new Bitmap(OpenFile.FileName);
             }
         }
@@ -214,10 +228,6 @@ namespace WindowsFormsApp2
 
         private void FractalsList_SelectedIndexChanged(object sender, EventArgs e)
         {
-            int[] tmpGradLocation = new int[]
-            {
-                Grad.Location.X, Grad.Location.Y
-            };
             if (FractalsList.SelectedIndex == 0)
             {
                 labelZOOM.Visible = true;
@@ -330,10 +340,10 @@ namespace WindowsFormsApp2
 
                 FirstAngle.Visible = true;
                 SecondAngle.Visible = true;
-                ThirdAngle.Visible = true;
+                ThirdAngle.Visible = false;
                 FourthAngle.Visible = false;
 
-                NumberOfAngles.SelectedIndex = 2;
+                NumberOfAngles.SelectedIndex = 1;
 
                 labelBackColor.Visible = true;
                 labelBackColor.Location = x.Location;
@@ -607,7 +617,7 @@ namespace WindowsFormsApp2
             CreateFractal.Enabled = false;  ///
 
             start = DateTime.Now;
-            ZoomNUM.Width = ZoomNUM.Text.Length * 8 + 50; 
+            ZoomNUM.Width = ZoomNUM.Text.Length * 8 + 70; 
             await Task.Run(() => { CalculationMBrot(); });
             end = DateTime.Now;
 
@@ -623,6 +633,21 @@ namespace WindowsFormsApp2
         {
             Bitmap picture = new Bitmap(image.Image.Width, image.Image.Height);
             UserIt = (int)Iterations.Value;
+            int change;
+            int[] ColorIndex = new int[41];
+            int i = 0;
+            for(int p = 0;p < pixels.Count; p++)
+            {
+                if (p % (int)(Grad.Width / 40.0) == 0) {
+                    if (i >= ColorIndex.Length)
+                    {
+                        break;
+                    }
+                    ColorIndex[i] = p;
+                    i++;
+                }
+            }
+
 
             this.Invoke(new Action(() => // делегат для відображення progressBar
             {
@@ -656,22 +681,205 @@ namespace WindowsFormsApp2
                     } while (it < UserIt);
 
                     // coloring the set
-                    for (int color = 0; color <= Grad.Width; color += 1)
+                    if (it < UserIt)
                     {
-                        if (it < UserIt)
+                        change = it % 32;
+                        switch (change)
                         {
-                            if (it <= UserIt * (color / 120.0))
-                            {
-                                picture.SetPixel(x, y, pixels[(color * 27) % Grad.Width].Color); // 27 частота градієнта
+                            case 0:
+                                picture.SetPixel(x, y, pixels[ColorIndex[0]].Color); 
                                 break;
-                            }
-                        }
-                        else
-                        {
-                            picture.SetPixel(x, y, Color.FromArgb(0, 0, 0));
-                            break;
+                            case 1:
+                                picture.SetPixel(x, y, pixels[ColorIndex[1]].Color); 
+                                break;
+                            case 2:
+                                picture.SetPixel(x, y, pixels[ColorIndex[2]].Color); 
+                                break;
+                            case 3:
+                                picture.SetPixel(x, y, pixels[ColorIndex[3]].Color); 
+                                break;
+                            case 4:
+                                picture.SetPixel(x, y, pixels[ColorIndex[4]].Color); 
+                                break;
+                            case 5:
+                                picture.SetPixel(x, y, pixels[ColorIndex[5]].Color); 
+                                break;
+                            case 6:
+                                picture.SetPixel(x, y, pixels[ColorIndex[6]].Color); 
+                                break;
+                            case 7:
+                                picture.SetPixel(x, y, pixels[ColorIndex[7]].Color); 
+                                break;
+                            case 8:
+                                picture.SetPixel(x, y, pixels[ColorIndex[8]].Color); 
+                                break;
+                            case 9:
+                                picture.SetPixel(x, y, pixels[ColorIndex[9]].Color); 
+                                break;
+                            case 10:
+                                picture.SetPixel(x, y, pixels[ColorIndex[10]].Color); 
+                                break;
+                            case 11:
+                                picture.SetPixel(x, y, pixels[ColorIndex[11]].Color); 
+                                break;
+                            case 12:
+                                picture.SetPixel(x, y, pixels[ColorIndex[12]].Color); 
+                                break;
+                            case 13:
+                                picture.SetPixel(x, y, pixels[ColorIndex[13]].Color); 
+                                break;
+                            case 14:
+                                picture.SetPixel(x, y, pixels[ColorIndex[14]].Color); 
+                                break;
+                            case 15:
+                                picture.SetPixel(x, y, pixels[ColorIndex[15]].Color); 
+                                break;
+                            case 16:
+                                picture.SetPixel(x, y, pixels[ColorIndex[16]].Color); 
+                                break;
+                            case 17:
+                                picture.SetPixel(x, y, pixels[ColorIndex[17]].Color); 
+                                break;
+                            case 18:
+                                picture.SetPixel(x, y, pixels[ColorIndex[18]].Color); 
+                                break;
+                            case 19:
+                                picture.SetPixel(x, y, pixels[ColorIndex[19]].Color); 
+                                break;
+                            case 20:
+                                picture.SetPixel(x, y, pixels[ColorIndex[20]].Color); 
+                                break;
+                            case 21:
+                                picture.SetPixel(x, y, pixels[ColorIndex[21]].Color); 
+                                break;
+                            case 22:
+                                picture.SetPixel(x, y, pixels[ColorIndex[22]].Color); 
+                                break;
+                            case 23:
+                                picture.SetPixel(x, y, pixels[ColorIndex[23]].Color); 
+                                break;
+                            case 24:
+                                picture.SetPixel(x, y, pixels[ColorIndex[24]].Color); 
+                                break;
+                            case 25:
+                                picture.SetPixel(x, y, pixels[ColorIndex[25]].Color); 
+                                break;
+                            case 26:
+                                picture.SetPixel(x, y, pixels[ColorIndex[26]].Color); 
+                                break;
+                            case 27:
+                                picture.SetPixel(x, y, pixels[ColorIndex[27]].Color); 
+                                break;
+                            case 28:
+                                picture.SetPixel(x, y, pixels[ColorIndex[28]].Color); 
+                                break;
+                            case 29:
+                                picture.SetPixel(x, y, pixels[ColorIndex[29]].Color); 
+                                break;
+                            case 30:
+                                picture.SetPixel(x, y, pixels[ColorIndex[30]].Color); 
+                                break;
+                            case 31:
+                                picture.SetPixel(x, y, pixels[ColorIndex[31]].Color); 
+                                break;
+                            case 32:
+                                picture.SetPixel(x, y, pixels[ColorIndex[32]].Color); 
+                                break;
+                            case 33:
+                                picture.SetPixel(x, y, pixels[ColorIndex[33]].Color); 
+                                break;
+                            case 34:
+                                picture.SetPixel(x, y, pixels[ColorIndex[34]].Color); 
+                                break;
+                            case 35:
+                                picture.SetPixel(x, y, pixels[ColorIndex[35]].Color); 
+                                break;
+                            case 36:
+                                picture.SetPixel(x, y, pixels[ColorIndex[36]].Color); 
+                                break;
+                            case 37:
+                                picture.SetPixel(x, y, pixels[ColorIndex[37]].Color); 
+                                break;
+                            case 38:
+                                picture.SetPixel(x, y, pixels[ColorIndex[38]].Color); 
+                                break;
+                            case 39:
+                                picture.SetPixel(x, y, pixels[ColorIndex[39]].Color); 
+                                break;
+                            case 40:
+                                picture.SetPixel(x, y, pixels[ColorIndex[40]].Color); 
+                                break;
+                            //case 41:
+                            //    picture.SetPixel(x, y, pixels[ColorIndex[41]].Color); 
+                            //    break;
+                            //case 42:
+                            //    picture.SetPixel(x, y, pixels[ColorIndex[42]].Color); 
+                            //    break;
+                            //case 43:
+                            //    picture.SetPixel(x, y, pixels[ColorIndex[43]].Color); 
+                            //    break;
+                            //case 44:
+                            //    picture.SetPixel(x, y, pixels[ColorIndex[44]].Color); 
+                            //    break;
+                            //case 45:
+                            //    picture.SetPixel(x, y, pixels[ColorIndex[45]].Color); 
+                            //    break;
+                            //case 46:
+                            //    picture.SetPixel(x, y, pixels[ColorIndex[46]].Color); 
+                            //    break;
+                            //case 47:
+                            //    picture.SetPixel(x, y, pixels[ColorIndex[47]].Color); 
+                            //    break;
+                            //case 48:
+                            //    picture.SetPixel(x, y, pixels[ColorIndex[48]].Color); 
+                            //    break;
+                            //case 49:
+                            //    picture.SetPixel(x, y, pixels[ColorIndex[49]].Color); 
+                            //    break;
+                            //case 50:
+                            //    picture.SetPixel(x, y, pixels[ColorIndex[50]].Color); 
+                            //    break;
+                            //case 51:
+                            //    picture.SetPixel(x, y, pixels[ColorIndex[51]].Color);
+                            //    break;
+                            //case 52:
+                            //    picture.SetPixel(x, y, pixels[ColorIndex[52]].Color); 
+                            //    break;
+                            //case 53:
+                            //    picture.SetPixel(x, y, pixels[ColorIndex[53]].Color); 
+                            //    break;
+                            //case 54:
+                            //    picture.SetPixel(x, y, pixels[ColorIndex[54]].Color); 
+                            //    break;
+                            //case 55:
+                            //    picture.SetPixel(x, y, pixels[ColorIndex[55]].Color); 
+                            //    break;
+                            default:
+                                picture.SetPixel(x, y, Color.FromArgb(0, 0, 0)); 
+                                break;
                         }
                     }
+                    else
+                    {
+                        picture.SetPixel(x, y, Color.FromArgb(0, 0, 0));
+                    }
+                   
+                    //for (int color = 0; color <= Grad.Width; color += 1)
+                    //{
+                    //    if (it < UserIt)
+                    //    {
+                    //        if (it <= UserIt * (color / 120.0))
+                    //        {
+                    //            picture.SetPixel(x, y, pixels[(color * 27) % Grad.Width].Color); // 27 частота градієнта
+                    //            break;
+                    //        }
+                    //    }
+                    //    else
+                    //    {
+                    //        picture.SetPixel(x, y, Color.FromArgb(0, 0, 0));
+                    //        break;
+                    //    }
+                    //}
                 }
                 this.Invoke(new Action(() => // делегат для зміни progressBar
                 {
@@ -691,7 +899,7 @@ namespace WindowsFormsApp2
             {
                 pixels.Add(new Pixel()
                 {
-                    Color = bitmap.GetPixel(x, 10) // отримання кольору ряду пікселів з градієнту
+                    Color = bitmap.GetPixel(x, 1) // отримання кольору ряду пікселів з градієнту
                 });
             }
             return pixels;
