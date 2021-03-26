@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Drawing;
+using System.Drawing.Drawing2D;
 
 namespace WindowsFormsApp2
 {
@@ -22,12 +23,12 @@ namespace WindowsFormsApp2
         public Bitmap bmp;
         public Color BackgroundColor;
 
-        public Barnsley_fern(Graphics g, Bitmap bitmap, float maxX, float maxY, int NumberOfPoints, float[] probability,float[,] Coefficient, List<Pixel> pixels, Color backgroundColor)
+        public Barnsley_fern(Graphics g, Bitmap picture, float maxX, float maxY, int NumberOfPoints, float[] probability, float[,] Coefficient, List<Pixel> pixels, Color backgroundColor)
         {
-            
-            this.picture = new Bitmap(bitmap.Width, bitmap.Height);
-            this.bmp = new Bitmap(bitmap.Width, bitmap.Height);
-            this.g = Graphics.FromImage(picture);
+
+            this.picture = new Bitmap(picture.Width, picture.Height);
+            this.bmp = new Bitmap(picture.Width, picture.Height);
+            this.g = Graphics.FromImage(this.picture);
             this.maxX = maxX;
             this.maxY = maxY;
             this.NumberOfPoints = NumberOfPoints;
@@ -36,7 +37,11 @@ namespace WindowsFormsApp2
             this.pixels = pixels;
             this.BackgroundColor = backgroundColor;
         }
-
+        private void Effects()
+        {
+            g.Clear(BackgroundColor);
+            g.SmoothingMode = SmoothingMode.AntiAlias;
+        }
         public Bitmap DrawBransleyFern()
         {
             Random random = new Random();
@@ -45,7 +50,7 @@ namespace WindowsFormsApp2
             int width = (int)(bmp.Width / (maxX - minX));
             int height = (int)(bmp.Height / (maxY - minY));
             int FunctionIndex = 0;
-            g.Clear(BackgroundColor);
+            Effects();
 
             for (int i = 1; i <= NumberOfPoints; i++)
             {
@@ -70,7 +75,7 @@ namespace WindowsFormsApp2
                 x = (int)(x0 * width + bmp.Width / 2);
                 y = (int)(y0 * height);
 
-                picture.SetPixel((int)x, (int)((bmp.Height - (int)(y)) % bmp.Height), pixels[(int)(Math.Abs(x / 3) % 440)].Color); // розтяг градієнта на весь папоротник
+                picture.SetPixel((int)x, (int)((bmp.Height - (int)(y)) % bmp.Height), pixels[(int)(Math.Abs(x / 3) % pixels.Count)].Color); // розтяг градієнта на весь папоротник
             }
             return picture;
         }

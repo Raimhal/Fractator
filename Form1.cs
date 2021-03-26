@@ -74,8 +74,8 @@ namespace WindowsFormsApp2
             er_x = double.TryParse(CenterX.Text, out hx);
             er_y = double.TryParse(CenterY.Text, out hy);
             er_z = double.TryParse(MaxZDegreeTwo.Text, out maxZ);
-            Bitmap bitmap = (Bitmap)Grad.Image;
-            pixels = GetPixels(bitmap);
+            pixels = GetPixels((Bitmap)Grad.Image);
+
 
 
 
@@ -434,14 +434,78 @@ namespace WindowsFormsApp2
                 NumberPoints.Visible = true;
                 NumberPoints.Location = Iterations.Location;
 
-                
+                BackgroundColor = Color.Transparent;
+                ColorButton.BackColor = Color.Transparent;
+
                 Grad.Location = ZoomNUM.Location;
 
 
             }
             else
             {
+                labelZOOM.Visible = false;
+                ZOOMValue.Visible = false;
 
+                DecreaseZOOM.Visible = false;
+                IncreaseZOOM.Visible = false;
+                ZoomNUM.Visible = false;
+
+                x.Visible = false;
+                y.Visible = false;
+
+                CenterX.Visible = false;
+                CenterY.Visible = false;
+
+                LabelMaxZDegreeTwo.Visible = false;
+                MaxZDegreeTwo.Visible = false;
+
+                LabelBranchLength.Visible = false;
+                BranchLenght.Visible = false;
+
+                labelMinimalLength.Visible = false;
+                MinBranchLenght.Visible = false;
+
+                labelBranchWidth.Visible = false;
+                BranchWidth.Visible = false;
+
+                StartX.Visible = false;
+                StartY.Visible = false;
+
+                labelAngles.Visible = false;
+                NumberOfAngles.Visible = false;
+
+                FirstAngle.Visible = false;
+                SecondAngle.Visible = false;
+                ThirdAngle.Visible = false;
+                FourthAngle.Visible = false;
+
+                labelBackColor.Visible = true;
+                labelBackColor.Location = x.Location;
+
+                ColorButton.Visible = true;
+                ColorButton.Location = CenterX.Location;
+
+                Progress.Visible = false;
+
+                labelIterations.Visible = false;
+                Iterations.Visible = false;
+
+                labelHorizontal.Visible = false;
+
+                Horizontal.Visible = false;
+
+                labelVertical.Visible = false;
+
+                Vertical.Visible = false;
+
+                labelNumberPoints.Visible = false;
+
+                NumberPoints.Visible = false;
+
+                BackgroundColor = Color.Transparent;
+                ColorButton.BackColor = Color.Transparent;
+
+                Grad.Location = new Point(image.Width - Grad.Width);
             }
         }
 
@@ -466,7 +530,7 @@ namespace WindowsFormsApp2
             FourthAngle.Visible = false;
         }
 
-        public async void DrawFractalTree()
+        private async void DrawFractalTree()
         {
             CreateFractal.Enabled = false;
             start = DateTime.Now;
@@ -500,10 +564,13 @@ namespace WindowsFormsApp2
 
         }
 
-        public async void DrawBarnsleyFern()
+        private async void DrawBarnsleyFern()
         {
-            CreateFractal.Enabled = false;
+
             start = DateTime.Now;
+
+            CreateFractal.Enabled = false;
+
             float[] probability = new float[4] { 0.01f, 0.06f, 0.08f, 0.85f };
             int NumbersOfPoint = (int)NumberPoints.Value;
             float maxX = 3 + (float)Horizontal.Value, maxY = 10 + (float)Vertical.Value;
@@ -515,19 +582,55 @@ namespace WindowsFormsApp2
             {0.85f, 0.04f, -0.04f, 0.85f, 0, 1.6f}
 
             };
+
             Bitmap pictureFern = new Bitmap(image.Width, image.Height);
-            Graphics gF;
-            gF = Graphics.FromImage(pictureFern);
             Barnsley_fern Fern = new Barnsley_fern(g, pictureFern, maxX, maxY, NumbersOfPoint, probability, Coefficient, pixels, BackgroundColor);
             await Task.Run(() => { pictureFern = Fern.DrawBransleyFern(); });
+
             end = DateTime.Now;
             CulculationTime.Text = (end - start).TotalMilliseconds.ToString("F2") + " ms";
+
             image.Image = pictureFern;
             CreateFractal.Enabled = true;
         }
             
-        
-            
+        private async void DrawCurveDragon()
+        {
+            CreateFractal.Enabled = false;
+            start = DateTime.Now;
+
+            int x1, y1, x2, y2, CountIterations;
+            Bitmap pictureCurveDragon = new Bitmap(image.Width, image.Height);
+
+            int[] indexs = new int[4];
+            for (int i = 0; i < indexs.Length; i++)
+            {
+                indexs[i] = (int)((i + 1 )* Grad.Image.Width / 5.0);
+            }
+            CurveDragon Dragon = new CurveDragon(g, pictureCurveDragon, BackgroundColor);
+            x1 = pictureCurveDragon.Width / 2;
+            y1 = pictureCurveDragon.Height / 2;
+            x2 = pictureCurveDragon.Width / 2;
+            y2 = pictureCurveDragon.Height / 2;
+
+            CountIterations = 20;
+
+            await Task.Run(() => {
+                Dragon.DrawCurveDragon(x1, y1, x2 + 300, y2, CountIterations, new Pen(pixels[indexs[0]].Color, 3)); 
+                Dragon.DrawCurveDragon(x1, y1, x2 - 300, y2, CountIterations, new Pen(pixels[indexs[1]].Color, 3));
+                Dragon.DrawCurveDragon(x1, y1, x2, y2 + 300, CountIterations, new Pen(pixels[indexs[2]].Color, 3));
+                Dragon.DrawCurveDragon(x1, y1, x2, y2 - 300, CountIterations, new Pen(pixels[indexs[3]].Color, 3));
+            });
+
+            end = DateTime.Now;
+            CulculationTime.Text = (end - start).TotalMilliseconds.ToString("F2") + " ms";
+
+            image.Image = pictureCurveDragon;
+            CreateFractal.Enabled = true;
+        }
+
+
+
 
         private void NumberOfAngles_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -589,7 +692,7 @@ namespace WindowsFormsApp2
         {
             Gradient(Grad);
         }
-        // drawing a MBrot set
+
         public void DrawFractals()
         {
             if (FractalsList.SelectedIndex == 0)
@@ -604,12 +707,14 @@ namespace WindowsFormsApp2
             {
                 DrawBarnsleyFern();
             }
-            else
+            else if (FractalsList.SelectedIndex == 3)
             {
-
+                DrawCurveDragon();
             }
         }
-        public async void DrawMBrot()
+
+        // drawing a MBrot set
+        private async void DrawMBrot()
         {
             image.Enabled = false;          /// 
             IncreaseZOOM.Enabled = false;   ///
@@ -628,7 +733,6 @@ namespace WindowsFormsApp2
             DecreaseZOOM.Enabled = true;    /// added access to change the image
             CreateFractal.Enabled = true;
         }
-
         public void CalculationMBrot()
         {
             Bitmap picture = new Bitmap(image.Image.Width, image.Image.Height);
@@ -891,6 +995,8 @@ namespace WindowsFormsApp2
             image.Invalidate();
             image.Image = picture;
         }
+
+
         // getting gradient pixels 
         private List<Pixel> GetPixels(Bitmap bitmap)
         {
@@ -899,9 +1005,10 @@ namespace WindowsFormsApp2
             {
                 pixels.Add(new Pixel()
                 {
-                    Color = bitmap.GetPixel(x, 1) // отримання кольору ряду пікселів з градієнту
+                    Color = bitmap.GetPixel(x, bitmap.Height / 2) // отримання кольору ряду пікселів з градієнту
                 });
             }
+
             return pixels;
         }
         // creation of  gradient

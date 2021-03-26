@@ -49,6 +49,7 @@
   <ItemGroup>
     <Compile Include="Barnsley fern.cs" />
     <Compile Include="Complex.cs" />
+    <Compile Include="CurveDragon.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -96,6 +97,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="gradients\whiteFon.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="gradients\sixth.PNG" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

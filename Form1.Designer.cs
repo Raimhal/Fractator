@@ -314,7 +314,7 @@
             this.Grad.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.Grad.BackColor = System.Drawing.Color.Transparent;
             this.Grad.Image = global::WindowsFormsApp2.Properties.Resources.third;
-            this.Grad.Location = new System.Drawing.Point(835, -2);
+            this.Grad.Location = new System.Drawing.Point(770, 0);
             this.Grad.Name = "Grad";
             this.Grad.Size = new System.Drawing.Size(445, 28);
             this.Grad.TabIndex = 16;
@@ -772,7 +772,8 @@
             this.FractalsList.Items.AddRange(new object[] {
             "Mandelbrot set ",
             "Fractal tree",
-            "Barnsley fern"});
+            "Barnsley fern",
+            "Curved dragon"});
             this.FractalsList.Location = new System.Drawing.Point(12, 19);
             this.FractalsList.Name = "FractalsList";
             this.FractalsList.Size = new System.Drawing.Size(192, 24);
