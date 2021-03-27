@@ -28,10 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.CreateFractal = new System.Windows.Forms.Button();
-            this.IncreaseZOOM = new System.Windows.Forms.Button();
             this.ZOOMValue = new System.Windows.Forms.NumericUpDown();
-            this.DecreaseZOOM = new System.Windows.Forms.Button();
             this.Iterations = new System.Windows.Forms.NumericUpDown();
             this.labelIterations = new System.Windows.Forms.Label();
             this.labelZOOM = new System.Windows.Forms.Label();
@@ -47,6 +46,53 @@
             this.image = new System.Windows.Forms.PictureBox();
             this.tabControl = new System.Windows.Forms.TabControl();
             this.FractalProperties = new System.Windows.Forms.TabPage();
+            this.DecreaseZOOM = new System.Windows.Forms.Button();
+            this.DragonIterations = new System.Windows.Forms.NumericUpDown();
+            this.labelDragonIterations = new System.Windows.Forms.Label();
+            this.NumberOfAngles = new System.Windows.Forms.ComboBox();
+            this.FractalsList = new System.Windows.Forms.ComboBox();
+            this.DragonBrashWidth = new System.Windows.Forms.NumericUpDown();
+            this.labelDragonBrashWidth = new System.Windows.Forms.Label();
+            this.FifthEndPointY = new System.Windows.Forms.NumericUpDown();
+            this.FifthStartPointY = new System.Windows.Forms.NumericUpDown();
+            this.FifthStartPointX = new System.Windows.Forms.NumericUpDown();
+            this.FifthEndPointX = new System.Windows.Forms.NumericUpDown();
+            this.SixthStartPointY = new System.Windows.Forms.NumericUpDown();
+            this.SixthEndPointY = new System.Windows.Forms.NumericUpDown();
+            this.SeventhStartPointY = new System.Windows.Forms.NumericUpDown();
+            this.SeventhEndPointY = new System.Windows.Forms.NumericUpDown();
+            this.SixthStartPointX = new System.Windows.Forms.NumericUpDown();
+            this.SixthEndPointX = new System.Windows.Forms.NumericUpDown();
+            this.SeventhEndPointX = new System.Windows.Forms.NumericUpDown();
+            this.SeventhStartPointX = new System.Windows.Forms.NumericUpDown();
+            this.EighthEndPointY = new System.Windows.Forms.NumericUpDown();
+            this.EighthEndPointX = new System.Windows.Forms.NumericUpDown();
+            this.EighthStartPointY = new System.Windows.Forms.NumericUpDown();
+            this.EighthStartPointX = new System.Windows.Forms.NumericUpDown();
+            this.FourthEndPointY = new System.Windows.Forms.NumericUpDown();
+            this.FourthStartPointY = new System.Windows.Forms.NumericUpDown();
+            this.FourthStartPointX = new System.Windows.Forms.NumericUpDown();
+            this.FourthEndPointX = new System.Windows.Forms.NumericUpDown();
+            this.ThirdStartPointY = new System.Windows.Forms.NumericUpDown();
+            this.ThirdEndPointY = new System.Windows.Forms.NumericUpDown();
+            this.SecondStartPointY = new System.Windows.Forms.NumericUpDown();
+            this.SecondEndPointY = new System.Windows.Forms.NumericUpDown();
+            this.ThirdStartPointX = new System.Windows.Forms.NumericUpDown();
+            this.ThirdEndPointX = new System.Windows.Forms.NumericUpDown();
+            this.SecondEndPointX = new System.Windows.Forms.NumericUpDown();
+            this.SecondStartPointX = new System.Windows.Forms.NumericUpDown();
+            this.FirstEndPointY = new System.Windows.Forms.NumericUpDown();
+            this.FirstEndPointX = new System.Windows.Forms.NumericUpDown();
+            this.FirstStartPointY = new System.Windows.Forms.NumericUpDown();
+            this.FirstStartPointX = new System.Windows.Forms.NumericUpDown();
+            this.labelEndPointX = new System.Windows.Forms.Label();
+            this.labelEndPointY = new System.Windows.Forms.Label();
+            this.labelStartPointY = new System.Windows.Forms.Label();
+            this.labelStartPointX = new System.Windows.Forms.Label();
+            this.labelEndPoint = new System.Windows.Forms.Label();
+            this.labelStartPoint = new System.Windows.Forms.Label();
+            this.NumberOfCurves = new System.Windows.Forms.ComboBox();
+            this.labelNumberOfCurves = new System.Windows.Forms.Label();
             this.labelNumberPoints = new System.Windows.Forms.Label();
             this.NumberPoints = new System.Windows.Forms.NumericUpDown();
             this.Horizontal = new System.Windows.Forms.NumericUpDown();
@@ -59,7 +105,6 @@
             this.labelBranchWidth = new System.Windows.Forms.Label();
             this.MinBranchLenght = new System.Windows.Forms.NumericUpDown();
             this.labelMinimalLength = new System.Windows.Forms.Label();
-            this.NumberOfAngles = new System.Windows.Forms.ListBox();
             this.LabelBranchLength = new System.Windows.Forms.Label();
             this.labelStartY = new System.Windows.Forms.Label();
             this.labelStartX = new System.Windows.Forms.Label();
@@ -71,10 +116,10 @@
             this.BranchLenght = new System.Windows.Forms.NumericUpDown();
             this.FirstAngle = new System.Windows.Forms.NumericUpDown();
             this.labelAngles = new System.Windows.Forms.Label();
-            this.FractalsList = new System.Windows.Forms.ListBox();
             this.Progress = new System.Windows.Forms.ProgressBar();
             this.CulculationTime = new System.Windows.Forms.TextBox();
             this.labelTime = new System.Windows.Forms.Label();
+            this.IncreaseZOOM = new System.Windows.Forms.Button();
             this.Details = new System.Windows.Forms.TabPage();
             this.TextAngles = new System.Windows.Forms.TextBox();
             this.RandomGradientButton = new System.Windows.Forms.Button();
@@ -95,6 +140,40 @@
             ((System.ComponentModel.ISupportInitialize)(this.image)).BeginInit();
             this.tabControl.SuspendLayout();
             this.FractalProperties.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.DragonIterations)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DragonBrashWidth)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.FifthEndPointY)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.FifthStartPointY)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.FifthStartPointX)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.FifthEndPointX)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.SixthStartPointY)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.SixthEndPointY)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.SeventhStartPointY)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.SeventhEndPointY)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.SixthStartPointX)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.SixthEndPointX)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.SeventhEndPointX)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.SeventhStartPointX)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.EighthEndPointY)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.EighthEndPointX)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.EighthStartPointY)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.EighthStartPointX)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.FourthEndPointY)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.FourthStartPointY)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.FourthStartPointX)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.FourthEndPointX)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ThirdStartPointY)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ThirdEndPointY)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.SecondStartPointY)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.SecondEndPointY)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ThirdStartPointX)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ThirdEndPointX)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.SecondEndPointX)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.SecondStartPointX)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.FirstEndPointY)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.FirstEndPointX)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.FirstStartPointY)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.FirstStartPointX)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.NumberPoints)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Horizontal)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Vertical)).BeginInit();
@@ -125,19 +204,6 @@
             this.CreateFractal.UseVisualStyleBackColor = true;
             this.CreateFractal.Click += new System.EventHandler(this.GenerateFractal_Click);
             // 
-            // IncreaseZOOM
-            // 
-            this.IncreaseZOOM.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.IncreaseZOOM.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.IncreaseZOOM.Location = new System.Drawing.Point(107, 69);
-            this.IncreaseZOOM.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
-            this.IncreaseZOOM.Name = "IncreaseZOOM";
-            this.IncreaseZOOM.Size = new System.Drawing.Size(40, 26);
-            this.IncreaseZOOM.TabIndex = 2;
-            this.IncreaseZOOM.Text = "+";
-            this.IncreaseZOOM.UseVisualStyleBackColor = true;
-            this.IncreaseZOOM.Click += new System.EventHandler(this.IncreaseZOOM_Click);
-            // 
             // ZOOMValue
             // 
             this.ZOOMValue.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
@@ -161,19 +227,6 @@
             0,
             0,
             0});
-            // 
-            // DecreaseZOOM
-            // 
-            this.DecreaseZOOM.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.DecreaseZOOM.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.DecreaseZOOM.Location = new System.Drawing.Point(153, 69);
-            this.DecreaseZOOM.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
-            this.DecreaseZOOM.Name = "DecreaseZOOM";
-            this.DecreaseZOOM.Size = new System.Drawing.Size(40, 26);
-            this.DecreaseZOOM.TabIndex = 4;
-            this.DecreaseZOOM.Text = "-";
-            this.DecreaseZOOM.UseVisualStyleBackColor = true;
-            this.DecreaseZOOM.Click += new System.EventHandler(this.DecreaseZOOM_Click);
             // 
             // Iterations
             // 
@@ -304,7 +357,6 @@
             // 
             this.SplitImageAndInterface.Panel2.Controls.Add(this.tabControl);
             this.SplitImageAndInterface.Panel2.Controls.Add(this.RandomGradientButton);
-            this.SplitImageAndInterface.Panel2.Paint += new System.Windows.Forms.PaintEventHandler(this.SplitImageAndInterface_Panel2_Paint);
             this.SplitImageAndInterface.Size = new System.Drawing.Size(1513, 724);
             this.SplitImageAndInterface.SplitterDistance = 1284;
             this.SplitImageAndInterface.TabIndex = 17;
@@ -313,8 +365,8 @@
             // 
             this.Grad.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.Grad.BackColor = System.Drawing.Color.Transparent;
-            this.Grad.Image = global::WindowsFormsApp2.Properties.Resources.third;
-            this.Grad.Location = new System.Drawing.Point(770, 0);
+            this.Grad.Image = ((System.Drawing.Image)(resources.GetObject("Grad.Image")));
+            this.Grad.Location = new System.Drawing.Point(832, 1);
             this.Grad.Name = "Grad";
             this.Grad.Size = new System.Drawing.Size(445, 28);
             this.Grad.TabIndex = 16;
@@ -346,6 +398,53 @@
             // 
             // FractalProperties
             // 
+            this.FractalProperties.Controls.Add(this.DecreaseZOOM);
+            this.FractalProperties.Controls.Add(this.DragonIterations);
+            this.FractalProperties.Controls.Add(this.labelDragonIterations);
+            this.FractalProperties.Controls.Add(this.NumberOfAngles);
+            this.FractalProperties.Controls.Add(this.FractalsList);
+            this.FractalProperties.Controls.Add(this.DragonBrashWidth);
+            this.FractalProperties.Controls.Add(this.labelDragonBrashWidth);
+            this.FractalProperties.Controls.Add(this.FifthEndPointY);
+            this.FractalProperties.Controls.Add(this.FifthStartPointY);
+            this.FractalProperties.Controls.Add(this.FifthStartPointX);
+            this.FractalProperties.Controls.Add(this.FifthEndPointX);
+            this.FractalProperties.Controls.Add(this.SixthStartPointY);
+            this.FractalProperties.Controls.Add(this.SixthEndPointY);
+            this.FractalProperties.Controls.Add(this.SeventhStartPointY);
+            this.FractalProperties.Controls.Add(this.SeventhEndPointY);
+            this.FractalProperties.Controls.Add(this.SixthStartPointX);
+            this.FractalProperties.Controls.Add(this.SixthEndPointX);
+            this.FractalProperties.Controls.Add(this.SeventhEndPointX);
+            this.FractalProperties.Controls.Add(this.SeventhStartPointX);
+            this.FractalProperties.Controls.Add(this.EighthEndPointY);
+            this.FractalProperties.Controls.Add(this.EighthEndPointX);
+            this.FractalProperties.Controls.Add(this.EighthStartPointY);
+            this.FractalProperties.Controls.Add(this.EighthStartPointX);
+            this.FractalProperties.Controls.Add(this.FourthEndPointY);
+            this.FractalProperties.Controls.Add(this.FourthStartPointY);
+            this.FractalProperties.Controls.Add(this.FourthStartPointX);
+            this.FractalProperties.Controls.Add(this.FourthEndPointX);
+            this.FractalProperties.Controls.Add(this.ThirdStartPointY);
+            this.FractalProperties.Controls.Add(this.ThirdEndPointY);
+            this.FractalProperties.Controls.Add(this.SecondStartPointY);
+            this.FractalProperties.Controls.Add(this.SecondEndPointY);
+            this.FractalProperties.Controls.Add(this.ThirdStartPointX);
+            this.FractalProperties.Controls.Add(this.ThirdEndPointX);
+            this.FractalProperties.Controls.Add(this.SecondEndPointX);
+            this.FractalProperties.Controls.Add(this.SecondStartPointX);
+            this.FractalProperties.Controls.Add(this.FirstEndPointY);
+            this.FractalProperties.Controls.Add(this.FirstEndPointX);
+            this.FractalProperties.Controls.Add(this.FirstStartPointY);
+            this.FractalProperties.Controls.Add(this.FirstStartPointX);
+            this.FractalProperties.Controls.Add(this.labelEndPointX);
+            this.FractalProperties.Controls.Add(this.labelEndPointY);
+            this.FractalProperties.Controls.Add(this.labelStartPointY);
+            this.FractalProperties.Controls.Add(this.labelStartPointX);
+            this.FractalProperties.Controls.Add(this.labelEndPoint);
+            this.FractalProperties.Controls.Add(this.labelStartPoint);
+            this.FractalProperties.Controls.Add(this.NumberOfCurves);
+            this.FractalProperties.Controls.Add(this.labelNumberOfCurves);
             this.FractalProperties.Controls.Add(this.labelNumberPoints);
             this.FractalProperties.Controls.Add(this.NumberPoints);
             this.FractalProperties.Controls.Add(this.Horizontal);
@@ -358,7 +457,6 @@
             this.FractalProperties.Controls.Add(this.labelBranchWidth);
             this.FractalProperties.Controls.Add(this.MinBranchLenght);
             this.FractalProperties.Controls.Add(this.labelMinimalLength);
-            this.FractalProperties.Controls.Add(this.NumberOfAngles);
             this.FractalProperties.Controls.Add(this.LabelBranchLength);
             this.FractalProperties.Controls.Add(this.labelStartY);
             this.FractalProperties.Controls.Add(this.labelStartX);
@@ -370,7 +468,6 @@
             this.FractalProperties.Controls.Add(this.BranchLenght);
             this.FractalProperties.Controls.Add(this.FirstAngle);
             this.FractalProperties.Controls.Add(this.labelAngles);
-            this.FractalProperties.Controls.Add(this.FractalsList);
             this.FractalProperties.Controls.Add(this.Progress);
             this.FractalProperties.Controls.Add(this.CulculationTime);
             this.FractalProperties.Controls.Add(this.labelTime);
@@ -384,7 +481,6 @@
             this.FractalProperties.Controls.Add(this.CreateFractal);
             this.FractalProperties.Controls.Add(this.labelZOOM);
             this.FractalProperties.Controls.Add(this.IncreaseZOOM);
-            this.FractalProperties.Controls.Add(this.DecreaseZOOM);
             this.FractalProperties.Controls.Add(this.labelIterations);
             this.FractalProperties.Controls.Add(this.Iterations);
             this.FractalProperties.Cursor = System.Windows.Forms.Cursors.Default;
@@ -397,11 +493,1072 @@
             this.FractalProperties.Text = "Fractal";
             this.FractalProperties.UseVisualStyleBackColor = true;
             // 
+            // DecreaseZOOM
+            // 
+            this.DecreaseZOOM.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.DecreaseZOOM.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.DecreaseZOOM.Image = ((System.Drawing.Image)(resources.GetObject("DecreaseZOOM.Image")));
+            this.DecreaseZOOM.Location = new System.Drawing.Point(144, 65);
+            this.DecreaseZOOM.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
+            this.DecreaseZOOM.Name = "DecreaseZOOM";
+            this.DecreaseZOOM.Size = new System.Drawing.Size(32, 33);
+            this.DecreaseZOOM.TabIndex = 95;
+            this.DecreaseZOOM.UseVisualStyleBackColor = true;
+            this.DecreaseZOOM.Click += new System.EventHandler(this.DecreaseZOOM_Click);
+            // 
+            // DragonIterations
+            // 
+            this.DragonIterations.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.DragonIterations.Location = new System.Drawing.Point(76, 269);
+            this.DragonIterations.Maximum = new decimal(new int[] {
+            20,
+            0,
+            0,
+            0});
+            this.DragonIterations.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.DragonIterations.Name = "DragonIterations";
+            this.DragonIterations.Size = new System.Drawing.Size(110, 26);
+            this.DragonIterations.TabIndex = 94;
+            this.DragonIterations.Value = new decimal(new int[] {
+            12,
+            0,
+            0,
+            0});
+            // 
+            // labelDragonIterations
+            // 
+            this.labelDragonIterations.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.labelDragonIterations.AutoSize = true;
+            this.labelDragonIterations.Location = new System.Drawing.Point(66, 194);
+            this.labelDragonIterations.Name = "labelDragonIterations";
+            this.labelDragonIterations.Size = new System.Drawing.Size(132, 20);
+            this.labelDragonIterations.TabIndex = 93;
+            this.labelDragonIterations.Text = "Number of iterations:";
+            // 
+            // NumberOfAngles
+            // 
+            this.NumberOfAngles.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.NumberOfAngles.FormattingEnabled = true;
+            this.NumberOfAngles.Items.AddRange(new object[] {
+            "1",
+            "2",
+            "3",
+            "4"});
+            this.NumberOfAngles.Location = new System.Drawing.Point(73, 156);
+            this.NumberOfAngles.Name = "NumberOfAngles";
+            this.NumberOfAngles.Size = new System.Drawing.Size(103, 28);
+            this.NumberOfAngles.TabIndex = 92;
+            this.NumberOfAngles.SelectedIndexChanged += new System.EventHandler(this.NumberOfAngles_SelectedIndexChanged);
+            // 
+            // FractalsList
+            // 
+            this.FractalsList.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.FractalsList.FormattingEnabled = true;
+            this.FractalsList.Items.AddRange(new object[] {
+            "Mandelbrot set ",
+            "Fractal tree",
+            "Fern Barnsley",
+            "Curve of dragon"});
+            this.FractalsList.Location = new System.Drawing.Point(7, 6);
+            this.FractalsList.Name = "FractalsList";
+            this.FractalsList.Size = new System.Drawing.Size(192, 28);
+            this.FractalsList.TabIndex = 91;
+            this.FractalsList.SelectedIndexChanged += new System.EventHandler(this.FractalsList_SelectedIndexChanged);
+            // 
+            // DragonBrashWidth
+            // 
+            this.DragonBrashWidth.Location = new System.Drawing.Point(129, 270);
+            this.DragonBrashWidth.Maximum = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
+            this.DragonBrashWidth.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.DragonBrashWidth.Name = "DragonBrashWidth";
+            this.DragonBrashWidth.Size = new System.Drawing.Size(47, 26);
+            this.DragonBrashWidth.TabIndex = 90;
+            this.DragonBrashWidth.Value = new decimal(new int[] {
+            3,
+            0,
+            0,
+            0});
+            // 
+            // labelDragonBrashWidth
+            // 
+            this.labelDragonBrashWidth.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.labelDragonBrashWidth.AutoSize = true;
+            this.labelDragonBrashWidth.Location = new System.Drawing.Point(19, 274);
+            this.labelDragonBrashWidth.Name = "labelDragonBrashWidth";
+            this.labelDragonBrashWidth.Size = new System.Drawing.Size(81, 20);
+            this.labelDragonBrashWidth.TabIndex = 89;
+            this.labelDragonBrashWidth.Text = "Brush width:";
+            // 
+            // FifthEndPointY
+            // 
+            this.FifthEndPointY.Increment = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
+            this.FifthEndPointY.Location = new System.Drawing.Point(159, 217);
+            this.FifthEndPointY.Maximum = new decimal(new int[] {
+            2000,
+            0,
+            0,
+            0});
+            this.FifthEndPointY.Minimum = new decimal(new int[] {
+            1000,
+            0,
+            0,
+            -2147483648});
+            this.FifthEndPointY.Name = "FifthEndPointY";
+            this.FifthEndPointY.Size = new System.Drawing.Size(40, 26);
+            this.FifthEndPointY.TabIndex = 88;
+            this.FifthEndPointY.Value = new decimal(new int[] {
+            960,
+            0,
+            0,
+            0});
+            // 
+            // FifthStartPointY
+            // 
+            this.FifthStartPointY.Increment = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
+            this.FifthStartPointY.Location = new System.Drawing.Point(63, 217);
+            this.FifthStartPointY.Maximum = new decimal(new int[] {
+            2000,
+            0,
+            0,
+            0});
+            this.FifthStartPointY.Minimum = new decimal(new int[] {
+            1000,
+            0,
+            0,
+            -2147483648});
+            this.FifthStartPointY.Name = "FifthStartPointY";
+            this.FifthStartPointY.Size = new System.Drawing.Size(40, 26);
+            this.FifthStartPointY.TabIndex = 87;
+            this.FifthStartPointY.Value = new decimal(new int[] {
+            360,
+            0,
+            0,
+            0});
+            // 
+            // FifthStartPointX
+            // 
+            this.FifthStartPointX.Increment = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
+            this.FifthStartPointX.Location = new System.Drawing.Point(10, 217);
+            this.FifthStartPointX.Maximum = new decimal(new int[] {
+            2000,
+            0,
+            0,
+            0});
+            this.FifthStartPointX.Minimum = new decimal(new int[] {
+            1000,
+            0,
+            0,
+            -2147483648});
+            this.FifthStartPointX.Name = "FifthStartPointX";
+            this.FifthStartPointX.Size = new System.Drawing.Size(47, 26);
+            this.FifthStartPointX.TabIndex = 86;
+            this.FifthStartPointX.Value = new decimal(new int[] {
+            640,
+            0,
+            0,
+            0});
+            // 
+            // FifthEndPointX
+            // 
+            this.FifthEndPointX.Increment = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
+            this.FifthEndPointX.Location = new System.Drawing.Point(107, 217);
+            this.FifthEndPointX.Maximum = new decimal(new int[] {
+            2000,
+            0,
+            0,
+            0});
+            this.FifthEndPointX.Minimum = new decimal(new int[] {
+            1000,
+            0,
+            0,
+            -2147483648});
+            this.FifthEndPointX.Name = "FifthEndPointX";
+            this.FifthEndPointX.Size = new System.Drawing.Size(47, 26);
+            this.FifthEndPointX.TabIndex = 85;
+            this.FifthEndPointX.Value = new decimal(new int[] {
+            940,
+            0,
+            0,
+            0});
+            // 
+            // SixthStartPointY
+            // 
+            this.SixthStartPointY.Increment = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
+            this.SixthStartPointY.Location = new System.Drawing.Point(63, 217);
+            this.SixthStartPointY.Maximum = new decimal(new int[] {
+            2000,
+            0,
+            0,
+            0});
+            this.SixthStartPointY.Minimum = new decimal(new int[] {
+            1000,
+            0,
+            0,
+            -2147483648});
+            this.SixthStartPointY.Name = "SixthStartPointY";
+            this.SixthStartPointY.Size = new System.Drawing.Size(40, 26);
+            this.SixthStartPointY.TabIndex = 84;
+            this.SixthStartPointY.Value = new decimal(new int[] {
+            360,
+            0,
+            0,
+            0});
+            // 
+            // SixthEndPointY
+            // 
+            this.SixthEndPointY.Increment = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
+            this.SixthEndPointY.Location = new System.Drawing.Point(160, 217);
+            this.SixthEndPointY.Maximum = new decimal(new int[] {
+            2000,
+            0,
+            0,
+            0});
+            this.SixthEndPointY.Minimum = new decimal(new int[] {
+            1000,
+            0,
+            0,
+            -2147483648});
+            this.SixthEndPointY.Name = "SixthEndPointY";
+            this.SixthEndPointY.Size = new System.Drawing.Size(40, 26);
+            this.SixthEndPointY.TabIndex = 83;
+            this.SixthEndPointY.Value = new decimal(new int[] {
+            160,
+            0,
+            0,
+            0});
+            // 
+            // SeventhStartPointY
+            // 
+            this.SeventhStartPointY.Increment = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
+            this.SeventhStartPointY.Location = new System.Drawing.Point(61, 217);
+            this.SeventhStartPointY.Maximum = new decimal(new int[] {
+            2000,
+            0,
+            0,
+            0});
+            this.SeventhStartPointY.Minimum = new decimal(new int[] {
+            1000,
+            0,
+            0,
+            -2147483648});
+            this.SeventhStartPointY.Name = "SeventhStartPointY";
+            this.SeventhStartPointY.Size = new System.Drawing.Size(40, 26);
+            this.SeventhStartPointY.TabIndex = 82;
+            this.SeventhStartPointY.Value = new decimal(new int[] {
+            360,
+            0,
+            0,
+            0});
+            // 
+            // SeventhEndPointY
+            // 
+            this.SeventhEndPointY.Increment = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
+            this.SeventhEndPointY.Location = new System.Drawing.Point(159, 217);
+            this.SeventhEndPointY.Maximum = new decimal(new int[] {
+            2000,
+            0,
+            0,
+            0});
+            this.SeventhEndPointY.Minimum = new decimal(new int[] {
+            1000,
+            0,
+            0,
+            -2147483648});
+            this.SeventhEndPointY.Name = "SeventhEndPointY";
+            this.SeventhEndPointY.Size = new System.Drawing.Size(40, 26);
+            this.SeventhEndPointY.TabIndex = 81;
+            this.SeventhEndPointY.Value = new decimal(new int[] {
+            660,
+            0,
+            0,
+            0});
+            // 
+            // SixthStartPointX
+            // 
+            this.SixthStartPointX.Increment = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
+            this.SixthStartPointX.Location = new System.Drawing.Point(10, 217);
+            this.SixthStartPointX.Maximum = new decimal(new int[] {
+            2000,
+            0,
+            0,
+            0});
+            this.SixthStartPointX.Minimum = new decimal(new int[] {
+            1000,
+            0,
+            0,
+            -2147483648});
+            this.SixthStartPointX.Name = "SixthStartPointX";
+            this.SixthStartPointX.Size = new System.Drawing.Size(47, 26);
+            this.SixthStartPointX.TabIndex = 80;
+            this.SixthStartPointX.Value = new decimal(new int[] {
+            640,
+            0,
+            0,
+            0});
+            // 
+            // SixthEndPointX
+            // 
+            this.SixthEndPointX.Increment = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
+            this.SixthEndPointX.Location = new System.Drawing.Point(106, 217);
+            this.SixthEndPointX.Maximum = new decimal(new int[] {
+            2000,
+            0,
+            0,
+            0});
+            this.SixthEndPointX.Minimum = new decimal(new int[] {
+            1000,
+            0,
+            0,
+            -2147483648});
+            this.SixthEndPointX.Name = "SixthEndPointX";
+            this.SixthEndPointX.Size = new System.Drawing.Size(47, 26);
+            this.SixthEndPointX.TabIndex = 79;
+            this.SixthEndPointX.Value = new decimal(new int[] {
+            340,
+            0,
+            0,
+            0});
+            // 
+            // SeventhEndPointX
+            // 
+            this.SeventhEndPointX.Increment = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
+            this.SeventhEndPointX.Location = new System.Drawing.Point(107, 217);
+            this.SeventhEndPointX.Maximum = new decimal(new int[] {
+            2000,
+            0,
+            0,
+            0});
+            this.SeventhEndPointX.Minimum = new decimal(new int[] {
+            1000,
+            0,
+            0,
+            -2147483648});
+            this.SeventhEndPointX.Name = "SeventhEndPointX";
+            this.SeventhEndPointX.Size = new System.Drawing.Size(47, 26);
+            this.SeventhEndPointX.TabIndex = 78;
+            this.SeventhEndPointX.Value = new decimal(new int[] {
+            200,
+            0,
+            0,
+            -2147483648});
+            // 
+            // SeventhStartPointX
+            // 
+            this.SeventhStartPointX.Increment = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
+            this.SeventhStartPointX.Location = new System.Drawing.Point(10, 217);
+            this.SeventhStartPointX.Maximum = new decimal(new int[] {
+            2000,
+            0,
+            0,
+            0});
+            this.SeventhStartPointX.Minimum = new decimal(new int[] {
+            1000,
+            0,
+            0,
+            -2147483648});
+            this.SeventhStartPointX.Name = "SeventhStartPointX";
+            this.SeventhStartPointX.Size = new System.Drawing.Size(47, 26);
+            this.SeventhStartPointX.TabIndex = 77;
+            this.SeventhStartPointX.Value = new decimal(new int[] {
+            640,
+            0,
+            0,
+            0});
+            // 
+            // EighthEndPointY
+            // 
+            this.EighthEndPointY.Increment = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
+            this.EighthEndPointY.Location = new System.Drawing.Point(160, 217);
+            this.EighthEndPointY.Maximum = new decimal(new int[] {
+            2000,
+            0,
+            0,
+            0});
+            this.EighthEndPointY.Minimum = new decimal(new int[] {
+            1000,
+            0,
+            0,
+            -2147483648});
+            this.EighthEndPointY.Name = "EighthEndPointY";
+            this.EighthEndPointY.Size = new System.Drawing.Size(40, 26);
+            this.EighthEndPointY.TabIndex = 76;
+            this.EighthEndPointY.Value = new decimal(new int[] {
+            360,
+            0,
+            0,
+            -2147483648});
+            // 
+            // EighthEndPointX
+            // 
+            this.EighthEndPointX.Increment = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
+            this.EighthEndPointX.Location = new System.Drawing.Point(107, 217);
+            this.EighthEndPointX.Maximum = new decimal(new int[] {
+            2000,
+            0,
+            0,
+            0});
+            this.EighthEndPointX.Minimum = new decimal(new int[] {
+            1000,
+            0,
+            0,
+            -2147483648});
+            this.EighthEndPointX.Name = "EighthEndPointX";
+            this.EighthEndPointX.Size = new System.Drawing.Size(47, 26);
+            this.EighthEndPointX.TabIndex = 75;
+            this.EighthEndPointX.Value = new decimal(new int[] {
+            160,
+            0,
+            0,
+            -2147483648});
+            // 
+            // EighthStartPointY
+            // 
+            this.EighthStartPointY.Increment = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
+            this.EighthStartPointY.Location = new System.Drawing.Point(63, 217);
+            this.EighthStartPointY.Maximum = new decimal(new int[] {
+            2000,
+            0,
+            0,
+            0});
+            this.EighthStartPointY.Minimum = new decimal(new int[] {
+            1000,
+            0,
+            0,
+            -2147483648});
+            this.EighthStartPointY.Name = "EighthStartPointY";
+            this.EighthStartPointY.Size = new System.Drawing.Size(40, 26);
+            this.EighthStartPointY.TabIndex = 74;
+            this.EighthStartPointY.Value = new decimal(new int[] {
+            360,
+            0,
+            0,
+            0});
+            // 
+            // EighthStartPointX
+            // 
+            this.EighthStartPointX.Increment = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
+            this.EighthStartPointX.Location = new System.Drawing.Point(10, 217);
+            this.EighthStartPointX.Maximum = new decimal(new int[] {
+            2000,
+            0,
+            0,
+            0});
+            this.EighthStartPointX.Minimum = new decimal(new int[] {
+            1000,
+            0,
+            0,
+            -2147483648});
+            this.EighthStartPointX.Name = "EighthStartPointX";
+            this.EighthStartPointX.Size = new System.Drawing.Size(47, 26);
+            this.EighthStartPointX.TabIndex = 73;
+            this.EighthStartPointX.Value = new decimal(new int[] {
+            640,
+            0,
+            0,
+            0});
+            // 
+            // FourthEndPointY
+            // 
+            this.FourthEndPointY.Increment = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
+            this.FourthEndPointY.Location = new System.Drawing.Point(160, 217);
+            this.FourthEndPointY.Maximum = new decimal(new int[] {
+            2000,
+            0,
+            0,
+            0});
+            this.FourthEndPointY.Minimum = new decimal(new int[] {
+            1000,
+            0,
+            0,
+            -2147483648});
+            this.FourthEndPointY.Name = "FourthEndPointY";
+            this.FourthEndPointY.Size = new System.Drawing.Size(40, 26);
+            this.FourthEndPointY.TabIndex = 72;
+            this.FourthEndPointY.Value = new decimal(new int[] {
+            360,
+            0,
+            0,
+            0});
+            // 
+            // FourthStartPointY
+            // 
+            this.FourthStartPointY.Increment = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
+            this.FourthStartPointY.Location = new System.Drawing.Point(63, 217);
+            this.FourthStartPointY.Maximum = new decimal(new int[] {
+            2000,
+            0,
+            0,
+            0});
+            this.FourthStartPointY.Minimum = new decimal(new int[] {
+            1000,
+            0,
+            0,
+            -2147483648});
+            this.FourthStartPointY.Name = "FourthStartPointY";
+            this.FourthStartPointY.Size = new System.Drawing.Size(40, 26);
+            this.FourthStartPointY.TabIndex = 71;
+            this.FourthStartPointY.Value = new decimal(new int[] {
+            360,
+            0,
+            0,
+            0});
+            // 
+            // FourthStartPointX
+            // 
+            this.FourthStartPointX.Increment = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
+            this.FourthStartPointX.Location = new System.Drawing.Point(9, 217);
+            this.FourthStartPointX.Maximum = new decimal(new int[] {
+            2000,
+            0,
+            0,
+            0});
+            this.FourthStartPointX.Minimum = new decimal(new int[] {
+            1000,
+            0,
+            0,
+            -2147483648});
+            this.FourthStartPointX.Name = "FourthStartPointX";
+            this.FourthStartPointX.Size = new System.Drawing.Size(47, 26);
+            this.FourthStartPointX.TabIndex = 70;
+            this.FourthStartPointX.Value = new decimal(new int[] {
+            640,
+            0,
+            0,
+            0});
+            // 
+            // FourthEndPointX
+            // 
+            this.FourthEndPointX.Increment = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
+            this.FourthEndPointX.Location = new System.Drawing.Point(106, 217);
+            this.FourthEndPointX.Maximum = new decimal(new int[] {
+            2000,
+            0,
+            0,
+            0});
+            this.FourthEndPointX.Minimum = new decimal(new int[] {
+            1000,
+            0,
+            0,
+            -2147483648});
+            this.FourthEndPointX.Name = "FourthEndPointX";
+            this.FourthEndPointX.Size = new System.Drawing.Size(47, 26);
+            this.FourthEndPointX.TabIndex = 69;
+            this.FourthEndPointX.Value = new decimal(new int[] {
+            340,
+            0,
+            0,
+            0});
+            // 
+            // ThirdStartPointY
+            // 
+            this.ThirdStartPointY.Increment = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
+            this.ThirdStartPointY.Location = new System.Drawing.Point(62, 217);
+            this.ThirdStartPointY.Maximum = new decimal(new int[] {
+            2000,
+            0,
+            0,
+            0});
+            this.ThirdStartPointY.Minimum = new decimal(new int[] {
+            1000,
+            0,
+            0,
+            -2147483648});
+            this.ThirdStartPointY.Name = "ThirdStartPointY";
+            this.ThirdStartPointY.Size = new System.Drawing.Size(40, 26);
+            this.ThirdStartPointY.TabIndex = 68;
+            this.ThirdStartPointY.Value = new decimal(new int[] {
+            360,
+            0,
+            0,
+            0});
+            // 
+            // ThirdEndPointY
+            // 
+            this.ThirdEndPointY.Increment = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
+            this.ThirdEndPointY.Location = new System.Drawing.Point(159, 217);
+            this.ThirdEndPointY.Maximum = new decimal(new int[] {
+            2000,
+            0,
+            0,
+            0});
+            this.ThirdEndPointY.Minimum = new decimal(new int[] {
+            1000,
+            0,
+            0,
+            -2147483648});
+            this.ThirdEndPointY.Name = "ThirdEndPointY";
+            this.ThirdEndPointY.Size = new System.Drawing.Size(40, 26);
+            this.ThirdEndPointY.TabIndex = 67;
+            this.ThirdEndPointY.Value = new decimal(new int[] {
+            360,
+            0,
+            0,
+            0});
+            // 
+            // SecondStartPointY
+            // 
+            this.SecondStartPointY.Increment = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
+            this.SecondStartPointY.Location = new System.Drawing.Point(63, 217);
+            this.SecondStartPointY.Maximum = new decimal(new int[] {
+            2000,
+            0,
+            0,
+            0});
+            this.SecondStartPointY.Minimum = new decimal(new int[] {
+            1000,
+            0,
+            0,
+            -2147483648});
+            this.SecondStartPointY.Name = "SecondStartPointY";
+            this.SecondStartPointY.Size = new System.Drawing.Size(40, 26);
+            this.SecondStartPointY.TabIndex = 66;
+            this.SecondStartPointY.Value = new decimal(new int[] {
+            360,
+            0,
+            0,
+            0});
+            // 
+            // SecondEndPointY
+            // 
+            this.SecondEndPointY.Increment = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
+            this.SecondEndPointY.Location = new System.Drawing.Point(160, 217);
+            this.SecondEndPointY.Maximum = new decimal(new int[] {
+            2000,
+            0,
+            0,
+            0});
+            this.SecondEndPointY.Minimum = new decimal(new int[] {
+            1000,
+            0,
+            0,
+            -2147483648});
+            this.SecondEndPointY.Name = "SecondEndPointY";
+            this.SecondEndPointY.Size = new System.Drawing.Size(40, 26);
+            this.SecondEndPointY.TabIndex = 65;
+            this.SecondEndPointY.Value = new decimal(new int[] {
+            60,
+            0,
+            0,
+            0});
+            // 
+            // ThirdStartPointX
+            // 
+            this.ThirdStartPointX.Increment = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
+            this.ThirdStartPointX.Location = new System.Drawing.Point(10, 217);
+            this.ThirdStartPointX.Maximum = new decimal(new int[] {
+            2000,
+            0,
+            0,
+            0});
+            this.ThirdStartPointX.Minimum = new decimal(new int[] {
+            1000,
+            0,
+            0,
+            -2147483648});
+            this.ThirdStartPointX.Name = "ThirdStartPointX";
+            this.ThirdStartPointX.Size = new System.Drawing.Size(47, 26);
+            this.ThirdStartPointX.TabIndex = 64;
+            this.ThirdStartPointX.Value = new decimal(new int[] {
+            640,
+            0,
+            0,
+            0});
+            // 
+            // ThirdEndPointX
+            // 
+            this.ThirdEndPointX.Increment = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
+            this.ThirdEndPointX.Location = new System.Drawing.Point(106, 217);
+            this.ThirdEndPointX.Maximum = new decimal(new int[] {
+            2000,
+            0,
+            0,
+            0});
+            this.ThirdEndPointX.Minimum = new decimal(new int[] {
+            1000,
+            0,
+            0,
+            -2147483648});
+            this.ThirdEndPointX.Name = "ThirdEndPointX";
+            this.ThirdEndPointX.Size = new System.Drawing.Size(47, 26);
+            this.ThirdEndPointX.TabIndex = 63;
+            this.ThirdEndPointX.Value = new decimal(new int[] {
+            940,
+            0,
+            0,
+            0});
+            // 
+            // SecondEndPointX
+            // 
+            this.SecondEndPointX.Increment = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
+            this.SecondEndPointX.Location = new System.Drawing.Point(107, 217);
+            this.SecondEndPointX.Maximum = new decimal(new int[] {
+            2000,
+            0,
+            0,
+            0});
+            this.SecondEndPointX.Minimum = new decimal(new int[] {
+            1000,
+            0,
+            0,
+            -2147483648});
+            this.SecondEndPointX.Name = "SecondEndPointX";
+            this.SecondEndPointX.Size = new System.Drawing.Size(47, 26);
+            this.SecondEndPointX.TabIndex = 62;
+            this.SecondEndPointX.Value = new decimal(new int[] {
+            640,
+            0,
+            0,
+            0});
+            // 
+            // SecondStartPointX
+            // 
+            this.SecondStartPointX.Increment = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
+            this.SecondStartPointX.Location = new System.Drawing.Point(10, 217);
+            this.SecondStartPointX.Maximum = new decimal(new int[] {
+            2000,
+            0,
+            0,
+            0});
+            this.SecondStartPointX.Minimum = new decimal(new int[] {
+            1000,
+            0,
+            0,
+            -2147483648});
+            this.SecondStartPointX.Name = "SecondStartPointX";
+            this.SecondStartPointX.Size = new System.Drawing.Size(47, 26);
+            this.SecondStartPointX.TabIndex = 61;
+            this.SecondStartPointX.Value = new decimal(new int[] {
+            640,
+            0,
+            0,
+            0});
+            // 
+            // FirstEndPointY
+            // 
+            this.FirstEndPointY.Increment = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
+            this.FirstEndPointY.Location = new System.Drawing.Point(159, 217);
+            this.FirstEndPointY.Maximum = new decimal(new int[] {
+            2000,
+            0,
+            0,
+            0});
+            this.FirstEndPointY.Minimum = new decimal(new int[] {
+            1000,
+            0,
+            0,
+            -2147483648});
+            this.FirstEndPointY.Name = "FirstEndPointY";
+            this.FirstEndPointY.Size = new System.Drawing.Size(40, 26);
+            this.FirstEndPointY.TabIndex = 60;
+            this.FirstEndPointY.Value = new decimal(new int[] {
+            660,
+            0,
+            0,
+            0});
+            // 
+            // FirstEndPointX
+            // 
+            this.FirstEndPointX.Increment = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
+            this.FirstEndPointX.Location = new System.Drawing.Point(106, 217);
+            this.FirstEndPointX.Maximum = new decimal(new int[] {
+            2000,
+            0,
+            0,
+            0});
+            this.FirstEndPointX.Minimum = new decimal(new int[] {
+            1000,
+            0,
+            0,
+            -2147483648});
+            this.FirstEndPointX.Name = "FirstEndPointX";
+            this.FirstEndPointX.Size = new System.Drawing.Size(47, 26);
+            this.FirstEndPointX.TabIndex = 59;
+            this.FirstEndPointX.Value = new decimal(new int[] {
+            640,
+            0,
+            0,
+            0});
+            // 
+            // FirstStartPointY
+            // 
+            this.FirstStartPointY.Increment = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
+            this.FirstStartPointY.Location = new System.Drawing.Point(63, 217);
+            this.FirstStartPointY.Maximum = new decimal(new int[] {
+            2000,
+            0,
+            0,
+            0});
+            this.FirstStartPointY.Minimum = new decimal(new int[] {
+            1000,
+            0,
+            0,
+            -2147483648});
+            this.FirstStartPointY.Name = "FirstStartPointY";
+            this.FirstStartPointY.Size = new System.Drawing.Size(40, 26);
+            this.FirstStartPointY.TabIndex = 58;
+            this.FirstStartPointY.Value = new decimal(new int[] {
+            360,
+            0,
+            0,
+            0});
+            // 
+            // FirstStartPointX
+            // 
+            this.FirstStartPointX.Increment = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
+            this.FirstStartPointX.Location = new System.Drawing.Point(10, 217);
+            this.FirstStartPointX.Maximum = new decimal(new int[] {
+            2000,
+            0,
+            0,
+            0});
+            this.FirstStartPointX.Minimum = new decimal(new int[] {
+            1000,
+            0,
+            0,
+            -2147483648});
+            this.FirstStartPointX.Name = "FirstStartPointX";
+            this.FirstStartPointX.Size = new System.Drawing.Size(47, 26);
+            this.FirstStartPointX.TabIndex = 57;
+            this.FirstStartPointX.Value = new decimal(new int[] {
+            640,
+            0,
+            0,
+            0});
+            // 
+            // labelEndPointX
+            // 
+            this.labelEndPointX.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.labelEndPointX.AutoSize = true;
+            this.labelEndPointX.Location = new System.Drawing.Point(111, 257);
+            this.labelEndPointX.Name = "labelEndPointX";
+            this.labelEndPointX.Size = new System.Drawing.Size(25, 20);
+            this.labelEndPointX.TabIndex = 56;
+            this.labelEndPointX.Text = "X :";
+            // 
+            // labelEndPointY
+            // 
+            this.labelEndPointY.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.labelEndPointY.AutoSize = true;
+            this.labelEndPointY.Location = new System.Drawing.Point(167, 262);
+            this.labelEndPointY.Name = "labelEndPointY";
+            this.labelEndPointY.Size = new System.Drawing.Size(26, 20);
+            this.labelEndPointY.TabIndex = 55;
+            this.labelEndPointY.Text = "Y :";
+            // 
+            // labelStartPointY
+            // 
+            this.labelStartPointY.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.labelStartPointY.AutoSize = true;
+            this.labelStartPointY.Location = new System.Drawing.Point(53, 259);
+            this.labelStartPointY.Name = "labelStartPointY";
+            this.labelStartPointY.Size = new System.Drawing.Size(26, 20);
+            this.labelStartPointY.TabIndex = 54;
+            this.labelStartPointY.Text = "Y :";
+            // 
+            // labelStartPointX
+            // 
+            this.labelStartPointX.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.labelStartPointX.AutoSize = true;
+            this.labelStartPointX.Location = new System.Drawing.Point(10, 257);
+            this.labelStartPointX.Name = "labelStartPointX";
+            this.labelStartPointX.Size = new System.Drawing.Size(25, 20);
+            this.labelStartPointX.TabIndex = 53;
+            this.labelStartPointX.Text = "X :";
+            // 
+            // labelEndPoint
+            // 
+            this.labelEndPoint.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.labelEndPoint.AutoSize = true;
+            this.labelEndPoint.Location = new System.Drawing.Point(106, 270);
+            this.labelEndPoint.Name = "labelEndPoint";
+            this.labelEndPoint.Size = new System.Drawing.Size(70, 20);
+            this.labelEndPoint.TabIndex = 52;
+            this.labelEndPoint.Text = "End point:";
+            // 
+            // labelStartPoint
+            // 
+            this.labelStartPoint.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.labelStartPoint.AutoSize = true;
+            this.labelStartPoint.Location = new System.Drawing.Point(13, 272);
+            this.labelStartPoint.Name = "labelStartPoint";
+            this.labelStartPoint.Size = new System.Drawing.Size(72, 20);
+            this.labelStartPoint.TabIndex = 51;
+            this.labelStartPoint.Text = "Start point:";
+            // 
+            // NumberOfCurves
+            // 
+            this.NumberOfCurves.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.NumberOfCurves.FormattingEnabled = true;
+            this.NumberOfCurves.Items.AddRange(new object[] {
+            "1",
+            "2",
+            "3",
+            "4",
+            "5",
+            "6",
+            "7",
+            "8"});
+            this.NumberOfCurves.Location = new System.Drawing.Point(147, 269);
+            this.NumberOfCurves.Name = "NumberOfCurves";
+            this.NumberOfCurves.Size = new System.Drawing.Size(46, 28);
+            this.NumberOfCurves.TabIndex = 50;
+            this.NumberOfCurves.SelectedIndexChanged += new System.EventHandler(this.NumberOfCurves_SelectedIndexChanged);
+            // 
+            // labelNumberOfCurves
+            // 
+            this.labelNumberOfCurves.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.labelNumberOfCurves.AutoSize = true;
+            this.labelNumberOfCurves.Location = new System.Drawing.Point(13, 274);
+            this.labelNumberOfCurves.Name = "labelNumberOfCurves";
+            this.labelNumberOfCurves.Size = new System.Drawing.Size(123, 20);
+            this.labelNumberOfCurves.TabIndex = 49;
+            this.labelNumberOfCurves.Text = "Number of curves :";
+            // 
             // labelNumberPoints
             // 
             this.labelNumberPoints.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.labelNumberPoints.AutoSize = true;
-            this.labelNumberPoints.Location = new System.Drawing.Point(17, 259);
+            this.labelNumberPoints.Location = new System.Drawing.Point(12, 270);
             this.labelNumberPoints.Name = "labelNumberPoints";
             this.labelNumberPoints.Size = new System.Drawing.Size(104, 20);
             this.labelNumberPoints.TabIndex = 47;
@@ -482,7 +1639,7 @@
             // 
             this.ColorButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.ColorButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.ColorButton.Location = new System.Drawing.Point(66, 248);
+            this.ColorButton.Location = new System.Drawing.Point(70, 264);
             this.ColorButton.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
             this.ColorButton.Name = "ColorButton";
             this.ColorButton.Size = new System.Drawing.Size(51, 26);
@@ -494,7 +1651,7 @@
             // 
             this.labelBackColor.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.labelBackColor.AutoSize = true;
-            this.labelBackColor.Location = new System.Drawing.Point(13, 254);
+            this.labelBackColor.Location = new System.Drawing.Point(20, 264);
             this.labelBackColor.Name = "labelBackColor";
             this.labelBackColor.Size = new System.Drawing.Size(121, 20);
             this.labelBackColor.TabIndex = 40;
@@ -502,7 +1659,7 @@
             // 
             // BranchWidth
             // 
-            this.BranchWidth.Location = new System.Drawing.Point(66, 250);
+            this.BranchWidth.Location = new System.Drawing.Point(66, 268);
             this.BranchWidth.Maximum = new decimal(new int[] {
             60,
             0,
@@ -564,22 +1721,6 @@
             this.labelMinimalLength.TabIndex = 34;
             this.labelMinimalLength.Text = "Minimal branch length:";
             // 
-            // NumberOfAngles
-            // 
-            this.NumberOfAngles.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.NumberOfAngles.FormattingEnabled = true;
-            this.NumberOfAngles.ItemHeight = 20;
-            this.NumberOfAngles.Items.AddRange(new object[] {
-            "1",
-            "2",
-            "3",
-            "4"});
-            this.NumberOfAngles.Location = new System.Drawing.Point(68, 159);
-            this.NumberOfAngles.Name = "NumberOfAngles";
-            this.NumberOfAngles.Size = new System.Drawing.Size(97, 24);
-            this.NumberOfAngles.TabIndex = 30;
-            this.NumberOfAngles.SelectedIndexChanged += new System.EventHandler(this.NumberOfAngles_SelectedIndexChanged);
-            // 
             // LabelBranchLength
             // 
             this.LabelBranchLength.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
@@ -612,7 +1753,7 @@
             // 
             // FourthAngle
             // 
-            this.FourthAngle.Location = new System.Drawing.Point(143, 221);
+            this.FourthAngle.Location = new System.Drawing.Point(10, 186);
             this.FourthAngle.Maximum = new decimal(new int[] {
             360,
             0,
@@ -634,7 +1775,7 @@
             // 
             // StartY
             // 
-            this.StartY.Location = new System.Drawing.Point(66, 248);
+            this.StartY.Location = new System.Drawing.Point(68, 262);
             this.StartY.Maximum = new decimal(new int[] {
             720,
             0,
@@ -651,7 +1792,7 @@
             // 
             // SecondAngle
             // 
-            this.SecondAngle.Location = new System.Drawing.Point(143, 189);
+            this.SecondAngle.Location = new System.Drawing.Point(10, 186);
             this.SecondAngle.Maximum = new decimal(new int[] {
             360,
             0,
@@ -673,7 +1814,7 @@
             // 
             // ThirdAngle
             // 
-            this.ThirdAngle.Location = new System.Drawing.Point(11, 221);
+            this.ThirdAngle.Location = new System.Drawing.Point(11, 186);
             this.ThirdAngle.Maximum = new decimal(new int[] {
             360,
             0,
@@ -695,7 +1836,7 @@
             // 
             // StartX
             // 
-            this.StartX.Location = new System.Drawing.Point(66, 248);
+            this.StartX.Location = new System.Drawing.Point(68, 262);
             this.StartX.Maximum = new decimal(new int[] {
             1280,
             0,
@@ -712,7 +1853,7 @@
             // 
             // BranchLenght
             // 
-            this.BranchLenght.Location = new System.Drawing.Point(66, 248);
+            this.BranchLenght.Location = new System.Drawing.Point(66, 265);
             this.BranchLenght.Maximum = new decimal(new int[] {
             500,
             0,
@@ -764,22 +1905,6 @@
             this.labelAngles.TabIndex = 22;
             this.labelAngles.Text = "Angles:";
             // 
-            // FractalsList
-            // 
-            this.FractalsList.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.FractalsList.FormattingEnabled = true;
-            this.FractalsList.ItemHeight = 20;
-            this.FractalsList.Items.AddRange(new object[] {
-            "Mandelbrot set ",
-            "Fractal tree",
-            "Barnsley fern",
-            "Curved dragon"});
-            this.FractalsList.Location = new System.Drawing.Point(12, 19);
-            this.FractalsList.Name = "FractalsList";
-            this.FractalsList.Size = new System.Drawing.Size(192, 24);
-            this.FractalsList.TabIndex = 20;
-            this.FractalsList.SelectedIndexChanged += new System.EventHandler(this.FractalsList_SelectedIndexChanged);
-            // 
             // Progress
             // 
             this.Progress.BackColor = System.Drawing.SystemColors.Control;
@@ -815,6 +1940,19 @@
             this.labelTime.TabIndex = 17;
             this.labelTime.Text = "Time of calculation :";
             // 
+            // IncreaseZOOM
+            // 
+            this.IncreaseZOOM.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.IncreaseZOOM.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.IncreaseZOOM.Image = ((System.Drawing.Image)(resources.GetObject("IncreaseZOOM.Image")));
+            this.IncreaseZOOM.Location = new System.Drawing.Point(107, 65);
+            this.IncreaseZOOM.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
+            this.IncreaseZOOM.Name = "IncreaseZOOM";
+            this.IncreaseZOOM.Size = new System.Drawing.Size(32, 33);
+            this.IncreaseZOOM.TabIndex = 2;
+            this.IncreaseZOOM.UseVisualStyleBackColor = true;
+            this.IncreaseZOOM.Click += new System.EventHandler(this.IncreaseZOOM_Click);
+            // 
             // Details
             // 
             this.Details.Controls.Add(this.TextAngles);
@@ -841,7 +1979,7 @@
             // RandomGradientButton
             // 
             this.RandomGradientButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.RandomGradientButton.Location = new System.Drawing.Point(7, 1);
+            this.RandomGradientButton.Location = new System.Drawing.Point(4, 1);
             this.RandomGradientButton.Name = "RandomGradientButton";
             this.RandomGradientButton.Size = new System.Drawing.Size(210, 29);
             this.RandomGradientButton.TabIndex = 16;
@@ -897,6 +2035,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
+            this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.ClientSize = new System.Drawing.Size(1513, 748);
             this.Controls.Add(this.SplitImageAndInterface);
             this.Controls.Add(this.menuStrip1);
@@ -922,6 +2061,40 @@
             this.tabControl.ResumeLayout(false);
             this.FractalProperties.ResumeLayout(false);
             this.FractalProperties.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.DragonIterations)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DragonBrashWidth)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.FifthEndPointY)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.FifthStartPointY)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.FifthStartPointX)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.FifthEndPointX)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.SixthStartPointY)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.SixthEndPointY)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.SeventhStartPointY)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.SeventhEndPointY)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.SixthStartPointX)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.SixthEndPointX)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.SeventhEndPointX)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.SeventhStartPointX)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.EighthEndPointY)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.EighthEndPointX)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.EighthStartPointY)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.EighthStartPointX)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.FourthEndPointY)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.FourthStartPointY)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.FourthStartPointX)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.FourthEndPointX)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ThirdStartPointY)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ThirdEndPointY)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.SecondStartPointY)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.SecondEndPointY)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ThirdStartPointX)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ThirdEndPointX)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.SecondEndPointX)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.SecondStartPointX)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.FirstEndPointY)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.FirstEndPointX)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.FirstStartPointY)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.FirstStartPointX)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.NumberPoints)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Horizontal)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Vertical)).EndInit();
@@ -947,7 +2120,6 @@
         private System.Windows.Forms.Button CreateFractal;
         private System.Windows.Forms.Button IncreaseZOOM;
         private System.Windows.Forms.NumericUpDown ZOOMValue;
-        private System.Windows.Forms.Button DecreaseZOOM;
         private System.Windows.Forms.NumericUpDown Iterations;
         private System.Windows.Forms.Label labelIterations;
         private System.Windows.Forms.Label labelZOOM;
@@ -973,7 +2145,6 @@
         private System.Windows.Forms.ToolStripMenuItem saveToolStripMenuItem;
         private System.Windows.Forms.OpenFileDialog OpenFile;
         private System.Windows.Forms.SaveFileDialog SaveFile;
-        private System.Windows.Forms.ListBox FractalsList;
         private System.Windows.Forms.Label LabelBranchLength;
         private System.Windows.Forms.TextBox TextAngles;
         private System.Windows.Forms.Label labelAngles;
@@ -983,7 +2154,6 @@
         private System.Windows.Forms.NumericUpDown ThirdAngle;
         private System.Windows.Forms.NumericUpDown FirstAngle;
         private System.Windows.Forms.NumericUpDown FourthAngle;
-        private System.Windows.Forms.ListBox NumberOfAngles;
         private System.Windows.Forms.Label labelMinimalLength;
         private System.Windows.Forms.Label labelStartY;
         private System.Windows.Forms.Label labelStartX;
@@ -1001,6 +2171,53 @@
         private System.Windows.Forms.Label labelVertical;
         private System.Windows.Forms.Label labelNumberPoints;
         private System.Windows.Forms.NumericUpDown NumberPoints;
+        private System.Windows.Forms.ComboBox NumberOfCurves;
+        private System.Windows.Forms.Label labelNumberOfCurves;
+        private System.Windows.Forms.Label labelEndPoint;
+        private System.Windows.Forms.Label labelStartPoint;
+        private System.Windows.Forms.Label labelEndPointX;
+        private System.Windows.Forms.Label labelEndPointY;
+        private System.Windows.Forms.Label labelStartPointY;
+        private System.Windows.Forms.Label labelStartPointX;
+        private System.Windows.Forms.NumericUpDown FirstEndPointY;
+        private System.Windows.Forms.NumericUpDown FirstEndPointX;
+        private System.Windows.Forms.NumericUpDown FirstStartPointY;
+        private System.Windows.Forms.NumericUpDown FirstStartPointX;
+        private System.Windows.Forms.NumericUpDown ThirdStartPointX;
+        private System.Windows.Forms.NumericUpDown ThirdEndPointX;
+        private System.Windows.Forms.NumericUpDown SecondEndPointX;
+        private System.Windows.Forms.NumericUpDown SecondStartPointX;
+        private System.Windows.Forms.NumericUpDown ThirdStartPointY;
+        private System.Windows.Forms.NumericUpDown ThirdEndPointY;
+        private System.Windows.Forms.NumericUpDown SecondStartPointY;
+        private System.Windows.Forms.NumericUpDown SecondEndPointY;
+        private System.Windows.Forms.NumericUpDown FourthEndPointY;
+        private System.Windows.Forms.NumericUpDown FourthStartPointY;
+        private System.Windows.Forms.NumericUpDown FourthStartPointX;
+        private System.Windows.Forms.NumericUpDown FourthEndPointX;
+        private System.Windows.Forms.NumericUpDown FifthEndPointY;
+        private System.Windows.Forms.NumericUpDown FifthStartPointY;
+        private System.Windows.Forms.NumericUpDown FifthStartPointX;
+        private System.Windows.Forms.NumericUpDown FifthEndPointX;
+        private System.Windows.Forms.NumericUpDown SixthStartPointY;
+        private System.Windows.Forms.NumericUpDown SixthEndPointY;
+        private System.Windows.Forms.NumericUpDown SeventhStartPointY;
+        private System.Windows.Forms.NumericUpDown SeventhEndPointY;
+        private System.Windows.Forms.NumericUpDown SixthStartPointX;
+        private System.Windows.Forms.NumericUpDown SixthEndPointX;
+        private System.Windows.Forms.NumericUpDown SeventhEndPointX;
+        private System.Windows.Forms.NumericUpDown SeventhStartPointX;
+        private System.Windows.Forms.NumericUpDown EighthEndPointY;
+        private System.Windows.Forms.NumericUpDown EighthEndPointX;
+        private System.Windows.Forms.NumericUpDown EighthStartPointY;
+        private System.Windows.Forms.NumericUpDown EighthStartPointX;
+        private System.Windows.Forms.NumericUpDown DragonBrashWidth;
+        private System.Windows.Forms.Label labelDragonBrashWidth;
+        private System.Windows.Forms.ComboBox FractalsList;
+        private System.Windows.Forms.ComboBox NumberOfAngles;
+        private System.Windows.Forms.NumericUpDown DragonIterations;
+        private System.Windows.Forms.Label labelDragonIterations;
+        private System.Windows.Forms.Button DecreaseZOOM;
     }
 }
 

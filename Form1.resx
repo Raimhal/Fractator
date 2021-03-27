@@ -117,6 +117,57 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="Grad.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAAf4AAAAdCAYAAABLyA69AAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
+        wwAADsMBx2+oZAAAA2RJREFUeF7t1VdXFgQAgGHO4U7LUVmusm2OLK3MbNq2LK0U3BOQDweooKAMZakM
+        BQUEZHwuBFyglu2daaWlle09tNKGWra/zqmL9zd0eC+e3/CEBYPBkCRJahnCAoFASJIktQxhrYaHh1qP
+        wGkROD0SbUai7Si0G432Y3DGWJw5DmeNR4cJOHsizpmEjpPRaQo6R6FLNLrG4NypOC8W3QI4Pw4XTMOF
+        03HRDFw8E5fE49IEdJ+Fy2ajxxz0TESvJPSei8vnoU8yrkjBlfPRdwH6peKqNFydjmsy0H8hrl2EAZm4
+        LgsDs3F9Dm7IxY2LcdMS3LwUt+RhUD5uLcBthbh9Ge5YjjuLcFcx7l6BwStxTwnuLcWQMty3CveXY2gF
+        hlXigdV4sAoPVWN4DUbUIiKIyDUYuRaj1mH0eozZgLF1GLcR4+sxoQETGzFpEyZvxpQtiNqK6G2IacLU
+        ZsRuR2AH4nZi2sOY/ghm7MLMRxH/GBIex6wnMPtJzHkKiU8j6RnMfRbznkPy80h5AfNfxIKXkLobaS8j
+        fQ8y9mLhK1j0KjJfQ9Y+ZO9HzuvIfQOLD2DJQSx9E3lvIf9tFBxC4TtY9i6Wv4ei91H8AVZ8iJUfoeRj
+        lH6Csk+x6jOUf46KL1D5JVZ/haqvUX0YNUdQ+w2C32LNd1h7FOuOYf332PAD6n7Exp9QfxwNJ9B4Ept+
+        xuZfsOUUtv6Kbb+h6Xc0/4Htf2LHX9j593+M3/iN3/iN3/iN3/iN3/iN3/iN3/iN3/iN3/iN3/iN3/iN
+        3/iN3/iN3/iN3/iN3/iN3/iN3/iN3/iN3/iN3/iN3/iN3/iN3/iN3/iN3/iN3/iN3/iN3/iN3/iN3/iN
+        3/iN3/iN3/iN3/iN3/iN3/iN3/iN3/iN3/iN3/iN3/iN3/iN3/iN3/iN3/iN3/iN3/iN3/iN3/iN3/iN
+        3/iN3/iN3/iN3/iN3/iN3/iN3/iN3/iN3/iN3/iN3/iN3/iN3/iN3/iN3/iN3/iN3/iN3/iN3/iN3/iN
+        3/iN3/iN3/iN3/iN3/iN3/iN3/iN3/iN3/iN3/iN3/iN3/iN3/iN3/iN3/iN3/iN3/iN3/iN3/iN3/iN
+        3/iN3/iN3/iN3/j/ZfzGb/zGb/zGb/zGb/zGb/zGb/zGb/z/m/jDQ/8AgILumlxWRwEAAAAASUVORK5C
+        YII=
+</value>
+  </data>
+  <data name="DecreaseZOOM.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6
+        JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAACXBIWXMAAOw4AADsOAFxK8o4AAAByklE
+        QVRYR+3Wz0pVURTH8YtNdFDqtKLmTnVgL+ELmCBEDooGvojv4EBQ5zoyBB1r6SMU9QSBEYj9PnAOHA5c
+        7vmnt8AffOGw9l5rr3PO2nvt0aP+Nz0Ji+FVgWe2e9eL8D7shcvwPXwLF4VtKzwPg2suvAvX4TbchV9B
+        AvDMZuxrMJfPIHoadsJN+BM+h49hNbwu8PwhGDPHXD58e2k2COTNfgSLzIdxMmaOuXz4itFZPuXv8DOs
+        MTSUuXz4bjB00ctwFbyJt2qrT4HvlyBWa6lohXUSFhhais9pEGOToY1mgm3FWcF11XYQYzeI2VgOFvvc
+        9nrDUEiRqfryAKpj7FkoxVcMscRsLMHKPS4oCXwYVHg5VsfYQSiT4MvusBKzsUzmxLmagOCTEtgPvRPw
+        uRyvQ/0CsVr9gqkXIU11G5Kupnr7HkQ+f+cO2fco1pTeMnRVtRkJ6K0mNSNz7Aafns9K6KV6O/ZfFVe9
+        HbMZM0flW1wS52Ep9JLLha7msuFrCGyRcv97Ziubz3pYDmdhsCTIlUxF21YK1AFTXsnYjFULzqKDJ0Ft
+        LqX3lkQb/TNJWFwSR6F6ZD+YJHEcqh3zweWsmNrijxqj0egv9IeWoa9gtfgAAAAASUVORK5CYII=
+</value>
+  </data>
+  <data name="IncreaseZOOM.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6
+        JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAACXBIWXMAAOw4AADsOAFxK8o4AAAB8ElE
+        QVRYR+3WQWoUQRTG8SHZ6CKJbo3Gfba60Et4ASMIEhdKFrmId8gioO51pQhmnURzBMWcIJAQEuL3w25o
+        m2lmerrHMTAf/KF4Ve/V66pXVT2Y67ppMdwOawXabFPXatgMu+Eg/Aw/wn5hexnuhN51M7wIR+EyXIWT
+        IAFos+n7Fozl04uWwptwGs7D5/A6PAr3C7RfBX3GGMuHbyfdCAL5sl/BJCuhSfqMMZYPXzEmlqU8C8fh
+        CUNNJlz+0/xLxvLh+4xhEt0N34Mv8VV1mfh9eFe069oKfA+DWK2lohXWp3CLoSbHryxC7br4fAliPGdo
+        o4XgWHFWcMM0KgHaDmLsBDHHlovFOXe8HjMUsueq/l5gt8/QZtNX3Q52McQSc2xVv05QKvdchbt8THxR
+        oM2mr1oTfMXQ17RKQ2Uwp3oCgo9K4G3onIDlcr32tQVitdqCmRchzfQYkldN9TZdRO55NWHPh9355UVk
+        +Sd+IbtexR6lDYZJVX2MBPRVJm2SPmOcBkvP52HopPpzbF8VV/05ZtNnjMo3uST2wnroJD8XXjU/G1ZD
+        YJOURajNVj4+T8OD8DX0lgT5JVPRjpUCdcFAobHpqxacSXtPgtr8lE4tiTb6b5IwuSQ+hGHHd+qSxMfQ
+        9Bf1T9R0ec01Sw0GvwEGv6Wxr71pBwAAAABJRU5ErkJggg==
+</value>
+  </data>
   <metadata name="menuStrip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>11, 6</value>
   </metadata>

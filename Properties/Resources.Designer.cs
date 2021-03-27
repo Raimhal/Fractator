@@ -63,29 +63,9 @@ namespace WindowsFormsApp2.Properties {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap first {
+        internal static System.Drawing.Bitmap loupe_ {
             get {
-                object obj = ResourceManager.GetObject("first", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap second {
-            get {
-                object obj = ResourceManager.GetObject("second", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap sixth {
-            get {
-                object obj = ResourceManager.GetObject("sixth", resourceCulture);
+                object obj = ResourceManager.GetObject("loupe+", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -103,9 +83,9 @@ namespace WindowsFormsApp2.Properties {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap whiteFon {
+        internal static System.Drawing.Bitmap third1 {
             get {
-                object obj = ResourceManager.GetObject("whiteFon", resourceCulture);
+                object obj = ResourceManager.GetObject("third1", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
