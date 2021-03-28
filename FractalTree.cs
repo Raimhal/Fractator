@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Drawing;
+using System.Drawing.Drawing2D;
 
 namespace WindowsFormsApp2
 {
@@ -31,12 +32,23 @@ namespace WindowsFormsApp2
             this.BackgroundColor = BackgroundColor;
 
         }
+
+        public FractalTree()
+        {
+
+        }
+
+        private void Effects()
+        {
+            g.Clear(BackgroundColor);
+            g.SmoothingMode = SmoothingMode.AntiAlias;
+        }
         public void DrawFractalTree(int x, int y, int len, double angle)
         {
 
             if (i == 0)
             {
-                g.Clear(BackgroundColor);
+                Effects();
             }
 
             int x1, y1;
@@ -51,6 +63,31 @@ namespace WindowsFormsApp2
                     DrawFractalTree(x1, y1, (int)(len / 1.5), angle + angles[j]);
                 }
             }
+        }
+
+        public string Info()
+        {
+            string info = "Pythagoras, proving his famous theorem," +
+                " built a figure with squares on the sides of a right-angled triangle." +
+                " In our century, this figure of Pythagoras has grown into a whole tree." +
+                Environment.NewLine +
+                Environment.NewLine +
+                " For the first time, the Pythagorean tree was built" +
+                " by A.E. Bosman (1891-1961) during the Second World War," +
+                " using an ordinary drawing ruler. If in the classical Pythagorean" +
+                " tree the angle is 45 degrees, then it is also possible to build" +
+                " a generalized Pythagorean tree using other angles. Such a tree" +
+                " is often called the windswept Pythagoras tree. If you draw only" +
+                " the segments connecting the selected centers of the triangles in" +
+                " some way, you get a naked Pythagorean tree." +
+                Environment.NewLine +
+                Environment.NewLine +
+                "Angles (one angle one branch)" +
+                " (-35 - left branch will  have angle 35)" +
+                " or (45 right branch will have angle 45)" +
+                " (e.g. (-35, 40, 10) we wil have 3 branches" +
+                " with corresponding angles)";
+            return info;
         }
     }
 }

@@ -13,10 +13,11 @@ using System.Globalization;
 using System.Diagnostics;
 /// <summary>
 /// 1) оформити користувацький інтерфейс
+/// 2) додати інформацію до the details 
 /// /// </summary>
 namespace WindowsFormsApp2
 {
-    public partial class Form1 : Form
+    public partial class FractalForm : Form
     {
         public Graphics g;
         public Color BackgroundColor = Color.Transparent;
@@ -26,13 +27,14 @@ namespace WindowsFormsApp2
         double hx = -0.6, hy = 0, maxZ = 4, x_, y_;
         bool er_x, er_y, er_z;
         double ZoomVal = 1;
+        public List<Pixel> tmpPixels;
 
         Size size;
         double SizeArea;
 
         DateTime start, end;
 
-        public Form1()
+        public FractalForm()
         {
             InitializeComponent();
 
@@ -53,6 +55,7 @@ namespace WindowsFormsApp2
         {
 
             FractalsList.SelectedIndex = 0;
+            FractalsInfo.Text = InfoMBrot();
         }
 
         // button for generationo fractal
@@ -102,11 +105,19 @@ namespace WindowsFormsApp2
         private void FractalsList_SelectedIndexChanged(object sender, EventArgs e)
         {
             image.Image = null;
+            FractalsInfo.Text = null;
             if (FractalsList.SelectedIndex == 0)
             {
+                hx = -0.6;
+                hy = 0;
                 CenterX.Text = hx.ToString();
                 CenterY.Text = hy.ToString();
                 MaxZDegreeTwo.Text = maxZ.ToString();
+                ZoomVal = 1;
+                SizeArea = 4;
+
+                FractalsInfo.Text = InfoMBrot(); // add info about the Mandelbrot set
+
 
                 image.Enabled = false;
                 DecreaseZOOM.Enabled = false;
@@ -224,9 +235,13 @@ namespace WindowsFormsApp2
 
                 labelDragonIterations.Visible = false;
                 DragonIterations.Visible = false;
+
+
             }
             else if (FractalsList.SelectedIndex == 1)
             {
+                FractalTree info = new FractalTree();
+                FractalsInfo.Text = info.Info(); // add info about the fractal tree
 
                 labelZOOM.Visible = false;
                 ZOOMValue.Visible = false;
@@ -370,6 +385,9 @@ namespace WindowsFormsApp2
             }
             else if (FractalsList.SelectedIndex == 2)
             {
+                Barnsley_fern info = new Barnsley_fern();
+                FractalsInfo.Text = info.Info(); // add info about the Barnsley fern
+
                 labelZOOM.Visible = false;
                 ZOOMValue.Visible = false;
 
@@ -499,6 +517,9 @@ namespace WindowsFormsApp2
             }
             else if (FractalsList.SelectedIndex == 3)
             {
+                CurveDragon info = new CurveDragon();
+                FractalsInfo.Text = info.Info(); // add info about the curve of dragon
+
                 labelZOOM.Visible = false;
                 ZOOMValue.Visible = false;
 
@@ -1096,7 +1117,7 @@ namespace WindowsFormsApp2
                 er_x = double.TryParse(CenterX.Text, out hx);
                 er_y = double.TryParse(CenterY.Text, out hy);
                 er_z = double.TryParse(MaxZDegreeTwo.Text, out maxZ);
-                ZoomNUM.Width = ZoomNUM.Text.Length * 8 + 70;
+
 
                 if (er_x == false)
                 {
@@ -1116,6 +1137,7 @@ namespace WindowsFormsApp2
                 }
                 else
                 {
+                    tmpPixels = pixels;
                     DrawMBrot();
                 }
             }
@@ -1142,10 +1164,11 @@ namespace WindowsFormsApp2
             CreateFractal.Enabled = false;  ///
 
             start = DateTime.Now;
+            ZoomNUM.Width = ZoomNUM.Text.Length * 8 + 70;
             image.Invalidate();
             await Task.Run(() => { CalculationMBrot(); });
-            end = DateTime.Now;
 
+            end = DateTime.Now;
             CulculationTime.Text = (end - start).TotalMilliseconds.ToString("F2") + " ms";
 
             image.Enabled = true;
@@ -1153,14 +1176,14 @@ namespace WindowsFormsApp2
             DecreaseZOOM.Enabled = true;    /// added access to change the image
             CreateFractal.Enabled = true;
         }
-        public void CalculationMBrot()
+        private void CalculationMBrot()
         {
             Bitmap picture = new Bitmap(image.Width, image.Height);
             int UserIt = (int)Iterations.Value;
             int change;
             int[] ColorIndex = new int[41];
             int i = 0;
-            for(int p = 0;p < pixels.Count; p++)
+            for (int p = 0; p < Grad.Width; p++)
             {
                 if (p % (int)(Grad.Width / 40.0) == 0) {
                     if (i >= ColorIndex.Length)
@@ -1171,6 +1194,15 @@ namespace WindowsFormsApp2
                     i++;
                 }
             }
+
+            if (pixels.Count > Grad.Width)
+            {
+                for (int p = 0; p < Grad.Width; p++)
+                {
+                    pixels[p].Color = tmpPixels[(int)(p * (pixels.Count / Grad.Width))].Color;
+                }
+            }
+
 
 
             this.Invoke(new Action(() => // делегат для відображення progressBar
@@ -1207,7 +1239,7 @@ namespace WindowsFormsApp2
                     // coloring the set
                     if (it < UserIt)
                     {
-                        change = it % 32;
+                        change = it % ColorIndex.Length;
                         switch (change)
                         {
                             case 0:
@@ -1396,6 +1428,33 @@ namespace WindowsFormsApp2
             }
             image.Image = picture;
         }
+        private string InfoMBrot()
+        {
+            string info = "The Mandelbrot set is the set of complex numbers C" +
+                " for which the function f(z)=z^2 + c does not diverge when iterated" +
+                " from z = 0, i.e., for which the sequence f(0), f(f(0)) etc.," +
+                " remains bounded in absolute value. Its definition is credited" +
+                " to Adrien Douady who named it in tribute to the mathematician " +
+                "Benoit Mandelbrot, a pioneer of fractal geometry." +
+                Environment.NewLine +
+                Environment.NewLine +
+                "Visually, inside the Mandelbrot set," +
+                " an infinite number of elementary figures can be distinguished," +
+                " the largest of which is in the center - the cardioid." +
+                " There is also a set of ovals related to the cardioid," +
+                " the size of which gradually decreases, tending to zero." +
+                " Each of these ovals has its own set of smaller ovals," +
+                " the diameter of which also tends to zero, etc." +
+                Environment.NewLine +
+                Environment.NewLine +
+                " This process continues indefinitely, forming a fractal." +
+                " It is also important that these processes of figure branching" +
+                " do not completely exhaust the Mandelbrot set: if we consider" +
+                " additional “branchings” with magnification, then in them" +
+                " you can see your cardioids and circles that are not associated" +
+                " with the main figure.";
+            return info;
+        }
 
         // Control buttons for MBrot set
         private void DecreaseZOOM_Click(object sender, EventArgs e)
@@ -1541,7 +1600,7 @@ namespace WindowsFormsApp2
             };
 
             Bitmap pictureFern = new Bitmap(image.Width, image.Height);
-            Barnsley_fern Fern = new Barnsley_fern(g, pictureFern, maxX, maxY, NumbersOfPoint, probability, Coefficient, pixels, BackgroundColor);
+            Barnsley_fern Fern = new Barnsley_fern(g, pictureFern, maxX, maxY, NumbersOfPoint, probability, Coefficient, pixels, BackgroundColor, Grad.Width);
             await Task.Run(() => { pictureFern = Fern.DrawBransleyFern(); });
 
             end = DateTime.Now;

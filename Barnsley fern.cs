@@ -22,8 +22,9 @@ namespace WindowsFormsApp2
         public List<Pixel> pixels;
         public Bitmap bmp;
         public Color BackgroundColor;
+        public int LenGradient;
 
-        public Barnsley_fern(Graphics g, Bitmap picture, float maxX, float maxY, int NumberOfPoints, float[] probability, float[,] Coefficient, List<Pixel> pixels, Color backgroundColor)
+        public Barnsley_fern(Graphics g, Bitmap picture, float maxX, float maxY, int NumberOfPoints, float[] probability, float[,] Coefficient, List<Pixel> pixels, Color backgroundColor, int LenGradient)
         {
 
             this.picture = new Bitmap(picture.Width, picture.Height);
@@ -36,6 +37,12 @@ namespace WindowsFormsApp2
             this.Coefficient = Coefficient;
             this.pixels = pixels;
             this.BackgroundColor = backgroundColor;
+            this.LenGradient = LenGradient;
+        }
+
+        public Barnsley_fern()
+        {
+
         }
         private void Effects()
         {
@@ -75,9 +82,36 @@ namespace WindowsFormsApp2
                 x = (int)(x0 * width + bmp.Width / 2);
                 y = (int)(y0 * height);
 
-                picture.SetPixel((int)x, (int)((bmp.Height - (int)(y)) % bmp.Height), pixels[(int)(Math.Abs(x / 3) % pixels.Count)].Color); // розтяг градієнта на весь папоротник
+                picture.SetPixel((int)x, (int)((bmp.Height - (int)(y)) % bmp.Height), pixels[(int)(Math.Abs((pixels.Count) <=  LenGradient ?  x / 2.75  : (pixels.Count) <= LenGradient + 100 ? x / 2.5 : x / 1.5) % pixels.Count)].Color); // розтяг градієнта на весь папоротник
             }
             return picture;
+        }
+
+        public string Info()
+        {
+            string info = "The fern is one of the basic examples" +
+                " of self-similar sets, i.e. it is a mathematically" +
+                " generated pattern that can be reproducible at any" +
+                " magnification or reduction. Like the Sierpinski triangle," +
+                " the Barnsley fern shows how graphically beautiful structures" +
+                " can be built from repetitive uses of mathematical formulas" +
+                " with computers. " +
+                Environment.NewLine +
+                Environment.NewLine +
+                "The fern code developed by Barnsley is an" +
+                " example of an iterated function system(IFS) to create a fractal." +
+                " This follows from the collage theorem.He has used fractals to" +
+                " model a diverse range of phenomena in science and technology," +
+                " but most specifically plant structures." +
+                Environment.NewLine +
+                Environment.NewLine +
+                "IFSs provide models" +
+                " for certain plants, leaves, and ferns, by virtue of the self" +
+                " - similarity which often occurs in branching structures in nature." +
+                "But nature also exhibits randomness and variation from one level" +
+                " to the next; no two ferns are exactly alike," +
+                " and the branching fronds become leaves at a smaller scale.";
+            return info;
         }
     }
 }
