@@ -20,7 +20,6 @@ namespace WindowsFormsApp2
         public float[] probability;
         public float[,] Coefficient;
         public List<Pixel> pixels;
-        public Bitmap bmp;
         public Color BackgroundColor;
         public int LenGradient;
 
@@ -28,7 +27,6 @@ namespace WindowsFormsApp2
         {
 
             this.picture = new Bitmap(picture.Width, picture.Height);
-            this.bmp = new Bitmap(picture.Width, picture.Height);
             this.g = Graphics.FromImage(this.picture);
             this.maxX = maxX;
             this.maxY = maxY;
@@ -47,15 +45,15 @@ namespace WindowsFormsApp2
         private void Effects()
         {
             g.Clear(BackgroundColor);
-            g.SmoothingMode = SmoothingMode.AntiAlias;
+            g.SmoothingMode = SmoothingMode.HighQuality;
         }
         public Bitmap DrawBransleyFern()
         {
             Random random = new Random();
-            float x0 = 0, y0 = 0;
+            float x0 = 0, y0 = -10;
             float x = 0, y = 0;
-            int width = (int)(bmp.Width / (maxX - minX));
-            int height = (int)(bmp.Height / (maxY - minY));
+            int width = (int)(picture.Width / (maxX - minX));
+            int height = (int)(picture.Height / (maxY - minY));
             int FunctionIndex = 0;
             Effects();
 
@@ -79,10 +77,11 @@ namespace WindowsFormsApp2
                 x0 = x;
                 y0 = y;
                 // перерахунок пікселів відносно форми
-                x = (int)(x0 * width + bmp.Width / 2);
+                x = (int)(x0 * width + picture.Width / 2);
                 y = (int)(y0 * height);
 
-                picture.SetPixel((int)x, (int)((bmp.Height - (int)(y)) % bmp.Height), pixels[(int)(Math.Abs((pixels.Count) <=  LenGradient ?  x / 2.75  : (pixels.Count) <= LenGradient + 100 ? x / 2.5 : x / 1.5) % pixels.Count)].Color); // розтяг градієнта на весь папоротник
+                picture.SetPixel(Math.Abs((int)x) % picture.Width, (int)(Math.Abs(picture.Height - (int)(y)) % picture.Height),
+                    pixels[(int)((((x * pixels.Count / LenGradient / (picture.Width * 0.0019))) % pixels.Count))].Color); // розтяг градієнта на весь папоротник
             }
             return picture;
         }

@@ -195,7 +195,7 @@
             this.CreateFractal.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.CreateFractal.Cursor = System.Windows.Forms.Cursors.Default;
             this.CreateFractal.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.CreateFractal.Location = new System.Drawing.Point(11, 503);
+            this.CreateFractal.Location = new System.Drawing.Point(10, 531);
             this.CreateFractal.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
             this.CreateFractal.Name = "CreateFractal";
             this.CreateFractal.Size = new System.Drawing.Size(192, 52);
@@ -231,7 +231,7 @@
             // Iterations
             // 
             this.Iterations.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.Iterations.Location = new System.Drawing.Point(11, 469);
+            this.Iterations.Location = new System.Drawing.Point(10, 485);
             this.Iterations.Maximum = new decimal(new int[] {
             100000,
             0,
@@ -250,7 +250,7 @@
             // 
             this.labelIterations.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.labelIterations.AutoSize = true;
-            this.labelIterations.Location = new System.Drawing.Point(7, 446);
+            this.labelIterations.Location = new System.Drawing.Point(3, 462);
             this.labelIterations.Name = "labelIterations";
             this.labelIterations.Size = new System.Drawing.Size(95, 20);
             this.labelIterations.TabIndex = 6;
@@ -287,7 +287,7 @@
             // 
             this.CenterX.AllowDrop = true;
             this.CenterX.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.CenterX.Location = new System.Drawing.Point(11, 313);
+            this.CenterX.Location = new System.Drawing.Point(10, 329);
             this.CenterX.Name = "CenterX";
             this.CenterX.Size = new System.Drawing.Size(192, 26);
             this.CenterX.TabIndex = 10;
@@ -295,7 +295,7 @@
             // CenterY
             // 
             this.CenterY.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.CenterY.Location = new System.Drawing.Point(11, 365);
+            this.CenterY.Location = new System.Drawing.Point(11, 381);
             this.CenterY.Name = "CenterY";
             this.CenterY.Size = new System.Drawing.Size(192, 26);
             this.CenterY.TabIndex = 11;
@@ -304,7 +304,7 @@
             // 
             this.x.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.x.AutoSize = true;
-            this.x.Location = new System.Drawing.Point(7, 290);
+            this.x.Location = new System.Drawing.Point(3, 306);
             this.x.Name = "x";
             this.x.Size = new System.Drawing.Size(63, 20);
             this.x.TabIndex = 12;
@@ -314,7 +314,7 @@
             // 
             this.y.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.y.AutoSize = true;
-            this.y.Location = new System.Drawing.Point(7, 342);
+            this.y.Location = new System.Drawing.Point(3, 358);
             this.y.Name = "y";
             this.y.Size = new System.Drawing.Size(63, 20);
             this.y.TabIndex = 13;
@@ -324,7 +324,7 @@
             // 
             this.LabelMaxZDegreeTwo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.LabelMaxZDegreeTwo.AutoSize = true;
-            this.LabelMaxZDegreeTwo.Location = new System.Drawing.Point(7, 394);
+            this.LabelMaxZDegreeTwo.Location = new System.Drawing.Point(3, 410);
             this.LabelMaxZDegreeTwo.Name = "LabelMaxZDegreeTwo";
             this.LabelMaxZDegreeTwo.Size = new System.Drawing.Size(76, 20);
             this.LabelMaxZDegreeTwo.TabIndex = 14;
@@ -333,7 +333,7 @@
             // MaxZDegreeTwo
             // 
             this.MaxZDegreeTwo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.MaxZDegreeTwo.Location = new System.Drawing.Point(11, 417);
+            this.MaxZDegreeTwo.Location = new System.Drawing.Point(10, 433);
             this.MaxZDegreeTwo.Name = "MaxZDegreeTwo";
             this.MaxZDegreeTwo.Size = new System.Drawing.Size(192, 26);
             this.MaxZDegreeTwo.TabIndex = 15;
@@ -357,16 +357,16 @@
             // 
             this.SplitImageAndInterface.Panel2.Controls.Add(this.tabControl);
             this.SplitImageAndInterface.Panel2.Controls.Add(this.RandomGradientButton);
-            this.SplitImageAndInterface.Size = new System.Drawing.Size(1513, 725);
-            this.SplitImageAndInterface.SplitterDistance = 1284;
+            this.SplitImageAndInterface.Size = new System.Drawing.Size(1486, 725);
+            this.SplitImageAndInterface.SplitterDistance = 1256;
             this.SplitImageAndInterface.TabIndex = 17;
             // 
             // Grad
             // 
-            this.Grad.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.Grad.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.Grad.BackColor = System.Drawing.Color.Transparent;
             this.Grad.Image = ((System.Drawing.Image)(resources.GetObject("Grad.Image")));
-            this.Grad.Location = new System.Drawing.Point(767, 3);
+            this.Grad.Location = new System.Drawing.Point(739, 3);
             this.Grad.Name = "Grad";
             this.Grad.Size = new System.Drawing.Size(510, 28);
             this.Grad.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -379,7 +379,7 @@
             this.image.Location = new System.Drawing.Point(0, 0);
             this.image.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
             this.image.Name = "image";
-            this.image.Size = new System.Drawing.Size(1280, 721);
+            this.image.Size = new System.Drawing.Size(1252, 721);
             this.image.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.image.TabIndex = 0;
             this.image.TabStop = false;
@@ -391,7 +391,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.tabControl.Controls.Add(this.FractalProperties);
             this.tabControl.Controls.Add(this.Details);
-            this.tabControl.Location = new System.Drawing.Point(0, 31);
+            this.tabControl.Location = new System.Drawing.Point(1, 31);
             this.tabControl.Name = "tabControl";
             this.tabControl.SelectedIndex = 0;
             this.tabControl.Size = new System.Drawing.Size(221, 690);
@@ -401,28 +401,51 @@
             // 
             this.FractalProperties.Controls.Add(this.DecreaseZOOM);
             this.FractalProperties.Controls.Add(this.DragonIterations);
+            this.FractalProperties.Controls.Add(this.NumberOfCurves);
+            this.FractalProperties.Controls.Add(this.labelStartPointX);
+            this.FractalProperties.Controls.Add(this.labelStartPointY);
+            this.FractalProperties.Controls.Add(this.labelEndPointX);
+            this.FractalProperties.Controls.Add(this.labelNumberOfCurves);
+            this.FractalProperties.Controls.Add(this.labelStartPoint);
             this.FractalProperties.Controls.Add(this.labelDragonIterations);
             this.FractalProperties.Controls.Add(this.NumberOfAngles);
+            this.FractalProperties.Controls.Add(this.labelEndPointY);
             this.FractalProperties.Controls.Add(this.FractalsList);
             this.FractalProperties.Controls.Add(this.DragonBrashWidth);
-            this.FractalProperties.Controls.Add(this.labelDragonBrashWidth);
+            this.FractalProperties.Controls.Add(this.labelEndPoint);
             this.FractalProperties.Controls.Add(this.FifthEndPointY);
             this.FractalProperties.Controls.Add(this.FifthStartPointY);
+            this.FractalProperties.Controls.Add(this.labelNumberPoints);
+            this.FractalProperties.Controls.Add(this.labelDragonBrashWidth);
+            this.FractalProperties.Controls.Add(this.labelVertical);
+            this.FractalProperties.Controls.Add(this.NumberPoints);
+            this.FractalProperties.Controls.Add(this.labelHorizontal);
             this.FractalProperties.Controls.Add(this.FifthStartPointX);
             this.FractalProperties.Controls.Add(this.FifthEndPointX);
             this.FractalProperties.Controls.Add(this.SixthStartPointY);
             this.FractalProperties.Controls.Add(this.SixthEndPointY);
+            this.FractalProperties.Controls.Add(this.Vertical);
+            this.FractalProperties.Controls.Add(this.labelBackColor);
             this.FractalProperties.Controls.Add(this.SeventhStartPointY);
+            this.FractalProperties.Controls.Add(this.labelBranchWidth);
+            this.FractalProperties.Controls.Add(this.Horizontal);
             this.FractalProperties.Controls.Add(this.SeventhEndPointY);
             this.FractalProperties.Controls.Add(this.SixthStartPointX);
+            this.FractalProperties.Controls.Add(this.BranchLenght);
+            this.FractalProperties.Controls.Add(this.StartX);
+            this.FractalProperties.Controls.Add(this.StartY);
+            this.FractalProperties.Controls.Add(this.BranchWidth);
             this.FractalProperties.Controls.Add(this.SixthEndPointX);
             this.FractalProperties.Controls.Add(this.SeventhEndPointX);
+            this.FractalProperties.Controls.Add(this.LabelBranchLength);
             this.FractalProperties.Controls.Add(this.SeventhStartPointX);
             this.FractalProperties.Controls.Add(this.EighthEndPointY);
+            this.FractalProperties.Controls.Add(this.labelStartY);
             this.FractalProperties.Controls.Add(this.EighthEndPointX);
             this.FractalProperties.Controls.Add(this.EighthStartPointY);
             this.FractalProperties.Controls.Add(this.EighthStartPointX);
             this.FractalProperties.Controls.Add(this.FourthEndPointY);
+            this.FractalProperties.Controls.Add(this.ColorButton);
             this.FractalProperties.Controls.Add(this.FourthStartPointY);
             this.FractalProperties.Controls.Add(this.FourthStartPointX);
             this.FractalProperties.Controls.Add(this.FourthEndPointX);
@@ -438,35 +461,12 @@
             this.FractalProperties.Controls.Add(this.FirstEndPointX);
             this.FractalProperties.Controls.Add(this.FirstStartPointY);
             this.FractalProperties.Controls.Add(this.FirstStartPointX);
-            this.FractalProperties.Controls.Add(this.labelEndPointX);
-            this.FractalProperties.Controls.Add(this.labelEndPointY);
-            this.FractalProperties.Controls.Add(this.labelStartPointY);
-            this.FractalProperties.Controls.Add(this.labelStartPointX);
-            this.FractalProperties.Controls.Add(this.labelEndPoint);
-            this.FractalProperties.Controls.Add(this.labelStartPoint);
-            this.FractalProperties.Controls.Add(this.NumberOfCurves);
-            this.FractalProperties.Controls.Add(this.labelNumberOfCurves);
-            this.FractalProperties.Controls.Add(this.labelNumberPoints);
-            this.FractalProperties.Controls.Add(this.NumberPoints);
-            this.FractalProperties.Controls.Add(this.Horizontal);
-            this.FractalProperties.Controls.Add(this.Vertical);
-            this.FractalProperties.Controls.Add(this.labelHorizontal);
-            this.FractalProperties.Controls.Add(this.labelVertical);
-            this.FractalProperties.Controls.Add(this.ColorButton);
-            this.FractalProperties.Controls.Add(this.labelBackColor);
-            this.FractalProperties.Controls.Add(this.BranchWidth);
-            this.FractalProperties.Controls.Add(this.labelBranchWidth);
             this.FractalProperties.Controls.Add(this.MinBranchLenght);
             this.FractalProperties.Controls.Add(this.labelMinimalLength);
-            this.FractalProperties.Controls.Add(this.LabelBranchLength);
-            this.FractalProperties.Controls.Add(this.labelStartY);
             this.FractalProperties.Controls.Add(this.labelStartX);
             this.FractalProperties.Controls.Add(this.FourthAngle);
-            this.FractalProperties.Controls.Add(this.StartY);
             this.FractalProperties.Controls.Add(this.SecondAngle);
             this.FractalProperties.Controls.Add(this.ThirdAngle);
-            this.FractalProperties.Controls.Add(this.StartX);
-            this.FractalProperties.Controls.Add(this.BranchLenght);
             this.FractalProperties.Controls.Add(this.FirstAngle);
             this.FractalProperties.Controls.Add(this.labelAngles);
             this.FractalProperties.Controls.Add(this.Progress);
@@ -510,7 +510,7 @@
             // DragonIterations
             // 
             this.DragonIterations.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.DragonIterations.Location = new System.Drawing.Point(76, 270);
+            this.DragonIterations.Location = new System.Drawing.Point(125, 270);
             this.DragonIterations.Maximum = new decimal(new int[] {
             20,
             0,
@@ -534,7 +534,7 @@
             // 
             this.labelDragonIterations.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.labelDragonIterations.AutoSize = true;
-            this.labelDragonIterations.Location = new System.Drawing.Point(12, 269);
+            this.labelDragonIterations.Location = new System.Drawing.Point(10, 270);
             this.labelDragonIterations.Name = "labelDragonIterations";
             this.labelDragonIterations.Size = new System.Drawing.Size(132, 20);
             this.labelDragonIterations.TabIndex = 93;
@@ -542,6 +542,7 @@
             // 
             // NumberOfAngles
             // 
+            this.NumberOfAngles.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.NumberOfAngles.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.NumberOfAngles.FormattingEnabled = true;
             this.NumberOfAngles.Items.AddRange(new object[] {
@@ -572,7 +573,8 @@
             // 
             // DragonBrashWidth
             // 
-            this.DragonBrashWidth.Location = new System.Drawing.Point(129, 270);
+            this.DragonBrashWidth.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.DragonBrashWidth.Location = new System.Drawing.Point(129, 245);
             this.DragonBrashWidth.Maximum = new decimal(new int[] {
             10,
             0,
@@ -596,7 +598,7 @@
             // 
             this.labelDragonBrashWidth.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.labelDragonBrashWidth.AutoSize = true;
-            this.labelDragonBrashWidth.Location = new System.Drawing.Point(19, 251);
+            this.labelDragonBrashWidth.Location = new System.Drawing.Point(7, 270);
             this.labelDragonBrashWidth.Name = "labelDragonBrashWidth";
             this.labelDragonBrashWidth.Size = new System.Drawing.Size(81, 20);
             this.labelDragonBrashWidth.TabIndex = 89;
@@ -604,6 +606,7 @@
             // 
             // FifthEndPointY
             // 
+            this.FifthEndPointY.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.FifthEndPointY.Increment = new decimal(new int[] {
             10,
             0,
@@ -631,6 +634,7 @@
             // 
             // FifthStartPointY
             // 
+            this.FifthStartPointY.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.FifthStartPointY.Increment = new decimal(new int[] {
             10,
             0,
@@ -658,6 +662,7 @@
             // 
             // FifthStartPointX
             // 
+            this.FifthStartPointX.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.FifthStartPointX.Increment = new decimal(new int[] {
             10,
             0,
@@ -685,6 +690,7 @@
             // 
             // FifthEndPointX
             // 
+            this.FifthEndPointX.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.FifthEndPointX.Increment = new decimal(new int[] {
             10,
             0,
@@ -712,6 +718,7 @@
             // 
             // SixthStartPointY
             // 
+            this.SixthStartPointY.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.SixthStartPointY.Increment = new decimal(new int[] {
             10,
             0,
@@ -739,6 +746,7 @@
             // 
             // SixthEndPointY
             // 
+            this.SixthEndPointY.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.SixthEndPointY.Increment = new decimal(new int[] {
             10,
             0,
@@ -766,6 +774,7 @@
             // 
             // SeventhStartPointY
             // 
+            this.SeventhStartPointY.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.SeventhStartPointY.Increment = new decimal(new int[] {
             10,
             0,
@@ -793,6 +802,7 @@
             // 
             // SeventhEndPointY
             // 
+            this.SeventhEndPointY.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.SeventhEndPointY.Increment = new decimal(new int[] {
             10,
             0,
@@ -820,6 +830,7 @@
             // 
             // SixthStartPointX
             // 
+            this.SixthStartPointX.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.SixthStartPointX.Increment = new decimal(new int[] {
             10,
             0,
@@ -847,6 +858,7 @@
             // 
             // SixthEndPointX
             // 
+            this.SixthEndPointX.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.SixthEndPointX.Increment = new decimal(new int[] {
             10,
             0,
@@ -874,6 +886,7 @@
             // 
             // SeventhEndPointX
             // 
+            this.SeventhEndPointX.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.SeventhEndPointX.Increment = new decimal(new int[] {
             10,
             0,
@@ -901,6 +914,7 @@
             // 
             // SeventhStartPointX
             // 
+            this.SeventhStartPointX.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.SeventhStartPointX.Increment = new decimal(new int[] {
             10,
             0,
@@ -928,6 +942,7 @@
             // 
             // EighthEndPointY
             // 
+            this.EighthEndPointY.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.EighthEndPointY.Increment = new decimal(new int[] {
             10,
             0,
@@ -955,6 +970,7 @@
             // 
             // EighthEndPointX
             // 
+            this.EighthEndPointX.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.EighthEndPointX.Increment = new decimal(new int[] {
             10,
             0,
@@ -982,6 +998,7 @@
             // 
             // EighthStartPointY
             // 
+            this.EighthStartPointY.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.EighthStartPointY.Increment = new decimal(new int[] {
             10,
             0,
@@ -1009,6 +1026,7 @@
             // 
             // EighthStartPointX
             // 
+            this.EighthStartPointX.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.EighthStartPointX.Increment = new decimal(new int[] {
             10,
             0,
@@ -1036,6 +1054,7 @@
             // 
             // FourthEndPointY
             // 
+            this.FourthEndPointY.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.FourthEndPointY.Increment = new decimal(new int[] {
             10,
             0,
@@ -1063,6 +1082,7 @@
             // 
             // FourthStartPointY
             // 
+            this.FourthStartPointY.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.FourthStartPointY.Increment = new decimal(new int[] {
             10,
             0,
@@ -1090,6 +1110,7 @@
             // 
             // FourthStartPointX
             // 
+            this.FourthStartPointX.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.FourthStartPointX.Increment = new decimal(new int[] {
             10,
             0,
@@ -1117,6 +1138,7 @@
             // 
             // FourthEndPointX
             // 
+            this.FourthEndPointX.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.FourthEndPointX.Increment = new decimal(new int[] {
             10,
             0,
@@ -1144,6 +1166,7 @@
             // 
             // ThirdStartPointY
             // 
+            this.ThirdStartPointY.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.ThirdStartPointY.Increment = new decimal(new int[] {
             10,
             0,
@@ -1171,6 +1194,7 @@
             // 
             // ThirdEndPointY
             // 
+            this.ThirdEndPointY.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.ThirdEndPointY.Increment = new decimal(new int[] {
             10,
             0,
@@ -1198,6 +1222,7 @@
             // 
             // SecondStartPointY
             // 
+            this.SecondStartPointY.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.SecondStartPointY.Increment = new decimal(new int[] {
             10,
             0,
@@ -1225,6 +1250,7 @@
             // 
             // SecondEndPointY
             // 
+            this.SecondEndPointY.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.SecondEndPointY.Increment = new decimal(new int[] {
             10,
             0,
@@ -1252,6 +1278,7 @@
             // 
             // ThirdStartPointX
             // 
+            this.ThirdStartPointX.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.ThirdStartPointX.Increment = new decimal(new int[] {
             10,
             0,
@@ -1279,6 +1306,7 @@
             // 
             // ThirdEndPointX
             // 
+            this.ThirdEndPointX.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.ThirdEndPointX.Increment = new decimal(new int[] {
             10,
             0,
@@ -1306,6 +1334,7 @@
             // 
             // SecondEndPointX
             // 
+            this.SecondEndPointX.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.SecondEndPointX.Increment = new decimal(new int[] {
             10,
             0,
@@ -1333,6 +1362,7 @@
             // 
             // SecondStartPointX
             // 
+            this.SecondStartPointX.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.SecondStartPointX.Increment = new decimal(new int[] {
             10,
             0,
@@ -1360,6 +1390,7 @@
             // 
             // FirstEndPointY
             // 
+            this.FirstEndPointY.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.FirstEndPointY.Increment = new decimal(new int[] {
             10,
             0,
@@ -1387,6 +1418,7 @@
             // 
             // FirstEndPointX
             // 
+            this.FirstEndPointX.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.FirstEndPointX.Increment = new decimal(new int[] {
             10,
             0,
@@ -1414,6 +1446,7 @@
             // 
             // FirstStartPointY
             // 
+            this.FirstStartPointY.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.FirstStartPointY.Increment = new decimal(new int[] {
             10,
             0,
@@ -1441,6 +1474,7 @@
             // 
             // FirstStartPointX
             // 
+            this.FirstStartPointX.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.FirstStartPointX.Increment = new decimal(new int[] {
             10,
             0,
@@ -1470,7 +1504,7 @@
             // 
             this.labelEndPointX.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.labelEndPointX.AutoSize = true;
-            this.labelEndPointX.Location = new System.Drawing.Point(111, 257);
+            this.labelEndPointX.Location = new System.Drawing.Point(16, 272);
             this.labelEndPointX.Name = "labelEndPointX";
             this.labelEndPointX.Size = new System.Drawing.Size(25, 20);
             this.labelEndPointX.TabIndex = 56;
@@ -1480,7 +1514,7 @@
             // 
             this.labelEndPointY.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.labelEndPointY.AutoSize = true;
-            this.labelEndPointY.Location = new System.Drawing.Point(167, 262);
+            this.labelEndPointY.Location = new System.Drawing.Point(15, 270);
             this.labelEndPointY.Name = "labelEndPointY";
             this.labelEndPointY.Size = new System.Drawing.Size(26, 20);
             this.labelEndPointY.TabIndex = 55;
@@ -1490,7 +1524,7 @@
             // 
             this.labelStartPointY.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.labelStartPointY.AutoSize = true;
-            this.labelStartPointY.Location = new System.Drawing.Point(53, 259);
+            this.labelStartPointY.Location = new System.Drawing.Point(15, 274);
             this.labelStartPointY.Name = "labelStartPointY";
             this.labelStartPointY.Size = new System.Drawing.Size(26, 20);
             this.labelStartPointY.TabIndex = 54;
@@ -1500,7 +1534,7 @@
             // 
             this.labelStartPointX.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.labelStartPointX.AutoSize = true;
-            this.labelStartPointX.Location = new System.Drawing.Point(10, 257);
+            this.labelStartPointX.Location = new System.Drawing.Point(16, 270);
             this.labelStartPointX.Name = "labelStartPointX";
             this.labelStartPointX.Size = new System.Drawing.Size(25, 20);
             this.labelStartPointX.TabIndex = 53;
@@ -1510,7 +1544,7 @@
             // 
             this.labelEndPoint.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.labelEndPoint.AutoSize = true;
-            this.labelEndPoint.Location = new System.Drawing.Point(106, 270);
+            this.labelEndPoint.Location = new System.Drawing.Point(10, 270);
             this.labelEndPoint.Name = "labelEndPoint";
             this.labelEndPoint.Size = new System.Drawing.Size(70, 20);
             this.labelEndPoint.TabIndex = 52;
@@ -1520,7 +1554,7 @@
             // 
             this.labelStartPoint.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.labelStartPoint.AutoSize = true;
-            this.labelStartPoint.Location = new System.Drawing.Point(13, 272);
+            this.labelStartPoint.Location = new System.Drawing.Point(10, 270);
             this.labelStartPoint.Name = "labelStartPoint";
             this.labelStartPoint.Size = new System.Drawing.Size(72, 20);
             this.labelStartPoint.TabIndex = 51;
@@ -1528,6 +1562,7 @@
             // 
             // NumberOfCurves
             // 
+            this.NumberOfCurves.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.NumberOfCurves.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.NumberOfCurves.FormattingEnabled = true;
             this.NumberOfCurves.Items.AddRange(new object[] {
@@ -1539,7 +1574,7 @@
             "6",
             "7",
             "8"});
-            this.NumberOfCurves.Location = new System.Drawing.Point(147, 269);
+            this.NumberOfCurves.Location = new System.Drawing.Point(67, 247);
             this.NumberOfCurves.Name = "NumberOfCurves";
             this.NumberOfCurves.Size = new System.Drawing.Size(46, 28);
             this.NumberOfCurves.TabIndex = 50;
@@ -1549,7 +1584,7 @@
             // 
             this.labelNumberOfCurves.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.labelNumberOfCurves.AutoSize = true;
-            this.labelNumberOfCurves.Location = new System.Drawing.Point(13, 274);
+            this.labelNumberOfCurves.Location = new System.Drawing.Point(11, 274);
             this.labelNumberOfCurves.Name = "labelNumberOfCurves";
             this.labelNumberOfCurves.Size = new System.Drawing.Size(123, 20);
             this.labelNumberOfCurves.TabIndex = 49;
@@ -1557,9 +1592,9 @@
             // 
             // labelNumberPoints
             // 
-            this.labelNumberPoints.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.labelNumberPoints.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.labelNumberPoints.AutoSize = true;
-            this.labelNumberPoints.Location = new System.Drawing.Point(12, 270);
+            this.labelNumberPoints.Location = new System.Drawing.Point(8, 270);
             this.labelNumberPoints.Name = "labelNumberPoints";
             this.labelNumberPoints.Size = new System.Drawing.Size(104, 20);
             this.labelNumberPoints.TabIndex = 47;
@@ -1567,12 +1602,13 @@
             // 
             // NumberPoints
             // 
+            this.NumberPoints.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.NumberPoints.Increment = new decimal(new int[] {
             100000,
             0,
             0,
             0});
-            this.NumberPoints.Location = new System.Drawing.Point(74, 272);
+            this.NumberPoints.Location = new System.Drawing.Point(127, 245);
             this.NumberPoints.Maximum = new decimal(new int[] {
             20000000,
             0,
@@ -1594,7 +1630,8 @@
             // 
             // Horizontal
             // 
-            this.Horizontal.Location = new System.Drawing.Point(74, 274);
+            this.Horizontal.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.Horizontal.Location = new System.Drawing.Point(125, 249);
             this.Horizontal.Maximum = new decimal(new int[] {
             50,
             0,
@@ -1606,7 +1643,8 @@
             // 
             // Vertical
             // 
-            this.Vertical.Location = new System.Drawing.Point(74, 265);
+            this.Vertical.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.Vertical.Location = new System.Drawing.Point(127, 245);
             this.Vertical.Maximum = new decimal(new int[] {
             50,
             0,
@@ -1618,9 +1656,9 @@
             // 
             // labelHorizontal
             // 
-            this.labelHorizontal.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.labelHorizontal.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.labelHorizontal.AutoSize = true;
-            this.labelHorizontal.Location = new System.Drawing.Point(10, 279);
+            this.labelHorizontal.Location = new System.Drawing.Point(5, 274);
             this.labelHorizontal.Name = "labelHorizontal";
             this.labelHorizontal.Size = new System.Drawing.Size(147, 20);
             this.labelHorizontal.TabIndex = 43;
@@ -1628,9 +1666,9 @@
             // 
             // labelVertical
             // 
-            this.labelVertical.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.labelVertical.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.labelVertical.AutoSize = true;
-            this.labelVertical.Location = new System.Drawing.Point(13, 277);
+            this.labelVertical.Location = new System.Drawing.Point(8, 272);
             this.labelVertical.Name = "labelVertical";
             this.labelVertical.Size = new System.Drawing.Size(136, 20);
             this.labelVertical.TabIndex = 42;
@@ -1640,7 +1678,7 @@
             // 
             this.ColorButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.ColorButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.ColorButton.Location = new System.Drawing.Point(70, 265);
+            this.ColorButton.Location = new System.Drawing.Point(153, 186);
             this.ColorButton.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
             this.ColorButton.Name = "ColorButton";
             this.ColorButton.Size = new System.Drawing.Size(51, 26);
@@ -1650,9 +1688,9 @@
             // 
             // labelBackColor
             // 
-            this.labelBackColor.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.labelBackColor.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.labelBackColor.AutoSize = true;
-            this.labelBackColor.Location = new System.Drawing.Point(20, 264);
+            this.labelBackColor.Location = new System.Drawing.Point(0, 272);
             this.labelBackColor.Name = "labelBackColor";
             this.labelBackColor.Size = new System.Drawing.Size(121, 20);
             this.labelBackColor.TabIndex = 40;
@@ -1660,7 +1698,8 @@
             // 
             // BranchWidth
             // 
-            this.BranchWidth.Location = new System.Drawing.Point(66, 268);
+            this.BranchWidth.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.BranchWidth.Location = new System.Drawing.Point(127, 245);
             this.BranchWidth.Maximum = new decimal(new int[] {
             60,
             0,
@@ -1682,9 +1721,9 @@
             // 
             // labelBranchWidth
             // 
-            this.labelBranchWidth.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.labelBranchWidth.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.labelBranchWidth.AutoSize = true;
-            this.labelBranchWidth.Location = new System.Drawing.Point(12, 254);
+            this.labelBranchWidth.Location = new System.Drawing.Point(15, 270);
             this.labelBranchWidth.Name = "labelBranchWidth";
             this.labelBranchWidth.Size = new System.Drawing.Size(88, 20);
             this.labelBranchWidth.TabIndex = 38;
@@ -1692,6 +1731,7 @@
             // 
             // MinBranchLenght
             // 
+            this.MinBranchLenght.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.MinBranchLenght.Location = new System.Drawing.Point(10, 127);
             this.MinBranchLenght.Maximum = new decimal(new int[] {
             50,
@@ -1726,7 +1766,7 @@
             // 
             this.LabelBranchLength.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.LabelBranchLength.AutoSize = true;
-            this.LabelBranchLength.Location = new System.Drawing.Point(8, 254);
+            this.LabelBranchLength.Location = new System.Drawing.Point(91, 40);
             this.LabelBranchLength.Name = "LabelBranchLength";
             this.LabelBranchLength.Size = new System.Drawing.Size(98, 20);
             this.LabelBranchLength.TabIndex = 21;
@@ -1734,9 +1774,9 @@
             // 
             // labelStartY
             // 
-            this.labelStartY.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.labelStartY.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.labelStartY.AutoSize = true;
-            this.labelStartY.Location = new System.Drawing.Point(10, 250);
+            this.labelStartY.Location = new System.Drawing.Point(11, 270);
             this.labelStartY.Name = "labelStartY";
             this.labelStartY.Size = new System.Drawing.Size(50, 20);
             this.labelStartY.TabIndex = 33;
@@ -1744,9 +1784,9 @@
             // 
             // labelStartX
             // 
-            this.labelStartX.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.labelStartX.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.labelStartX.AutoSize = true;
-            this.labelStartX.Location = new System.Drawing.Point(7, 246);
+            this.labelStartX.Location = new System.Drawing.Point(11, 270);
             this.labelStartX.Name = "labelStartX";
             this.labelStartX.Size = new System.Drawing.Size(50, 20);
             this.labelStartX.TabIndex = 32;
@@ -1754,6 +1794,7 @@
             // 
             // FourthAngle
             // 
+            this.FourthAngle.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.FourthAngle.Location = new System.Drawing.Point(10, 186);
             this.FourthAngle.Maximum = new decimal(new int[] {
             360,
@@ -1776,7 +1817,8 @@
             // 
             // StartY
             // 
-            this.StartY.Location = new System.Drawing.Point(68, 262);
+            this.StartY.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.StartY.Location = new System.Drawing.Point(125, 245);
             this.StartY.Maximum = new decimal(new int[] {
             720,
             0,
@@ -1793,6 +1835,7 @@
             // 
             // SecondAngle
             // 
+            this.SecondAngle.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.SecondAngle.Location = new System.Drawing.Point(10, 186);
             this.SecondAngle.Maximum = new decimal(new int[] {
             360,
@@ -1815,6 +1858,7 @@
             // 
             // ThirdAngle
             // 
+            this.ThirdAngle.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.ThirdAngle.Location = new System.Drawing.Point(11, 186);
             this.ThirdAngle.Maximum = new decimal(new int[] {
             360,
@@ -1837,7 +1881,8 @@
             // 
             // StartX
             // 
-            this.StartX.Location = new System.Drawing.Point(68, 262);
+            this.StartX.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.StartX.Location = new System.Drawing.Point(125, 245);
             this.StartX.Maximum = new decimal(new int[] {
             1280,
             0,
@@ -1854,7 +1899,8 @@
             // 
             // BranchLenght
             // 
-            this.BranchLenght.Location = new System.Drawing.Point(66, 265);
+            this.BranchLenght.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.BranchLenght.Location = new System.Drawing.Point(129, 245);
             this.BranchLenght.Maximum = new decimal(new int[] {
             500,
             0,
@@ -1876,6 +1922,7 @@
             // 
             // FirstAngle
             // 
+            this.FirstAngle.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.FirstAngle.Location = new System.Drawing.Point(11, 186);
             this.FirstAngle.Maximum = new decimal(new int[] {
             360,
@@ -1925,7 +1972,7 @@
             this.CulculationTime.BackColor = System.Drawing.Color.White;
             this.CulculationTime.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.CulculationTime.Enabled = false;
-            this.CulculationTime.Location = new System.Drawing.Point(14, 580);
+            this.CulculationTime.Location = new System.Drawing.Point(14, 611);
             this.CulculationTime.Name = "CulculationTime";
             this.CulculationTime.ReadOnly = true;
             this.CulculationTime.Size = new System.Drawing.Size(189, 19);
@@ -1935,7 +1982,7 @@
             // 
             this.labelTime.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.labelTime.AutoSize = true;
-            this.labelTime.Location = new System.Drawing.Point(10, 560);
+            this.labelTime.Location = new System.Drawing.Point(6, 588);
             this.labelTime.Name = "labelTime";
             this.labelTime.Size = new System.Drawing.Size(127, 20);
             this.labelTime.TabIndex = 17;
@@ -1944,6 +1991,7 @@
             // IncreaseZOOM
             // 
             this.IncreaseZOOM.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.IncreaseZOOM.Cursor = System.Windows.Forms.Cursors.Default;
             this.IncreaseZOOM.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.IncreaseZOOM.Image = ((System.Drawing.Image)(resources.GetObject("IncreaseZOOM.Image")));
             this.IncreaseZOOM.Location = new System.Drawing.Point(107, 65);
@@ -1957,9 +2005,9 @@
             // Details
             // 
             this.Details.Controls.Add(this.FractalsInfo);
-            this.Details.Location = new System.Drawing.Point(4, 29);
+            this.Details.Location = new System.Drawing.Point(4, 22);
             this.Details.Name = "Details";
-            this.Details.Size = new System.Drawing.Size(213, 657);
+            this.Details.Size = new System.Drawing.Size(213, 664);
             this.Details.TabIndex = 1;
             this.Details.Text = "The details";
             this.Details.UseVisualStyleBackColor = true;
@@ -1972,7 +2020,7 @@
             this.FractalsInfo.Location = new System.Drawing.Point(0, 0);
             this.FractalsInfo.Multiline = true;
             this.FractalsInfo.Name = "FractalsInfo";
-            this.FractalsInfo.Size = new System.Drawing.Size(213, 657);
+            this.FractalsInfo.Size = new System.Drawing.Size(213, 664);
             this.FractalsInfo.TabIndex = 22;
             // 
             // RandomGradientButton
@@ -1993,7 +2041,7 @@
             this.MenuStrip.LayoutStyle = System.Windows.Forms.ToolStripLayoutStyle.Flow;
             this.MenuStrip.Location = new System.Drawing.Point(0, 0);
             this.MenuStrip.Name = "MenuStrip";
-            this.MenuStrip.Size = new System.Drawing.Size(1513, 23);
+            this.MenuStrip.Size = new System.Drawing.Size(1486, 23);
             this.MenuStrip.TabIndex = 18;
             // 
             // fileToolStripMenuItem
@@ -2036,9 +2084,8 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
-            this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(1513, 748);
+            this.ClientSize = new System.Drawing.Size(1486, 748);
             this.Controls.Add(this.SplitImageAndInterface);
             this.Controls.Add(this.MenuStrip);
             this.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
@@ -2046,13 +2093,12 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.MenuStrip;
             this.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
-            this.MaximizeBox = false;
-            this.MaximumSize = new System.Drawing.Size(1529, 787);
-            this.MinimumSize = new System.Drawing.Size(1529, 787);
+            this.MinimumSize = new System.Drawing.Size(850, 780);
             this.Name = "FractalForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Fractals";
             this.Load += new System.EventHandler(this.Form1_Load);
+            this.Resize += new System.EventHandler(this.FractalForm_Resize);
             ((System.ComponentModel.ISupportInitialize)(this.ZOOMValue)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Iterations)).EndInit();
             this.SplitImageAndInterface.Panel1.ResumeLayout(false);

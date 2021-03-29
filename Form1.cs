@@ -12,8 +12,7 @@ using System.Drawing.Imaging;
 using System.Globalization;
 using System.Diagnostics;
 /// <summary>
-/// 1) оформити користувацький інтерфейс
-/// 2) додати інформацію до the details 
+/// 1) зробити візуальне оформлення форми
 /// /// </summary>
 namespace WindowsFormsApp2
 {
@@ -58,6 +57,58 @@ namespace WindowsFormsApp2
             FractalsInfo.Text = InfoMBrot();
         }
 
+        private void FractalForm_Resize(object sender, EventArgs e)
+        {
+            if (FractalsList.SelectedIndex == 1)
+            {
+                StartX.Value = image.Width / 2;
+                StartY.Value = image.Height / 5;
+            }
+            else if (FractalsList.SelectedIndex == 3)
+            {
+                double CoefOfLen = 3.5;
+                FirstStartPointX.Value = image.Width / 2;
+                FirstStartPointY.Value = image.Height / 2;
+                FirstEndPointX.Value = image.Width / 2 + (int)(image.Width / CoefOfLen);
+                FirstEndPointY.Value = image.Height / 2;
+
+                SecondStartPointX.Value = image.Width / 2;
+                SecondStartPointY.Value = image.Height / 2;
+                SecondEndPointX.Value = image.Width / 2;
+                SecondEndPointY.Value = image.Height / 2 + (int)(image.Width / CoefOfLen);
+
+                ThirdStartPointX.Value = image.Width / 2;
+                ThirdStartPointY.Value = image.Height / 2;
+                ThirdEndPointX.Value = image.Width / 2;
+                ThirdEndPointY.Value = image.Height / 2 - (int)(image.Width / CoefOfLen);
+
+                FourthStartPointX.Value = image.Width / 2;
+                FourthStartPointY.Value = image.Height / 2;
+                FourthEndPointX.Value = image.Width / 2 - (int)(image.Width / CoefOfLen);
+                FourthEndPointY.Value = image.Height / 2;
+
+                FifthStartPointX.Value = image.Width / 2;
+                FifthStartPointY.Value = image.Height / 2;
+                FifthEndPointX.Value = image.Width / 2 - (int)(image.Width / CoefOfLen * 1.5);
+                FifthEndPointY.Value = image.Height / 2 - (int)(image.Width / CoefOfLen * 1.5);
+
+                SixthStartPointX.Value = image.Width / 2;
+                SixthStartPointY.Value = image.Height / 2 - (int)(image.Width / CoefOfLen * 1.5);
+                SixthEndPointX.Value = image.Width / 2 + (int)(image.Width / CoefOfLen * 1.5);
+                SixthEndPointY.Value = image.Height / 2 ;
+
+                SeventhStartPointX.Value = image.Width / 2;
+                SeventhStartPointY.Value = image.Height / 2;
+                SeventhEndPointX.Value = image.Width / 2 - (int)(image.Width / CoefOfLen * 1.5);
+                SeventhEndPointY.Value = image.Height / 2 + (int)(image.Width / CoefOfLen * 1.5);
+
+                EighthStartPointX.Value = image.Width / 2 + (int)(image.Width / CoefOfLen );
+                EighthStartPointY.Value = image.Height / 2;
+                EighthEndPointX.Value = image.Width / 2 ;
+                EighthEndPointY.Value = image.Height / 2 ;
+            }
+        }
+
         // button for generationo fractal
         private void GenerateFractal_Click(object sender, EventArgs e)
         {
@@ -68,11 +119,19 @@ namespace WindowsFormsApp2
         // Load Gradient
         private void OpenToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            OpenFile.Title = "Load Gradient";
             if (OpenFile.ShowDialog() == DialogResult.OK)
             {
-                Graphics gGrad = Graphics.FromImage(Grad.Image);
-                gGrad.Clear(Color.Transparent);
-                Grad.Image = new Bitmap(OpenFile.FileName);
+                Bitmap isSufficientSize = new Bitmap(OpenFile.FileName);
+                int minimumImageWidth = (int)Math.Round(Grad.Width - Grad.Width * 0.055); // minimum optimal width for stretching an image of 5.5%, connected with a Picturebox
+                if (isSufficientSize.Width >= minimumImageWidth)
+                {
+                    Grad.Image = isSufficientSize;
+                }
+                else
+                {
+                    MessageBox.Show($"Image size is too small!!!\nMinimum image width : {minimumImageWidth}\nCurrent width: {isSufficientSize.Width}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
             }
         }
 
@@ -118,6 +177,7 @@ namespace WindowsFormsApp2
 
                 FractalsInfo.Text = InfoMBrot(); // add info about the Mandelbrot set
 
+                Grad.Anchor = AnchorStyles.Right | AnchorStyles.Top;
 
                 image.Enabled = false;
                 DecreaseZOOM.Enabled = false;
@@ -243,6 +303,11 @@ namespace WindowsFormsApp2
                 FractalTree info = new FractalTree();
                 FractalsInfo.Text = info.Info(); // add info about the fractal tree
 
+                StartX.Value = image.Width / 2;
+                StartY.Value = image.Height / 5;
+
+                Grad.Anchor = AnchorStyles.Right | AnchorStyles.Top;
+
                 labelZOOM.Visible = false;
                 ZOOMValue.Visible = false;
 
@@ -315,7 +380,7 @@ namespace WindowsFormsApp2
 
                 Progress.Visible = false;
 
-                Grad.Location =  new Point(image.Width - Grad.Width);
+                Grad.Location = new Point(image.Width - Grad.Width);
 
                 labelHorizontal.Visible = false;
                 Horizontal.Visible = false;
@@ -387,6 +452,7 @@ namespace WindowsFormsApp2
             {
                 Barnsley_fern info = new Barnsley_fern();
                 FractalsInfo.Text = info.Info(); // add info about the Barnsley fern
+                Grad.Anchor = AnchorStyles.Left | AnchorStyles.Top;
 
                 labelZOOM.Visible = false;
                 ZOOMValue.Visible = false;
@@ -519,6 +585,8 @@ namespace WindowsFormsApp2
             {
                 CurveDragon info = new CurveDragon();
                 FractalsInfo.Text = info.Info(); // add info about the curve of dragon
+
+                Grad.Anchor = AnchorStyles.Right | AnchorStyles.Top;
 
                 labelZOOM.Visible = false;
                 ZOOMValue.Visible = false;
@@ -1166,6 +1234,7 @@ namespace WindowsFormsApp2
             start = DateTime.Now;
             ZoomNUM.Width = ZoomNUM.Text.Length * 8 + 70;
             image.Invalidate();
+            pixels = GetPixels((Bitmap)Grad.Image);
             await Task.Run(() => { CalculationMBrot(); });
 
             end = DateTime.Now;
@@ -1179,6 +1248,7 @@ namespace WindowsFormsApp2
         private void CalculationMBrot()
         {
             Bitmap picture = new Bitmap(image.Width, image.Height);
+            size = image.Size;
             int UserIt = (int)Iterations.Value;
             int change;
             int[] ColorIndex = new int[41];
@@ -1589,7 +1659,7 @@ namespace WindowsFormsApp2
 
             float[] probability = new float[4] { 0.01f, 0.06f, 0.08f, 0.85f };
             int NumbersOfPoint = (int)NumberPoints.Value;
-            float maxX = 3 + (float)Horizontal.Value, maxY = 10 + (float)Vertical.Value;
+            float maxX = 3 + (float)Horizontal.Value, maxY = 10.1f + (float)Vertical.Value;
             float[,] Coefficient = new float[4, 6]
             {
             {0, 0, 0, 0.16f, 0, 0},

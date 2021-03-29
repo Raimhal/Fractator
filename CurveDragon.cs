@@ -29,6 +29,7 @@ namespace WindowsFormsApp2
         {
             g.Clear(BackgroundColor);
             g.SmoothingMode = SmoothingMode.AntiAlias;
+
         }
 
         public void DrawCurveDragon(int x1, int y1, int x2, int y2, int Iterations, Pen pen)
@@ -47,8 +48,8 @@ namespace WindowsFormsApp2
             }
             if(Iterations > 0)
             {
-                NextX = (x1 + x2) / 2 + (y2 - y1) / 2;
-                NextY = (y1 + y2) / 2 - (x2 - x1) / 2;
+                NextX = (int)((x1 + x2) / 2 + (y2 - y1) / 2);
+                NextY = (int)((y1 + y2) / 2 - (x2 - x1) / 2);
 
                 DrawCurveDragon(x1, y1, NextX, NextY, Iterations - 1, pen);
                 DrawCurveDragon(x2, y2, NextX, NextY, Iterations - 1, pen);
