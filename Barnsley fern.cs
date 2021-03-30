@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Drawing;
 using System.Drawing.Drawing2D;
+using System.Media;
 
 namespace WindowsFormsApp2
 {
@@ -111,6 +112,11 @@ namespace WindowsFormsApp2
                 " to the next; no two ferns are exactly alike," +
                 " and the branching fronds become leaves at a smaller scale.";
             return info;
+        }
+
+        ~Barnsley_fern()
+        {
+
         }
     }
 }

@@ -118,27 +118,6 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="Grad.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAAf4AAAAdCAYAAABLyA69AAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
-        wwAADsMBx2+oZAAAA2RJREFUeF7t1VdXFgQAgGHO4U7LUVmusm2OLK3MbNq2LK0U3BOQDweooKAMZakM
-        BQUEZHwuBFyglu2daaWlle09tNKGWra/zqmL9zd0eC+e3/CEBYPBkCRJahnCAoFASJIktQxhrYaHh1qP
-        wGkROD0SbUai7Si0G432Y3DGWJw5DmeNR4cJOHsizpmEjpPRaQo6R6FLNLrG4NypOC8W3QI4Pw4XTMOF
-        03HRDFw8E5fE49IEdJ+Fy2ajxxz0TESvJPSei8vnoU8yrkjBlfPRdwH6peKqNFydjmsy0H8hrl2EAZm4
-        LgsDs3F9Dm7IxY2LcdMS3LwUt+RhUD5uLcBthbh9Ge5YjjuLcFcx7l6BwStxTwnuLcWQMty3CveXY2gF
-        hlXigdV4sAoPVWN4DUbUIiKIyDUYuRaj1mH0eozZgLF1GLcR4+sxoQETGzFpEyZvxpQtiNqK6G2IacLU
-        ZsRuR2AH4nZi2sOY/ghm7MLMRxH/GBIex6wnMPtJzHkKiU8j6RnMfRbznkPy80h5AfNfxIKXkLobaS8j
-        fQ8y9mLhK1j0KjJfQ9Y+ZO9HzuvIfQOLD2DJQSx9E3lvIf9tFBxC4TtY9i6Wv4ei91H8AVZ8iJUfoeRj
-        lH6Csk+x6jOUf46KL1D5JVZ/haqvUX0YNUdQ+w2C32LNd1h7FOuOYf332PAD6n7Exp9QfxwNJ9B4Ept+
-        xuZfsOUUtv6Kbb+h6Xc0/4Htf2LHX9j593+M3/iN3/iN3/iN3/iN3/iN3/iN3/iN3/iN3/iN3/iN3/iN
-        3/iN3/iN3/iN3/iN3/iN3/iN3/iN3/iN3/iN3/iN3/iN3/iN3/iN3/iN3/iN3/iN3/iN3/iN3/iN3/iN
-        3/iN3/iN3/iN3/iN3/iN3/iN3/iN3/iN3/iN3/iN3/iN3/iN3/iN3/iN3/iN3/iN3/iN3/iN3/iN3/iN
-        3/iN3/iN3/iN3/iN3/iN3/iN3/iN3/iN3/iN3/iN3/iN3/iN3/iN3/iN3/iN3/iN3/iN3/iN3/iN3/iN
-        3/iN3/iN3/iN3/iN3/iN3/iN3/iN3/iN3/iN3/iN3/iN3/iN3/iN3/iN3/iN3/iN3/iN3/iN3/iN3/iN
-        3/iN3/iN3/iN3/j/ZfzGb/zGb/zGb/zGb/zGb/zGb/zGb/z/m/jDQ/8AgILumlxWRwEAAAAASUVORK5C
-        YII=
-</value>
-  </data>
   <data name="DecreaseZOOM.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6
@@ -171,7 +150,7 @@
   <metadata name="MenuStrip.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>11, 6</value>
   </metadata>
-  <data name="openToolStripMenuItem.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="LoadGradient.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6
         JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAACXBIWXMAAOw4AADsOAFxK8o4AAAAB3RJ
@@ -184,7 +163,7 @@
         NoI7T0lJ+S/Jsi//DF/1dbX2qQAAAABJRU5ErkJggg==
 </value>
   </data>
-  <data name="saveToolStripMenuItem.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="SaveAs.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6
         JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAACXBIWXMAAOw4AADsOAFxK8o4AAAAB3RJ

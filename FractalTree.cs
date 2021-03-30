@@ -1,10 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Drawing;
+using System.Windows.Forms;
 using System.Drawing.Drawing2D;
+using System.Drawing.Imaging;
+using System.Globalization;
+using System.Diagnostics;
+using System.Threading;
 
 namespace WindowsFormsApp2
 {
@@ -18,19 +25,20 @@ namespace WindowsFormsApp2
         public int BranchWidth;
         int i = 0;
         public Color BackgroundColor;
-        
+        public ProgressBar progress;
 
 
-        public FractalTree(Graphics g, Bitmap picture, List<Pixel> pixels, double[] angles, int minLen, int BranchWidth, Color BackgroundColor)
+
+        public FractalTree(Graphics g, Bitmap picture, List<Pixel> pixels, double[] angles, int minLen, int BranchWidth, Color BackgroundColor, ProgressBar progress)
         {
-            this.g = Graphics.FromImage(picture); 
+            this.g = Graphics.FromImage(picture);
             this.picture = new Bitmap(picture.Width, picture.Height);
             this.pixels = pixels;
             this.angles = angles;
             this.minLen = minLen;
             this.BranchWidth = BranchWidth;
             this.BackgroundColor = BackgroundColor;
-
+            this.progress = progress;
         }
 
         public FractalTree()
@@ -38,6 +46,10 @@ namespace WindowsFormsApp2
 
         }
 
+        public void ChangeProgressBar()
+        {
+
+        }
         private void Effects()
         {
             g.Clear(BackgroundColor);
@@ -49,6 +61,12 @@ namespace WindowsFormsApp2
             if (i == 0)
             {
                 Effects();
+                //this.Invoke(new Action(() =>
+                //{
+                //    progress.Value = 0;
+                //    progress.Minimum = 0;
+                //    progress.Maximum = (int)Math.Ceiling(Math.Log(len, 1.5));
+                //}));
             }
 
             int x1, y1;
@@ -56,9 +74,10 @@ namespace WindowsFormsApp2
             y1 = (int)(y + len * Math.Cos((2 * Math.PI * angle) / 360.0));
             g.DrawLine(new Pen(pixels[i % pixels.Count].Color, BranchWidth), x, picture.Height - y, x1, picture.Height - y1);
             i++;
+            //progress.PerformStep();
             if (len > minLen)
             {
-                for(int j = 0; j < angles.Length; j++)
+                for (int j = 0; j < angles.Length; j++)
                 {
                     DrawFractalTree(x1, y1, (int)(len / 1.5), angle + angles[j]);
                 }
@@ -88,6 +107,11 @@ namespace WindowsFormsApp2
                 " (e.g. (-35, 40, 10) we wil have 3 branches" +
                 " with corresponding angles)";
             return info;
+        }
+
+        ~FractalTree()
+        {
+
         }
     }
 }

@@ -84,5 +84,8 @@ namespace WindowsFormsApp2
             return info;
         }
 
+        ~CurveDragon()
+        {
+        }
     }
 }

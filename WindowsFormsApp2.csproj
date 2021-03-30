@@ -57,11 +57,20 @@
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
     <Compile Include="FractalTree.cs" />
+    <Compile Include="GradientForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GradientForm.Designer.cs">
+      <DependentUpon>GradientForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Pixel.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GradientForm.resx">
+      <DependentUpon>GradientForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
