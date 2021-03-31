@@ -66,8 +66,11 @@ namespace WindowsFormsApp2
             this.ClientSize = new System.Drawing.Size(494, 281);
             this.Controls.Add(this.RandomGradient);
             this.Controls.Add(this.pictureGradient);
+            this.ForeColor = System.Drawing.Color.Black;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
+            this.HelpButton = true;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.KeyPreview = true;
             this.Location = new System.Drawing.Point(50, 750);
             this.MaximizeBox = false;
             this.Name = "GradientForm";

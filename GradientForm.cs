@@ -31,6 +31,12 @@ namespace WindowsFormsApp2
 
         }
 
+        /// 
+        /// 
+        ///     Gradient
+        /// 
+        ///
+
         // getting gradient pixels 
         public List<Pixel> GetPixels(Bitmap bitmap)
         {
@@ -127,17 +133,19 @@ namespace WindowsFormsApp2
             pictureBox.Image = Gradient;
         }
 
+        // Random gradient
         public void RandomGradient_Click(object sender, EventArgs e)
         {
             Gradient(pictureGradient);
         }
 
-        private void GradientForm_KeyDown(object sender, KeyEventArgs e)
+        // Gradient hot key
+        private async void GradientForm_KeyDown(object sender, KeyEventArgs e)
         {
             // generate gradient
-            if (e.KeyCode == Keys.K)
+            if (e.Control && e.KeyCode == Keys.Z)
             {
-                Gradient(pictureGradient);
+                RandomGradient.PerformClick();
             }
         }
     }
