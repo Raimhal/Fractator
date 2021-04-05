@@ -7,7 +7,7 @@ using System.Drawing;
 using System.Drawing.Drawing2D;
 using System.Media;
 
-namespace WindowsFormsApp2
+namespace FractalsCreator
 {
     class Barnsley_fern
     {
@@ -24,7 +24,7 @@ namespace WindowsFormsApp2
         public Color BackgroundColor;
         public int LenGradient;
 
-        public Barnsley_fern(Graphics g, Bitmap picture, float maxX, float maxY, int NumberOfPoints, float[] probability, float[,] Coefficient, List<Pixel> pixels, Color backgroundColor, int LenGradient)
+        public Barnsley_fern(Bitmap picture, float maxX, float maxY, int NumberOfPoints, float[] probability, float[,] Coefficient, List<Pixel> pixels, Color backgroundColor, int LenGradient)
         {
 
             this.picture = new Bitmap(picture.Width, picture.Height);
@@ -52,7 +52,7 @@ namespace WindowsFormsApp2
         {
             Random random = new Random();
             float x0 = 0, y0 = -10;
-            float x = 0, y = 0;
+            float x, y;
             int width = (int)(picture.Width / (maxX - minX));
             int height = (int)(picture.Height / (maxY - minY));
             int FunctionIndex = 0;

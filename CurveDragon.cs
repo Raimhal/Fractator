@@ -6,15 +6,16 @@ using System.Threading.Tasks;
 using System.Drawing;
 using System.Drawing.Drawing2D;
 
-namespace WindowsFormsApp2
+namespace FractalsCreator
 {
     class CurveDragon
     {
         public Graphics g;
         public Bitmap picture;
-        public int i = 0;
+        private int i = 0;
         public Color BackgroundColor;
-        public CurveDragon(Graphics g, Bitmap picture, Color BackgroundColor)
+
+        public CurveDragon(Bitmap picture, Color BackgroundColor)
         {
             this.g = Graphics.FromImage(picture);
             this.picture = new Bitmap(picture.Width, picture.Height);

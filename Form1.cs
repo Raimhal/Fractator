@@ -14,7 +14,7 @@ using System.Diagnostics;
 using System.Threading;
 
 
-namespace WindowsFormsApp2
+namespace FractalsCreator
 {
     public partial class FractalForm : Form
     {
@@ -29,7 +29,7 @@ namespace WindowsFormsApp2
         public Color BackgroundColor = Color.Transparent;
         public List<Pixel> tmpPixels;
         List<Pixel> pixels ;
-        GradientForm gradientForm;
+        public GradientForm gradientForm;
 
         // start value for MBrot
         double hx, hy, maxZ, x_, y_;
@@ -156,7 +156,14 @@ namespace WindowsFormsApp2
             // create or update fractal
             else if (e.Control && e.Shift && e.KeyCode == Keys.F)
             {
-                CreateFractal.PerformClick();
+                if (tabControl.SelectedIndex == 2)
+                {
+                    buttonUpdate.PerformClick();
+                }
+                else
+                {
+                    CreateFractal.PerformClick();
+                }
             }
             // previous fractal
             else if (e.Shift && e.KeyCode == Keys.D1)
@@ -281,7 +288,7 @@ namespace WindowsFormsApp2
         ///
 
         // Create or update a fractal
-        private void createAndUpdateFractalToolStripMenuItem_Click(object sender, EventArgs e)
+        private void CreateAndUpdateFractalToolStripMenuItem_Click(object sender, EventArgs e)
         {
             CreateFractal.PerformClick();
         }
@@ -296,25 +303,25 @@ namespace WindowsFormsApp2
         }
 
         // Generate Gradient
-        private void generateGradientToolStripMenuItem_Click(object sender, EventArgs e)
+        private void GenerateGradientToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Gradient(gradientForm.pictureGradient);
         }
 
         // Zoom in
-        private void zoomInMBrotToolStripMenuItem_Click(object sender, EventArgs e)
+        private void ZoomInMBrotToolStripMenuItem_Click(object sender, EventArgs e)
         {
             IncreaseZOOM.PerformClick();
         }
 
         // Zoom out
-        private void zoomOutMBrotToolStripMenuItem_Click(object sender, EventArgs e)
+        private void ZoomOutMBrotToolStripMenuItem_Click(object sender, EventArgs e)
         {
             DecreaseZOOM.PerformClick();
         }
 
         // Increase the zoom value
-        private void increaseZoomValueToolStripMenuItem_Click(object sender, EventArgs e)
+        private void IncreaseZoomValueToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if (ZOOMValue.Value < ZOOMValue.Maximum)
             {
@@ -323,7 +330,7 @@ namespace WindowsFormsApp2
         }
 
         // Decrease the zoom value
-        private void decreaseTheZoomValueToolStripMenuItem_Click(object sender, EventArgs e)
+        private void DecreaseTheZoomValueToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if (ZOOMValue.Value > ZOOMValue.Minimum)
             {
@@ -332,7 +339,7 @@ namespace WindowsFormsApp2
         }
 
         // icrease the most impotant value
-        private void increaseToolStripMenuItem_Click(object sender, EventArgs e)
+        private void IncreaseToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if (FractalsList.SelectedIndex == 0)
             {
@@ -365,7 +372,7 @@ namespace WindowsFormsApp2
         }
     
         // decrease the most impotant value
-        private void decreaseToolStripMenuItem_Click(object sender, EventArgs e)
+        private void DecreaseToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if (FractalsList.SelectedIndex == 0)
             {
@@ -398,14 +405,14 @@ namespace WindowsFormsApp2
         }
 
         // next fractal
-        private void nextFractalToolStripMenuItem_Click(object sender, EventArgs e)
+        private void NextFractalToolStripMenuItem_Click(object sender, EventArgs e)
         {
             selectFractal += 1;
             FractalsList.SelectedIndex = selectFractal % 4;
         }
 
         // previous fractal
-        private void previousFractalToolStripMenuItem_Click(object sender, EventArgs e)
+        private void PreviousFractalToolStripMenuItem_Click(object sender, EventArgs e)
         {
             selectFractal -= 1;
             if (selectFractal == -1)
@@ -1157,7 +1164,6 @@ namespace WindowsFormsApp2
         // button for generating a fractal
         private void GenerateFractal_Click(object sender, EventArgs e)
         {
-            pixels = GetPixels((Bitmap)gradientForm.pictureGradient.Image);
             DrawFractals();
         }
 
@@ -1165,6 +1171,7 @@ namespace WindowsFormsApp2
         public void DrawFractals()
         {
             Progress.Value = 0;
+            pixels = GetPixels((Bitmap)gradientForm.pictureGradient.Image);
             if (FractalsList.SelectedIndex == 0)
             {
                 ZoomNUM.Text = ZoomVal.ToString("F0") + " X";
@@ -1258,11 +1265,11 @@ namespace WindowsFormsApp2
             size = image.Size;
             int UserIt = (int)Iterations.Value;
             int change;
-            int[] ColorIndex = new int[41];
+            int[] ColorIndex = new int[42];
             int i = 0;
-            for (int p = 0; p < gradientForm.pictureGradient.Width; p++)
+            for (int p = 0; p < gradientForm.pictureGradient.Image.Width; p++)
             {
-                if (p % (int)(gradientForm.pictureGradient.Width / 40.0) == 0)
+                if (p % (int)(gradientForm.pictureGradient.Image.Width * 0.025) == 0)
                 {
                     if (i >= ColorIndex.Length)
                     {
@@ -1443,6 +1450,9 @@ namespace WindowsFormsApp2
                             case 40:
                                 picture.SetPixel(x, y, pixels[ColorIndex[40]].Color);
                                 break;
+                            case 41:
+                                picture.SetPixel(x, y, pixels[ColorIndex[41]].Color);
+                                break;
                             default:
                                 picture.SetPixel(x, y, Color.FromArgb(0, 0, 0));
                                 break;
@@ -1521,7 +1531,7 @@ namespace WindowsFormsApp2
             }
             DrawMBrot();
         }
-        private void image_MouseClick(object sender, MouseEventArgs e)
+        private void Image_MouseClick(object sender, MouseEventArgs e)
         {
             size = image.Size;
             int X = e.X, Y = e.Y;
@@ -1647,7 +1657,7 @@ namespace WindowsFormsApp2
                 angles = new double[] { (double)FirstAngle.Value, (double)SecondAngle.Value, (double)ThirdAngle.Value, (double)FourthAngle.Value };
             }
 
-            FractalTree tree = new FractalTree(g, pictureTree, pixels, angles, (int)(MinBranchLenght.Value), (int)(BranchWidth.Value), BackgroundColor, Progress);
+            FractalTree tree = new FractalTree(pictureTree, pixels, angles, (int)(MinBranchLenght.Value), (int)(BranchWidth.Value), BackgroundColor, Progress);
             await Task.Run(() => { tree.DrawFractalTree((int)(StartX.Value), (int)(StartY.Value), branchLenght, 0); });
 
             end = DateTime.Now;
@@ -1705,7 +1715,7 @@ namespace WindowsFormsApp2
             };
 
             Bitmap pictureFern = new Bitmap(image.Width, image.Height);
-            Barnsley_fern Fern = new Barnsley_fern(g, pictureFern, maxX, maxY, NumbersOfPoint, probability, Coefficient, pixels, BackgroundColor, gradientForm.pictureGradient.Width);
+            Barnsley_fern Fern = new Barnsley_fern(pictureFern, maxX, maxY, NumbersOfPoint, probability, Coefficient, pixels, BackgroundColor, gradientForm.pictureGradient.Width);
             await Task.Run(() => { pictureFern = Fern.DrawBransleyFern(); });
 
             end = DateTime.Now;
@@ -1822,7 +1832,7 @@ namespace WindowsFormsApp2
                 indexs.Add((int)((i + 1) * gradientForm.pictureGradient.Width / ((Coords.Count / 4) + 1)));
             }
 
-            CurveDragon Dragon = new CurveDragon(g, pictureCurveDragon, BackgroundColor);
+            CurveDragon Dragon = new CurveDragon(pictureCurveDragon, BackgroundColor);
             CountIterations = (int)(DragonIterations.Value);
             await Task.Run(() => {
                 for (int i = 0; i < Coords.Count; i += 4)

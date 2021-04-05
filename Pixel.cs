@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Drawing;
 
-namespace WindowsFormsApp2
+namespace FractalsCreator
 {
     public class Pixel
     {

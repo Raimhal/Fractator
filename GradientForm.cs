@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Globalization;
 
-namespace WindowsFormsApp2
+namespace FractalsCreator
 {
     public partial class GradientForm : Form
     {
@@ -140,7 +140,7 @@ namespace WindowsFormsApp2
         }
 
         // Gradient hot key
-        private async void GradientForm_KeyDown(object sender, KeyEventArgs e)
+        private void GradientForm_KeyDown(object sender, KeyEventArgs e)
         {
             // generate gradient
             if (e.Control && e.KeyCode == Keys.Z)

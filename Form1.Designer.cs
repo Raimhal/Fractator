@@ -1,4 +1,4 @@
-﻿namespace WindowsFormsApp2
+﻿namespace FractalsCreator
 {
     partial class FractalForm
     {
@@ -42,10 +42,12 @@
             this.LabelMaxZDegreeTwo = new System.Windows.Forms.Label();
             this.MaxZDegreeTwo = new System.Windows.Forms.MaskedTextBox();
             this.SplitImageAndInterface = new System.Windows.Forms.SplitContainer();
+            this.image = new System.Windows.Forms.PictureBox();
             this.tabControl = new System.Windows.Forms.TabControl();
             this.FractalProperties = new System.Windows.Forms.TabPage();
             this.GroupMouseControl = new System.Windows.Forms.GroupBox();
             this.textBox1 = new System.Windows.Forms.TextBox();
+            this.DecreaseZOOM = new System.Windows.Forms.Button();
             this.DragonIterations = new System.Windows.Forms.NumericUpDown();
             this.NumberOfCurves = new System.Windows.Forms.ComboBox();
             this.labelStartPointX = new System.Windows.Forms.Label();
@@ -118,6 +120,7 @@
             this.Progress = new System.Windows.Forms.ProgressBar();
             this.CulculationTime = new System.Windows.Forms.TextBox();
             this.labelTime = new System.Windows.Forms.Label();
+            this.IncreaseZOOM = new System.Windows.Forms.Button();
             this.Details = new System.Windows.Forms.TabPage();
             this.FractalsInfo = new System.Windows.Forms.TextBox();
             this.ImageSettings = new System.Windows.Forms.TabPage();
@@ -128,16 +131,9 @@
             this.ShowImageWidth = new System.Windows.Forms.NumericUpDown();
             this.MenuStrip = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.fractalToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.coToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.OpenFile = new System.Windows.Forms.OpenFileDialog();
-            this.SaveFile = new System.Windows.Forms.SaveFileDialog();
-            this.ColorDialog = new System.Windows.Forms.ColorDialog();
-            this.image = new System.Windows.Forms.PictureBox();
-            this.DecreaseZOOM = new System.Windows.Forms.Button();
-            this.IncreaseZOOM = new System.Windows.Forms.Button();
             this.LoadGradient = new System.Windows.Forms.ToolStripMenuItem();
             this.SaveAs = new System.Windows.Forms.ToolStripMenuItem();
+            this.fractalToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.createAndUpdateFractalToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.gradientToolMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.generateGradientToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -145,16 +141,21 @@
             this.zoomOutMBrotToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.increaseZoomValueToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.decreaseTheZoomValueToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.coToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.nextFractalToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.previousFractalToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.increaseToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.decreaseToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.OpenFile = new System.Windows.Forms.OpenFileDialog();
+            this.SaveFile = new System.Windows.Forms.SaveFileDialog();
+            this.ColorDialog = new System.Windows.Forms.ColorDialog();
             ((System.ComponentModel.ISupportInitialize)(this.ZOOMValue)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Iterations)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.SplitImageAndInterface)).BeginInit();
             this.SplitImageAndInterface.Panel1.SuspendLayout();
             this.SplitImageAndInterface.Panel2.SuspendLayout();
             this.SplitImageAndInterface.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.image)).BeginInit();
             this.tabControl.SuspendLayout();
             this.FractalProperties.SuspendLayout();
             this.GroupMouseControl.SuspendLayout();
@@ -209,7 +210,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.ShowImageHeight)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ShowImageWidth)).BeginInit();
             this.MenuStrip.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.image)).BeginInit();
             this.SuspendLayout();
             // 
             // CreateFractal
@@ -390,6 +390,20 @@
             this.SplitImageAndInterface.SplitterDistance = 1285;
             this.SplitImageAndInterface.TabIndex = 17;
             // 
+            // image
+            // 
+            this.image.BackColor = System.Drawing.Color.White;
+            this.image.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.image.Location = new System.Drawing.Point(0, 0);
+            this.image.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
+            this.image.Name = "image";
+            this.image.Size = new System.Drawing.Size(1281, 721);
+            this.image.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.image.TabIndex = 0;
+            this.image.TabStop = false;
+            this.image.MouseClick += new System.Windows.Forms.MouseEventHandler(this.Image_MouseClick);
+            this.image.Resize += new System.EventHandler(this.FractalForm_Resize);
+            // 
             // tabControl
             // 
             this.tabControl.Controls.Add(this.FractalProperties);
@@ -530,6 +544,19 @@
             this.textBox1.Text = "Zoom in : Mouse Right Click\r\nZoom out : Mouse Left Click\r\nDefault : Mouse Middle " +
     "Click";
             this.textBox1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // DecreaseZOOM
+            // 
+            this.DecreaseZOOM.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.DecreaseZOOM.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.DecreaseZOOM.Image = ((System.Drawing.Image)(resources.GetObject("DecreaseZOOM.Image")));
+            this.DecreaseZOOM.Location = new System.Drawing.Point(145, 65);
+            this.DecreaseZOOM.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
+            this.DecreaseZOOM.Name = "DecreaseZOOM";
+            this.DecreaseZOOM.Size = new System.Drawing.Size(32, 32);
+            this.DecreaseZOOM.TabIndex = 95;
+            this.DecreaseZOOM.UseVisualStyleBackColor = true;
+            this.DecreaseZOOM.Click += new System.EventHandler(this.DecreaseZOOM_Click);
             // 
             // DragonIterations
             // 
@@ -2069,6 +2096,20 @@
             this.labelTime.TabIndex = 17;
             this.labelTime.Text = "Time of calculation :";
             // 
+            // IncreaseZOOM
+            // 
+            this.IncreaseZOOM.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.IncreaseZOOM.Cursor = System.Windows.Forms.Cursors.Default;
+            this.IncreaseZOOM.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.IncreaseZOOM.Image = ((System.Drawing.Image)(resources.GetObject("IncreaseZOOM.Image")));
+            this.IncreaseZOOM.Location = new System.Drawing.Point(108, 65);
+            this.IncreaseZOOM.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
+            this.IncreaseZOOM.Name = "IncreaseZOOM";
+            this.IncreaseZOOM.Size = new System.Drawing.Size(32, 32);
+            this.IncreaseZOOM.TabIndex = 2;
+            this.IncreaseZOOM.UseVisualStyleBackColor = true;
+            this.IncreaseZOOM.Click += new System.EventHandler(this.IncreaseZOOM_Click);
+            // 
             // Details
             // 
             this.Details.Controls.Add(this.FractalsInfo);
@@ -2091,7 +2132,7 @@
             this.FractalsInfo.Multiline = true;
             this.FractalsInfo.Name = "FractalsInfo";
             this.FractalsInfo.ReadOnly = true;
-            this.FractalsInfo.Size = new System.Drawing.Size(214, 695);
+            this.FractalsInfo.Size = new System.Drawing.Size(214, 688);
             this.FractalsInfo.TabIndex = 22;
             // 
             // ImageSettings
@@ -2205,82 +2246,6 @@
             this.fileToolStripMenuItem.Size = new System.Drawing.Size(37, 19);
             this.fileToolStripMenuItem.Text = "File";
             // 
-            // fractalToolStripMenuItem
-            // 
-            this.fractalToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.createAndUpdateFractalToolStripMenuItem,
-            this.gradientToolMenuItem,
-            this.generateGradientToolStripMenuItem,
-            this.zoomInMBrotToolStripMenuItem,
-            this.zoomOutMBrotToolStripMenuItem,
-            this.increaseZoomValueToolStripMenuItem,
-            this.decreaseTheZoomValueToolStripMenuItem});
-            this.fractalToolStripMenuItem.Name = "fractalToolStripMenuItem";
-            this.fractalToolStripMenuItem.Size = new System.Drawing.Size(54, 19);
-            this.fractalToolStripMenuItem.Text = "Fractal";
-            // 
-            // coToolStripMenuItem
-            // 
-            this.coToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.nextFractalToolStripMenuItem,
-            this.previousFractalToolStripMenuItem,
-            this.increaseToolStripMenuItem,
-            this.decreaseToolStripMenuItem});
-            this.coToolStripMenuItem.Name = "coToolStripMenuItem";
-            this.coToolStripMenuItem.Size = new System.Drawing.Size(59, 19);
-            this.coToolStripMenuItem.Text = "Control";
-            // 
-            // OpenFile
-            // 
-            this.OpenFile.Filter = "Images|*.bmp;*.png;*.jpg;";
-            this.OpenFile.FilterIndex = 3;
-            // 
-            // SaveFile
-            // 
-            this.SaveFile.Filter = "Images|*.bmp;*.png;*.jpg";
-            this.SaveFile.FilterIndex = 3;
-            // 
-            // image
-            // 
-            this.image.BackColor = System.Drawing.Color.White;
-            this.image.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.image.Location = new System.Drawing.Point(0, 0);
-            this.image.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
-            this.image.Name = "image";
-            this.image.Size = new System.Drawing.Size(1281, 721);
-            this.image.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.image.TabIndex = 0;
-            this.image.TabStop = false;
-            this.image.MouseClick += new System.Windows.Forms.MouseEventHandler(this.image_MouseClick);
-            this.image.Resize += new System.EventHandler(this.FractalForm_Resize);
-            // 
-            // DecreaseZOOM
-            // 
-            this.DecreaseZOOM.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.DecreaseZOOM.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.DecreaseZOOM.Image = ((System.Drawing.Image)(resources.GetObject("DecreaseZOOM.Image")));
-            this.DecreaseZOOM.Location = new System.Drawing.Point(145, 65);
-            this.DecreaseZOOM.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
-            this.DecreaseZOOM.Name = "DecreaseZOOM";
-            this.DecreaseZOOM.Size = new System.Drawing.Size(32, 32);
-            this.DecreaseZOOM.TabIndex = 95;
-            this.DecreaseZOOM.UseVisualStyleBackColor = true;
-            this.DecreaseZOOM.Click += new System.EventHandler(this.DecreaseZOOM_Click);
-            // 
-            // IncreaseZOOM
-            // 
-            this.IncreaseZOOM.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.IncreaseZOOM.Cursor = System.Windows.Forms.Cursors.Default;
-            this.IncreaseZOOM.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.IncreaseZOOM.Image = ((System.Drawing.Image)(resources.GetObject("IncreaseZOOM.Image")));
-            this.IncreaseZOOM.Location = new System.Drawing.Point(108, 65);
-            this.IncreaseZOOM.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
-            this.IncreaseZOOM.Name = "IncreaseZOOM";
-            this.IncreaseZOOM.Size = new System.Drawing.Size(32, 32);
-            this.IncreaseZOOM.TabIndex = 2;
-            this.IncreaseZOOM.UseVisualStyleBackColor = true;
-            this.IncreaseZOOM.Click += new System.EventHandler(this.IncreaseZOOM_Click);
-            // 
             // LoadGradient
             // 
             this.LoadGradient.Image = ((System.Drawing.Image)(resources.GetObject("LoadGradient.Image")));
@@ -2299,6 +2264,20 @@
             this.SaveAs.Text = "Save image";
             this.SaveAs.Click += new System.EventHandler(this.SaveAs_Click);
             // 
+            // fractalToolStripMenuItem
+            // 
+            this.fractalToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.createAndUpdateFractalToolStripMenuItem,
+            this.gradientToolMenuItem,
+            this.generateGradientToolStripMenuItem,
+            this.zoomInMBrotToolStripMenuItem,
+            this.zoomOutMBrotToolStripMenuItem,
+            this.increaseZoomValueToolStripMenuItem,
+            this.decreaseTheZoomValueToolStripMenuItem});
+            this.fractalToolStripMenuItem.Name = "fractalToolStripMenuItem";
+            this.fractalToolStripMenuItem.Size = new System.Drawing.Size(54, 19);
+            this.fractalToolStripMenuItem.Text = "Fractal";
+            // 
             // createAndUpdateFractalToolStripMenuItem
             // 
             this.createAndUpdateFractalToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("createAndUpdateFractalToolStripMenuItem.Image")));
@@ -2306,7 +2285,7 @@
             this.createAndUpdateFractalToolStripMenuItem.ShortcutKeyDisplayString = "Ctrl + Shift + F";
             this.createAndUpdateFractalToolStripMenuItem.Size = new System.Drawing.Size(291, 22);
             this.createAndUpdateFractalToolStripMenuItem.Text = "Create or update a fractal";
-            this.createAndUpdateFractalToolStripMenuItem.Click += new System.EventHandler(this.createAndUpdateFractalToolStripMenuItem_Click);
+            this.createAndUpdateFractalToolStripMenuItem.Click += new System.EventHandler(this.CreateAndUpdateFractalToolStripMenuItem_Click);
             // 
             // gradientToolMenuItem
             // 
@@ -2324,7 +2303,7 @@
             this.generateGradientToolStripMenuItem.ShortcutKeyDisplayString = "Ctrl + Z";
             this.generateGradientToolStripMenuItem.Size = new System.Drawing.Size(291, 22);
             this.generateGradientToolStripMenuItem.Text = "Generate Gradient";
-            this.generateGradientToolStripMenuItem.Click += new System.EventHandler(this.generateGradientToolStripMenuItem_Click);
+            this.generateGradientToolStripMenuItem.Click += new System.EventHandler(this.GenerateGradientToolStripMenuItem_Click);
             // 
             // zoomInMBrotToolStripMenuItem
             // 
@@ -2333,7 +2312,7 @@
             this.zoomInMBrotToolStripMenuItem.ShortcutKeyDisplayString = "Q";
             this.zoomInMBrotToolStripMenuItem.Size = new System.Drawing.Size(291, 22);
             this.zoomInMBrotToolStripMenuItem.Text = "Zoom in";
-            this.zoomInMBrotToolStripMenuItem.Click += new System.EventHandler(this.zoomInMBrotToolStripMenuItem_Click);
+            this.zoomInMBrotToolStripMenuItem.Click += new System.EventHandler(this.ZoomInMBrotToolStripMenuItem_Click);
             // 
             // zoomOutMBrotToolStripMenuItem
             // 
@@ -2342,7 +2321,7 @@
             this.zoomOutMBrotToolStripMenuItem.ShortcutKeyDisplayString = "E";
             this.zoomOutMBrotToolStripMenuItem.Size = new System.Drawing.Size(291, 22);
             this.zoomOutMBrotToolStripMenuItem.Text = "Zoom out ";
-            this.zoomOutMBrotToolStripMenuItem.Click += new System.EventHandler(this.zoomOutMBrotToolStripMenuItem_Click);
+            this.zoomOutMBrotToolStripMenuItem.Click += new System.EventHandler(this.ZoomOutMBrotToolStripMenuItem_Click);
             // 
             // increaseZoomValueToolStripMenuItem
             // 
@@ -2351,7 +2330,7 @@
             this.increaseZoomValueToolStripMenuItem.ShortcutKeyDisplayString = "Shift + Q";
             this.increaseZoomValueToolStripMenuItem.Size = new System.Drawing.Size(291, 22);
             this.increaseZoomValueToolStripMenuItem.Text = "Increase the zoom value";
-            this.increaseZoomValueToolStripMenuItem.Click += new System.EventHandler(this.increaseZoomValueToolStripMenuItem_Click);
+            this.increaseZoomValueToolStripMenuItem.Click += new System.EventHandler(this.IncreaseZoomValueToolStripMenuItem_Click);
             // 
             // decreaseTheZoomValueToolStripMenuItem
             // 
@@ -2360,7 +2339,18 @@
             this.decreaseTheZoomValueToolStripMenuItem.ShortcutKeyDisplayString = "Shift + E";
             this.decreaseTheZoomValueToolStripMenuItem.Size = new System.Drawing.Size(291, 22);
             this.decreaseTheZoomValueToolStripMenuItem.Text = "Decrease the zoom value";
-            this.decreaseTheZoomValueToolStripMenuItem.Click += new System.EventHandler(this.decreaseTheZoomValueToolStripMenuItem_Click);
+            this.decreaseTheZoomValueToolStripMenuItem.Click += new System.EventHandler(this.DecreaseTheZoomValueToolStripMenuItem_Click);
+            // 
+            // coToolStripMenuItem
+            // 
+            this.coToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.nextFractalToolStripMenuItem,
+            this.previousFractalToolStripMenuItem,
+            this.increaseToolStripMenuItem,
+            this.decreaseToolStripMenuItem});
+            this.coToolStripMenuItem.Name = "coToolStripMenuItem";
+            this.coToolStripMenuItem.Size = new System.Drawing.Size(59, 19);
+            this.coToolStripMenuItem.Text = "Control";
             // 
             // nextFractalToolStripMenuItem
             // 
@@ -2369,7 +2359,7 @@
             this.nextFractalToolStripMenuItem.ShortcutKeyDisplayString = "Shift + 1";
             this.nextFractalToolStripMenuItem.Size = new System.Drawing.Size(241, 22);
             this.nextFractalToolStripMenuItem.Text = "Next fractal";
-            this.nextFractalToolStripMenuItem.Click += new System.EventHandler(this.nextFractalToolStripMenuItem_Click);
+            this.nextFractalToolStripMenuItem.Click += new System.EventHandler(this.NextFractalToolStripMenuItem_Click);
             // 
             // previousFractalToolStripMenuItem
             // 
@@ -2378,7 +2368,7 @@
             this.previousFractalToolStripMenuItem.ShortcutKeyDisplayString = "Shift + 2";
             this.previousFractalToolStripMenuItem.Size = new System.Drawing.Size(241, 22);
             this.previousFractalToolStripMenuItem.Text = "Previous fractal";
-            this.previousFractalToolStripMenuItem.Click += new System.EventHandler(this.previousFractalToolStripMenuItem_Click);
+            this.previousFractalToolStripMenuItem.Click += new System.EventHandler(this.PreviousFractalToolStripMenuItem_Click);
             // 
             // increaseToolStripMenuItem
             // 
@@ -2387,7 +2377,7 @@
             this.increaseToolStripMenuItem.ShortcutKeyDisplayString = "Shift + OemPlus(+)";
             this.increaseToolStripMenuItem.Size = new System.Drawing.Size(241, 22);
             this.increaseToolStripMenuItem.Text = "Increase";
-            this.increaseToolStripMenuItem.Click += new System.EventHandler(this.increaseToolStripMenuItem_Click);
+            this.increaseToolStripMenuItem.Click += new System.EventHandler(this.IncreaseToolStripMenuItem_Click);
             // 
             // decreaseToolStripMenuItem
             // 
@@ -2396,7 +2386,17 @@
             this.decreaseToolStripMenuItem.ShortcutKeyDisplayString = "Shift + OemMinus(+)";
             this.decreaseToolStripMenuItem.Size = new System.Drawing.Size(241, 22);
             this.decreaseToolStripMenuItem.Text = "Decrease";
-            this.decreaseToolStripMenuItem.Click += new System.EventHandler(this.decreaseToolStripMenuItem_Click);
+            this.decreaseToolStripMenuItem.Click += new System.EventHandler(this.DecreaseToolStripMenuItem_Click);
+            // 
+            // OpenFile
+            // 
+            this.OpenFile.Filter = "Images|*.bmp;*.png;*.jpg;";
+            this.OpenFile.FilterIndex = 3;
+            // 
+            // SaveFile
+            // 
+            this.SaveFile.Filter = "Images|*.bmp;*.png;*.jpg";
+            this.SaveFile.FilterIndex = 3;
             // 
             // FractalForm
             // 
@@ -2429,6 +2429,7 @@
             this.SplitImageAndInterface.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.SplitImageAndInterface)).EndInit();
             this.SplitImageAndInterface.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.image)).EndInit();
             this.tabControl.ResumeLayout(false);
             this.FractalProperties.ResumeLayout(false);
             this.FractalProperties.PerformLayout();
@@ -2488,7 +2489,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.ShowImageWidth)).EndInit();
             this.MenuStrip.ResumeLayout(false);
             this.MenuStrip.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.image)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

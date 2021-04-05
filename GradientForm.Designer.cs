@@ -1,5 +1,5 @@
 ﻿
-namespace WindowsFormsApp2
+namespace FractalsCreator
 {
     partial class GradientForm
     {
