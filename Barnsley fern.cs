@@ -116,7 +116,7 @@ namespace FractalsCreator
 
         ~Barnsley_fern()
         {
-
+            Console.WriteLine("Class Barsley_fern is clear");
         }
     }
 }

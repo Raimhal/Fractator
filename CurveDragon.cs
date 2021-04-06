@@ -87,6 +87,7 @@ namespace FractalsCreator
 
         ~CurveDragon()
         {
+            Console.WriteLine("Class CurveDragon is clear");
         }
     }
 }

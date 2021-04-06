@@ -14,6 +14,7 @@ using System.Diagnostics;
 using System.Threading;
 
 
+
 namespace FractalsCreator
 {
     public partial class FractalForm : Form
@@ -1240,7 +1241,7 @@ namespace FractalsCreator
             IncreaseZOOM.Enabled = false;   ///
             DecreaseZOOM.Enabled = false;   /// disabled access to change the image
             CreateFractal.Enabled = false;  ///
-            FractalsList.Enabled = false;
+            FractalsList.Enabled = false;   ///
             start = DateTime.Now;
             ZoomNUM.Width = ZoomNUM.Text.Length * 8 + 70;
             image.Invalidate();
@@ -1250,11 +1251,11 @@ namespace FractalsCreator
             end = DateTime.Now;
             CulculationTime.Text = (end - start).TotalMilliseconds.ToString("F2") + " ms";
 
-            image.Enabled = true;
-            IncreaseZOOM.Enabled = true;
+            image.Enabled = true;           ///
+            IncreaseZOOM.Enabled = true;    ///
             DecreaseZOOM.Enabled = true;    /// added access to change the image
-            CreateFractal.Enabled = true;
-            FractalsList.Enabled = true;
+            CreateFractal.Enabled = true;   ///
+            FractalsList.Enabled = true;    ///
             image.Cursor = Cursors.Default;
         }
 
@@ -1511,7 +1512,7 @@ namespace FractalsCreator
             ZoomNUM.Visible = true;
             ZoomNUM.Clear();
             ZoomNUM.Text = ZoomVal.ToString("F2") + " X";
-            DrawMBrot();
+            DrawFractals();
         }
         private void IncreaseZOOM_Click(object sender, EventArgs e)
         {
@@ -1529,7 +1530,7 @@ namespace FractalsCreator
             {
                 ZoomNUM.Text = ZoomVal.ToString("F2") + " X";
             }
-            DrawMBrot();
+            DrawFractals();
         }
         private void Image_MouseClick(object sender, MouseEventArgs e)
         {
@@ -1548,7 +1549,7 @@ namespace FractalsCreator
                     ZoomVal *= (double)ZOOMValue.Value;
                     ZoomNUM.Clear();
                     ZoomNUM.Text = ZoomVal.ToString("F2") + " X";
-                    DrawMBrot();
+                    DrawFractals();
 
 
                 }
@@ -1563,7 +1564,7 @@ namespace FractalsCreator
                     ZoomNUM.Clear();
                     ZoomNUM.Width = 80;
                     ZoomNUM.Text = ZoomVal.ToString("F2") + " X";
-                    DrawMBrot();
+                    DrawFractals();
 
                 }
                 else if (e.Button == MouseButtons.Right)
@@ -1583,7 +1584,7 @@ namespace FractalsCreator
                     {
                         ZoomNUM.Text = ZoomVal.ToString("F2") + " X";
                     }
-                    DrawMBrot();
+                    DrawFractals();
                 }
             }
         }
@@ -1657,7 +1658,7 @@ namespace FractalsCreator
                 angles = new double[] { (double)FirstAngle.Value, (double)SecondAngle.Value, (double)ThirdAngle.Value, (double)FourthAngle.Value };
             }
 
-            FractalTree tree = new FractalTree(pictureTree, pixels, angles, (int)(MinBranchLenght.Value), (int)(BranchWidth.Value), BackgroundColor, Progress);
+            FractalTree tree = new FractalTree(pictureTree, pixels, angles, (int)(MinBranchLenght.Value), (int)(BranchWidth.Value), BackgroundColor);
             await Task.Run(() => { tree.DrawFractalTree((int)(StartX.Value), (int)(StartY.Value), branchLenght, 0); });
 
             end = DateTime.Now;
@@ -1734,7 +1735,7 @@ namespace FractalsCreator
         /// 
         /// 
 
-        // Draw fern Barnsley
+        // Draw dragon curve
         private async void DrawCurveDragon()
         {
             image.Cursor = Cursors.WaitCursor;
@@ -2292,6 +2293,11 @@ namespace FractalsCreator
             }
 
             pictureBox.Image = Gradient;
+        }
+
+        ~FractalForm()
+        {
+            Console.WriteLine("Class FractalForm is clear");
         }
     }
 }

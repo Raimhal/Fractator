@@ -18,5 +18,6 @@ namespace FractalsCreator
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new FractalForm());
         }
+
     }
 }

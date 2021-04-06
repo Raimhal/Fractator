@@ -25,11 +25,10 @@ namespace FractalsCreator
         public int BranchWidth;
         private int i = 0;
         public Color BackgroundColor;
-        public ProgressBar progress;
 
 
 
-        public FractalTree(Bitmap picture, List<Pixel> pixels, double[] angles, int minLen, int BranchWidth, Color BackgroundColor, ProgressBar progress)
+        public FractalTree(Bitmap picture, List<Pixel> pixels, double[] angles, int minLen, int BranchWidth, Color BackgroundColor)
         {
             this.g = Graphics.FromImage(picture);
             this.picture = new Bitmap(picture.Width, picture.Height);
@@ -38,7 +37,6 @@ namespace FractalsCreator
             this.minLen = minLen;
             this.BranchWidth = BranchWidth;
             this.BackgroundColor = BackgroundColor;
-            this.progress = progress;
         }
 
         public FractalTree()
@@ -100,7 +98,7 @@ namespace FractalsCreator
 
         ~FractalTree()
         {
-
+            Console.WriteLine("Class FractalTree is clear");
         }
     }
 }

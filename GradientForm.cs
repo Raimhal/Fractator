@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Globalization;
 
+
 namespace FractalsCreator
 {
     public partial class GradientForm : Form
@@ -147,6 +148,10 @@ namespace FractalsCreator
             {
                 RandomGradient.PerformClick();
             }
+        }
+        ~GradientForm()
+        {
+            Console.WriteLine("Class GradientForm is clear");
         }
     }
 }
