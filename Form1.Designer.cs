@@ -2067,6 +2067,8 @@
             this.Progress.ForeColor = System.Drawing.Color.Blue;
             this.Progress.Location = new System.Drawing.Point(3, 668);
             this.Progress.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.Progress.MarqueeAnimationSpeed = 50;
+            this.Progress.Maximum = 208;
             this.Progress.Name = "Progress";
             this.Progress.Size = new System.Drawing.Size(208, 18);
             this.Progress.Step = 1;
@@ -2113,10 +2115,10 @@
             // Details
             // 
             this.Details.Controls.Add(this.FractalsInfo);
-            this.Details.Location = new System.Drawing.Point(4, 29);
+            this.Details.Location = new System.Drawing.Point(4, 22);
             this.Details.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Details.Name = "Details";
-            this.Details.Size = new System.Drawing.Size(214, 688);
+            this.Details.Size = new System.Drawing.Size(214, 695);
             this.Details.TabIndex = 1;
             this.Details.Text = "Details";
             this.Details.UseVisualStyleBackColor = true;
@@ -2132,7 +2134,7 @@
             this.FractalsInfo.Multiline = true;
             this.FractalsInfo.Name = "FractalsInfo";
             this.FractalsInfo.ReadOnly = true;
-            this.FractalsInfo.Size = new System.Drawing.Size(214, 688);
+            this.FractalsInfo.Size = new System.Drawing.Size(214, 695);
             this.FractalsInfo.TabIndex = 22;
             // 
             // ImageSettings
@@ -2143,10 +2145,10 @@
             this.ImageSettings.Controls.Add(this.labelImageWidth);
             this.ImageSettings.Controls.Add(this.ShowImageHeight);
             this.ImageSettings.Controls.Add(this.ShowImageWidth);
-            this.ImageSettings.Location = new System.Drawing.Point(4, 29);
+            this.ImageSettings.Location = new System.Drawing.Point(4, 22);
             this.ImageSettings.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.ImageSettings.Name = "ImageSettings";
-            this.ImageSettings.Size = new System.Drawing.Size(214, 688);
+            this.ImageSettings.Size = new System.Drawing.Size(214, 695);
             this.ImageSettings.TabIndex = 2;
             this.ImageSettings.Text = "Image";
             // 
@@ -2515,7 +2517,6 @@
         private System.Windows.Forms.TabPage FractalProperties;
         private System.Windows.Forms.Label labelTime;
         private System.Windows.Forms.TextBox CulculationTime;
-        private System.Windows.Forms.ProgressBar Progress;
         private System.Windows.Forms.ToolStripMenuItem LoadGradient;
         private System.Windows.Forms.ToolStripMenuItem SaveAs;
         private System.Windows.Forms.OpenFileDialog OpenFile;
@@ -2615,6 +2616,7 @@
         private System.Windows.Forms.GroupBox GroupMouseControl;
         private System.Windows.Forms.TextBox textBox1;
         public System.Windows.Forms.Button CreateFractal;
+        public System.Windows.Forms.ProgressBar Progress;
     }
 }
 

@@ -26,8 +26,6 @@ namespace FractalsCreator
         private int i = 0;
         public Color BackgroundColor;
 
-
-
         public FractalTree(Bitmap picture, List<Pixel> pixels, double[] angles, int minLen, int BranchWidth, Color BackgroundColor)
         {
             this.g = Graphics.FromImage(picture);
@@ -49,12 +47,22 @@ namespace FractalsCreator
             g.Clear(BackgroundColor);
             g.SmoothingMode = SmoothingMode.AntiAlias;
         }
-        public void DrawFractalTree(int x, int y, int len, double angle)
+        public void DrawFractalTree(int x, int y, int len, double angle, ProgressBar progress)
         {
 
             if (i == 0)
             {
                 Effects();
+                progress.Invoke(new Action(() => // делегат для відображення progressBar
+                {
+                    progress.Value = 0;
+                    progress.Minimum = 0;
+                    progress.Maximum = (int)Math.Ceiling(Math.Log(len) / (minLen * 0.01));
+                    if (angles.Length == 4)
+                    {
+                        progress.Maximum = (int)Math.Pow(Math.Log(len, minLen) * 7.3, angles.Length);
+                    }
+                }));
             }
 
             int x1, y1;
@@ -62,13 +70,20 @@ namespace FractalsCreator
             y1 = (int)(y + len * Math.Cos((2 * Math.PI * angle) / 360.0));
             g.DrawLine(new Pen(pixels[i % pixels.Count].Color, BranchWidth), x, picture.Height - y, x1, picture.Height - y1);
             i++;
+            progress.Invoke(new Action(() => // делегат для зміни progressBar
+            {;
+                progress.PerformStep();
+            }));
             if (len > minLen)
             {
                 for (int j = 0; j < angles.Length; j++)
                 {
-                    DrawFractalTree(x1, y1, (int)(len / 1.5), angle + angles[j]);
+                    DrawFractalTree(x1, y1, (int)(len / 1.5), angle + angles[j], progress);
                 }
+
             }
+
+
         }
 
         public string Info()

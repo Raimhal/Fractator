@@ -11,18 +11,18 @@ namespace FractalsCreator
 {
     class Barnsley_fern
     {
-        public Graphics g;
-        public Bitmap picture;
-        public float minX = -3;
-        public float maxX;
-        public float minY = 0.1f;
-        public float maxY;
-        public int NumberOfPoints;
-        public float[] probability;
-        public float[,] Coefficient;
-        public List<Pixel> pixels;
-        public Color BackgroundColor;
-        public int LenGradient;
+        protected Graphics g;
+        protected Bitmap picture;
+        protected float minX = -3;
+        protected float maxX;
+        protected float minY = 0.1f;
+        protected float maxY;
+        protected int NumberOfPoints;
+        protected float[] probability;
+        protected float[,] Coefficient;
+        protected List<Pixel> pixels;
+        protected Color BackgroundColor;
+        protected int LenGradient;
 
         public Barnsley_fern(Bitmap picture, float maxX, float maxY, int NumberOfPoints, float[] probability, float[,] Coefficient, List<Pixel> pixels, Color backgroundColor, int LenGradient)
         {
