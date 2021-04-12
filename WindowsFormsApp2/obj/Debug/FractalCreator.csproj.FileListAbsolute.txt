@@ -1,0 +1,16 @@
+E:\it\C#\курсова\WindowsFormsApp2\obj\Debug\WindowsFormsApp2.Properties.Resources.resources
+E:\it\C#\курсова\WindowsFormsApp2\obj\Debug\FractalCreator.csproj.GenerateResource.cache
+E:\it\C#\курсова\WindowsFormsApp2\obj\Debug\FractalCreator.csproj.CoreCompileInputs.cache
+E:\it\C#\курсова\WindowsFormsApp2\bin\Debug\Fractal Creator.exe.config
+E:\it\C#\курсова\WindowsFormsApp2\bin\Debug\Fractal Creator.exe
+E:\it\C#\курсова\WindowsFormsApp2\bin\Debug\Fractal Creator.pdb
+E:\it\C#\курсова\WindowsFormsApp2\obj\Debug\Fractal Creator.exe
+E:\it\C#\курсова\WindowsFormsApp2\obj\Debug\Fractal Creator.pdb
+E:\it\C#\курсова\WindowsFormsApp2\obj\Debug\FractalsCreator.FractalForm.resources
+E:\it\C#\курсова\WindowsFormsApp2\obj\Debug\FractalsCreator.GradientForm.resources
+E:\it\C#\курсова\WindowsFormsApp2\obj\Debug\FractalCreator.csprojAssemblyReference.cache
+E:\it\C#\курсова\WindowsFormsApp2\bin\Debug\lLibrary.dll
+E:\it\C#\курсова\WindowsFormsApp2\bin\Debug\lLibrary.pdb
+E:\it\C#\курсова\WindowsFormsApp2\obj\Debug\FractalCreator.csproj.CopyComplete
+E:\it\C#\курсова\WindowsFormsApp2\bin\Debug\HelperClasses.dll
+E:\it\C#\курсова\WindowsFormsApp2\bin\Debug\HelperClasses.pdb

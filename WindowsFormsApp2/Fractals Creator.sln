@@ -1,0 +1,37 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30002.166
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FractalCreator", "FractalCreator.csproj", "{54D50E4E-6DA2-4741-A0E8-539CBA677E66}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FractalClasses", "..\lLibrary\FractalClasses.csproj", "{BAB89338-F780-4692-9F01-B4B3148108D2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HelperClasses", "..\HelperClasses\HelperClasses.csproj", "{A1EF85BA-8E13-4765-AA81-1E474DDC8726}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{54D50E4E-6DA2-4741-A0E8-539CBA677E66}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{54D50E4E-6DA2-4741-A0E8-539CBA677E66}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{54D50E4E-6DA2-4741-A0E8-539CBA677E66}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{54D50E4E-6DA2-4741-A0E8-539CBA677E66}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BAB89338-F780-4692-9F01-B4B3148108D2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BAB89338-F780-4692-9F01-B4B3148108D2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BAB89338-F780-4692-9F01-B4B3148108D2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BAB89338-F780-4692-9F01-B4B3148108D2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A1EF85BA-8E13-4765-AA81-1E474DDC8726}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A1EF85BA-8E13-4765-AA81-1E474DDC8726}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A1EF85BA-8E13-4765-AA81-1E474DDC8726}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A1EF85BA-8E13-4765-AA81-1E474DDC8726}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {0205F21B-480B-43FE-AF9C-F2BEF27B1DDC}
+	EndGlobalSection
+EndGlobal
