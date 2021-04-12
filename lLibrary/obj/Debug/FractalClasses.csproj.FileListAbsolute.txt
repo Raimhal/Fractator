@@ -1,0 +1,9 @@
+E:\it\C#\курсова\lLibrary\bin\Debug\lLibrary.dll
+E:\it\C#\курсова\lLibrary\bin\Debug\lLibrary.pdb
+E:\it\C#\курсова\lLibrary\obj\Debug\FractalClasses.csprojAssemblyReference.cache
+E:\it\C#\курсова\lLibrary\obj\Debug\FractalClasses.csproj.CoreCompileInputs.cache
+E:\it\C#\курсова\lLibrary\obj\Debug\lLibrary.dll
+E:\it\C#\курсова\lLibrary\obj\Debug\lLibrary.pdb
+E:\it\C#\курсова\lLibrary\bin\Debug\HelperClasses.dll
+E:\it\C#\курсова\lLibrary\bin\Debug\HelperClasses.pdb
+E:\it\C#\курсова\lLibrary\obj\Debug\FractalClasses.csproj.CopyComplete
