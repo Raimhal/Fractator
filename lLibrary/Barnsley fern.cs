@@ -50,9 +50,8 @@ namespace FractalClasses
 
             progress.Invoke(new Action(() =>
             {
-                progress.Value = 0;
-                progress.Minimum = 0;
                 progress.Maximum = NumberOfPoints;
+                progress.Step = (NumberOfPoints / 100);
             }));
 
             for (int i = 1; i <= NumberOfPoints; i++)
@@ -80,15 +79,18 @@ namespace FractalClasses
                
                 picture.SetPixel(Math.Abs((int)x) % picture.Width, (int)(Math.Abs(picture.Height - (int)(y)) % picture.Height),
                     pixels[(int)((((x * pixels.Count / LenGradient / (picture.Width * 0.00195))) % pixels.Count))].Color); // розтяг градієнта на весь папоротник
-                progress.Invoke(new Action(() =>
-                {
-                    progress.PerformStep();
-                }));
+                if(i % (progress.Step) == 0) { 
+
+                    progress.Invoke(new Action(() =>
+                    {
+                        progress.PerformStep();
+                    }));
+                }
             }
             return picture;
         }
 
-        public void Info(TextBox info)
+        public override void Info(TextBox info)
         {
             info.Text = "The fern is one of the basic examples" +
                 " of self-similar sets, i.e. it is a mathematically" +

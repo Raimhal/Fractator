@@ -18,14 +18,7 @@ namespace FractalsCreator
         public List<Pixel> pixels;
         public GradientForm()
         {
-
             InitializeComponent();
-
-            System.Globalization.CultureInfo customCulture = (System.Globalization.CultureInfo) 
-                System.Threading.Thread.CurrentThread.CurrentCulture.Clone();
-            customCulture.NumberFormat.NumberDecimalSeparator = ".";
-            System.Threading.Thread.CurrentThread.CurrentCulture = customCulture;
-
         }
 
         private void GradientForm_Load(object sender, EventArgs e)
@@ -136,7 +129,7 @@ namespace FractalsCreator
         }
 
         // Random gradient
-        public void RandomGradient_Click(object sender, EventArgs e)
+        private void RandomGradient_Click(object sender, EventArgs e)
         {
             Gradient(pictureGradient);
         }

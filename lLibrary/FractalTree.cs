@@ -42,8 +42,6 @@ namespace FractalClasses
                 base.Effects(g, BackgroundColor);
                 progress.Invoke(new Action(() => // делегат для відображення progressBar
                 {
-                    progress.Value = 0;
-                    progress.Minimum = 0;
                     progress.Maximum = 0;
                     double count = 0;
                     double tmpCount = len;
@@ -107,7 +105,7 @@ namespace FractalClasses
 
         }
 
-        public void Info(TextBox info)
+        public override void Info(TextBox info)
         {
             info.Text = "Pythagoras, proving his famous theorem," +
                 " built a figure with squares on the sides of a right-angled triangle." +

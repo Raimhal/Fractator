@@ -37,6 +37,11 @@ namespace FractalClasses
 
         public Bitmap CalculationMBrot(double hx, double hy, double x_, double y_, double maxZ, double SizeArea, ProgressBar progress)
         {
+            progress.Invoke(new Action(() => // делегат для відображення progressBar
+            {
+                progress.Maximum = size.Width;
+            }));
+
             int UserIt = Iterations;
             int change;
             
@@ -61,15 +66,6 @@ namespace FractalClasses
                     pixels[p].Color = TmpPixels[(int)(p * (pixels.Count / gradientBox.Width))].Color;
                 }
             }
-            
-
-
-            progress.Invoke(new Action(() => // делегат для відображення progressBar
-            {
-                progress.Value = 0;
-                progress.Minimum = 0;
-                progress.Maximum = size.Width;
-            }));
 
             for (int x = 0; x < size.Width; x++)
             {
@@ -246,7 +242,7 @@ namespace FractalClasses
             return picture;
         }
 
-        public void Info(TextBox info)
+        public override void Info(TextBox info)
         {
             info.Text = "The Mandelbrot set is the set of complex numbers C" +
                 " for which the function f(z)=z^2 + c does not diverge when iterated" +

@@ -119,6 +119,7 @@
             this.Progress = new System.Windows.Forms.ProgressBar();
             this.CulculationTime = new System.Windows.Forms.TextBox();
             this.labelTime = new System.Windows.Forms.Label();
+            this.CenterX = new System.Windows.Forms.MaskedTextBox();
             this.IncreaseZOOM = new System.Windows.Forms.Button();
             this.Details = new System.Windows.Forms.TabPage();
             this.FractalsInfo = new System.Windows.Forms.TextBox();
@@ -148,7 +149,6 @@
             this.OpenFile = new System.Windows.Forms.OpenFileDialog();
             this.SaveFile = new System.Windows.Forms.SaveFileDialog();
             this.ColorDialog = new System.Windows.Forms.ColorDialog();
-            this.CenterX = new System.Windows.Forms.MaskedTextBox();
             ((System.ComponentModel.ISupportInitialize)(this.ZOOMValue)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Iterations)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.SplitImageAndInterface)).BeginInit();
@@ -507,15 +507,17 @@
             // 
             // GroupMouseControl
             // 
+            this.GroupMouseControl.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.GroupMouseControl.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.GroupMouseControl.Controls.Add(this.textBox1);
+            this.GroupMouseControl.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.GroupMouseControl.Font = new System.Drawing.Font("Arial Narrow", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.GroupMouseControl.Location = new System.Drawing.Point(10, 105);
+            this.GroupMouseControl.Location = new System.Drawing.Point(8, 103);
             this.GroupMouseControl.Name = "GroupMouseControl";
             this.GroupMouseControl.Size = new System.Drawing.Size(197, 106);
             this.GroupMouseControl.TabIndex = 97;
             this.GroupMouseControl.TabStop = false;
-            this.GroupMouseControl.Text = "Change the center with zoom";
+            this.GroupMouseControl.Text = "Changing the zoom point";
             // 
             // textBox1
             // 
@@ -550,7 +552,7 @@
             // DragonIterations
             // 
             this.DragonIterations.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.DragonIterations.Location = new System.Drawing.Point(126, 258);
+            this.DragonIterations.Location = new System.Drawing.Point(140, 295);
             this.DragonIterations.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.DragonIterations.Maximum = new decimal(new int[] {
             20,
@@ -828,7 +830,7 @@
             0,
             0,
             0});
-            this.NumberPoints.Location = new System.Drawing.Point(126, 258);
+            this.NumberPoints.Location = new System.Drawing.Point(120, 288);
             this.NumberPoints.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.NumberPoints.Maximum = new decimal(new int[] {
             20000000,
@@ -978,7 +980,7 @@
             // Vertical
             // 
             this.Vertical.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.Vertical.Location = new System.Drawing.Point(126, 258);
+            this.Vertical.Location = new System.Drawing.Point(126, 288);
             this.Vertical.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Vertical.Maximum = new decimal(new int[] {
             50,
@@ -1041,7 +1043,7 @@
             // Horizontal
             // 
             this.Horizontal.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.Horizontal.Location = new System.Drawing.Point(126, 258);
+            this.Horizontal.Location = new System.Drawing.Point(126, 288);
             this.Horizontal.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Horizontal.Maximum = new decimal(new int[] {
             50,
@@ -1113,7 +1115,7 @@
             // BranchLenght
             // 
             this.BranchLenght.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.BranchLenght.Location = new System.Drawing.Point(126, 250);
+            this.BranchLenght.Location = new System.Drawing.Point(126, 284);
             this.BranchLenght.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.BranchLenght.Maximum = new decimal(new int[] {
             600,
@@ -1455,7 +1457,7 @@
             this.ColorButton.BackColor = System.Drawing.Color.Transparent;
             this.ColorButton.FlatAppearance.BorderColor = System.Drawing.Color.Black;
             this.ColorButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.ColorButton.Location = new System.Drawing.Point(154, 210);
+            this.ColorButton.Location = new System.Drawing.Point(59, 251);
             this.ColorButton.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
             this.ColorButton.Name = "ColorButton";
             this.ColorButton.Size = new System.Drawing.Size(51, 26);
@@ -2087,6 +2089,17 @@
             this.labelTime.TabIndex = 17;
             this.labelTime.Text = "Time of calculation :";
             // 
+            // CenterX
+            // 
+            this.CenterX.AllowDrop = true;
+            this.CenterX.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.CenterX.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.CenterX.Location = new System.Drawing.Point(12, 353);
+            this.CenterX.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.CenterX.Name = "CenterX";
+            this.CenterX.Size = new System.Drawing.Size(192, 26);
+            this.CenterX.TabIndex = 10;
+            // 
             // IncreaseZOOM
             // 
             this.IncreaseZOOM.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
@@ -2388,17 +2401,6 @@
             // 
             this.SaveFile.Filter = "Images|*.bmp;*.png;*.jpg";
             this.SaveFile.FilterIndex = 3;
-            // 
-            // CenterX
-            // 
-            this.CenterX.AllowDrop = true;
-            this.CenterX.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.CenterX.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.CenterX.Location = new System.Drawing.Point(12, 353);
-            this.CenterX.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.CenterX.Name = "CenterX";
-            this.CenterX.Size = new System.Drawing.Size(192, 26);
-            this.CenterX.TabIndex = 10;
             // 
             // FractalForm
             // 

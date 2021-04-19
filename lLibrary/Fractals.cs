@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using HelperClasses;
 using System.Drawing;
 using System.Drawing.Drawing2D;
+using System.Windows.Forms;
 namespace FractalClasses
 {
     public class Fractals
@@ -55,6 +56,7 @@ namespace FractalClasses
             g.Clear(BackgroundColor);
             g.SmoothingMode = SmoothingMode.AntiAlias;
         }
+        public virtual void Info(TextBox info) { }
         ~Fractals()
         {
             Console.WriteLine("Class Fractals is cleared");

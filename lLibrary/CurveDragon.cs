@@ -22,31 +22,34 @@ namespace FractalClasses
 
         }
 
-        public void DrawCurveDragon(int x1, int y1, int x2, int y2, int Iterations, Pen pen)
+        public void DrawCurveDragon(int x1, int y1, int x2, int y2, int Iterations, Pen pen, ProgressBar progress)
         {
             int NextX, NextY;
-            if(i == 0)
+            if (i == 0)
             {
                 base.Effects(g, BackgroundColor);
-                i++;
-            }
 
+            }
+ 
 
             if (Iterations == 0)
             {
                 g.DrawLine(pen, x1, y1, x2, y2);
+
             }
-            if(Iterations > 0)
+            else if(Iterations > 0)
             {
+                i++;
                 NextX = (int)((x1 + x2) / 2 + (y2 - y1) / 2);
                 NextY = (int)((y1 + y2) / 2 - (x2 - x1) / 2);
 
-                DrawCurveDragon(x1, y1, NextX, NextY, Iterations - 1, pen);
-                DrawCurveDragon(x2, y2, NextX, NextY, Iterations - 1, pen);
+                DrawCurveDragon(x1, y1, NextX, NextY, Iterations - 1, pen, progress);
+                DrawCurveDragon(x2, y2, NextX, NextY, Iterations - 1, pen, progress);
+
             }
         }
 
-        public void Info(TextBox info)
+        public override void Info(TextBox info)
         {
             info.Text = "The Harter dragon, also known as" +
                 " the Harter-Haytway dragon, was first explored" +
@@ -72,7 +75,6 @@ namespace FractalClasses
                 " unbend the resulting (folded) line again so that all" +
                 " angles are equal to 90 °, we get a dragon curve.";
         }
-
         ~CurveDragon()
         {
             Console.WriteLine("Class CurveDragon is cleared");
