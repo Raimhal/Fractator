@@ -14,10 +14,6 @@ using System.Diagnostics;
 using System.Threading;
 using FractalClasses;
 using HelperClasses;
-/// <summary>
-///  налаштувати прогрес бар
-///  
-/// </summary>
 
 
 namespace FractalsCreator
@@ -31,22 +27,37 @@ namespace FractalsCreator
         ///
         ///
 
-        public Graphics g;
-        public Color BackgroundColor = Color.Transparent;
-        List<Pixel> pixels ;
-        public GradientForm gradientForm;
+        internal Graphics g;
+        internal Color BackgroundColor = Color.Transparent;
+        internal List<Pixel> pixels;
+        internal readonly GradientForm gradientForm;
 
-        // start value for MBrot
-        double hx, hy, maxZ, x_, y_;
-        bool er_x, er_y, er_z;
-        double ZoomVal = 1;
+        // start values for MBrot
+        internal double hx, hy, maxZ, x_, y_;
+        internal double ZoomVal = 1;
 
-        Size size;
-        double SizeArea;
+        internal Size size;
+        internal double SizeArea;
 
-        DateTime start, end;
+        internal DateTime start, end;
 
-        public int selectFractal = 0;
+        internal int selectFractal = 0;
+
+        // start values for fractal tree
+        internal List<NumericUpDown> Angles;
+
+        // start values for curve dragon
+        internal List<List<NumericUpDown>> Points;
+
+        // list of the changing values
+        internal readonly List<NumericUpDown> changingValues;
+        NumericUpDown change;
+
+        // information about fractals;
+        internal Fractals info;
+
+        // FractalForm FullScreen settings
+        internal bool FullScreen = false;
 
 
         ///
@@ -59,10 +70,10 @@ namespace FractalsCreator
         {
             InitializeComponent();
 
-            System.Globalization.CultureInfo customCulture = (System.Globalization.CultureInfo)
-                System.Threading.Thread.CurrentThread.CurrentCulture.Clone();
+            CultureInfo customCulture = (CultureInfo)
+                Thread.CurrentThread.CurrentCulture.Clone();
             customCulture.NumberFormat.NumberDecimalSeparator = ".";
-            System.Threading.Thread.CurrentThread.CurrentCulture = customCulture;
+            Thread.CurrentThread.CurrentCulture = customCulture;
 
             image.Image = new Bitmap(image.Width, image.Height);
             size = image.Size;
@@ -70,23 +81,60 @@ namespace FractalsCreator
             this.DoubleBuffered = true;
             gradientForm = new GradientForm();
 
+            // list of the curves dragon points
+            Points = new List<List<NumericUpDown>>()
+            {
+                new List<NumericUpDown>{ FirstStartPointX, FirstStartPointY, FirstEndPointX, FirstEndPointY },
+                new List<NumericUpDown>{ SecondStartPointX, SecondStartPointY, SecondEndPointX, SecondEndPointY },
+                new List<NumericUpDown>{ ThirdStartPointX, ThirdStartPointY, ThirdEndPointX, ThirdEndPointY },
+                new List<NumericUpDown>{ FourthStartPointX, FourthStartPointY, FourthEndPointX, FourthEndPointY },
+                new List<NumericUpDown>{ FifthStartPointX, FifthStartPointY, FifthEndPointX, FifthEndPointY },
+                new List<NumericUpDown>{ SixthStartPointX, SixthStartPointY, SixthEndPointX, SixthEndPointY },
+                new List<NumericUpDown>{ SeventhStartPointX, SeventhStartPointY, SeventhEndPointX, SeventhEndPointY },
+                new List<NumericUpDown>{ EighthStartPointX, EighthStartPointY, EighthEndPointX, EighthEndPointY }
+            };
+
+            // list of the angles
+            Angles = new List<NumericUpDown> {
+                FirstAngle, SecondAngle, ThirdAngle, FourthAngle
+            };
+
+            // list of the changing values
+            changingValues = new List<NumericUpDown>
+            {
+                Iterations, BranchLength, NumberPoints, DragonIterations
+            };
+
         }
+
         private void Form1_Load(object sender, EventArgs e)
         {
+
 
             FractalsList.SelectedIndex = 0;
             ShowImageHeight.Value = image.Height;
             ShowImageWidth.Value = image.Width;
 
-            SecondAngle.Location = new Point(FirstAngle.Location.X + 132, FirstAngle.Location.Y);
-            ThirdAngle.Location = new Point(FirstAngle.Location.X, FirstAngle.Location.Y + 35);
-            FourthAngle.Location = new Point(SecondAngle.Location.X, SecondAngle.Location.Y + 35);
+
+
+            // change the coordinates of the elements
+            for (int i = 1; i < Angles.Count; i++)
+            {
+                if (i == 1)
+                {
+                    Angles[i].Location = new Point(Angles[i - 1].Location.X + 132, Angles[i - 1].Location.Y);
+                }
+                else
+                {
+                    Angles[i].Location = new Point(Angles[i - 2].Location.X, Angles[i - 2].Location.Y + 35);
+                }
+            }
 
             labelNumberOfCurves.Location = labelZOOM.Location;
             NumberOfCurves.Location = new Point(labelNumberOfCurves.Location.X + labelNumberOfCurves.Width + 30, labelNumberOfCurves.Location.Y);
 
             LabelBranchLength.Location = labelZOOM.Location;
-            BranchLenght.Location = ZOOMValue.Location;
+            BranchLength.Location = ZOOMValue.Location;
 
             labelStartX.Location = y.Location;
             labelStartY.Location = LabelMaxZDegreeTwo.Location;
@@ -119,41 +167,13 @@ namespace FractalsCreator
             FirstEndPointX.Location = new Point(labelEndPointX.Location.X, labelEndPointX.Location.Y + 23);
             FirstEndPointY.Location = new Point(labelEndPointY.Location.X + 5, labelEndPointY.Location.Y + 23);
 
-            SecondStartPointX.Location = new Point(FirstStartPointX.Location.X, FirstStartPointX.Location.Y + 28);
-            SecondStartPointY.Location = new Point(FirstStartPointY.Location.X, FirstStartPointY.Location.Y + 28);
-            SecondEndPointX.Location = new Point(FirstEndPointX.Location.X, FirstEndPointX.Location.Y + 28);
-            SecondEndPointY.Location = new Point(FirstEndPointY.Location.X, FirstEndPointY.Location.Y + 28);
-
-            ThirdStartPointX.Location = new Point(SecondStartPointX.Location.X, SecondStartPointX.Location.Y + 28);
-            ThirdStartPointY.Location = new Point(SecondStartPointY.Location.X, SecondStartPointY.Location.Y + 28);
-            ThirdEndPointX.Location = new Point(SecondEndPointX.Location.X, SecondEndPointX.Location.Y + 28);
-            ThirdEndPointY.Location = new Point(SecondEndPointY.Location.X, SecondEndPointY.Location.Y + 28);
-
-            FourthStartPointX.Location = new Point(ThirdStartPointX.Location.X, ThirdStartPointX.Location.Y + 28);
-            FourthStartPointY.Location = new Point(ThirdStartPointY.Location.X, ThirdStartPointY.Location.Y + 28);
-            FourthEndPointX.Location = new Point(ThirdEndPointX.Location.X, ThirdEndPointX.Location.Y + 28);
-            FourthEndPointY.Location = new Point(ThirdEndPointY.Location.X, ThirdEndPointY.Location.Y + 28);
-
-            FifthStartPointX.Location = new Point(FourthStartPointX.Location.X, FourthStartPointX.Location.Y + 28);
-            FifthStartPointY.Location = new Point(FourthStartPointY.Location.X, FourthStartPointY.Location.Y + 28);
-            FifthEndPointX.Location = new Point(FourthEndPointX.Location.X, FourthEndPointX.Location.Y + 28);
-            FifthEndPointY.Location = new Point(FourthEndPointY.Location.X, FourthEndPointY.Location.Y + 28);
-
-            SixthStartPointX.Location = new Point(FifthStartPointX.Location.X, FifthStartPointX.Location.Y + 28);
-            SixthStartPointY.Location = new Point(FifthStartPointY.Location.X, FifthStartPointY.Location.Y + 28);
-            SixthEndPointX.Location = new Point(FifthEndPointX.Location.X, FifthEndPointX.Location.Y + 28);
-            SixthEndPointY.Location = new Point(FifthEndPointY.Location.X, FifthEndPointY.Location.Y + 28);
-
-            SeventhStartPointX.Location = new Point(SixthStartPointX.Location.X, SixthStartPointX.Location.Y + 28);
-            SeventhStartPointY.Location = new Point(SixthStartPointY.Location.X, SixthStartPointY.Location.Y + 28);
-            SeventhEndPointX.Location = new Point(SixthEndPointX.Location.X, SixthEndPointX.Location.Y + 28);
-            SeventhEndPointY.Location = new Point(SixthEndPointY.Location.X, SixthEndPointY.Location.Y + 28);
-
-            EighthStartPointX.Location = new Point(SeventhStartPointX.Location.X, SeventhStartPointX.Location.Y + 28);
-            EighthStartPointY.Location = new Point(SeventhStartPointY.Location.X, SeventhStartPointY.Location.Y + 28);
-            EighthEndPointX.Location = new Point(SeventhEndPointX.Location.X, SeventhEndPointX.Location.Y + 28);
-            EighthEndPointY.Location = new Point(SeventhEndPointY.Location.X, SeventhEndPointY.Location.Y + 28);
-
+            for (int i = 1; i < Points.Count; i++)
+            {
+                for (int j = 0; j < 4; j++)
+                {
+                    Points[i][j].Location = new Point(Points[i - 1][j].Location.X, Points[i - 1][j].Location.Y + 28);
+                }
+            }
 
             labelDragonBrashWidth.Location = LabelMaxZDegreeTwo.Location;
             DragonBrashWidth.Location = MaxZDegreeTwo.Location;
@@ -164,9 +184,6 @@ namespace FractalsCreator
         }
         private void FractalForm_Resize(object sender, EventArgs e)
         {
-            ShowImageHeight.Value = image.Height;
-            ShowImageWidth.Value = image.Width;
-            
             if (FractalsList.SelectedIndex == 1)
             {
                 StartX.Value = image.Width / 2;
@@ -174,50 +191,47 @@ namespace FractalsCreator
             }
             else if (FractalsList.SelectedIndex == 3)
             {
-                double CoefOfLen = 3.5;
-                FirstStartPointX.Value = image.Width / 2;
-                FirstStartPointY.Value = image.Height / 2;
-                FirstEndPointX.Value = image.Width / 2 + (int)(image.Width / CoefOfLen);
-                FirstEndPointY.Value = image.Height / 2;
+                for (int i = 0; i < Points.Count; i++)
+                {
+                    for (int j = 0; j < Points[i].Count; j++)
+                    {
+                        if (Points[i][j].Value > Points[i][j].Minimum && Points[i][j].Value < Points[i][j].Maximum)
+                        {
+                            if (j % 2 == 0)
+                            {
+                                Points[i][j].Value += (image.Width - size.Width) / 2;
+                            }
+                            else
+                            {
+                                Points[i][j].Value += (image.Height - size.Height) / 2;
+                            }
+                        }
+                    }
+                }
 
-                SecondStartPointX.Value = image.Width / 2;
-                SecondStartPointY.Value = image.Height / 2;
-                SecondEndPointX.Value = image.Width / 2;
-                SecondEndPointY.Value = image.Height / 2 + (int)(image.Width / CoefOfLen);
+                size = image.Size;
+                ShowImageHeight.Value = image.Height;
+                ShowImageWidth.Value = image.Width;
 
-                ThirdStartPointX.Value = image.Width / 2;
-                ThirdStartPointY.Value = image.Height / 2;
-                ThirdEndPointX.Value = image.Width / 2;
-                ThirdEndPointY.Value = image.Height / 2 - (int)(image.Width / CoefOfLen);
 
-                FourthStartPointX.Value = image.Width / 2;
-                FourthStartPointY.Value = image.Height / 2;
-                FourthEndPointX.Value = image.Width / 2 - (int)(image.Width / CoefOfLen);
-                FourthEndPointY.Value = image.Height / 2;
+            }
 
-                FifthStartPointX.Value = image.Width / 2;
-                FifthStartPointY.Value = image.Height / 2;
-                FifthEndPointX.Value = image.Width / 2 - (int)(image.Width / CoefOfLen * 1.5);
-                FifthEndPointY.Value = image.Height / 2 - (int)(image.Width / CoefOfLen * 1.5);
+            if (FractalsList.SelectedIndex != 0)
+            {
+                if (BackgroundColor == Color.Transparent)
+                {
+                    image.BackColor = Color.White;
+                }
+                else
+                {
+                    image.BackColor = BackgroundColor;
+                }
 
-                SixthStartPointX.Value = image.Width / 2;
-                SixthStartPointY.Value = image.Height / 2 - (int)(image.Width / CoefOfLen * 1.5);
-                SixthEndPointX.Value = image.Width / 2 + (int)(image.Width / CoefOfLen * 1.5);
-                SixthEndPointY.Value = image.Height / 2 ;
-
-                SeventhStartPointX.Value = image.Width / 2;
-                SeventhStartPointY.Value = image.Height / 2;
-                SeventhEndPointX.Value = image.Width / 2 - (int)(image.Width / CoefOfLen * 1.5);
-                SeventhEndPointY.Value = image.Height / 2 + (int)(image.Width / CoefOfLen * 1.5);
-
-                EighthStartPointX.Value = image.Width / 2 + (int)(image.Width / CoefOfLen );
-                EighthStartPointY.Value = image.Height / 2;
-                EighthEndPointX.Value = image.Width / 2 ;
-                EighthEndPointY.Value = image.Height / 2 ;
             }
         }
         private void FractalForm_ResizeEnd(object sender, EventArgs e)
         {
+
             if (Progress.Value == Progress.Maximum)
             {
                 DrawFractals();
@@ -228,6 +242,8 @@ namespace FractalsCreator
         {
             if (Progress.Value == Progress.Maximum)
             {
+                change = changingValues[FractalsList.SelectedIndex];
+
                 // save as
                 if (e.Control && e.Shift && e.KeyCode == Keys.S)
                 {
@@ -241,14 +257,14 @@ namespace FractalsCreator
                 // generate gradient
                 else if (e.Control && e.KeyCode == Keys.Z)
                 {
-                    gradientForm.Gradient(gradientForm.pictureGradient);
+                    GenerateGradientToolStripMenuItem.PerformClick();
                 }
                 // create or update fractal
                 else if (e.Control && e.Shift && e.KeyCode == Keys.F)
                 {
                     if (tabControl.SelectedIndex == 2)
                     {
-                        buttonUpdate.PerformClick();
+                        ButtonUpdate.PerformClick();
                     }
                     else
                     {
@@ -258,40 +274,36 @@ namespace FractalsCreator
                 // previous fractal
                 else if (e.Shift && e.KeyCode == Keys.D1)
                 {
-                    selectFractal -= 1;
-                    if (selectFractal == -1)
-                    {
-                        selectFractal = FractalsList.Items.Count - 1;
-                    }
-                    FractalsList.SelectedIndex = selectFractal % 4;
+                    PreviousFractalToolStripMenuItem.PerformClick();
                 }
                 // next fractal
                 else if (e.Shift && e.KeyCode == Keys.D2)
                 {
-                    selectFractal += 1;
-                    FractalsList.SelectedIndex = selectFractal % 4;
+                    NextFractalToolStripMenuItem.PerformClick();
                 }
                 // Open GradientForm
                 else if (e.Control && e.Shift && e.KeyCode == Keys.X)
                 {
-                    gradientToolMenuItem.PerformClick();
+                    GradientToolMenuItem.PerformClick();
+                }
+                else if (e.KeyCode == Keys.Oemplus && e.Shift)
+                {
+                    IncreaseToolStripMenuItem.PerformClick();
+                }
+                else if (e.KeyCode == Keys.OemMinus && e.Shift)
+                {
+                    DecreaseToolStripMenuItem.PerformClick();
                 }
                 // control keys
                 else if (FractalsList.SelectedIndex == 0)
                 {
                     if (e.Shift && e.KeyCode == Keys.Q)
                     {
-                        if (ZOOMValue.Value < ZOOMValue.Maximum)
-                        {
-                            ZOOMValue.Value += ZOOMValue.Increment;
-                        }
+                        IncreaseTheZoomValueToolStripMenuItem.PerformClick();
                     }
                     else if (e.Shift && e.KeyCode == Keys.E)
                     {
-                        if (ZOOMValue.Value > ZOOMValue.Minimum)
-                        {
-                            ZOOMValue.Value -= ZOOMValue.Increment;
-                        }
+                        DecreaseTheZoomValueToolStripMenuItem.PerformClick();
                     }
                     else if (e.KeyCode == Keys.Q)
                     {
@@ -301,74 +313,8 @@ namespace FractalsCreator
                     {
                         DecreaseZOOM.PerformClick();
                     }
-                    else if (e.KeyCode == Keys.Oemplus && e.Shift)
-                    {
-                        if (Iterations.Value < Iterations.Maximum)
-                        {
-                            Iterations.Value += Iterations.Increment;
-                        }
-                    }
-                    else if (e.KeyCode == Keys.OemMinus && e.Shift)
-                    {
-                        if (Iterations.Value > Iterations.Minimum)
-                        {
-                            Iterations.Value -= Iterations.Increment;
-                        }
-                    }
                 }
-                else if (FractalsList.SelectedIndex == 1)
-                {
-                    if (e.KeyCode == Keys.Oemplus && e.Shift)
-                    {
-                        if (BranchLenght.Value < BranchLenght.Maximum)
-                        {
-                            BranchLenght.Value += BranchLenght.Increment;
-                        }
-                    }
-                    else if (e.KeyCode == Keys.OemMinus && e.Shift)
-                    {
-                        if (BranchLenght.Value > BranchLenght.Minimum)
-                        {
-                            BranchLenght.Value -= BranchLenght.Increment;
-                        }
-                    }
-                }
-                else if (FractalsList.SelectedIndex == 2)
-                {
-                    if (e.KeyCode == Keys.Oemplus && e.Shift)
-                    {
-                        if (NumberPoints.Value < NumberPoints.Maximum)
-                        {
-                            NumberPoints.Value += NumberPoints.Increment;
-                        }
-                    }
-                    else if (e.KeyCode == Keys.OemMinus && e.Shift)
-                    {
-                        if (NumberPoints.Value > NumberPoints.Minimum)
-                        {
-                            NumberPoints.Value -= NumberPoints.Increment;
-                        }
-                    }
 
-
-                }
-                else if (FractalsList.SelectedIndex == 3)
-                {
-                    if (e.KeyCode == Keys.Oemplus && e.Shift)
-                    {
-                        if (DragonIterations.Value < DragonIterations.Maximum)
-                        {
-                            DragonIterations.Value += DragonIterations.Increment;
-                        }
-                    }
-                    else if (e.KeyCode == Keys.OemMinus && e.Shift)
-                    {
-                        if (DragonIterations.Value > DragonIterations.Minimum)
-                        {
-                            DragonIterations.Value -= DragonIterations.Increment;
-                        }
-                    }
-                }
             }
         }
 
@@ -384,7 +330,7 @@ namespace FractalsCreator
         {
             CreateFractal.PerformClick();
         }
-        
+
         // Open gradient window
         private async void Gradient_Click(object sender, EventArgs e)
         {
@@ -433,66 +379,22 @@ namespace FractalsCreator
         // icrease the most impotant value
         private void IncreaseToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (FractalsList.SelectedIndex == 0)
+            change = changingValues[FractalsList.SelectedIndex];
+
+            if (change.Value < change.Maximum)
             {
-                if (Iterations.Value < Iterations.Maximum)
-                {
-                    Iterations.Value += Iterations.Increment;
-                }
-            }
-            else if (FractalsList.SelectedIndex == 1)
-            {
-                if (BranchLenght.Value < BranchLenght.Maximum)
-                {
-                    BranchLenght.Value += BranchLenght.Increment;
-                }
-            }
-            else if (FractalsList.SelectedIndex == 2)
-            {
-                if (NumberPoints.Value < NumberPoints.Maximum)
-                {
-                    NumberPoints.Value += NumberPoints.Increment;
-                }
-            }
-            else if (FractalsList.SelectedIndex == 3)
-            {
-                if (DragonIterations.Value < DragonIterations.Maximum)
-                {
-                    DragonIterations.Value += DragonIterations.Increment;
-                }
+                change.Value += change.Increment;
             }
         }
-    
+
         // decrease the most impotant value
         private void DecreaseToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (FractalsList.SelectedIndex == 0)
+            change = changingValues[FractalsList.SelectedIndex];
+
+            if (change.Value > change.Minimum)
             {
-                if (Iterations.Value > Iterations.Minimum)
-                {
-                    Iterations.Value -= Iterations.Increment;
-                }
-            }
-            else if(FractalsList.SelectedIndex == 1)
-            {
-                if (BranchLenght.Value > BranchLenght.Minimum)
-                {
-                    BranchLenght.Value -= BranchLenght.Increment;
-                }
-            }
-            else if(FractalsList.SelectedIndex == 2)
-            {
-                if (NumberPoints.Value > NumberPoints.Minimum)
-                {
-                    NumberPoints.Value -= NumberPoints.Increment;
-                }
-            }
-            else if(FractalsList.SelectedIndex == 3)
-            {
-                if (DragonIterations.Value > DragonIterations.Minimum)
-                {
-                    DragonIterations.Value -= DragonIterations.Increment;
-                }
+                change.Value -= change.Increment;
             }
         }
 
@@ -532,6 +434,21 @@ namespace FractalsCreator
             image.Width = (int)ShowImageWidth.Value;
         }
 
+        // FullScreen control
+        private void FractalForm_SizeChanged(object sender, EventArgs e)
+        {
+
+            if (this.WindowState == FormWindowState.Maximized)
+            {
+                CreateFractal.PerformClick();
+                FullScreen = true;
+            }
+            else if (this.WindowState == FormWindowState.Normal && FullScreen != false)
+            {
+                FullScreen = false;
+                CreateFractal.PerformClick();
+            }
+        }
 
         ///
         ///
@@ -600,7 +517,6 @@ namespace FractalsCreator
             {
                 BackgroundColor = BackColor.Color;
                 ColorButton.BackColor = BackColor.Color;
-                //image.BackColor = BackColor.Color;
             }
         }
 
@@ -616,13 +532,13 @@ namespace FractalsCreator
         {
             image.Image = null;
             image.BackColor = Color.White;
+            PointsVisibleTrue(Points);
+            AnglesVisibleTrue(Angles);
 
             FractalsInfo.Text = null;
             CulculationTime.Text = null;
-            increaseToolStripMenuItem.Text = null;
-            decreaseToolStripMenuItem.Text = null;
-
-            Fractals info;
+            IncreaseToolStripMenuItem.Text = null;
+            DecreaseToolStripMenuItem.Text = null;
 
             Progress.Step = 1;
 
@@ -644,10 +560,10 @@ namespace FractalsCreator
             MaxZDegreeTwo.Visible = false;
 
             LabelBranchLength.Visible = false;
-            BranchLenght.Visible = false;
+            BranchLength.Visible = false;
 
             labelMinimalLength.Visible = false;
-            MinBranchLenght.Visible = false;
+            MinBranchLength.Visible = false;
 
             labelStartX.Visible = false;
             labelStartY.Visible = false;
@@ -661,10 +577,7 @@ namespace FractalsCreator
             labelAngles.Visible = false;
             NumberOfAngles.Visible = false;
 
-            FirstAngle.Visible = false;
-            SecondAngle.Visible = false;
-            ThirdAngle.Visible = false;
-            FourthAngle.Visible = false;
+
 
             labelBackColor.Visible = false;
             ColorButton.Visible = false;
@@ -694,46 +607,6 @@ namespace FractalsCreator
             labelEndPointX.Visible = false;
             labelEndPointY.Visible = false;
 
-            FirstStartPointX.Visible = false;
-            FirstStartPointY.Visible = false;
-            FirstEndPointX.Visible = false;
-            FirstEndPointY.Visible = false;
-
-            SecondStartPointX.Visible = false;
-            SecondStartPointY.Visible = false;
-            SecondEndPointX.Visible = false;
-            SecondEndPointY.Visible = false;
-
-            ThirdStartPointX.Visible = false;
-            ThirdStartPointY.Visible = false;
-            ThirdEndPointX.Visible = false;
-            ThirdEndPointY.Visible = false;
-
-            FourthStartPointX.Visible = false;
-            FourthStartPointY.Visible = false;
-            FourthEndPointX.Visible = false;
-            FourthEndPointY.Visible = false;
-
-            FifthStartPointX.Visible = false;
-            FifthStartPointY.Visible = false;
-            FifthEndPointX.Visible = false;
-            FifthEndPointY.Visible = false;
-
-            SixthStartPointX.Visible = false;
-            SixthStartPointY.Visible = false;
-            SixthEndPointX.Visible = false;
-            SixthEndPointY.Visible = false;
-
-            SeventhStartPointX.Visible = false;
-            SeventhStartPointY.Visible = false;
-            SeventhEndPointX.Visible = false;
-            SeventhEndPointY.Visible = false;
-
-            EighthStartPointX.Visible = false;
-            EighthStartPointY.Visible = false;
-            EighthEndPointX.Visible = false;
-            EighthEndPointY.Visible = false;
-
             labelDragonBrashWidth.Visible = false;
             DragonBrashWidth.Visible = false;
 
@@ -744,8 +617,8 @@ namespace FractalsCreator
 
             zoomInMBrotToolStripMenuItem.Visible = false;
             zoomOutMBrotToolStripMenuItem.Visible = false;
-            increaseZoomValueToolStripMenuItem.Visible = false;
-            decreaseTheZoomValueToolStripMenuItem.Visible = false;
+            IncreaseTheZoomValueToolStripMenuItem.Visible = false;
+            DecreaseTheZoomValueToolStripMenuItem.Visible = false;
 
             BackgroundColor = Color.Transparent;
             ColorButton.BackColor = Color.White;
@@ -763,7 +636,9 @@ namespace FractalsCreator
                 MaxZDegreeTwo.Text = maxZ.ToString();
                 ZoomVal = 1;
                 SizeArea = 4;
+
                 image.Enabled = false;
+
                 DecreaseZOOM.Enabled = false;
                 IncreaseZOOM.Enabled = false;
 
@@ -787,13 +662,13 @@ namespace FractalsCreator
 
                 GroupMouseControl.Visible = true;
 
-                increaseToolStripMenuItem.Text = "Increase the value of the max iterations";
-                decreaseToolStripMenuItem.Text = "Decrease the value of the max iterations";
+                IncreaseToolStripMenuItem.Text = "Increase the value of the max iterations";
+                DecreaseToolStripMenuItem.Text = "Decrease the value of the max iterations";
 
                 zoomInMBrotToolStripMenuItem.Visible = true;
                 zoomOutMBrotToolStripMenuItem.Visible = true;
-                increaseZoomValueToolStripMenuItem.Visible = true;
-                decreaseTheZoomValueToolStripMenuItem.Visible = true;
+                IncreaseTheZoomValueToolStripMenuItem.Visible = true;
+                DecreaseTheZoomValueToolStripMenuItem.Visible = true;
 
             }
             else if (FractalsList.SelectedIndex == 1)
@@ -809,10 +684,10 @@ namespace FractalsCreator
                 ColorButton.Location = CenterX.Location;
 
                 LabelBranchLength.Visible = true;
-                BranchLenght.Visible = true;
-                
+                BranchLength.Visible = true;
+
                 labelMinimalLength.Visible = true;
-                MinBranchLenght.Visible = true;
+                MinBranchLength.Visible = true;
 
                 labelStartX.Visible = true;
                 labelStartY.Visible = true;
@@ -827,14 +702,13 @@ namespace FractalsCreator
                 labelAngles.Visible = true;
                 NumberOfAngles.Visible = true;
 
-                FirstAngle.Visible = true;
-                SecondAngle.Visible = true;
+                AnglesVisibleTrue(Angles, NumberOfAngles.SelectedIndex);
 
                 labelBackColor.Visible = true;
                 ColorButton.Visible = true;
 
-                increaseToolStripMenuItem.Text = "Increase the value of the branch length";
-                decreaseToolStripMenuItem.Text = "Decrease the value of the branch length";
+                IncreaseToolStripMenuItem.Text = "Increase the value of the branch length";
+                DecreaseToolStripMenuItem.Text = "Decrease the value of the branch length";
             }
             else if (FractalsList.SelectedIndex == 2)
             {
@@ -856,8 +730,8 @@ namespace FractalsCreator
                 labelNumberPoints.Visible = true;
                 NumberPoints.Visible = true;
 
-                increaseToolStripMenuItem.Text = "Increase the value of the Numbers points";
-                decreaseToolStripMenuItem.Text = "Decrease the value of the Numbers points";
+                IncreaseToolStripMenuItem.Text = "Increase the value of the Numbers points";
+                DecreaseToolStripMenuItem.Text = "Decrease the value of the Numbers points";
             }
             else if (FractalsList.SelectedIndex == 3)
             {
@@ -865,27 +739,27 @@ namespace FractalsCreator
                 info.Info(FractalsInfo); // add info about the curve of dragon
 
                 NumberOfCurves.SelectedIndex = 3;
+                PointsVisibleTrue(Points, NumberOfCurves.SelectedIndex);
 
-                FirstStartPointX.Visible = true;
-                FirstStartPointY.Visible = true;
-                FirstEndPointX.Visible = true;
-                FirstEndPointY.Visible = true;
+                // start point of the dragon curves
+                for (int i = 0; i < Points.Count; i++)
+                {
+                    if (i == 0)
+                    {
+                        Points[i][0].Value = image.Width / 2;
+                        Points[i][1].Value = image.Height / 2;
+                        Points[i][2].Value = image.Width / 2 - 300;
+                        Points[i][3].Value = image.Height / 2 - 200;
+                    }
+                    else
+                    {
+                        Points[i][0].Value = Points[i - 1][0].Value;
+                        Points[i][1].Value = Points[i - 1][1].Value;
+                        Points[i][2].Value = Points[i - 1][2].Value - 200;
+                        Points[i][3].Value = Points[i - 1][3].Value - 300;
+                    }
 
-                SecondStartPointX.Visible = true;
-                SecondStartPointY.Visible = true;
-                SecondEndPointX.Visible = true;
-                SecondEndPointY.Visible = true;
-
-                ThirdStartPointX.Visible = true;
-                ThirdStartPointY.Visible = true;
-                ThirdEndPointX.Visible = true;
-                ThirdEndPointY.Visible = true;
-
-                FourthStartPointX.Visible = true;
-                FourthStartPointY.Visible = true;
-                FourthEndPointX.Visible = true;
-                FourthEndPointY.Visible = true;
-
+                }
                 labelBackColor.Visible = true;
                 labelBackColor.Location = y.Location;
 
@@ -912,8 +786,8 @@ namespace FractalsCreator
                 DragonIterations.Visible = true;
 
 
-                increaseToolStripMenuItem.Text = "Increase the value of the Numbers points";
-                decreaseToolStripMenuItem.Text = "Decrease the value of the Numbers points";
+                IncreaseToolStripMenuItem.Text = "Increase the value of the Numbers points";
+                DecreaseToolStripMenuItem.Text = "Decrease the value of the Numbers points";
             }
             DrawFractals();
         }
@@ -933,9 +807,11 @@ namespace FractalsCreator
             }));
 
             pixels = gradientForm.GetPixels((Bitmap)gradientForm.pictureGradient.Image);
+            size = image.Size;
 
             if (FractalsList.SelectedIndex == 0)
             {
+                bool er_x, er_y, er_z;
                 ZoomNUM.Text = ZoomVal.ToString("F0") + " X";
                 ZoomNUM.Visible = true;
                 image.Enabled = true;
@@ -947,19 +823,15 @@ namespace FractalsCreator
                 er_z = double.TryParse(MaxZDegreeTwo.Text, out maxZ);
 
 
-                if (er_x == false)
+                if (!er_x)
                 {
                     MessageBox.Show("Error entering value x!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
-                else if (er_y == false)
+                else if (!er_y)
                 {
                     MessageBox.Show("Error entering value y!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
-                else if (er_z == false)
-                {
-                    MessageBox.Show("Error entering value max |z| ^ 2!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-                else if (er_z == false)
+                else if (!er_z)
                 {
                     MessageBox.Show("Error entering value max |z| ^ 2!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
@@ -972,8 +844,6 @@ namespace FractalsCreator
             {
                 image.Image = null;
                 DrawFractalTree();
-
-                
             }
             else if (FractalsList.SelectedIndex == 2)
             {
@@ -1013,12 +883,11 @@ namespace FractalsCreator
 
             image.Invalidate();
             pixels = gradientForm.GetPixels((Bitmap)gradientForm.pictureGradient.Image);
-            size = image.Size;
             Bitmap pictureMBrotSet = new Bitmap(image.Width, image.Height);
             MBrotSet MBrotSet = new MBrotSet((Bitmap)pictureMBrotSet, pixels, size, gradientForm.pictureGradient, (int)Iterations.Value);
-            
+
             await Task.Run(() =>
-            { 
+            {
                 pictureMBrotSet = MBrotSet.CalculationMBrot(hx, hy, x_, y_, maxZ, SizeArea, Progress);
                 image.Image = pictureMBrotSet;
             });
@@ -1131,35 +1000,7 @@ namespace FractalsCreator
         // selection of the number of angles
         private void NumberOfAngles_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (NumberOfAngles.SelectedIndex == 0)
-            {
-                FirstAngle.Visible = true;
-                SecondAngle.Visible = false;
-                ThirdAngle.Visible = false;
-                FourthAngle.Visible = false;
-            }
-            else if (NumberOfAngles.SelectedIndex == 1)
-            {
-                FirstAngle.Visible = true;
-                SecondAngle.Visible = true;
-                ThirdAngle.Visible = false;
-                FourthAngle.Visible = false;
-            }
-            else if (NumberOfAngles.SelectedIndex == 2)
-            {
-                FirstAngle.Visible = true;
-                SecondAngle.Visible = true;
-                ThirdAngle.Visible = true;
-                FourthAngle.Visible = false;
-            }
-            else if (NumberOfAngles.SelectedIndex == 3)
-            {
-                FirstAngle.Visible = true;
-                SecondAngle.Visible = true;
-                ThirdAngle.Visible = true;
-                FourthAngle.Visible = true;
-                
-            }
+            AnglesVisibleTrue(Angles, NumberOfAngles.SelectedIndex);
         }
 
         // Draw fractal tree
@@ -1172,31 +1013,31 @@ namespace FractalsCreator
             image.Invalidate();
 
             Bitmap pictureTree = new Bitmap(image.Width, image.Height);
-            int branchLenght = (int)BranchLenght.Value;
+            int branchLength = (int)BranchLength.Value;
+
             double[] angles = new double[NumberOfAngles.SelectedIndex + 1];
-            if (NumberOfAngles.SelectedIndex >= 0)
+
+            for (int i = 0; i < angles.Length; i++)
             {
-                angles[0] = (double)FirstAngle.Value;
-            }
-            if (NumberOfAngles.SelectedIndex >= 1)
-            {
-                angles[1] = (double)SecondAngle.Value;
-            }
-            if (NumberOfAngles.SelectedIndex >= 2)
-            {
-                angles[2] = (double)ThirdAngle.Value;
-            }
-            if(NumberOfAngles.SelectedIndex >= 3)
-            {
-                angles[3] = (double)FourthAngle.Value;
+                angles[i] = (double)Angles[i].Value;
             }
 
-            FractalTree tree = new FractalTree(pictureTree, pixels, angles, (int)(MinBranchLenght.Value), (int)(BranchWidth.Value), BackgroundColor);
-            await Task.Run(() => 
-            { 
-                tree.DrawFractalTree((int)(StartX.Value), (int)(StartY.Value), branchLenght, 0, Progress);
+
+            FractalTree tree = new FractalTree(pictureTree, pixels, angles, (int)(MinBranchLength.Value), (int)(BranchWidth.Value), BackgroundColor);
+            await Task.Run(() =>
+            {
+                tree.DrawFractalTree((int)(StartX.Value), (int)(StartY.Value), branchLength, 0, Progress);
                 image.Image = pictureTree;
+
             });
+            if (NumberOfAngles.SelectedIndex == 0)
+            {
+                Progress.Invoke(new Action(() =>
+                {
+                    Progress.Maximum = 10;
+                    Progress.Value = Progress.Maximum;
+                }));
+            }
 
             end = DateTime.Now;
             CulculationTime.Text = (end - start).TotalMilliseconds.ToString("F2") + " ms";
@@ -1205,25 +1046,27 @@ namespace FractalsCreator
             FractalsList.Enabled = true;
             image.Cursor = Cursors.Default;
         }
-        private void BranchLenght_ValueChanged(object sender, EventArgs e)
+
+        // calculation of the changing mininum value of the branch length
+        private void BranchLength_ValueChanged(object sender, EventArgs e)
         {
             if (NumberOfAngles.SelectedIndex == 3)
             {
-                MinBranchLenght.Minimum = (int)(Math.Floor(BranchLenght.Value / 40));
+                MinBranchLength.Minimum = (int)(Math.Floor(BranchLength.Value / 40));
 
             }
             else if (NumberOfAngles.SelectedIndex == 2)
             {
-                MinBranchLenght.Minimum = (int)(Math.Floor(BranchLenght.Value / 60));
+                MinBranchLength.Minimum = (int)(Math.Floor(BranchLength.Value / 60));
             }
             else
             {
-                MinBranchLenght.Minimum = (int)(Math.Floor((double)BranchLenght.Value * 0.005)) + 1;
+                MinBranchLength.Minimum = (int)(Math.Floor((double)BranchLength.Value * 0.005)) + 1;
             }
 
-            if (MinBranchLenght.Value < MinBranchLenght.Minimum)
+            if (MinBranchLength.Value < MinBranchLength.Minimum)
             {
-                MinBranchLenght.Value = MinBranchLenght.Minimum;
+                MinBranchLength.Value = MinBranchLength.Minimum;
             }
 
         }
@@ -1257,8 +1100,8 @@ namespace FractalsCreator
 
             Bitmap pictureFern = new Bitmap(image.Width, image.Height);
             Barnsley_fern Fern = new Barnsley_fern(pictureFern, maxX, maxY, NumbersOfPoint, probability, Coefficient, pixels, BackgroundColor, gradientForm.pictureGradient.Width);
-            await Task.Run(() => 
-            { 
+            await Task.Run(() =>
+            {
                 pictureFern = Fern.DrawBransleyFern(Progress);
                 image.Image = pictureFern;
             });
@@ -1291,62 +1134,27 @@ namespace FractalsCreator
             int CountIterations;
             Bitmap pictureCurveDragon = new Bitmap(image.Width, image.Height);
 
-            List<int> indexs = new List<int>();
+            List<int> indexes = new List<int>();
             List<List<int>> Coords = new List<List<int>>();
+            List<int> coordinates;
 
-            if (NumberOfCurves.SelectedIndex >= 0)
+            for (int i = 0; i <= NumberOfCurves.SelectedIndex; i++)
             {
-                Coords.Add( new List<int>() {
-                (int)FirstStartPointX.Value, (int)FirstStartPointY.Value, (int)FirstEndPointX.Value, (int)FirstEndPointY.Value
-                });
+                coordinates = new List<int>();
+                for (int j = 0; j < 4; j++)
+                {
+                    coordinates.Add((int)Points[i][j].Value);
+                }
+                Coords.Add(coordinates);
+
             }
-            if (NumberOfCurves.SelectedIndex >= 1)
-            {
-                Coords.Add(new List<int>() {
-                (int)SecondStartPointX.Value, (int)SecondStartPointY.Value, (int)SecondEndPointX.Value, (int)SecondEndPointY.Value
-                });
-            }
-            if (NumberOfCurves.SelectedIndex >= 2)
-            {
-                Coords.Add(new List<int>() {
-                (int)ThirdStartPointX.Value, (int)ThirdStartPointY.Value, (int)ThirdEndPointX.Value, (int)ThirdEndPointY.Value
-                });
-            }
-            if (NumberOfCurves.SelectedIndex >= 3)
-            {
-                Coords.Add(new List<int>() {
-                (int)FourthStartPointX.Value, (int)FourthStartPointY.Value, (int)FourthEndPointX.Value, (int)FourthEndPointY.Value
-                });
-            }
-            if (NumberOfCurves.SelectedIndex >= 4)
-            {
-                Coords.Add(new List<int>() {
-                (int)FifthStartPointX.Value, (int)FifthStartPointY.Value, (int)FifthEndPointX.Value, (int)FifthEndPointY.Value
-                });
-            }
-            if (NumberOfCurves.SelectedIndex >= 5)
-            {
-                Coords.Add(new List<int>() {
-                (int)SixthStartPointX.Value, (int)SixthStartPointY.Value, (int)SixthEndPointX.Value, (int)SixthEndPointY.Value
-                });
-            }
-            if (NumberOfCurves.SelectedIndex >= 6)
-            {
-                Coords.Add(new List<int>() {
-                (int)SeventhStartPointX.Value, (int)SeventhStartPointY.Value, (int)SeventhEndPointX.Value, (int)SeventhEndPointY.Value
-                });
-            }
-            if (NumberOfCurves.SelectedIndex >= 7)
-            {
-                Coords.Add(new List<int>() {
-                (int)EighthStartPointX.Value, (int)EighthStartPointY.Value, (int)EighthEndPointX.Value, (int)EighthEndPointY.Value
-                });
-            }
+
+
 
             // obtaining color for colloring
             for (int i = 0; i < Coords.Count; i++)
             {
-                indexs.Add((int)((i + 1) * gradientForm.pictureGradient.Width / (Coords.Count + 1)));
+                indexes.Add((int)((i + 1) * gradientForm.pictureGradient.Width / (Coords.Count + 1)));
             }
 
             CurveDragon Dragon = new CurveDragon(pictureCurveDragon, BackgroundColor);
@@ -1357,10 +1165,11 @@ namespace FractalsCreator
                 Progress.Maximum += (int)Math.Pow(2, i);
             }
             Progress.Maximum *= (Coords.Count);
+
             await Task.Run(() => {
                 for (int i = 0; i < Coords.Count; i++)
                 {
-                    Dragon.DrawCurveDragon(Coords[i][0], image.Height - Coords[i][1], Coords[i][2], image.Height - Coords[i][3], CountIterations, new Pen(pixels[indexs[i]].Color, brushWidth), Progress);
+                    Dragon.DrawCurveDragon(Coords[i][0], image.Height - Coords[i][1], Coords[i][2], image.Height - Coords[i][3], CountIterations, new Pen(pixels[indexes[i]].Color, brushWidth), Progress);
                 }
                 image.Image = pictureCurveDragon;
             });
@@ -1376,102 +1185,54 @@ namespace FractalsCreator
         // selection of the number of dragon curves
         private void NumberOfCurves_SelectedIndexChanged(object sender, EventArgs e)
         {
-            FirstStartPointX.Visible = false;
-            FirstStartPointY.Visible = false;
-            FirstEndPointX.Visible = false;
-            FirstEndPointY.Visible = false;
 
-            SecondStartPointX.Visible = false;
-            SecondStartPointY.Visible = false;
-            SecondEndPointX.Visible = false;
-            SecondEndPointY.Visible = false;
+            PointsVisibleTrue(Points);
+            PointsVisibleTrue(Points, NumberOfCurves.SelectedIndex);
+        }
 
-            ThirdStartPointX.Visible = false;
-            ThirdStartPointY.Visible = false;
-            ThirdEndPointX.Visible = false;
-            ThirdEndPointY.Visible = false;
+        internal void PointsVisibleTrue(List<List<NumericUpDown>> Points, int endIndex = -1)
+        {
+            if (endIndex == -1)
+            {
+                for (int i = 0; i < Points.Count; i++)
+                {
+                    for (int j = 0; j < Points[i].Count; j++)
+                    {
+                        Points[i][j].Visible = false;
+                    }
 
-            FourthStartPointX.Visible = false;
-            FourthStartPointY.Visible = false;
-            FourthEndPointX.Visible = false;
-            FourthEndPointY.Visible = false;
+                }
+            }
+            else
+            {
+                for (int i = 0; i <= endIndex; i++)
+                {
+                    for (int j = 0; j < Points[i].Count; j++)
+                    {
+                        Points[i][j].Visible = true;
+                    }
 
-            FifthStartPointX.Visible = false;
-            FifthStartPointY.Visible = false;
-            FifthEndPointX.Visible = false;
-            FifthEndPointY.Visible = false;
+                }
+            }
+        }
 
-            SixthStartPointX.Visible = false;
-            SixthStartPointY.Visible = false;
-            SixthEndPointX.Visible = false;
-            SixthEndPointY.Visible = false;
+        private void AnglesVisibleTrue(List<NumericUpDown> Angles, int endIndex = -1)
+        {
+            if (endIndex == -1)
+            {
+                for (int i = 0; i < Angles.Count; i++)
+                {
+                    Angles[i].Visible = false;
+                }
+            }
+            else
+            {
+                for (int i = 0; i <= endIndex; i++)
+                {
+                    Angles[i].Visible = true;
+                }
+            }
 
-            SeventhStartPointX.Visible = false;
-            SeventhStartPointY.Visible = false;
-            SeventhEndPointX.Visible = false;
-            SeventhEndPointY.Visible = false;
-
-            EighthStartPointX.Visible = false;
-            EighthStartPointY.Visible = false;
-            EighthEndPointX.Visible = false;
-            EighthEndPointY.Visible = false;
-
-            if (NumberOfCurves.SelectedIndex >= 0)
-            {
-                FirstStartPointX.Visible = true;
-                FirstStartPointY.Visible = true;
-                FirstEndPointX.Visible = true;
-                FirstEndPointY.Visible = true;
-            }
-            if (NumberOfCurves.SelectedIndex >= 1)
-            {
-                SecondStartPointX.Visible = true;
-                SecondStartPointY.Visible = true;
-                SecondEndPointX.Visible = true;
-                SecondEndPointY.Visible = true;
-            }
-            if (NumberOfCurves.SelectedIndex >= 2)
-            {
-                ThirdStartPointX.Visible = true;
-                ThirdStartPointY.Visible = true;
-                ThirdEndPointX.Visible = true;
-                ThirdEndPointY.Visible = true;
-            }
-            if (NumberOfCurves.SelectedIndex >= 3)
-            {
-                FourthStartPointX.Visible = true;
-                FourthStartPointY.Visible = true;
-                FourthEndPointX.Visible = true;
-                FourthEndPointY.Visible = true;
-            }
-            if (NumberOfCurves.SelectedIndex >= 4)
-            {
-                FifthStartPointX.Visible = true;
-                FifthStartPointY.Visible = true;
-                FifthEndPointX.Visible = true;
-                FifthEndPointY.Visible = true;
-            }
-            if (NumberOfCurves.SelectedIndex >= 5)
-            {
-                SixthStartPointX.Visible = true;
-                SixthStartPointY.Visible = true;
-                SixthEndPointX.Visible = true;
-                SixthEndPointY.Visible = true;
-            }
-            if (NumberOfCurves.SelectedIndex >= 6)
-            {
-                SeventhStartPointX.Visible = true;
-                SeventhStartPointY.Visible = true;
-                SeventhEndPointX.Visible = true;
-                SeventhEndPointY.Visible = true;
-            }
-            if (NumberOfCurves.SelectedIndex >= 7)
-            {
-                EighthStartPointX.Visible = true;
-                EighthStartPointY.Visible = true;
-                EighthEndPointX.Visible = true;
-                EighthEndPointY.Visible = true;
-            }
         }
 
         ~FractalForm()

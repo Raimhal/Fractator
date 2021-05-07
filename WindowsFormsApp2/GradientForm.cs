@@ -15,8 +15,8 @@ namespace FractalsCreator
 {
     public partial class GradientForm : Form
     {
-        public List<Pixel> pixels;
-        public GradientForm()
+        internal List<Pixel> pixels;
+        internal GradientForm()
         {
             InitializeComponent();
         }
@@ -33,9 +33,9 @@ namespace FractalsCreator
         ///
 
         // getting gradient pixels 
-        public List<Pixel> GetPixels(Bitmap bitmap)
+        internal List<Pixel> GetPixels(Bitmap bitmap)
         {
-            List<Pixel> pixels = new List<Pixel>(bitmap.Width);
+            pixels = new List<Pixel>();
             for (int x = 0; x < bitmap.Width; x++)
             {
                 pixels.Add(new Pixel()
@@ -48,7 +48,7 @@ namespace FractalsCreator
         }
 
         // creating a gradient
-        public void Gradient(PictureBox pictureBox)
+        internal void Gradient(PictureBox pictureBox)
         {
             Random color = new Random();
 
@@ -57,82 +57,55 @@ namespace FractalsCreator
             int b = color.Next(256);
             int changer = color.Next(256);
             Bitmap Gradient = new Bitmap(pictureBox.Width, pictureBox.Height);
-            if (changer % 6 == 0)
+            switch (changer % 3)
             {
-
-                for (int x = 0; x < Gradient.Width; x++)
-                {
-
-                    for (int y = 0; y < Gradient.Height; y++)
+                case 0:
                     {
-                        Gradient.SetPixel(x, y, Color.FromArgb(((r + x) / 3) % 255, ((255 - g + x) / 3) % 255, ((b) / 3) % 255));
+                        SetGradient(Gradient, r, 255 - g, b, 2);
+                        break;
                     }
-                }
-            }
-            else if (changer % 6 == 1)
-            {
-                for (int x = 0; x < Gradient.Width; x++)
-                {
-
-                    for (int y = 0; y < Gradient.Height; y++)
+                case 1:
                     {
-                        Gradient.SetPixel(x, y, Color.FromArgb(((r + x) / 3) % 255, ((g) / 3) % 255, ((255 - b + x) / 3) % 255));
+                        SetGradient(Gradient, 255 - r, g, b, 1);
+                        break;
                     }
-                }
-            }
-            else if (changer % 6 == 2)
-            {
-                for (int x = 0; x < Gradient.Width; x++)
-                {
-
-                    for (int y = 0; y < Gradient.Height; y++)
+                case 2:
                     {
-                        Gradient.SetPixel(x, y, Color.FromArgb(((r) / 3) % 255, ((g + x) / 3) % 255, ((255 - b + x) / 3) % 255));
+                        SetGradient(Gradient, r, g, 255 - b, 0);
+                        break;
                     }
-                }
-            }
-            else if (changer % 6 == 3)
-            {
-                for (int x = 0; x < Gradient.Width; x++)
-                {
-
-                    for (int y = 0; y < Gradient.Height; y++)
-                    {
-                        Gradient.SetPixel(x, y, Color.FromArgb(((255 - r + x) / 3) % 255, ((g + x) / 3) % 255, ((b) / 3) % 255));
-                    }
-                }
-            }
-            else if (changer % 6 == 4)
-            {
-                for (int x = 0; x < Gradient.Width; x++)
-                {
-
-                    for (int y = 0; y < Gradient.Height; y++)
-                    {
-                        Gradient.SetPixel(x, y, Color.FromArgb(((r) / 3) % 255, ((255 - g + x) / 3) % 255, ((b + x) / 3) % 255));
-                    }
-                }
-            }
-            else
-            {
-                for (int x = 0; x < Gradient.Width; x++)
-                {
-
-                    for (int y = 0; y < Gradient.Height; y++)
-                    {
-                        Gradient.SetPixel(x, y, Color.FromArgb(((255 - r + x) / 3) % 255, ((g) / 3) % 255, ((b + x) / 3) % 255));
-                    }
-                }
+                default:
+                    break;
             }
 
             pictureBox.Image = Gradient;
         }
 
+        private void SetGradient(Bitmap Gradient, int r, int g, int b, int NoChangeIndex)
+        {
+            int[] change = new int[3];
+            change[NoChangeIndex] = 0;
+            for (int x = 0; x < Gradient.Width; x++)
+            {
+                for(int i = 0; i < change.Length; i++)
+                {
+                    if(i != NoChangeIndex)
+                    {
+                        change[i] = x;
+                    }
+                }
+                for (int y = 0; y < Gradient.Height; y++)
+                {
+                    Gradient.SetPixel(x, y, Color.FromArgb(((r + change[0]) / 3) % 255, ((g + change[1]) / 3) % 255, ((b + change[2]) / 3) % 255));
+                }
+            }
+        }
         // Random gradient
         private void RandomGradient_Click(object sender, EventArgs e)
         {
             Gradient(pictureGradient);
         }
+        
 
         // Gradient hot key
         private void GradientForm_KeyDown(object sender, KeyEventArgs e)
@@ -145,7 +118,7 @@ namespace FractalsCreator
         }
         ~GradientForm()
         {
-            Console.WriteLine("Class GradientForm is clear");
+            Console.WriteLine("Form GradientForm is cleared");
         }
     }
 }

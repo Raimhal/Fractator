@@ -13,19 +13,21 @@ namespace FractalClasses
     public class Barnsley_fern:Fractals
     {
 
-        protected float minX = -3;
+        protected float minX;
         protected float maxX;
-        protected float minY = 0.1f;
+        protected float minY;
         protected float maxY;
         protected int NumberOfPoints;
         protected float[] probability;
         protected float[,] Coefficient;
         protected int LenGradient;
 
-        public Barnsley_fern(Bitmap picture, float maxX, float maxY, int NumberOfPoints, float[] probability, float[,] Coefficient, List<Pixel> pixels, Color backgroundColor, int LenGradient):base(picture, pixels, backgroundColor)
+        public Barnsley_fern(Bitmap picture, float maxX, float maxY, int NumberOfPoints, float[] probability, float[,] Coefficient, List<Pixel> pixels, Color backgroundColor, int LenGradient, float MinX = -3, float MinY = 0.1f):base(picture, pixels, backgroundColor)
         {
             this.maxX = maxX;
             this.maxY = maxY;
+            this.minX = MinX;
+            this.minY = MinY;
             this.NumberOfPoints = NumberOfPoints;
             this.probability = probability;
             this.Coefficient = Coefficient;

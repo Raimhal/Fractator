@@ -21,6 +21,8 @@ namespace FractalClasses
         protected Size size;
         protected PictureBox gradientBox;
         protected int Iterations;
+        protected Complex c, z;
+
         
         public MBrotSet(Bitmap picture, List<Pixel> pixels, Size size, PictureBox gradientBox,int Iterations):base(picture, pixels)
         {
@@ -44,7 +46,7 @@ namespace FractalClasses
 
             int UserIt = Iterations;
             int change;
-            
+
             int[] ColorIndex = new int[42];
             int i = 0;
             for (int p = 0; p < gradientBox.Image.Width; p++)
@@ -74,8 +76,8 @@ namespace FractalClasses
                 {
                     y_ = (hy - SizeArea / 2) + y * (SizeArea / size.Height);
 
-                    Complex c = new Complex(x_, y_);
-                    Complex z = new Complex(0, 0);
+                    c = new Complex(x_, y_);
+                    z = new Complex(0, 0);
 
 
                     int it = 0;
@@ -95,138 +97,7 @@ namespace FractalClasses
                     if (it < UserIt)
                     {
                         change = it % ColorIndex.Length;
-                        switch (change)
-                        {
-                            case 0:
-                                picture.SetPixel(x, y, pixels[ColorIndex[0]].Color);
-                                break;
-                            case 1:
-                                picture.SetPixel(x, y, pixels[ColorIndex[1]].Color);
-                                break;
-                            case 2:
-                                picture.SetPixel(x, y, pixels[ColorIndex[2]].Color);
-                                break;
-                            case 3:
-                                picture.SetPixel(x, y, pixels[ColorIndex[3]].Color);
-                                break;
-                            case 4:
-                                picture.SetPixel(x, y, pixels[ColorIndex[4]].Color);
-                                break;
-                            case 5:
-                                picture.SetPixel(x, y, pixels[ColorIndex[5]].Color);
-                                break;
-                            case 6:
-                                picture.SetPixel(x, y, pixels[ColorIndex[6]].Color);
-                                break;
-                            case 7:
-                                picture.SetPixel(x, y, pixels[ColorIndex[7]].Color);
-                                break;
-                            case 8:
-                                picture.SetPixel(x, y, pixels[ColorIndex[8]].Color);
-                                break;
-                            case 9:
-                                picture.SetPixel(x, y, pixels[ColorIndex[9]].Color);
-                                break;
-                            case 10:
-                                picture.SetPixel(x, y, pixels[ColorIndex[10]].Color);
-                                break;
-                            case 11:
-                                picture.SetPixel(x, y, pixels[ColorIndex[11]].Color);
-                                break;
-                            case 12:
-                                picture.SetPixel(x, y, pixels[ColorIndex[12]].Color);
-                                break;
-                            case 13:
-                                picture.SetPixel(x, y, pixels[ColorIndex[13]].Color);
-                                break;
-                            case 14:
-                                picture.SetPixel(x, y, pixels[ColorIndex[14]].Color);
-                                break;
-                            case 15:
-                                picture.SetPixel(x, y, pixels[ColorIndex[15]].Color);
-                                break;
-                            case 16:
-                                picture.SetPixel(x, y, pixels[ColorIndex[16]].Color);
-                                break;
-                            case 17:
-                                picture.SetPixel(x, y, pixels[ColorIndex[17]].Color);
-                                break;
-                            case 18:
-                                picture.SetPixel(x, y, pixels[ColorIndex[18]].Color);
-                                break;
-                            case 19:
-                                picture.SetPixel(x, y, pixels[ColorIndex[19]].Color);
-                                break;
-                            case 20:
-                                picture.SetPixel(x, y, pixels[ColorIndex[20]].Color);
-                                break;
-                            case 21:
-                                picture.SetPixel(x, y, pixels[ColorIndex[21]].Color);
-                                break;
-                            case 22:
-                                picture.SetPixel(x, y, pixels[ColorIndex[22]].Color);
-                                break;
-                            case 23:
-                                picture.SetPixel(x, y, pixels[ColorIndex[23]].Color);
-                                break;
-                            case 24:
-                                picture.SetPixel(x, y, pixels[ColorIndex[24]].Color);
-                                break;
-                            case 25:
-                                picture.SetPixel(x, y, pixels[ColorIndex[25]].Color);
-                                break;
-                            case 26:
-                                picture.SetPixel(x, y, pixels[ColorIndex[26]].Color);
-                                break;
-                            case 27:
-                                picture.SetPixel(x, y, pixels[ColorIndex[27]].Color);
-                                break;
-                            case 28:
-                                picture.SetPixel(x, y, pixels[ColorIndex[28]].Color);
-                                break;
-                            case 29:
-                                picture.SetPixel(x, y, pixels[ColorIndex[29]].Color);
-                                break;
-                            case 30:
-                                picture.SetPixel(x, y, pixels[ColorIndex[30]].Color);
-                                break;
-                            case 31:
-                                picture.SetPixel(x, y, pixels[ColorIndex[31]].Color);
-                                break;
-                            case 32:
-                                picture.SetPixel(x, y, pixels[ColorIndex[32]].Color);
-                                break;
-                            case 33:
-                                picture.SetPixel(x, y, pixels[ColorIndex[33]].Color);
-                                break;
-                            case 34:
-                                picture.SetPixel(x, y, pixels[ColorIndex[34]].Color);
-                                break;
-                            case 35:
-                                picture.SetPixel(x, y, pixels[ColorIndex[35]].Color);
-                                break;
-                            case 36:
-                                picture.SetPixel(x, y, pixels[ColorIndex[36]].Color);
-                                break;
-                            case 37:
-                                picture.SetPixel(x, y, pixels[ColorIndex[37]].Color);
-                                break;
-                            case 38:
-                                picture.SetPixel(x, y, pixels[ColorIndex[38]].Color);
-                                break;
-                            case 39:
-                                picture.SetPixel(x, y, pixels[ColorIndex[39]].Color);
-                                break;
-                            case 40:
-                                picture.SetPixel(x, y, pixels[ColorIndex[40]].Color);
-                                break;
-                            case 41:
-                                picture.SetPixel(x, y, pixels[ColorIndex[41]].Color);
-                                break;
-                            default:
-                                picture.SetPixel(x, y, Color.FromArgb(0, 0, 0));
-                                break;
-                        }
+                        picture.SetPixel(x, y, pixels[ColorIndex[change]].Color);
                     }
                     else
                     {
