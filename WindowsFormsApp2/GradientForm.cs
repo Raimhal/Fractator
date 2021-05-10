@@ -1,13 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Globalization;
 using HelperClasses;
 
 
@@ -19,6 +13,9 @@ namespace FractalsCreator
         internal GradientForm()
         {
             InitializeComponent();
+            TopMost = true;
+            Focus();
+            this.DoubleBuffered = true;
         }
 
         private void GradientForm_Load(object sender, EventArgs e)
@@ -47,7 +44,7 @@ namespace FractalsCreator
             return pixels;
         }
 
-        // creating a gradient
+        // random gradient creation
         internal void Gradient(PictureBox pictureBox)
         {
             Random color = new Random();
@@ -81,6 +78,7 @@ namespace FractalsCreator
             pictureBox.Image = Gradient;
         }
 
+        // generation gradient
         private void SetGradient(Bitmap Gradient, int r, int g, int b, int NoChangeIndex)
         {
             int[] change = new int[3];
@@ -100,7 +98,7 @@ namespace FractalsCreator
                 }
             }
         }
-        // Random gradient
+        // Random gradient button
         private void RandomGradient_Click(object sender, EventArgs e)
         {
             Gradient(pictureGradient);

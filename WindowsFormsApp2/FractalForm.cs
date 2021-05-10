@@ -1,16 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Drawing.Drawing2D;
-using System.Drawing.Imaging;
 using System.Globalization;
-using System.Diagnostics;
 using System.Threading;
 using FractalClasses;
 using HelperClasses;
@@ -69,7 +62,8 @@ namespace FractalsCreator
         public FractalForm()
         {
             InitializeComponent();
-
+            TopMost = false;
+            
             CultureInfo customCulture = (CultureInfo)
                 Thread.CurrentThread.CurrentCulture.Clone();
             customCulture.NumberFormat.NumberDecimalSeparator = ".";
@@ -336,7 +330,12 @@ namespace FractalsCreator
         {
             if (gradientForm.Visible == false)
             {
-                await Task.Run(() => { gradientForm.ShowDialog(); });
+                await Task.Run(() => {
+
+                    gradientForm.ShowDialog();
+                    gradientForm.Focus();
+
+                });
             }
         }
 
@@ -467,10 +466,11 @@ namespace FractalsCreator
                 if (isSufficientSize.Width >= minimumImageWidth)
                 {
                     gradientForm.pictureGradient.Image = isSufficientSize;
+                    MessageBox.Show("Gradient loaded successfully", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
                 else
                 {
-                    MessageBox.Show($"Image size is too small!!!\nMinimum image width : {minimumImageWidth}\nCurrent width: {isSufficientSize.Width}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    MessageBox.Show($"Image size is too small!\nMinimum image width : {minimumImageWidth}\nCurrent width: {isSufficientSize.Width}", "Warning! Image size is too small", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
             }
         }
@@ -490,10 +490,11 @@ namespace FractalsCreator
                     try
                     {
                         image.Image.Save(SaveAs.FileName);
+                        MessageBox.Show("Fractal saved successfully", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                     catch
                     {
-                        MessageBox.Show("Image can't be saved!!!", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Hand);
+                        MessageBox.Show("Image can't be saved!!!", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 }
             }
@@ -799,7 +800,7 @@ namespace FractalsCreator
         }
 
         // drawing Fractals
-        public void DrawFractals()
+        internal void DrawFractals()
         {
             Progress.Invoke(new Action(() => {
                 Progress.Minimum = 0;
@@ -818,22 +819,30 @@ namespace FractalsCreator
                 DecreaseZOOM.Enabled = true;
                 IncreaseZOOM.Enabled = true;
 
+                CenterX.ForeColor = Color.Black;
+                CenterY.ForeColor = Color.Black;
+                MaxZDegreeTwo.ForeColor = Color.Black;
                 er_x = double.TryParse(CenterX.Text, out hx);
                 er_y = double.TryParse(CenterY.Text, out hy);
                 er_z = double.TryParse(MaxZDegreeTwo.Text, out maxZ);
 
-
                 if (!er_x)
                 {
+                    CenterX.ForeColor = Color.Red;
                     MessageBox.Show("Error entering value x!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
                 }
                 else if (!er_y)
                 {
+                    CenterY.ForeColor = Color.Red;
                     MessageBox.Show("Error entering value y!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
                 }
                 else if (!er_z)
                 {
+                    MaxZDegreeTwo.ForeColor = Color.Red;
                     MessageBox.Show("Error entering value max |z| ^ 2!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
                 }
                 else
                 {
@@ -854,10 +863,7 @@ namespace FractalsCreator
             {
                 image.Image = null;
                 DrawCurveDragon();
-                Progress.Invoke(new Action(() =>
-                {
-                    Progress.Value = Progress.Maximum;
-                }));
+
             }
         }
 
@@ -1000,6 +1006,7 @@ namespace FractalsCreator
         // selection of the number of angles
         private void NumberOfAngles_SelectedIndexChanged(object sender, EventArgs e)
         {
+            AnglesVisibleTrue(Angles);
             AnglesVisibleTrue(Angles, NumberOfAngles.SelectedIndex);
         }
 
@@ -1037,6 +1044,7 @@ namespace FractalsCreator
                     Progress.Maximum = 10;
                     Progress.Value = Progress.Maximum;
                 }));
+
             }
 
             end = DateTime.Now;
@@ -1046,6 +1054,27 @@ namespace FractalsCreator
             FractalsList.Enabled = true;
             image.Cursor = Cursors.Default;
         }
+
+        // changing the number of visible branches
+        private void AnglesVisibleTrue(List<NumericUpDown> Angles, int endIndex = -1)
+        {
+            if (endIndex == -1)
+            {
+                for (int i = 0; i < Angles.Count; i++)
+                {
+                    Angles[i].Visible = false;
+                }
+            }
+            else
+            {
+                for (int i = 0; i <= endIndex; i++)
+                {
+                    Angles[i].Visible = true;
+                }
+            }
+
+        }
+
 
         // calculation of the changing mininum value of the branch length
         private void BranchLength_ValueChanged(object sender, EventArgs e)
@@ -1172,6 +1201,10 @@ namespace FractalsCreator
                     Dragon.DrawCurveDragon(Coords[i][0], image.Height - Coords[i][1], Coords[i][2], image.Height - Coords[i][3], CountIterations, new Pen(pixels[indexes[i]].Color, brushWidth), Progress);
                 }
                 image.Image = pictureCurveDragon;
+                Progress.Invoke(new Action(() =>
+                {
+                    Progress.Value = Progress.Maximum;
+                }));
             });
 
             end = DateTime.Now;
@@ -1190,6 +1223,7 @@ namespace FractalsCreator
             PointsVisibleTrue(Points, NumberOfCurves.SelectedIndex);
         }
 
+        // changing the number of visible curves
         internal void PointsVisibleTrue(List<List<NumericUpDown>> Points, int endIndex = -1)
         {
             if (endIndex == -1)
@@ -1216,24 +1250,6 @@ namespace FractalsCreator
             }
         }
 
-        private void AnglesVisibleTrue(List<NumericUpDown> Angles, int endIndex = -1)
-        {
-            if (endIndex == -1)
-            {
-                for (int i = 0; i < Angles.Count; i++)
-                {
-                    Angles[i].Visible = false;
-                }
-            }
-            else
-            {
-                for (int i = 0; i <= endIndex; i++)
-                {
-                    Angles[i].Visible = true;
-                }
-            }
-
-        }
 
         ~FractalForm()
         {

@@ -1,18 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Drawing.Drawing2D;
-using System.Drawing.Imaging;
-using System.Globalization;
-using System.Diagnostics;
-using System.Threading;
 using HelperClasses;
+
 namespace FractalClasses
 {
     public class FractalTree : Fractals
@@ -122,7 +113,7 @@ namespace FractalClasses
                 " some way, you get a naked Pythagorean tree." +
                 Environment.NewLine +
                 Environment.NewLine +
-                "Angles (one angle one branch)" +
+                "Angles (one angle - one branch)" +
                 " (-35 - left branch will  have angle 35)" +
                 " or (45 right branch will have angle 45)" +
                 " (e.g. (-35, 40, 10) we wil have 3 branches" +

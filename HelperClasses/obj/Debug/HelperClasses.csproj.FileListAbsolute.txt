@@ -3,4 +3,3 @@ E:\it\C#\курсова\HelperClasses\bin\Debug\HelperClasses.pdb
 E:\it\C#\курсова\HelperClasses\obj\Debug\HelperClasses.csproj.CoreCompileInputs.cache
 E:\it\C#\курсова\HelperClasses\obj\Debug\HelperClasses.dll
 E:\it\C#\курсова\HelperClasses\obj\Debug\HelperClasses.pdb
-E:\it\C#\курсова\HelperClasses\obj\Debug\HelperClasses.csprojAssemblyReference.cache

@@ -1,12 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Drawing;
-using System.Drawing.Drawing2D;
 using System.Windows.Forms;
-using HelperClasses;
 namespace FractalClasses
 {
     public class CurveDragon : Fractals
@@ -28,13 +22,13 @@ namespace FractalClasses
             if (i == 0)
             {
                 base.Effects(g, BackgroundColor);
-
             }
  
 
             if (Iterations == 0)
             {
                 g.DrawLine(pen, x1, y1, x2, y2);
+
 
             }
             else if(Iterations > 0)
@@ -45,7 +39,6 @@ namespace FractalClasses
 
                 DrawCurveDragon(x1, y1, NextX, NextY, Iterations - 1, pen, progress);
                 DrawCurveDragon(x2, y2, NextX, NextY, Iterations - 1, pen, progress);
-
             }
         }
 

@@ -88,6 +88,6 @@ namespace FractalsCreator
         #endregion
 
         public System.Windows.Forms.PictureBox pictureGradient;
-        public System.Windows.Forms.Button RandomGradient;
+        protected internal System.Windows.Forms.Button RandomGradient;
     }
 }

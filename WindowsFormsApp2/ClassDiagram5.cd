@@ -2,6 +2,9 @@
 <ClassDiagram MajorVersion="1" MinorVersion="1">
   <Class Name="FractalsCreator.FractalForm">
     <Position X="16.75" Y="3.75" Width="1.5" />
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+    </Compartments>
     <AssociationLine Name="BackgroundColor" Type="System.Drawing.Color" FixedFromPoint="true" FixedToPoint="true">
       <Path>
         <Point X="17.812" Y="3.75" />
@@ -17,7 +20,7 @@
       </Path>
     </AssociationLine>
     <TypeIdentifier>
-      <HashCode>3hSIGTNOnuJbAQvrnOL0AAaO+6sKc2AN1hzkp8L8h9w=</HashCode>
+      <HashCode>3BaImWNKnuJbgSvjnOL0CAaOe6sKc2At1Fzkp8D9g9w=</HashCode>
       <FileName>FractalForm.cs</FileName>
     </TypeIdentifier>
     <ShowAsAssociation>
@@ -35,7 +38,7 @@
       <Compartment Name="Fields" Collapsed="true" />
     </Compartments>
     <TypeIdentifier>
-      <HashCode>AAABAAAAACBAAAEAAACEABACAAAAIAAAACAAAAAAAAA=</HashCode>
+      <HashCode>AAABBAAAACBAAAEAAACEABACAAAAIAAAACAAAAAAAAA=</HashCode>
       <FileName>GradientForm.cs</FileName>
     </TypeIdentifier>
     <ShowAsCollectionAssociation>
