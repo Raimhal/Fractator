@@ -36,12 +36,12 @@ namespace FractalClasses
 
             int UserIt = Iterations;
             int change;
-
-            int[] ColorIndex = new int[42];
+            int LenPixels = 100;
+            int[] ColorIndex = new int[LenPixels];
             int i = 0;
             for (int p = 0; p < gradientBox.Image.Width; p++)
             {
-                if (p % (int)(gradientBox.Image.Width * 0.025) == 0)
+                if (p % (int)(gradientBox.Image.Width / ColorIndex.Length) == 0)
                 {
                     if (i >= ColorIndex.Length)
                     {

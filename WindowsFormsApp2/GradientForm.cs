@@ -105,7 +105,7 @@ namespace FractalsCreator
         }
         
 
-        // Gradient hot key
+        // Gradient hot keys
         private void GradientForm_KeyDown(object sender, KeyEventArgs e)
         {
             // generate gradient
