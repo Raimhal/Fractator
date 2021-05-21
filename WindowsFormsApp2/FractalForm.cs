@@ -74,7 +74,6 @@ namespace FractalsCreator
             g = Graphics.FromImage(image.Image);
             this.DoubleBuffered = true;
             gradientForm = new GradientForm();
-
             // list of the curves dragon points
             Points = new List<List<NumericUpDown>>()
             {
@@ -180,8 +179,8 @@ namespace FractalsCreator
         {
             if (FractalsList.SelectedIndex == 1)
             {
-                StartX.Value = image.Width / 2;
-                StartY.Value = image.Height / 5;
+                if (StartX.Value > StartX.Minimum && StartX.Value < StartX.Maximum) { StartX.Value += (image.Width - size.Width) / 2; };
+                if (StartY.Value > StartY.Minimum && StartY.Value < StartY.Maximum) { StartY.Value += (image.Height - size.Height) / 2; };
             }
             else if (FractalsList.SelectedIndex == 3)
             {
@@ -202,13 +201,8 @@ namespace FractalsCreator
                         }
                     }
                 }
-
-                size = image.Size;
-                ShowImageHeight.Value = image.Height;
-                ShowImageWidth.Value = image.Width;
-
-
             }
+
 
             if (FractalsList.SelectedIndex != 0)
             {
@@ -220,8 +214,12 @@ namespace FractalsCreator
                 {
                     image.BackColor = BackgroundColor;
                 }
-
             }
+            size = image.Size;
+            ShowImageHeight.Value = image.Height;
+            ShowImageWidth.Value = image.Width;
+
+
         }
         private void FractalForm_ResizeEnd(object sender, EventArgs e)
         {
@@ -337,6 +335,7 @@ namespace FractalsCreator
 
                 });
             }
+
         }
 
         // Generate Gradient
@@ -809,7 +808,10 @@ namespace FractalsCreator
 
             pixels = gradientForm.GetPixels((Bitmap)gradientForm.pictureGradient.Image);
             size = image.Size;
-
+            if(FractalsList.SelectedIndex != 0)
+            {
+                image.Image = null;
+            }
             if (FractalsList.SelectedIndex == 0)
             {
                 bool er_x, er_y, er_z;
@@ -851,20 +853,18 @@ namespace FractalsCreator
             }
             else if (FractalsList.SelectedIndex == 1)
             {
-                image.Image = null;
                 DrawFractalTree();
             }
             else if (FractalsList.SelectedIndex == 2)
             {
-                image.Image = null;
                 DrawBarnsleyFern();
             }
             else if (FractalsList.SelectedIndex == 3)
             {
-                image.Image = null;
                 DrawCurveDragon();
 
             }
+
         }
 
 
@@ -877,6 +877,7 @@ namespace FractalsCreator
         // Draw MBrot set
         private async void DrawMBrot()
         {
+            
             image.Cursor = Cursors.WaitCursor;
             image.Enabled = false;          /// 
             IncreaseZOOM.Enabled = false;   ///
@@ -943,7 +944,7 @@ namespace FractalsCreator
         {
             size = image.Size;
             int X = e.X, Y = e.Y;
-            if (FractalsList.SelectedItem == FractalsList.Items[0])
+            if (FractalsList.SelectedIndex == 0)
             {
                 ZoomNUM.Visible = true;
                 if (e.Button == MouseButtons.Left)
@@ -960,8 +961,8 @@ namespace FractalsCreator
 
 
                 }
-                else if (e.Button == MouseButtons.Middle)
-                {                // back to default
+                else if (e.Button == MouseButtons.Middle) // back to default
+                {                
                     SizeArea = 4;
                     hx = -0.6;
                     hy = 0;
@@ -1037,15 +1038,12 @@ namespace FractalsCreator
                 image.Image = pictureTree;
 
             });
+
             if (NumberOfAngles.SelectedIndex == 0)
             {
-                Progress.Invoke(new Action(() =>
-                {
-                    Progress.Maximum = 10;
-                    Progress.Value = Progress.Maximum;
-                }));
-
+                Progress.Maximum = 10;
             }
+            Progress.Value = Progress.Maximum;
 
             end = DateTime.Now;
             CulculationTime.Text = (end - start).TotalMilliseconds.ToString("F2") + " ms";
@@ -1170,7 +1168,7 @@ namespace FractalsCreator
             for (int i = 0; i <= NumberOfCurves.SelectedIndex; i++)
             {
                 coordinates = new List<int>();
-                for (int j = 0; j < 4; j++)
+                for (int j = 0; j < Points[i].Count; j++)
                 {
                     coordinates.Add((int)Points[i][j].Value);
                 }
@@ -1183,17 +1181,17 @@ namespace FractalsCreator
             // obtaining color for colloring
             for (int i = 0; i < Coords.Count; i++)
             {
-                indexes.Add((int)((i + 1) * gradientForm.pictureGradient.Width / (Coords.Count + 1)));
+                indexes.Add((int)((i + 1) * gradientForm.pictureGradient.Image.Width / (Coords.Count + 1)));
             }
 
             CurveDragon Dragon = new CurveDragon(pictureCurveDragon, BackgroundColor);
             CountIterations = (int)(DragonIterations.Value);
-            Progress.Maximum = 0;
-            for (int i = CountIterations; i >= 0; i--)
-            {
-                Progress.Maximum += (int)Math.Pow(2, i);
-            }
-            Progress.Maximum *= (Coords.Count);
+            //Progress.Maximum = 0;
+            //for (int i = CountIterations; i >= 0; i--)
+            //{
+            //    Progress.Maximum += (int)Math.Pow(2, i);
+            //}
+            //Progress.Maximum *= (Coords.Count);
 
             await Task.Run(() => {
                 for (int i = 0; i < Coords.Count; i++)
@@ -1206,6 +1204,8 @@ namespace FractalsCreator
                     Progress.Value = Progress.Maximum;
                 }));
             });
+
+            
 
             end = DateTime.Now;
             CulculationTime.Text = (end - start).TotalMilliseconds.ToString("F2") + " ms";

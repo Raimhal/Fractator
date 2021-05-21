@@ -44,6 +44,7 @@
             this.image = new System.Windows.Forms.PictureBox();
             this.tabControl = new System.Windows.Forms.TabControl();
             this.FractalProperties = new System.Windows.Forms.TabPage();
+            this.Progress = new System.Windows.Forms.ProgressBar();
             this.GroupMouseControl = new System.Windows.Forms.GroupBox();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.DecreaseZOOM = new System.Windows.Forms.Button();
@@ -116,7 +117,6 @@
             this.ThirdAngle = new System.Windows.Forms.NumericUpDown();
             this.FirstAngle = new System.Windows.Forms.NumericUpDown();
             this.labelAngles = new System.Windows.Forms.Label();
-            this.Progress = new System.Windows.Forms.ProgressBar();
             this.CulculationTime = new System.Windows.Forms.TextBox();
             this.labelTime = new System.Windows.Forms.Label();
             this.CenterX = new System.Windows.Forms.MaskedTextBox();
@@ -264,7 +264,7 @@
             this.Iterations.Size = new System.Drawing.Size(109, 26);
             this.Iterations.TabIndex = 5;
             this.Iterations.Value = new decimal(new int[] {
-            60,
+            100,
             0,
             0,
             0});
@@ -504,6 +504,22 @@
             this.FractalProperties.TabIndex = 0;
             this.FractalProperties.Text = "Fractals";
             // 
+            // Progress
+            // 
+            this.Progress.BackColor = System.Drawing.SystemColors.Control;
+            this.Progress.Cursor = System.Windows.Forms.Cursors.Arrow;
+            this.Progress.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.Progress.ForeColor = System.Drawing.Color.Blue;
+            this.Progress.Location = new System.Drawing.Point(3, 667);
+            this.Progress.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.Progress.MarqueeAnimationSpeed = 50;
+            this.Progress.Maximum = 0;
+            this.Progress.Name = "Progress";
+            this.Progress.Size = new System.Drawing.Size(217, 18);
+            this.Progress.Step = 1;
+            this.Progress.Style = System.Windows.Forms.ProgressBarStyle.Continuous;
+            this.Progress.TabIndex = 19;
+            // 
             // GroupMouseControl
             // 
             this.GroupMouseControl.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
@@ -551,10 +567,10 @@
             // DragonIterations
             // 
             this.DragonIterations.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.DragonIterations.Location = new System.Drawing.Point(135, 313);
+            this.DragonIterations.Location = new System.Drawing.Point(4, 293);
             this.DragonIterations.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.DragonIterations.Maximum = new decimal(new int[] {
-            20,
+            16,
             0,
             0,
             0});
@@ -702,7 +718,7 @@
             // DragonBrashWidth
             // 
             this.DragonBrashWidth.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.DragonBrashWidth.Location = new System.Drawing.Point(145, 313);
+            this.DragonBrashWidth.Location = new System.Drawing.Point(33, 292);
             this.DragonBrashWidth.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.DragonBrashWidth.Maximum = new decimal(new int[] {
             10,
@@ -718,7 +734,7 @@
             this.DragonBrashWidth.Size = new System.Drawing.Size(47, 26);
             this.DragonBrashWidth.TabIndex = 90;
             this.DragonBrashWidth.Value = new decimal(new int[] {
-            3,
+            2,
             0,
             0,
             0});
@@ -829,7 +845,7 @@
             0,
             0,
             0});
-            this.NumberPoints.Location = new System.Drawing.Point(128, 313);
+            this.NumberPoints.Location = new System.Drawing.Point(50, 291);
             this.NumberPoints.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.NumberPoints.Maximum = new decimal(new int[] {
             20000000,
@@ -979,7 +995,7 @@
             // Vertical
             // 
             this.Vertical.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.Vertical.Location = new System.Drawing.Point(135, 313);
+            this.Vertical.Location = new System.Drawing.Point(69, 301);
             this.Vertical.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Vertical.Maximum = new decimal(new int[] {
             50,
@@ -1122,7 +1138,7 @@
             0,
             0});
             this.BranchLength.Minimum = new decimal(new int[] {
-            5,
+            50,
             0,
             0,
             0});
@@ -1146,6 +1162,11 @@
             0,
             0,
             0});
+            this.StartX.Minimum = new decimal(new int[] {
+            200,
+            0,
+            0,
+            -2147483648});
             this.StartX.Name = "StartX";
             this.StartX.Size = new System.Drawing.Size(196, 26);
             this.StartX.TabIndex = 36;
@@ -1165,6 +1186,11 @@
             0,
             0,
             0});
+            this.StartY.Minimum = new decimal(new int[] {
+            200,
+            0,
+            0,
+            -2147483648});
             this.StartY.Name = "StartY";
             this.StartY.Size = new System.Drawing.Size(196, 26);
             this.StartY.TabIndex = 37;
@@ -1193,7 +1219,7 @@
             this.BranchWidth.Size = new System.Drawing.Size(195, 26);
             this.BranchWidth.TabIndex = 39;
             this.BranchWidth.Value = new decimal(new int[] {
-            3,
+            2,
             0,
             0,
             0});
@@ -2049,22 +2075,6 @@
             this.labelAngles.TabIndex = 22;
             this.labelAngles.Text = "Angles:";
             // 
-            // Progress
-            // 
-            this.Progress.BackColor = System.Drawing.SystemColors.Control;
-            this.Progress.Cursor = System.Windows.Forms.Cursors.Arrow;
-            this.Progress.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.Progress.ForeColor = System.Drawing.Color.Blue;
-            this.Progress.Location = new System.Drawing.Point(3, 667);
-            this.Progress.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.Progress.MarqueeAnimationSpeed = 50;
-            this.Progress.Maximum = 0;
-            this.Progress.Name = "Progress";
-            this.Progress.Size = new System.Drawing.Size(217, 18);
-            this.Progress.Step = 1;
-            this.Progress.Style = System.Windows.Forms.ProgressBarStyle.Continuous;
-            this.Progress.TabIndex = 19;
-            // 
             // CulculationTime
             // 
             this.CulculationTime.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
@@ -2119,7 +2129,7 @@
             this.Details.Location = new System.Drawing.Point(4, 22);
             this.Details.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Details.Name = "Details";
-            this.Details.Size = new System.Drawing.Size(223, 695);
+            this.Details.Size = new System.Drawing.Size(223, 694);
             this.Details.TabIndex = 1;
             this.Details.Text = "Details";
             this.Details.UseVisualStyleBackColor = true;
@@ -2135,7 +2145,7 @@
             this.FractalsInfo.Multiline = true;
             this.FractalsInfo.Name = "FractalsInfo";
             this.FractalsInfo.ReadOnly = true;
-            this.FractalsInfo.Size = new System.Drawing.Size(223, 695);
+            this.FractalsInfo.Size = new System.Drawing.Size(223, 694);
             this.FractalsInfo.TabIndex = 22;
             // 
             // ImageSettings
@@ -2149,7 +2159,7 @@
             this.ImageSettings.Location = new System.Drawing.Point(4, 22);
             this.ImageSettings.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.ImageSettings.Name = "ImageSettings";
-            this.ImageSettings.Size = new System.Drawing.Size(223, 695);
+            this.ImageSettings.Size = new System.Drawing.Size(223, 694);
             this.ImageSettings.TabIndex = 2;
             this.ImageSettings.Text = "Image";
             // 

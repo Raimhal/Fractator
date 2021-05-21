@@ -78,7 +78,7 @@ namespace FractalClasses
             int x1, y1;
             x1 = (int)(x + len * Math.Sin((2 * Math.PI * angle) / 360.0));
             y1 = (int)(y + len * Math.Cos((2 * Math.PI * angle) / 360.0));
-            g.DrawLine(new Pen(pixels[i % pixels.Count].Color, BranchWidth), x, picture.Height - y, x1, picture.Height - y1);
+            g.DrawLine(new Pen(pixels[(int)(i * pixels.Count * 0.1) % pixels.Count].Color, BranchWidth), x, picture.Height - y, x1, picture.Height - y1);
             i++;
             if (len > minLen)
             {

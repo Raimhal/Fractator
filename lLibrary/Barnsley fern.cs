@@ -71,13 +71,15 @@ namespace FractalClasses
 
                 x0 = x;
                 y0 = y;
+
                 // перерахунок пікселів відносно форми
                 x = (int)(x0 * width + picture.Width / 2);
                 y = (int)(y0 * height);
                
                 picture.SetPixel(Math.Abs((int)x) % picture.Width, (int)(Math.Abs(picture.Height - (int)(y)) % picture.Height),
                     pixels[(int)((((x * pixels.Count / LenGradient / (picture.Width * 0.00195))) % pixels.Count))].Color); // розтяг градієнта на весь папоротник
-                if(i % (progress.Step) == 0) { 
+                
+                if(i % progress.Step == 0) { 
 
                     progress.Invoke(new Action(() =>
                     {

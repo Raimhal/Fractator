@@ -13,9 +13,8 @@ namespace FractalsCreator
         internal GradientForm()
         {
             InitializeComponent();
-            TopMost = true;
-            Focus();
             this.DoubleBuffered = true;
+            
         }
 
         private void GradientForm_Load(object sender, EventArgs e)
@@ -81,20 +80,22 @@ namespace FractalsCreator
         // generation gradient
         private void SetGradient(Bitmap Gradient, int r, int g, int b, int NoChangeIndex)
         {
+            int x;
             int[] change = new int[3];
             change[NoChangeIndex] = 0;
-            for (int x = 0; x < Gradient.Width; x++)
+            double GradientStretch = 3;
+            for (x = 0; x < Gradient.Width; x++)
             {
-                for(int i = 0; i < change.Length; i++)
+                for (int i = 0; i < change.Length; i++)
                 {
-                    if(i != NoChangeIndex)
+                    if (i != NoChangeIndex)
                     {
                         change[i] = x;
                     }
                 }
                 for (int y = 0; y < Gradient.Height; y++)
                 {
-                    Gradient.SetPixel(x, y, Color.FromArgb(((r + change[0]) / 3) % 255, ((g + change[1]) / 3) % 255, ((b + change[2]) / 3) % 255));
+                    Gradient.SetPixel(x, y, Color.FromArgb((int)((r + change[0]) / GradientStretch) % 255, (int)((g + change[1]) / GradientStretch) % 255, (int)((b + change[2]) / GradientStretch) % 255));
                 }
             }
         }
