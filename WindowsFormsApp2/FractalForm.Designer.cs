@@ -253,7 +253,7 @@
             // Iterations
             // 
             this.Iterations.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.Iterations.Location = new System.Drawing.Point(17, 507);
+            this.Iterations.Location = new System.Drawing.Point(17, 524);
             this.Iterations.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Iterations.Maximum = new decimal(new int[] {
             100000,
@@ -273,7 +273,7 @@
             // 
             this.labelIterations.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.labelIterations.AutoSize = true;
-            this.labelIterations.Location = new System.Drawing.Point(9, 484);
+            this.labelIterations.Location = new System.Drawing.Point(9, 501);
             this.labelIterations.Name = "labelIterations";
             this.labelIterations.Size = new System.Drawing.Size(95, 20);
             this.labelIterations.TabIndex = 6;
@@ -300,7 +300,6 @@
             this.ZoomNUM.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
             this.ZoomNUM.Location = new System.Drawing.Point(3, 0);
             this.ZoomNUM.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.ZoomNUM.MaximumSize = new System.Drawing.Size(228, 40);
             this.ZoomNUM.Name = "ZoomNUM";
             this.ZoomNUM.ReadOnly = true;
             this.ZoomNUM.Size = new System.Drawing.Size(0, 28);
@@ -311,7 +310,7 @@
             // 
             this.CenterY.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.CenterY.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.CenterY.Location = new System.Drawing.Point(17, 403);
+            this.CenterY.Location = new System.Drawing.Point(17, 420);
             this.CenterY.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.CenterY.Name = "CenterY";
             this.CenterY.Size = new System.Drawing.Size(192, 26);
@@ -321,7 +320,7 @@
             // 
             this.x.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.x.AutoSize = true;
-            this.x.Location = new System.Drawing.Point(9, 328);
+            this.x.Location = new System.Drawing.Point(9, 345);
             this.x.Name = "x";
             this.x.Size = new System.Drawing.Size(63, 20);
             this.x.TabIndex = 12;
@@ -331,7 +330,7 @@
             // 
             this.y.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.y.AutoSize = true;
-            this.y.Location = new System.Drawing.Point(9, 381);
+            this.y.Location = new System.Drawing.Point(9, 398);
             this.y.Name = "y";
             this.y.Size = new System.Drawing.Size(63, 20);
             this.y.TabIndex = 13;
@@ -341,7 +340,7 @@
             // 
             this.LabelMaxZDegreeTwo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.LabelMaxZDegreeTwo.AutoSize = true;
-            this.LabelMaxZDegreeTwo.Location = new System.Drawing.Point(9, 432);
+            this.LabelMaxZDegreeTwo.Location = new System.Drawing.Point(9, 449);
             this.LabelMaxZDegreeTwo.Name = "LabelMaxZDegreeTwo";
             this.LabelMaxZDegreeTwo.Size = new System.Drawing.Size(76, 20);
             this.LabelMaxZDegreeTwo.TabIndex = 14;
@@ -351,7 +350,7 @@
             // 
             this.MaxZDegreeTwo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.MaxZDegreeTwo.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.MaxZDegreeTwo.Location = new System.Drawing.Point(17, 455);
+            this.MaxZDegreeTwo.Location = new System.Drawing.Point(17, 472);
             this.MaxZDegreeTwo.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.MaxZDegreeTwo.Name = "MaxZDegreeTwo";
             this.MaxZDegreeTwo.Size = new System.Drawing.Size(192, 26);
@@ -384,6 +383,7 @@
             this.image.Dock = System.Windows.Forms.DockStyle.Fill;
             this.image.Location = new System.Drawing.Point(0, 0);
             this.image.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
+            this.image.MinimumSize = new System.Drawing.Size(600, 680);
             this.image.Name = "image";
             this.image.Size = new System.Drawing.Size(1270, 720);
             this.image.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -1163,7 +1163,7 @@
             0,
             0});
             this.StartX.Minimum = new decimal(new int[] {
-            200,
+            500,
             0,
             0,
             -2147483648});
@@ -1187,7 +1187,7 @@
             0,
             0});
             this.StartY.Minimum = new decimal(new int[] {
-            200,
+            500,
             0,
             0,
             -2147483648});
@@ -2103,7 +2103,7 @@
             this.CenterX.AllowDrop = true;
             this.CenterX.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.CenterX.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.CenterX.Location = new System.Drawing.Point(17, 351);
+            this.CenterX.Location = new System.Drawing.Point(17, 368);
             this.CenterX.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.CenterX.Name = "CenterX";
             this.CenterX.Size = new System.Drawing.Size(192, 26);
@@ -2428,7 +2428,7 @@
             this.KeyPreview = true;
             this.MainMenuStrip = this.MenuStrip;
             this.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
-            this.MinimumSize = new System.Drawing.Size(850, 750);
+            this.MinimumSize = new System.Drawing.Size(850, 746);
             this.Name = "FractalForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Fractal Creator";

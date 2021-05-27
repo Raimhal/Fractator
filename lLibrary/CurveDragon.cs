@@ -29,9 +29,6 @@ namespace FractalClasses
             if (Iterations == 0)
             {
                 g.DrawLine(pen, x1, y1, x2, y2);
-
-                
-
             }
             else if(Iterations > 0)
             {

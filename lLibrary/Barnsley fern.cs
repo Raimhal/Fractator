@@ -38,7 +38,7 @@ namespace FractalClasses
         public Bitmap DrawBransleyFern(ProgressBar progress)
         {
             Random random = new Random();
-            float x0 = 0, y0 = -10;
+            float x0 = 0, y0 = 0;
             float x, y;
             int width = (int)(picture.Width / (maxX - minX));
             int height = (int)(picture.Height / (maxY - minY));
@@ -72,7 +72,7 @@ namespace FractalClasses
                 x0 = x;
                 y0 = y;
 
-                // перерахунок пікселів відносно форми
+                // перерахунок координат відносно форми
                 x = (int)(x0 * width + picture.Width / 2);
                 y = (int)(y0 * height);
                

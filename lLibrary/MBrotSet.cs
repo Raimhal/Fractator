@@ -27,7 +27,7 @@ namespace FractalClasses
 
         }
 
-        public Bitmap CalculationMBrot(double hx, double hy, double x_, double y_, double maxZ, double SizeArea, ProgressBar progress)
+        public Bitmap CalculationMBrot(double hx, double hy, double x_, double y_, double maxZ, double SizeArea, int CountColors, ProgressBar progress)
         {
             progress.Invoke(new Action(() => // делегат для відображення progressBar
             {
@@ -36,8 +36,7 @@ namespace FractalClasses
 
             int UserIt = Iterations;
             int change;
-            int LenPixels = 100;
-            int[] ColorIndex = new int[LenPixels];
+            int[] ColorIndex = new int[CountColors];
             int i = 0;
             for (int p = 0; p < gradientBox.Image.Width; p++)
             {

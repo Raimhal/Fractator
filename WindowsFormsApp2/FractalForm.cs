@@ -461,7 +461,7 @@ namespace FractalsCreator
             if (OpenFile.ShowDialog() == DialogResult.OK)
             {
                 Bitmap isSufficientSize = new Bitmap(OpenFile.FileName);
-                int minimumImageWidth = (int)Math.Round(gradientForm.pictureGradient.Width - gradientForm.pictureGradient.Width * 0.055); // minimum optimal width for stretching an image of 5.5%, connected with a Picturebox
+                int minimumImageWidth = 100; // minimum optimal pictures width for gradient to avoid some problems with division by 0
                 if (isSufficientSize.Width >= minimumImageWidth)
                 {
                     gradientForm.pictureGradient.Image = isSufficientSize;
@@ -828,6 +828,7 @@ namespace FractalsCreator
                 er_y = double.TryParse(CenterY.Text, out hy);
                 er_z = double.TryParse(MaxZDegreeTwo.Text, out maxZ);
 
+
                 if (!er_x)
                 {
                     CenterX.ForeColor = Color.Red;
@@ -886,16 +887,17 @@ namespace FractalsCreator
             FractalsList.Enabled = false;   ///
 
             start = DateTime.Now;
-            ZoomNUM.Width = ZoomNUM.Text.Length * 8 + 70;
+            ZoomNUM.Width = (int)(ZoomNUM.Text.Length * ZoomNUM.Font.Height * 0.4);
 
             image.Invalidate();
             pixels = gradientForm.GetPixels((Bitmap)gradientForm.pictureGradient.Image);
             Bitmap pictureMBrotSet = new Bitmap(image.Width, image.Height);
             MBrotSet MBrotSet = new MBrotSet((Bitmap)pictureMBrotSet, pixels, size, gradientForm.pictureGradient, (int)Iterations.Value);
+            int CountColors = 100;
 
             await Task.Run(() =>
             {
-                pictureMBrotSet = MBrotSet.CalculationMBrot(hx, hy, x_, y_, maxZ, SizeArea, Progress);
+                pictureMBrotSet = MBrotSet.CalculationMBrot(hx, hy, x_, y_, maxZ, SizeArea, CountColors, Progress);
                 image.Image = pictureMBrotSet;
             });
 
@@ -970,7 +972,6 @@ namespace FractalsCreator
                     CenterY.Text = hy.ToString();
                     ZoomVal = 1;
                     ZoomNUM.Clear();
-                    ZoomNUM.Width = 80;
                     ZoomNUM.Text = ZoomVal.ToString("F2") + " X";
                     DrawFractals();
 
